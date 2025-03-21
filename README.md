@@ -1,6 +1,6 @@
 # Vibestack 🚀
 
-A curated collection of prompts to help you build web apps from concept to launch, even if you're not a developer. Created by [Data Advantage](www.buildadataadvantage.com).
+A curated collection of prompts to help you build web apps from concept to launch, even if you're not a developer. Created by [Data Advantage](https://www.buildadataadvantage.com).
 
 ## What is Vibestack?
 
