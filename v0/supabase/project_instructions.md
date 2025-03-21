@@ -1,4 +1,4 @@
-# Next.js & Supabase Application Development Guide
+# Next.js/Supabase Application Development Guide
 
 This guide outlines the architecture, best practices, and implementation details for building a modern web application using Next.js 15+, React 19+, TypeScript, Tailwind CSS v4, and Supabase.
 
@@ -109,9 +109,9 @@ This guide outlines the architecture, best practices, and implementation details
 
 For detailed implementation instructions, refer to the following Source documents stored in the v0 Project Settings:
 
-- **Project Structure**: [source/project-structure.md](source/project-structure.md)
-- **Configuration Files**: [source/config-files.md](source/config-files.md)
-- **Authentication Implementation**: [source/auth-implementation.md](source/auth-implementation.md)
-- **Database Patterns**: [source/database-patterns.md](source/database-patterns.md)
-- **UI Components**: [source/ui-components.md](source/ui-components.md)
-- **TypeScript Patterns**: [source/typescript-patterns.md](source/typescript-patterns.md)
+- Project Structure: [source/project-structure.md](source/project-structure.md)
+- Configuration Files: [source/config-files.md](source/config-files.md)
+- Authentication Implementation: [source/auth-implementation.md](source/auth-implementation.md)
+- Database Patterns: [source/database-patterns.md](source/database-patterns.md)
+- UI Components: [source/ui-components.md](source/ui-components.md)
+- TypeScript Patterns: [source/typescript-patterns.md](source/typescript-patterns.md)
