@@ -4,7 +4,7 @@ A curated collection of prompts to help you build web apps from concept to launc
 
 ## What is Vibestack?
 
-Vibestack bridges the gap between your ideas and functional software by providing carefully crafted prompts for AI-powered design and development tools like [v0.dev](https://www.v0.dev), [Cursor](https://www.cursor.com), and [Supabase](https://www.supabase.com). No coding experience required.
+Vibestack bridges the gap between your ideas and functional software by providing carefully crafted prompts for AI-powered design and development tools like [Claude](https://claude.ai), [v0.dev](https://www.v0.dev), [Supabase](https://www.supabase.com), and [Cursor](https://www.cursor.com). No coding experience required.
 
 ## 🎯 Who is this for?
 
