@@ -17,6 +17,13 @@ This guide outlines the architecture, best practices, and implementation details
 - **Supabase Storage** for file uploads and management
 - **Supabase Realtime** for real-time data subscriptions
 
+### AI
+- **Vercel AI SDK** for AI-powered apps & agents
+  - **OpenAI Responses API** uses `model: openai.responses('gpt-4o')` instead of Completions API which is `model: openai('gpt-4o')`
+  - **Image Generation** uses `model: openai.image('dall-e-3')`
+- **Vercel AI SDK UI** for chatbots and generative user interfaces
+
+
 ### Infrastructure
 - **Vercel** for hosting, environment variables, and preview deployments
 - **Vercel Blob Storage** for static assets
@@ -29,14 +36,6 @@ This guide outlines the architecture, best practices, and implementation details
 - Protected app areas behind authentication
 - Real-time interactive components using Supabase subscriptions
 - Progressive enhancement where static content becomes interactive after hydration
-
-### Accessibility (a11y) Standards
-- **WCAG AA Compliance**: Maintain WCAG AA standards throughout the application
-- **Semantic HTML**: Use appropriate HTML elements (`<nav>`, `<main>`, `<section>`, etc.)
-- **ARIA Attributes**: Implement ARIA roles, states, and properties for dynamic content
-- **Keyboard Navigation**: Ensure all interactive elements are accessible via keyboard
-- **Color Contrast**: Maintain minimum 4.5:1 contrast ratio for normal text
-- **Screen Reader Support**: Test with screen readers and provide text alternatives
 
 ### SEO Optimization
 - Implement Next.js Metadata API for title, description, and OpenGraph tags
