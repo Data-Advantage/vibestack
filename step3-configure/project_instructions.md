@@ -46,9 +46,9 @@ This guide outlines the architecture, best practices, and implementation details
 
 ### Performance Targets
 - **Core Web Vitals**:
-  - LCP (Largest Contentful Paint): < 2.5s
-  - FID (First Input Delay): < 100ms
-  - CLS (Cumulative Layout Shift): < 0.1
+  - LCP: < 2.5s
+  - FID: < 100ms
+  - CLS: < 0.1
 - Mobile-optimized bundle sizes
 - Efficient code splitting and lazy loading
 - Optimized asset delivery
@@ -106,11 +106,16 @@ This guide outlines the architecture, best practices, and implementation details
 
 ## Detailed Implementation Guides
 
-For detailed implementation instructions, refer to the following Source documents stored in the v0 Project Settings:
+For detailed instructions, refer to the following Source documents in the v0 Project Settings:
 
-- Project Structure: [source/project-structure.md](source/project-structure.md)
-- Configuration Files: [source/config-files.md](source/config-files.md)
-- Authentication Implementation: [source/auth-implementation.md](source/auth-implementation.md)
-- Database Patterns: [source/database-patterns.md](source/database-patterns.md)
-- UI Components: [source/ui-components.md](source/ui-components.md)
-- TypeScript Patterns: [source/typescript-patterns.md](source/typescript-patterns.md)
+- Project Structure: [project-structure.md](source/project-structure.md)
+- Configuration Files: [config-files.md](source/config-files.md)
+- Authentication Implementation: [auth-implementation.md](source/auth-implementation.md)
+- Database Patterns: [database-patterns.md](source/database-patterns.md)
+- UI Components: [ui-components.md](source/ui-components.md)
+- TypeScript Patterns: [typescript-patterns.md](source/typescript-patterns.md)
+- Accessibility Standards: [accessibility-standards.md](source/accessibility-standards.md)
+- AI SDK
+  - Core Library: [ai-sdk-core](source/ai-sdk-core.md)
+  - User Interface Components: [ai-sdk-ui](source/ai-sdk-core.md)
+  - Providers & Models: [ai-sdk-providers-models](source/ai-sdk-providers-models.md)
