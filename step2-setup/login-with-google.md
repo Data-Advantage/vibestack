@@ -1,5 +1,7 @@
 # Setting Up Google Authentication with Supabase in Next.js
 
+Offical documentation: https://supabase.com/docs/guides/auth/social-login/auth-google
+
 ## Step 1: Collect Details from Supabase
 
 ### Project ID
@@ -19,13 +21,15 @@
 
 ## Step 2: Create and Configure Google Cloud Project
 
-1. Create a new project at [Google Cloud Console](https://console.cloud.google.com)
+1. Have a Google Cloud account at https://cloud.google.com
 
-2. Configure the OAuth Consent Screen:
+2. Create a new project for your app at [Google Cloud Console](https://console.cloud.google.com)
+
+3. Configure the OAuth Consent Screen:
    - Go to "APIs & Services" > "OAuth consent screen"
    - Fill in the required information about your application
 
-3. Configure the Data Access:
+4. Configure the Data Access:
    - Click 'Data Access'
    - Click Add or remove scopes
    - Ensure the following non-sensitive scopes are added:
