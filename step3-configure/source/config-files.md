@@ -71,3 +71,57 @@ This document outlines the essential configuration files needed for a Next.js 15
 4. Add utility packages for form validation and class merging
 
 Remember that specific versions and exact implementations will change over time. Focus on understanding the configuration principles rather than copying exact code snippets.
+
+# Sitemap
+
+Example code
+
+```typescript:app/sitemap.ts
+import { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  // For static routes
+  const staticRoutes = [
+    {
+      url: 'https://yourdomain.com',
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    {
+      url: 'https://yourdomain.com/about',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://yourdomain.com/pricing',
+      lastModified: new Date(), 
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://yourdomain.com/contact',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+  ];
+
+  // For dynamic routes, you could fetch data here
+  // Example (pseudo-code):
+  // const blogPosts = await fetchBlogPosts();
+  // const blogRoutes = blogPosts.map(post => ({
+  //   url: `https://yourdomain.com/blog/${post.slug}`,
+  //   lastModified: post.updatedAt,
+  //   changeFrequency: 'weekly',
+  //   priority: 0.8,
+  // }));
+
+  // Return all routes
+  return [
+    ...staticRoutes,
+    // ...blogRoutes, // Uncomment when implemented
+  ];
+}
+```

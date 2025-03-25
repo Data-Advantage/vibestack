@@ -20,9 +20,21 @@ app/
 ├── (marketing)/               # Marketing pages (grouped)
 │   ├── page.tsx               # Homepage
 │   ├── about/                 # About page
+│   ├── blog/                  # Blog section
+│   │   ├── page.tsx           # Blog listing page
+│   │   └── [slug]/            # Individual blog posts
+│   │       └── page.tsx       # Blog post template
 │   ├── pricing/               # Pricing page
 │   ├── contact/               # Contact page
 │   └── layout.tsx             # Marketing layout wrapper
+├── (seo)/                     # SEO-optimized content pages (grouped)
+│   ├── layout.tsx             # SEO pages layout wrapper
+│   ├── [category]/            # Dynamic category pages
+│   │   ├── page.tsx           # Category listing template
+│   │   └── [slug]/            # Individual content pages
+│   │       └── page.tsx       # Individual page template
+│   └── sitemap.xml/           # Dynamic sitemap generation
+│       └── route.ts           # Sitemap route handler
 ├── dashboard/                 # App dashboard (protected)
 │   ├── page.tsx               # Dashboard main page
 │   ├── layout.tsx             # Dashboard layout with navigation
@@ -39,6 +51,7 @@ app/
 ├── layout.tsx                 # Root layout
 ├── not-found.tsx              # 404 page
 ├── page.tsx                   # Root page
+├── sitemap.ts                 # Built-in Next.js sitemap generation
 ```
 
 ### Supporting Directories

@@ -12,6 +12,8 @@ const { text } = await generateText({
 
 ## Structured Data
 
+https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-object
+
 ```
 import { generateObject } from 'ai';
 import { openai } from '@ai-sdk/openai';
@@ -142,6 +144,8 @@ console.log(text); // text response
 
 ## Streaming the Thinking
 
+https://sdk.vercel.ai/docs/reference/ai-sdk-core/stream-text
+
 ```
 import { anthropic } from '@ai-sdk/anthropic';
 import { streamText } from 'ai';
@@ -181,6 +185,8 @@ for await (const partialObject of partialObjectStream) {
 ```
 
 ## Schema Name and Description
+
+https://sdk.vercel.ai/docs/reference/ai-sdk-core/generate-object
 
 ```
 import { generateObject } from 'ai';
