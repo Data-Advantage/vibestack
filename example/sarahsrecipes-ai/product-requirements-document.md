@@ -435,6 +435,71 @@ Integrate AI technology for recipe extraction, image generation, and enhanced us
 - Requires sufficient training data for extraction models
 - Requires image generation capabilities
 
+## 13. Subscription Management & Stripe Integration
+
+### Feature Description
+Provide seamless subscription management through Stripe integration, allowing users to upgrade to the Pro tier, manage their billing information, and view payment history.
+
+### User Stories
+- As a user, I want to upgrade to the Pro tier so I can access premium features.
+- As a user, I want to manage my subscription through a secure customer portal so I can update payment methods or cancel when needed.
+- As a user, I want to view my billing history so I can track subscription payments.
+- As a user, I want to receive email receipts for subscription payments.
+- As a user, I want to be notified when my payment method is about to expire so I can update it before disruption.
+- As a user, I want my subscription status to be immediately reflected in the app when I upgrade or downgrade.
+- As an admin, I want to view all active subscriptions so I can monitor conversion rates.
+- As a developer, I want webhook events from Stripe to automatically update user subscription status in the app.
+
+### Acceptance Criteria
+- Stripe Customer Portal integration allows users to manage subscriptions without leaving the app ecosystem
+- Subscription changes in Stripe (new, cancelled, past due) automatically sync to the application database
+- Payment method updates in Stripe propagate to the application
+- Subscription status updates within 5 minutes of changes in Stripe
+- Failed payment notifications trigger appropriate in-app messages
+- Pro features are immediately accessible upon successful subscription
+- Email receipts are automatically sent for all subscription payments
+- Subscription data is properly secured with appropriate access controls
+- System correctly handles proration for subscription changes
+- Subscription metrics are available in admin dashboard
+
+### Dependencies
+- Requires Stripe API integration
+- Requires webhook handling for Stripe events
+- Requires subscription status tracking in database
+- Requires email notification system
+
+## 14. Account Deletion
+
+### Feature Description
+Allow users to permanently delete their account and associated data while complying with privacy regulations and data protection laws.
+
+### User Stories
+- As a user, I want to permanently delete my account so that my personal data is removed from the system.
+- As a user, I want to understand what data will be deleted when I close my account so I can make an informed decision.
+- As a user, I want confirmation before my account is deleted to prevent accidental deletion.
+- As a user, I want the option to download my data before deletion so I can preserve my recipes.
+- As a user, I want to cancel my paid subscription when deleting my account so I'm not charged again.
+- As an admin, I want to comply with privacy regulations when handling account deletions.
+
+### Acceptance Criteria
+- Account deletion option is available in user settings
+- Deletion process requires password confirmation
+- Confirmation screen clearly explains what data will be deleted
+- Option to download personal data before deletion (all recipes in PDF or JSON format)
+- Automatic cancellation of Stripe subscription when account is deleted
+- Hard deletion of personally identifiable information (PII)
+- Soft deletion/anonymization of contributed content with user attribution removed
+- Compliance with GDPR, CCPA, and other relevant privacy regulations
+- Deletion confirmation sent via email
+- 14-day recovery window before permanent deletion (with clear communication)
+- Analytics tracking of account deletions for business metrics
+
+### Dependencies
+- Requires data export functionality
+- Requires integration with Stripe for subscription cancellation
+- Requires secure verification for deletion requests
+- Requires database schema updates for handling data anonymization
+
 ## Business Model
 
 ### Free Tier
@@ -446,7 +511,7 @@ Integrate AI technology for recipe extraction, image generation, and enhanced us
 - Host unlimited potluck events, attend unlimited potlucks as guest
 - Full social features (likes, favorites, follows)
 
-### Premium Tier ($3/month or $27/year)
+### Pro Tier ($3/month or $27/year)
 - Unlimited AI-enhanced recipes (URL extraction, text extraction, image recognition)
 - Unlimited AI-generated recipe images
 - Unlimited Recipe Assistant conversations
@@ -458,7 +523,7 @@ Integrate AI technology for recipe extraction, image generation, and enhanced us
 #### Acceptance Criteria
 - System tracks AI feature usage for free tier users
 - Clear indication of remaining free tier allocations
-- Seamless upgrade process to premium
+- Seamless upgrade process to pro
 - Appropriate restrictions enforced for free tier users
 - Subscription management interface
 - Payment processing integration

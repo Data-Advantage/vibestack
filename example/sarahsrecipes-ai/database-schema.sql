@@ -1,5 +1,5 @@
 -- Recipe App Database Migration Script - Updated Version
--- This script includes all original tables plus new tables for the PRD enhancements
+-- This script includes all original tables plus Stripe integration
 
 -- ------------------------------
 -- Schema Creation
@@ -7,6 +7,7 @@
 CREATE SCHEMA IF NOT EXISTS api;
 CREATE SCHEMA IF NOT EXISTS reference;
 CREATE SCHEMA IF NOT EXISTS util;
+CREATE SCHEMA IF NOT EXISTS stripe;
 
 -- ------------------------------
 -- Domain Types for Common Patterns
@@ -264,8 +265,8 @@ BEGIN
   AND us.status = 'active'
   LIMIT 1;
   
-  -- Premium users have unlimited usage
-  IF subscription_tier = 'premium' THEN
+  -- Pro users have unlimited usage
+  IF subscription_tier = 'pro' THEN
     RETURN true;
   END IF;
   
@@ -481,6 +482,221 @@ $$;
 COMMENT ON FUNCTION api.claim_potluck_slot IS 'Claims a potluck slot for a user or guest';
 
 -- ------------------------------
+-- Stripe Integration Functions
+-- ------------------------------
+
+-- Function to sync Stripe subscription to user_subscriptions
+CREATE OR REPLACE FUNCTION stripe.sync_subscription_to_app()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Insert or update the user_subscriptions record
+  INSERT INTO api.user_subscriptions(
+    user_id,
+    subscription_tier,
+    status,
+    payment_provider,
+    subscription_id,
+    stripe_subscription_id,
+    stripe_price_id,
+    current_period_start,
+    current_period_end,
+    cancel_at_period_end,
+    cancelled_at
+  )
+  SELECT 
+    sc.id, -- user_id from stripe.customers
+    CASE 
+      WHEN sp.metadata->>'tier' = 'pro' THEN 'pro'::reference.subscription_tier
+      ELSE 'free'::reference.subscription_tier
+    END,
+    NEW.status,
+    'stripe',
+    NEW.id,
+    NEW.id,
+    NEW.price_id,
+    NEW.current_period_start,
+    NEW.current_period_end,
+    NEW.cancel_at_period_end,
+    NEW.canceled_at
+  FROM stripe.customers sc
+  LEFT JOIN stripe.prices sp ON sp.id = NEW.price_id
+  WHERE sc.stripe_customer_id = (NEW.metadata->>'stripe_customer_id')
+  ON CONFLICT (user_id) DO UPDATE SET
+    subscription_tier = CASE 
+      WHEN EXCLUDED.stripe_price_id IN (SELECT id FROM stripe.prices WHERE metadata->>'tier' = 'pro') 
+      THEN 'pro'::reference.subscription_tier
+      ELSE 'free'::reference.subscription_tier
+    END,
+    status = EXCLUDED.status,
+    stripe_subscription_id = EXCLUDED.stripe_subscription_id,
+    stripe_price_id = EXCLUDED.stripe_price_id,
+    current_period_start = EXCLUDED.current_period_start,
+    current_period_end = EXCLUDED.current_period_end,
+    cancel_at_period_end = EXCLUDED.cancel_at_period_end,
+    cancelled_at = EXCLUDED.cancelled_at,
+    metadata = EXCLUDED.metadata,
+    updated_at = now();
+  
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+COMMENT ON FUNCTION stripe.sync_subscription_to_app IS 'Syncs Stripe subscription changes to the app subscription table';
+
+-- Function to process Stripe webhook events
+CREATE OR REPLACE FUNCTION stripe.handle_webhook_event()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Handle different event types
+  IF NEW.event_type = 'customer.subscription.created' OR 
+     NEW.event_type = 'customer.subscription.updated' THEN
+    -- Extract subscription data and insert/update in subscriptions table
+    INSERT INTO stripe.subscriptions (
+      id,
+      user_id,
+      status,
+      metadata,
+      price_id,
+      quantity,
+      cancel_at_period_end,
+      current_period_start,
+      current_period_end,
+      cancel_at,
+      canceled_at
+    )
+    SELECT
+      (NEW.data->'object'->>'id'),
+      (SELECT id FROM stripe.customers WHERE stripe_customer_id = (NEW.data->'object'->>'customer')),
+      (NEW.data->'object'->>'status')::reference.subscription_status,
+      (NEW.data->'object'->'metadata'),
+      (NEW.data->'object'->'items'->'data'->0->>'price'),
+      (NEW.data->'object'->'items'->'data'->0->>'quantity')::integer,
+      (NEW.data->'object'->>'cancel_at_period_end')::boolean,
+      to_timestamp((NEW.data->'object'->>'current_period_start')::integer),
+      to_timestamp((NEW.data->'object'->>'current_period_end')::integer),
+      CASE WHEN NEW.data->'object'->>'cancel_at' IS NOT NULL 
+           THEN to_timestamp((NEW.data->'object'->>'cancel_at')::integer) 
+           ELSE NULL END,
+      CASE WHEN NEW.data->'object'->>'canceled_at' IS NOT NULL 
+           THEN to_timestamp((NEW.data->'object'->>'canceled_at')::integer) 
+           ELSE NULL END
+    ON CONFLICT (id) DO UPDATE SET
+      status = EXCLUDED.status,
+      metadata = EXCLUDED.metadata,
+      price_id = EXCLUDED.price_id,
+      quantity = EXCLUDED.quantity,
+      cancel_at_period_end = EXCLUDED.cancel_at_period_end,
+      current_period_start = EXCLUDED.current_period_start,
+      current_period_end = EXCLUDED.current_period_end,
+      cancel_at = EXCLUDED.cancel_at,
+      canceled_at = EXCLUDED.canceled_at;
+  
+  ELSIF NEW.event_type = 'product.created' OR NEW.event_type = 'product.updated' THEN
+    -- Handle product events
+    INSERT INTO stripe.products (
+      id,
+      active,
+      name,
+      description,
+      image,
+      metadata
+    )
+    SELECT
+      (NEW.data->'object'->>'id'),
+      (NEW.data->'object'->>'active')::boolean,
+      (NEW.data->'object'->>'name'),
+      (NEW.data->'object'->>'description'),
+      (NEW.data->'object'->>'images'->0),
+      (NEW.data->'object'->'metadata')
+    ON CONFLICT (id) DO UPDATE SET
+      active = EXCLUDED.active,
+      name = EXCLUDED.name,
+      description = EXCLUDED.description,
+      image = EXCLUDED.image,
+      metadata = EXCLUDED.metadata,
+      updated_at = now();
+      
+  ELSIF NEW.event_type = 'price.created' OR NEW.event_type = 'price.updated' THEN
+    -- Handle price events
+    INSERT INTO stripe.prices (
+      id,
+      product_id,
+      active,
+      description,
+      unit_amount,
+      currency,
+      type,
+      interval,
+      interval_count,
+      metadata
+    )
+    SELECT
+      (NEW.data->'object'->>'id'),
+      (NEW.data->'object'->>'product'),
+      (NEW.data->'object'->>'active')::boolean,
+      (NEW.data->'object'->>'nickname'),
+      (NEW.data->'object'->>'unit_amount')::bigint,
+      (NEW.data->'object'->>'currency'),
+      CASE 
+        WHEN NEW.data->'object'->>'type' = 'recurring' THEN 'recurring'::stripe.pricing_type
+        ELSE 'one_time'::stripe.pricing_type
+      END,
+      CASE 
+        WHEN NEW.data->'object'->'recurring'->>'interval' = 'month' THEN 'month'::stripe.pricing_plan_interval
+        WHEN NEW.data->'object'->'recurring'->>'interval' = 'year' THEN 'year'::stripe.pricing_plan_interval
+        WHEN NEW.data->'object'->'recurring'->>'interval' = 'week' THEN 'week'::stripe.pricing_plan_interval
+        WHEN NEW.data->'object'->'recurring'->>'interval' = 'day' THEN 'day'::stripe.pricing_plan_interval
+        ELSE NULL
+      END,
+      (NEW.data->'object'->'recurring'->>'interval_count')::integer,
+      (NEW.data->'object'->'metadata')
+    ON CONFLICT (id) DO UPDATE SET
+      product_id = EXCLUDED.product_id,
+      active = EXCLUDED.active,
+      description = EXCLUDED.description,
+      unit_amount = EXCLUDED.unit_amount,
+      currency = EXCLUDED.currency,
+      type = EXCLUDED.type,
+      interval = EXCLUDED.interval,
+      interval_count = EXCLUDED.interval_count,
+      metadata = EXCLUDED.metadata,
+      updated_at = now();
+  
+  ELSIF NEW.event_type = 'customer.created' OR NEW.event_type = 'customer.updated' THEN
+    -- Handle customer events
+    INSERT INTO stripe.customers (
+      id,
+      stripe_customer_id
+    )
+    SELECT
+      (SELECT id FROM auth.users WHERE email = (NEW.data->'object'->>'email')),
+      (NEW.data->'object'->>'id')
+    ON CONFLICT (id) DO UPDATE SET
+      stripe_customer_id = EXCLUDED.stripe_customer_id;
+  END IF;
+  
+  -- Mark the webhook event as processed
+  UPDATE stripe.webhook_events
+  SET processed = true
+  WHERE id = NEW.id;
+  
+  RETURN NEW;
+EXCEPTION
+  WHEN OTHERS THEN
+    -- Log the error and mark as failed
+    UPDATE stripe.webhook_events
+    SET 
+      processed = true,
+      processing_error = SQLERRM
+    WHERE id = NEW.id;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+COMMENT ON FUNCTION stripe.handle_webhook_event IS 'Processes incoming Stripe webhook events';
+
+-- ------------------------------
 -- Enums
 -- ------------------------------
 
@@ -526,16 +742,24 @@ CREATE TYPE reference.ai_feature_type AS ENUM (
 );
 
 CREATE TYPE reference.subscription_tier AS ENUM (
-    'free', 'premium'
+    'free', 'pro'
 );
 
 CREATE TYPE reference.subscription_status AS ENUM (
-    'active', 'inactive', 'canceled', 'past_due'
+    'active', 'inactive', 'canceled', 'past_due',
+    'trialing', 'incomplete', 'incomplete_expired', 'unpaid', 'paused'
 );
 
 CREATE TYPE reference.guest_conversion_status AS ENUM (
     'pending', 'converted', 'declined'
 );
+
+-- ------------------------------
+-- Stripe Specific Types
+-- ------------------------------
+
+CREATE TYPE stripe.pricing_type AS ENUM ('one_time', 'recurring');
+CREATE TYPE stripe.pricing_plan_interval AS ENUM ('day', 'week', 'month', 'year');
 
 -- ------------------------------
 -- Core Tables
@@ -811,7 +1035,7 @@ CREATE TABLE api.user_api_keys (
 COMMENT ON TABLE api.user_api_keys IS 'API keys generated for users to access the API programmatically';
 
 -- ------------------------------
--- New tables for PRD enhancements
+-- Feature and Subscription Tables
 -- ------------------------------
 
 -- User subscriptions
@@ -822,11 +1046,17 @@ CREATE TABLE api.user_subscriptions (
     status reference.subscription_status NOT NULL DEFAULT 'active',
     payment_provider text,
     subscription_id text,
+    -- New Stripe-specific fields
+    stripe_subscription_id text,
+    stripe_price_id text,
     current_period_start timestamp with time zone,
     current_period_end timestamp with time zone,
+    cancel_at_period_end boolean DEFAULT false,
+    cancelled_at timestamp with time zone,
+    metadata jsonb,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    cancelled_at timestamp with time zone
+    UNIQUE(user_id)
 );
 
 COMMENT ON TABLE api.user_subscriptions IS 'Tracks user subscription status and details';
@@ -947,6 +1177,95 @@ CREATE TABLE api.potluck_participants (
 
 COMMENT ON TABLE api.potluck_participants IS 'People attending potluck events, including hosts, cohosts, and guests';
 COMMENT ON COLUMN api.potluck_participants.role IS 'Role of the participant (host, cohost, participant, guest)';
+
+-- ------------------------------
+-- Stripe Schema Tables
+-- ------------------------------
+
+-- Map Supabase users to Stripe customers
+CREATE TABLE stripe.customers (
+    id uuid REFERENCES auth.users(id) NOT NULL PRIMARY KEY,
+    stripe_customer_id text NOT NULL,
+    created_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+COMMENT ON TABLE stripe.customers IS 'Maps Supabase users to Stripe customer IDs';
+
+-- Stripe products
+CREATE TABLE stripe.products (
+    id text PRIMARY KEY,
+    active boolean,
+    name text,
+    description text,
+    image text,
+    metadata jsonb,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+COMMENT ON TABLE stripe.products IS 'Products synchronized from Stripe';
+
+-- Stripe prices
+CREATE TABLE stripe.prices (
+    id text PRIMARY KEY,
+    product_id text REFERENCES stripe.products,
+    active boolean,
+    description text,
+    unit_amount bigint,
+    currency text CHECK (char_length(currency) = 3),
+    type stripe.pricing_type,
+    interval stripe.pricing_plan_interval,
+    interval_count integer,
+    metadata jsonb,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+COMMENT ON TABLE stripe.prices IS 'Prices synchronized from Stripe';
+
+-- Stripe subscriptions
+CREATE TABLE stripe.subscriptions (
+    id text PRIMARY KEY,
+    user_id uuid REFERENCES auth.users(id) NOT NULL,
+    status reference.subscription_status,
+    metadata jsonb,
+    price_id text REFERENCES stripe.prices,
+    quantity integer,
+    cancel_at_period_end boolean,
+    created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+    current_period_start timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+    current_period_end timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+    ended_at timestamp with time zone,
+    cancel_at timestamp with time zone,
+    canceled_at timestamp with time zone
+);
+
+COMMENT ON TABLE stripe.subscriptions IS 'Subscriptions synchronized from Stripe';
+
+-- Customer billing details
+CREATE TABLE stripe.customer_billing (
+    id uuid DEFAULT extensions.uuid_generate_v4() PRIMARY KEY,
+    user_id uuid REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+    billing_address jsonb,
+    payment_method jsonb,
+    created_at timestamp with time zone DEFAULT now() NOT NULL,
+    updated_at timestamp with time zone DEFAULT now() NOT NULL
+);
+
+COMMENT ON TABLE stripe.customer_billing IS 'Stores customer billing addresses and payment methods';
+
+-- Stripe webhook events
+CREATE TABLE stripe.webhook_events (
+    id text PRIMARY KEY,
+    event_type text NOT NULL,
+    api_version text,
+    created timestamp with time zone DEFAULT now() NOT NULL,
+    data jsonb,
+    processed boolean DEFAULT false,
+    processing_error text
+);
+
+COMMENT ON TABLE stripe.webhook_events IS 'Records Stripe webhook events for processing';
 
 -- Check constraint function for custom slots
 CREATE OR REPLACE FUNCTION api.check_custom_slot_allowed()
@@ -1272,6 +1591,40 @@ WHERE
 
 COMMENT ON VIEW api.user_potluck_events IS 'Shows potluck events where the user is a host, cohost, or participant';
 
+-- User subscription details view
+CREATE VIEW api.user_subscription_details AS
+SELECT 
+    us.id,
+    us.user_id,
+    us.subscription_tier,
+    us.status,
+    us.payment_provider,
+    us.current_period_start,
+    us.current_period_end,
+    us.cancel_at_period_end,
+    CASE 
+        WHEN us.subscription_tier = 'free' THEN 0
+        WHEN us.status = 'active' AND us.subscription_tier = 'pro' THEN
+            CASE 
+                WHEN sp.interval = 'month' THEN sp.unit_amount / 100
+                WHEN sp.interval = 'year' THEN (sp.unit_amount / 100) / 12
+                ELSE 0
+            END
+        ELSE 0
+    END AS monthly_cost,
+    sp.currency,
+    sp.interval as billing_interval,
+    p.name as product_name,
+    p.description as product_description
+FROM 
+    api.user_subscriptions us
+LEFT JOIN 
+    stripe.prices sp ON us.stripe_price_id = sp.id
+LEFT JOIN 
+    stripe.products p ON sp.product_id = p.id;
+
+COMMENT ON VIEW api.user_subscription_details IS 'User subscription details with pricing information';
+
 -- ------------------------------
 -- Indexes
 -- ------------------------------
@@ -1298,6 +1651,7 @@ CREATE INDEX idx_pinned_recipes_recipe_id ON api.pinned_recipes(recipe_id);
 -- New indexes for added tables
 CREATE INDEX idx_user_social_links_user_id ON api.user_social_links(user_id);
 CREATE INDEX idx_user_subscriptions_user_id ON api.user_subscriptions(user_id);
+CREATE INDEX idx_user_subscriptions_stripe_id ON api.user_subscriptions(stripe_subscription_id);
 CREATE INDEX idx_ai_feature_usage_user_id ON api.ai_feature_usage(user_id);
 CREATE INDEX idx_ai_conversations_user_id ON api.ai_conversations(user_id);
 CREATE INDEX idx_ai_conversation_messages_conversation_id ON api.ai_conversation_messages(conversation_id);
@@ -1311,6 +1665,14 @@ CREATE INDEX idx_potluck_participants_user_id ON api.potluck_participants(user_i
 CREATE INDEX idx_potluck_participants_guest_id ON api.potluck_participants(guest_id);
 CREATE INDEX idx_guest_users_email ON api.guest_users(email);
 CREATE INDEX idx_recipes_forked_from_id ON api.recipes(forked_from_id) WHERE forked_from_id IS NOT NULL;
+
+-- Stripe indexes
+CREATE INDEX idx_stripe_customers_customer_id ON stripe.customers(stripe_customer_id);
+CREATE INDEX idx_stripe_prices_product_id ON stripe.prices(product_id);
+CREATE INDEX idx_stripe_subscriptions_user_id ON stripe.subscriptions(user_id);
+CREATE INDEX idx_stripe_webhook_events_processed ON stripe.webhook_events(processed);
+CREATE INDEX idx_stripe_webhook_events_type ON stripe.webhook_events(event_type);
+CREATE INDEX idx_stripe_customer_billing_user_id ON stripe.customer_billing(user_id);
 
 -- Full text search indexing
 CREATE INDEX idx_recipes_fts ON api.recipes 
@@ -1410,6 +1772,18 @@ CREATE TRIGGER update_potluck_participants_modtime
   BEFORE UPDATE ON api.potluck_participants
   FOR EACH ROW EXECUTE FUNCTION util.update_modified_column();
 
+CREATE TRIGGER update_stripe_products_modtime
+  BEFORE UPDATE ON stripe.products
+  FOR EACH ROW EXECUTE FUNCTION util.update_modified_column();
+
+CREATE TRIGGER update_stripe_prices_modtime
+  BEFORE UPDATE ON stripe.prices
+  FOR EACH ROW EXECUTE FUNCTION util.update_modified_column();
+
+CREATE TRIGGER update_stripe_customer_billing_modtime
+  BEFORE UPDATE ON stripe.customer_billing
+  FOR EACH ROW EXECUTE FUNCTION util.update_modified_column();
+
 -- Trigger to update recipe likes counter
 CREATE OR REPLACE FUNCTION api.update_recipe_likes_count()
 RETURNS TRIGGER AS $$
@@ -1467,7 +1841,7 @@ BEGIN
   SELECT api.check_ai_usage_limits(NEW.user_id, NEW.feature_type) INTO can_use;
   
   IF NOT can_use THEN
-    RAISE EXCEPTION 'You have reached your AI usage limit. Please upgrade to premium for unlimited AI features.';
+    RAISE EXCEPTION 'You have reached your AI usage limit. Please upgrade to Pro for unlimited AI features.';
   END IF;
   
   RETURN NEW;
@@ -1477,6 +1851,16 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER enforce_ai_usage_limits
 BEFORE INSERT ON api.ai_feature_usage
 FOR EACH ROW EXECUTE FUNCTION api.enforce_ai_usage_limits();
+
+-- Stripe webhook processing trigger
+CREATE TRIGGER process_stripe_webhook_event
+AFTER INSERT ON stripe.webhook_events
+FOR EACH ROW EXECUTE FUNCTION stripe.handle_webhook_event();
+
+-- Sync Stripe subscription changes to app
+CREATE TRIGGER on_stripe_subscription_change
+AFTER INSERT OR UPDATE ON stripe.subscriptions
+FOR EACH ROW EXECUTE FUNCTION stripe.sync_subscription_to_app();
 
 -- ------------------------------
 -- Row Level Security
@@ -1499,7 +1883,7 @@ ALTER TABLE api.recipe_likes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.pinned_recipes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE reference.daily_nutritional_values ENABLE ROW LEVEL SECURITY;
 
--- Enable RLS on new tables
+-- Enable RLS on feature tables
 ALTER TABLE api.user_social_links ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.user_subscriptions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.ai_feature_usage ENABLE ROW LEVEL SECURITY;
@@ -1510,6 +1894,14 @@ ALTER TABLE api.guest_users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.potluck_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.potluck_slots ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.potluck_participants ENABLE ROW LEVEL SECURITY;
+
+-- Enable RLS on Stripe tables
+ALTER TABLE stripe.customers ENABLE ROW LEVEL SECURITY;
+ALTER TABLE stripe.products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE stripe.prices ENABLE ROW LEVEL SECURITY;
+ALTER TABLE stripe.subscriptions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE stripe.customer_billing ENABLE ROW LEVEL SECURITY;
+ALTER TABLE stripe.webhook_events ENABLE ROW LEVEL SECURITY;
 
 -- ------------------------------
 -- RLS Policies
@@ -1772,4 +2164,54 @@ CREATE POLICY "Guest users are insertable by anyone" ON api.guest_users
   FOR INSERT WITH CHECK (true);
 
 CREATE POLICY "Guest users are updatable by admin" ON api.guest_users
-  FOR
+  FOR UPDATE USING (util.is_admin(auth.uid()));
+
+-- User subscriptions policies
+CREATE POLICY "User subscriptions viewable by self" ON api.user_subscriptions
+  FOR SELECT USING (user_id = auth.uid() OR util.is_admin(auth.uid()));
+
+CREATE POLICY "User subscriptions updatable by admin" ON api.user_subscriptions
+  FOR UPDATE USING (util.is_admin(auth.uid()));
+
+-- Stripe table policies
+CREATE POLICY "Stripe products viewable by anyone" ON stripe.products
+  FOR SELECT USING (true);
+
+CREATE POLICY "Stripe prices viewable by anyone" ON stripe.prices
+  FOR SELECT USING (true);
+
+CREATE POLICY "Stripe subscriptions viewable by self" ON stripe.subscriptions
+  FOR SELECT USING (user_id = auth.uid() OR util.is_admin(auth.uid()));
+
+CREATE POLICY "Stripe customer billing viewable by self" ON stripe.customer_billing
+  FOR SELECT USING (user_id = auth.uid() OR util.is_admin(auth.uid()));
+
+CREATE POLICY "Stripe customer billing updatable by self" ON stripe.customer_billing
+  FOR UPDATE USING (user_id = auth.uid());
+
+CREATE POLICY "Stripe customer billing insertable by self" ON stripe.customer_billing
+  FOR INSERT WITH CHECK (user_id = auth.uid());
+
+-- No direct access to customers or webhook events (managed by backend only)
+
+-- ------------------------------
+-- Realtime Publications
+-- ------------------------------
+
+-- Drop existing publication if needed
+DROP PUBLICATION IF EXISTS supabase_realtime;
+DROP PUBLICATION IF EXISTS stripe_realtime;
+
+-- Create publications for realtime updates
+CREATE PUBLICATION supabase_realtime FOR TABLE 
+  api.recipes,
+  api.profiles,
+  api.potluck_events,
+  api.potluck_slots,
+  api.potluck_participants;
+
+CREATE PUBLICATION stripe_realtime FOR TABLE 
+  stripe.products, 
+  stripe.prices,
+  stripe.subscriptions,
+  api.user_subscriptions;
