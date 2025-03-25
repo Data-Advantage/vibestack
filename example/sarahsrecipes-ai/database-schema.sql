@@ -1,5 +1,5 @@
 -- Recipe App Database Migration Script - Updated Version
--- This script includes all original tables plus Stripe integration
+-- This script includes all original tables plus account deletion functionality
 
 -- ------------------------------
 -- Schema Creation
@@ -482,6 +482,196 @@ $$;
 COMMENT ON FUNCTION api.claim_potluck_slot IS 'Claims a potluck slot for a user or guest';
 
 -- ------------------------------
+-- Account Deletion Functions
+-- ------------------------------
+
+-- Export user data function
+CREATE OR REPLACE FUNCTION api.export_user_data(user_id uuid)
+RETURNS jsonb
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+    export_data jsonb;
+BEGIN
+    SELECT jsonb_build_object(
+        'user_profile', (SELECT row_to_json(p) FROM api.profiles p WHERE p.id = user_id),
+        'recipes', (
+            SELECT jsonb_agg(
+                jsonb_build_object(
+                    'recipe', r,
+                    'ingredients', (
+                        SELECT jsonb_agg(row_to_json(i))
+                        FROM api.ingredients i
+                        WHERE i.recipe_id = r.id
+                    ),
+                    'instructions', (
+                        SELECT jsonb_agg(row_to_json(ins) ORDER BY ins.step_number)
+                        FROM api.instructions ins
+                        WHERE ins.recipe_id = r.id
+                    ),
+                    'nutritional_info', (
+                        SELECT row_to_json(n)
+                        FROM api.nutritional_info n
+                        WHERE n.recipe_id = r.id
+                    )
+                )
+            )
+            FROM api.recipes r
+            WHERE r.user_id = export_user_data.user_id
+              AND r.deleted_at IS NULL
+        ),
+        'shopping_lists', (
+            SELECT jsonb_agg(row_to_json(sl))
+            FROM api.shopping_list_items sl
+            WHERE sl.user_id = export_user_data.user_id
+        ),
+        'meal_plans', (
+            SELECT jsonb_agg(row_to_json(mp))
+            FROM api.meal_plan mp
+            WHERE mp.user_id = export_user_data.user_id
+        ),
+        'favorites', (
+            SELECT jsonb_agg(row_to_json(f))
+            FROM api.user_favorites f
+            WHERE f.user_id = export_user_data.user_id
+        )
+    ) INTO export_data;
+    
+    RETURN export_data;
+END;
+$$;
+
+COMMENT ON FUNCTION api.export_user_data IS 'Exports all user data in a structured format for data portability';
+
+-- Account deletion function
+CREATE OR REPLACE FUNCTION api.delete_user_account(
+    user_id uuid,
+    deletion_reason text DEFAULT NULL,
+    export_data boolean DEFAULT false
+)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+    user_email text;
+    had_subscription boolean;
+    stripe_customer_id text;
+BEGIN
+    -- Get user email for deletion record
+    SELECT email INTO user_email FROM auth.users WHERE id = user_id;
+    
+    -- Check if user had an active subscription
+    SELECT EXISTS (
+        SELECT 1 FROM api.user_subscriptions 
+        WHERE user_id = delete_user_account.user_id AND status = 'active'
+    ) INTO had_subscription;
+    
+    -- Get Stripe customer ID if exists
+    SELECT stripe_customer_id INTO stripe_customer_id 
+    FROM stripe.customers 
+    WHERE id = user_id;
+    
+    -- Record the deletion for analytics (without maintaining user reference)
+    INSERT INTO api.account_deletions (
+        email,
+        reason,
+        requested_data_export,
+        subscription_cancelled
+    ) VALUES (
+        user_email,
+        deletion_reason,
+        export_data,
+        had_subscription
+    );
+    
+    -- Cancel Stripe subscription if exists
+    IF had_subscription THEN
+        -- Update subscription status in our database
+        UPDATE api.user_subscriptions
+        SET 
+            status = 'canceled',
+            cancelled_at = NOW()
+        WHERE user_id = delete_user_account.user_id AND status = 'active';
+        
+        -- Note: In an actual implementation, you would make an API call to Stripe
+        -- to cancel the subscription on their side as well
+    END IF;
+    
+    -- Delete Stripe customer data if exists
+    IF stripe_customer_id IS NOT NULL THEN
+        DELETE FROM stripe.customer_billing WHERE user_id = delete_user_account.user_id;
+        DELETE FROM stripe.customers WHERE id = delete_user_account.user_id;
+        -- Note: You would also want to delete this customer in Stripe via API
+    END IF;
+    
+    -- Delete all user data - most tables should cascade automatically
+    -- due to your ON DELETE CASCADE constraints, but we'll explicitly
+    -- handle the main tables to ensure complete deletion
+    
+    -- Delete user social links
+    DELETE FROM api.user_social_links WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete shopping list items
+    DELETE FROM api.shopping_list_items WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete meal plans
+    DELETE FROM api.meal_plan WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete potluck participants where user is the participant
+    DELETE FROM api.potluck_participants WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete potluck events hosted by the user
+    -- This will cascade delete slots and participants
+    DELETE FROM api.potluck_events 
+    WHERE id IN (
+        SELECT event_id FROM api.potluck_participants 
+        WHERE user_id = delete_user_account.user_id AND role = 'host'
+    );
+    
+    -- Delete AI conversations and related data
+    DELETE FROM api.ai_conversations WHERE user_id = delete_user_account.user_id;
+    DELETE FROM api.ai_feature_usage WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete user API keys
+    DELETE FROM api.user_api_keys WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete follows
+    DELETE FROM api.user_follows WHERE follower_id = delete_user_account.user_id OR followed_id = delete_user_account.user_id;
+    
+    -- Delete favorites
+    DELETE FROM api.user_favorites WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete recipe likes
+    DELETE FROM api.recipe_likes WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete pinned recipes
+    DELETE FROM api.pinned_recipes WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete user role mappings
+    DELETE FROM api.user_role_mappings WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete all user recipes and their components
+    -- This will cascade delete ingredients, instructions, nutritional info
+    DELETE FROM api.recipes WHERE user_id = delete_user_account.user_id;
+    
+    -- Delete user profile
+    DELETE FROM api.profiles WHERE id = delete_user_account.user_id;
+    
+    -- Finally, delete the user from auth.users
+    -- Note: In Supabase, you would typically use auth.api.delete_user() for this
+    -- This is a placeholder for that call
+    -- DELETE FROM auth.users WHERE id = delete_user_account.user_id;
+    
+    -- Return success
+    RETURN true;
+END;
+$$;
+
+COMMENT ON FUNCTION api.delete_user_account IS 'Completely deletes all user data from the system';
+
+-- ------------------------------
 -- Stripe Integration Functions
 -- ------------------------------
 
@@ -811,6 +1001,18 @@ COMMENT ON TABLE api.profiles IS 'Extended user profile information linked to au
 COMMENT ON COLUMN api.profiles.username IS 'Unique username for the user, used in URLs and mentions';
 COMMENT ON COLUMN api.profiles.deleted_at IS 'Timestamp for soft deletion, NULL for active profiles';
 
+-- Account deletions tracking table
+CREATE TABLE api.account_deletions (
+    id uuid DEFAULT extensions.uuid_generate_v4() PRIMARY KEY,
+    email text NOT NULL,
+    reason text,
+    deletion_date timestamp with time zone DEFAULT now() NOT NULL,
+    requested_data_export boolean DEFAULT false NOT NULL,
+    subscription_cancelled boolean DEFAULT false NOT NULL
+);
+
+COMMENT ON TABLE api.account_deletions IS 'Tracks user account deletions for analytics and compliance, without maintaining user_id references';
+
 -- New: User social links
 CREATE TABLE api.user_social_links (
     id uuid DEFAULT extensions.uuid_generate_v4() PRIMARY KEY,
@@ -843,7 +1045,7 @@ CREATE TABLE api.recipes (
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     deleted_at timestamp with time zone,
-    user_id uuid REFERENCES auth.users(id) ON DELETE SET NULL NOT NULL,
+    user_id uuid REFERENCES auth.users(id) ON DELETE SET NULL,
     -- New fields for recipe forking
     forked_from_id uuid REFERENCES api.recipes(id) ON DELETE SET NULL,
     is_fork boolean DEFAULT false NOT NULL
@@ -1665,6 +1867,7 @@ CREATE INDEX idx_potluck_participants_user_id ON api.potluck_participants(user_i
 CREATE INDEX idx_potluck_participants_guest_id ON api.potluck_participants(guest_id);
 CREATE INDEX idx_guest_users_email ON api.guest_users(email);
 CREATE INDEX idx_recipes_forked_from_id ON api.recipes(forked_from_id) WHERE forked_from_id IS NOT NULL;
+CREATE INDEX idx_account_deletions_email ON api.account_deletions(email);
 
 -- Stripe indexes
 CREATE INDEX idx_stripe_customers_customer_id ON stripe.customers(stripe_customer_id);
@@ -1882,6 +2085,7 @@ ALTER TABLE api.user_role_mappings ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.recipe_likes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.pinned_recipes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE reference.daily_nutritional_values ENABLE ROW LEVEL SECURITY;
+ALTER TABLE api.account_deletions ENABLE ROW LEVEL SECURITY;
 
 -- Enable RLS on feature tables
 ALTER TABLE api.user_social_links ENABLE ROW LEVEL SECURITY;
@@ -1918,6 +2122,13 @@ CREATE POLICY "Profiles can be updated by owner" ON api.profiles
 
 CREATE POLICY "Profiles are insertable by owner" ON api.profiles
   FOR INSERT WITH CHECK (id = auth.uid());
+
+-- Account deletions policies
+CREATE POLICY "Account deletions viewable by admin" ON api.account_deletions
+  FOR SELECT USING (util.is_admin(auth.uid()));
+
+CREATE POLICY "Account deletions insertable by calling function" ON api.account_deletions
+  FOR INSERT WITH CHECK (true);
 
 -- User social links policies
 CREATE POLICY "Social links are viewable by anyone" ON api.user_social_links

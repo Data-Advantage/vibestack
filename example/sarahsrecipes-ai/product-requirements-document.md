@@ -453,11 +453,11 @@ Provide seamless subscription management through Stripe integration, allowing us
 ### Acceptance Criteria
 - Stripe Customer Portal integration allows users to manage subscriptions without leaving the app ecosystem
 - Subscription changes in Stripe (new, cancelled, past due) automatically sync to the application database
-- Payment method updates in Stripe propagate to the application
-- Subscription status updates within 5 minutes of changes in Stripe
+- Payment method updates are handled in Stripe Customer Portal and appropriately by the app
+- Subscription status updates within 15 seconds of changes in Stripe
 - Failed payment notifications trigger appropriate in-app messages
 - Pro features are immediately accessible upon successful subscription
-- Email receipts are automatically sent for all subscription payments
+- Email receipts are automatically sent for all subscription payments via Stripe
 - Subscription data is properly secured with appropriate access controls
 - System correctly handles proration for subscription changes
 - Subscription metrics are available in admin dashboard
@@ -471,27 +471,24 @@ Provide seamless subscription management through Stripe integration, allowing us
 ## 14. Account Deletion
 
 ### Feature Description
-Allow users to permanently delete their account and associated data while complying with privacy regulations and data protection laws.
+Allow users to permanently delete their account and associated data while complying with privacy regulations.
 
 ### User Stories
 - As a user, I want to permanently delete my account so that my personal data is removed from the system.
-- As a user, I want to understand what data will be deleted when I close my account so I can make an informed decision.
-- As a user, I want confirmation before my account is deleted to prevent accidental deletion.
-- As a user, I want the option to download my data before deletion so I can preserve my recipes.
-- As a user, I want to cancel my paid subscription when deleting my account so I'm not charged again.
-- As an admin, I want to comply with privacy regulations when handling account deletions.
+- As a user, I want to understand what data will be deleted before confirming.
+- As a user, I want to download my recipes before deletion.
+- As a user, I want my subscription to be automatically canceled when I delete my account.
 
 ### Acceptance Criteria
 - Account deletion option is available in user settings
 - Deletion process requires password confirmation
 - Confirmation screen clearly explains what data will be deleted
-- Option to download personal data before deletion (all recipes in PDF or JSON format)
+- Option to download personal data before deletion (recipes in PDF or JSON format)
 - Automatic cancellation of Stripe subscription when account is deleted
 - Hard deletion of personally identifiable information (PII)
 - Soft deletion/anonymization of contributed content with user attribution removed
-- Compliance with GDPR, CCPA, and other relevant privacy regulations
+- Compliance with privacy regulations (GDPR, CCPA)
 - Deletion confirmation sent via email
-- 14-day recovery window before permanent deletion (with clear communication)
 - Analytics tracking of account deletions for business metrics
 
 ### Dependencies
