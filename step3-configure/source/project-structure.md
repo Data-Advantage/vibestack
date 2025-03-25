@@ -112,7 +112,13 @@ types/                         # TypeScript type definitions
 └── [domain]/                  # Domain-specific types
     └── index.ts               # Domain type exports
 
-public/                        # Static assets (if needed mostly on Vercel Storage Blob Store)
+public/                        # Static assets (only if needed - mostly use Vercel Storage Blob Store or Supabase Storage)
+├── favicon.ico                # Main favicon for browser tabs
+├── apple-touch-icon.png       # Icon for iOS when added to home screen (180x180px)
+├── logo.svg                   # Primary brand logo (light mode)
+├── logo-dark.svg              # Dark mode variant of the logo
+├── logo-mark.svg              # Symbol/icon-only version of the logo
+├── robots.txt                 # Instructions for search engine crawlers
 └── ...                        # Other static assets
 
 middleware.ts                  # Root Next.js middleware for auth protection
