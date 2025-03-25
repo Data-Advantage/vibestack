@@ -1,28 +1,76 @@
 # AI SDK Providers
 
+## Language or Multi-modal Models
+
 ```
 import { openai } from '@ai-sdk/openai';
 import { streamText } from 'ai';
 ```
 
 - xAI Grok Provider (`@ai-sdk/xai`)
+  - `model: xai('grok-2')`
+  - `model: xai('grok-beta')`
 - OpenAI Provider (`@ai-sdk/openai`)
+  - `model: openai.responses('gpt-4o')`
+  - `model: openai.responses('gpt-4o-mini')`
 - Azure OpenAI Provider (`@ai-sdk/azure`)
+  - `model: azure('gpt-4o')`
+  - `model: azure('gpt-4o-mini')`
 - Anthropic Provider (`@ai-sdk/anthropic`)
+  - `model: anthropic('claude-3-7-sonnet-20250219')`
+  - `model: anthropic('claude-3-5-haiku-20241022')`
 - Amazon Bedrock Provider (@ai`-sdk/amazon-bedrock`)
+  - `model: bedrock('anthropic.claude-3-sonnet-20240229-v1:0')`
+  - `model: bedrock('anthropic.claude-3-haiku-20240307-v1:0')`
 - Google Generative AI Provider (`@ai-sdk/google`)
+  - `model: google('gemini-2.0-pro-exp-02-05')`
+  - `model: google('gemini-2.0-flash')`
+  - `model: google('gemini-2.0-flash-lite')`
 - Google Vertex Provider (@ai`-sdk/google-vertex`)
+  - `model: vertex('gemini-2.0-pro-exp-02-05')`
+  - `model: vertex('gemini-2.0-flash')`
+  - `model: vertex('gemini-2.0-flash-lite')`
 - Mistral Provider (`@ai-sdk/mistral`)
+  - `model: mistral('mistral-large-latest')`
+  - `model: mistral('mistral-small-latest')`
+  - `model: mistral('pixtral-large-latest')`
 - Together.ai Provider (`@ai-sdk/togetherai`)
+  - `model: togetherai('mistralai/Mixtral-8x22B-Instruct-v0.1')`
+  - `model: togetherai('meta-llama/Meta-Llama-3.3-70B-Instruct-Turbo')`
+  - `model: togetherai('deepseek-ai/DeepSeek-V3')`
+  - `model: togetherai('Qwen/Qwen2.5-72B-Instruct-Turbo')`
+  - `model: togetherai('databricks/dbrx-instruct')`
 - Cohere Provider (`@ai-sdk/cohere`)
+  - `model: cohere('command-a-03-2025')`
+  - `model: cohere('command-r-plus')`
+  - `model: cohere('command-r')`
 - Fireworks Provider (`@ai-sdk/fireworks`)
+  - `model: fireworks('accounts/fireworks/models/deepseek-r1')`
+  - `model: fireworks('accounts/fireworks/models/deepseek-v3')`
+  - `model: fireworks('accounts/fireworks/models/llama-v3p1-405b-instruct')`
+  - `model: fireworks('accounts/fireworks/models/llama-v3p3-70b-instruct')`
+  - `model: fireworks('accounts/fireworks/models/yi-large')`
 - DeepInfra Provider (`@ai-sdk/deepinfra`)
+  - `model: deepinfra('meta-llama/Llama-3.3-70B-Instruct-Turbo')`
+  - `model: deepinfra('meta-llama/Meta-Llama-3.1-405B-Instruct')`
 - DeepSeek Provider (`@ai-sdk/deepseek`)
+  - `model: deepseek('deepseek-chat')`
+  - `model: deepseek('deepseek-reasoner')`
 - Cerebras Provider (`@ai-sdk/cerebras`)
+  - `model: cerebras('llama3.1-8b')`
+  - `model: cerebras('llama3.1-70b')`
+  - `model: cerebras('llama3.3-70b')`
 - Groq Provider (`@ai-sdk/groq`)
+  - `model: groq('gemma2-9b-it')`
+  - `model: groq('llama-3.3-70b-versatile')`
+  - `model: groq('llama-3.1-8b-instant')`
+  - `model: groq('llama-guard-3-8b')`
+  - `model: groq('deepseek-r1-distill-llama-70b')`
 - Perplexity Provider (`@ai-sdk/perplexity`)
+  - `model: perplexity('sonar-pro')`
+  - `model: perplexity('sonar')`
 
-# Image Generation
+## Image Generation Models
 
 ```
 import { experimental_generateImage as generateImage } from 'ai';
@@ -100,3 +148,6 @@ for (const file of result.files) {
   - `model: togetherai.image('black-forest-labs/FLUX.1-schnell-Free')`
 - xAI Grok Provider (`@ai-sdk/xai`)
   - `model: xai.image('grok-2-image')`
+- Luma Provider (`@ai-sdk/luma`)
+  - `model: luma.image('photon-1')`
+  - `model: luma.image('photon-flash-1')`

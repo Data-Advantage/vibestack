@@ -1,28 +1,30 @@
 # Next.js/Supabase Application Development Guide
 
-This guide outlines the architecture, best practices, and implementation details for building a modern web application using Next.js 15+, React 19+, TypeScript, Tailwind CSS v4, and Supabase.
+This guide outlines the architecture, best practices, and implementation details for building a modern web application with v0 AI agents.
 
 ## Core Technology Stack
 
 ### Frontend
 - **TypeScript** as the primary language
 - **React 19+** for UI components
-- **Next.js 15+** with App Router for routing and server components
+- **Next.js 15+** with App Router
 - **Tailwind CSS v4** for styling
-- **shadcn/ui** component library (based on Radix UI primitives with "new-york" style)
+- **shadcn/ui** component library
+- **Lucide** icon library
+- **Google Fonts** with the `Inter` font
 
 ### Backend
 - **Supabase** for PostgreSQL database
 - **Supabase Auth** for authentication and user management
-- **Supabase Storage** for file uploads and management
+- **Supabase Storage** for user file uploads
 - **Supabase Realtime** for real-time data subscriptions
 
 ### AI
 - **Vercel AI SDK** for AI-powered apps & agents
-  - **OpenAI Responses API** uses `model: openai.responses('gpt-4o')` instead of Completions API which is `model: openai('gpt-4o')`
-  - **Image Generation** uses `model: openai.image('dall-e-3')`
+  - **OpenAI Responses API** uses `model: openai.responses('gpt-4o-mini')` (not Completions API)
+  - **OpenAI Object Generation** uses `model: openai.responses('gpt-4o')`
+  - **Image Generation** uses `model: google('gemini-2.0-flash-exp-image-generation'),`
 - **Vercel AI SDK UI** for chatbots and generative user interfaces
-
 
 ### Infrastructure
 - **Vercel** for hosting, environment variables, and preview deployments
@@ -32,23 +34,21 @@ This guide outlines the architecture, best practices, and implementation details
 ## Architecture Principles
 
 ### Content & Interactive Requirements
-- Static marketing/informational pages with strong SEO optimization
+- Static marketing pages with strong SEO optimization
 - Protected app areas behind authentication
 - Real-time interactive components using Supabase subscriptions
 - Progressive enhancement where static content becomes interactive after hydration
 
 ### SEO Optimization
+- pSEO pages organized by category & slug
 - Implement Next.js Metadata API for title, description, and OpenGraph tags
 - Use server-side rendering for SEO-critical content
 - Implement proper canonical URLs and sitemap generation
 - Optimize images with next/image and appropriate alt text
-- Implement structured data where appropriate
+- Implement JSON-LD structured data as appropriate
 
 ### Performance Targets
-- **Core Web Vitals**:
-  - LCP: < 2.5s
-  - FID: < 100ms
-  - CLS: < 0.1
+- **Core Web Vitals**: LCP: < 2.5s, FID: < 100ms, CLS: < 0.1
 - Mobile-optimized bundle sizes
 - Efficient code splitting and lazy loading
 - Optimized asset delivery
@@ -65,7 +65,7 @@ This guide outlines the architecture, best practices, and implementation details
 ### Phase 1: Project Foundation
 1. Create a new Next.js 15 project with TypeScript and App Router
 2. Set up Tailwind CSS v4 with shadcn/ui (new-york style)
-3. Implement basic project structure following architecture patterns
+3. Implement basic project structure following [project-structure.md](source/project-structure.md)
 4. Configure fonts and global styling
 5. Create root layout with proper HTML structure
 
@@ -108,14 +108,15 @@ This guide outlines the architecture, best practices, and implementation details
 
 For detailed instructions, refer to the following Source documents in the v0 Project Settings:
 
-- Project Structure: [project-structure.md](source/project-structure.md)
-- Configuration Files: [config-files.md](source/config-files.md)
-- Authentication Implementation: [auth-implementation.md](source/auth-implementation.md)
-- Database Patterns: [database-patterns.md](source/database-patterns.md)
-- UI Components: [ui-components.md](source/ui-components.md)
-- TypeScript Patterns: [typescript-patterns.md](source/typescript-patterns.md)
-- Accessibility Standards: [accessibility-standards.md](source/accessibility-standards.md)
+- [project-structure.md](source/project-structure.md)
+- [config-files.md](source/config-files.md)
+- [integration-details.md](source/integration-details.md)
+- [auth-implementation.md](source/auth-implementation.md)
+- [database-patterns.md](source/database-patterns.md)
+- [ui-components.md](source/ui-components.md)
+- [typescript-patterns.md](source/typescript-patterns.md)
+- [accessibility-standards.md](source/accessibility-standards.md)
 - AI SDK
-  - Core Library: [ai-sdk-core](source/ai-sdk-core.md)
-  - User Interface Components: [ai-sdk-ui](source/ai-sdk-core.md)
-  - Providers & Models: [ai-sdk-providers-models](source/ai-sdk-providers-models.md)
+  - [ai-sdk-core](source/ai-sdk-core.md)
+  - [ai-sdk-ui](source/ai-sdk-core.md)
+  - [ai-sdk-providers](source/ai-sdk-providers.md)
