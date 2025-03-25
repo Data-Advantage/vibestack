@@ -1,3 +1,18 @@
+# Icons
+
+Use the `lucide-react` library:
+
+```
+import { Camera } from 'lucide-react';
+
+// Usage
+const App = () => {
+  return <Camera color="red" size={48} />;
+};
+
+export default App;
+```
+
 # Image Generation
 
 ## Integration Information: Google Gemini Flash 2.0
