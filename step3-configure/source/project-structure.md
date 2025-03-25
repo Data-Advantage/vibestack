@@ -43,7 +43,8 @@ app/
 │       └── actions.ts         # Feature-specific server actions
 ├── api/                       # API routes
 │   ├── webhooks/              # External webhooks (unprotected)
-│   │   └── [service]/route.ts # Service-specific webhook handlers
+│   │   ├── [service]/route.ts # Service-specific webhook handlers
+│   │   └── stripe/route.ts    # Create a webhook handler at `app/api/webhooks/stripe/route.ts`
 │   └── [domain]/              # Domain-specific API endpoints
 │       └── route.ts           # Route handlers for domain
 └── error.tsx                  # Global error page
