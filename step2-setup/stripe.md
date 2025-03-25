@@ -12,7 +12,10 @@ This guide walks through setting up Stripe with your Supabase + Next.js applicat
 4. For each pricing option, make sure to:
    - Add clear descriptions
    - Set the recurring price (monthly or yearly)
+   - **Add metadata with key `tier` and value `pro`** - this is critical for the subscription tier to be recognized correctly in your database
    - Note the Product ID and Price IDs for later use in your app
+
+> **Important:** Your database functions rely on the `tier: pro` metadata to determine subscription levels. Without this metadata, the subscription tier will default to 'free' even for paid subscriptions.
 
 ## 2. Test Mode vs Live Mode in Stripe
 
@@ -33,13 +36,21 @@ Stripe provides two separate environments:
 # Test environment
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_abc123...
 STRIPE_SECRET_KEY=sk_test_abc123...
-STRIPE_WEBHOOK_SECRET=whsec_test_abc123...
+STRIPE_PRODUCT_ID=prod_S0gzgGF3BlKxPU
+NEXT_PUBLIC_STRIPE_PRICE_MONTHLY=price_1R6fb3BADT6BPZHEOFIxgAYF
+NEXT_PUBLIC_STRIPE_PRICE_YEARLY=price_1R6fb3BADT6BPZHEw03SfTPn
+STRIPE_WEBHOOK_SECRET=whsec_test_abc123...  # You'll get this in section 3
 
 # Production environment
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_abc123...
 STRIPE_SECRET_KEY=sk_live_abc123...
-STRIPE_WEBHOOK_SECRET=whsec_live_abc123...
+STRIPE_PRODUCT_ID=prod_S0gzgGF3BlKxPU
+NEXT_PUBLIC_STRIPE_PRICE_MONTHLY=price_1R6fb3BADT6BPZHEOFIxgAYF
+NEXT_PUBLIC_STRIPE_PRICE_YEARLY=price_1R6fb3BADT6BPZHEw03SfTPn
+STRIPE_WEBHOOK_SECRET=whsec_live_abc123...  # You'll get this in section 3
 ```
+
+> **Note:** The `STRIPE_WEBHOOK_SECRET` will be obtained when you set up webhooks in section 3.
 
 4. **Deployment-Specific Configuration**: 
    - Development/Preview: Use test keys for `https://{randomid}.lite.vusercontent.net`
@@ -390,61 +401,58 @@ Create a function to sync Stripe subscription data to your app:
 ```sql
 CREATE OR REPLACE FUNCTION stripe.sync_subscription_to_app()
 RETURNS TRIGGER AS $$
-DECLARE
-  subscription_tier text;
-  subscription_status text;
 BEGIN
-  -- Convert Stripe subscription status to app status
-  CASE NEW.status
-    WHEN 'active' THEN subscription_status := 'active';
-    WHEN 'trialing' THEN subscription_status := 'active';
-    WHEN 'past_due' THEN subscription_status := 'past_due';
-    WHEN 'canceled' THEN subscription_status := 'canceled';
-    WHEN 'unpaid' THEN subscription_status := 'past_due';
-    WHEN 'incomplete' THEN subscription_status := 'incomplete';
-    WHEN 'incomplete_expired' THEN subscription_status := 'incomplete_expired';
-    ELSE subscription_status := 'inactive';
-  END CASE;
-  
-  -- Set subscription tier based on product
-  IF NEW.product_id = (SELECT product_id FROM stripe.products WHERE is_default = true LIMIT 1) THEN
-    subscription_tier := 'pro';
-  ELSE
-    subscription_tier := 'free';
-  END IF;
-  
-  -- Update/insert user subscription
-  INSERT INTO user_subscriptions (
+  -- Insert or update the user_subscriptions record
+  INSERT INTO api.user_subscriptions(
     user_id,
-    stripe_subscription_id,
     subscription_tier,
     status,
+    payment_provider,
+    subscription_id,
+    stripe_subscription_id,
+    stripe_price_id,
     current_period_start,
     current_period_end,
-    cancel_at_period_end
+    cancel_at_period_end,
+    cancelled_at
   )
-  VALUES (
-    NEW.user_id,
-    NEW.stripe_subscription_id,
-    subscription_tier,
-    subscription_status,
-    to_timestamp(NEW.current_period_start),
-    to_timestamp(NEW.current_period_end),
-    NEW.cancel_at_period_end
-  )
-  ON CONFLICT (user_id) 
-  DO UPDATE SET
-    stripe_subscription_id = EXCLUDED.stripe_subscription_id,
-    subscription_tier = EXCLUDED.subscription_tier,
+  SELECT 
+    sc.id, -- user_id from stripe.customers
+    CASE 
+      WHEN sp.metadata->>'tier' = 'pro' THEN 'pro'::reference.subscription_tier
+      ELSE 'free'::reference.subscription_tier
+    END,
+    NEW.status,
+    'stripe',
+    NEW.id,
+    NEW.id,
+    NEW.price_id,
+    NEW.current_period_start,
+    NEW.current_period_end,
+    NEW.cancel_at_period_end,
+    NEW.canceled_at
+  FROM stripe.customers sc
+  LEFT JOIN stripe.prices sp ON sp.id = NEW.price_id
+  WHERE sc.stripe_customer_id = (NEW.metadata->>'stripe_customer_id')
+  ON CONFLICT (user_id) DO UPDATE SET
+    subscription_tier = CASE 
+      WHEN EXCLUDED.stripe_price_id IN (SELECT id FROM stripe.prices WHERE metadata->>'tier' = 'pro') 
+      THEN 'pro'::reference.subscription_tier
+      ELSE 'free'::reference.subscription_tier
+    END,
     status = EXCLUDED.status,
+    stripe_subscription_id = EXCLUDED.stripe_subscription_id,
+    stripe_price_id = EXCLUDED.stripe_price_id,
     current_period_start = EXCLUDED.current_period_start,
     current_period_end = EXCLUDED.current_period_end,
     cancel_at_period_end = EXCLUDED.cancel_at_period_end,
+    cancelled_at = EXCLUDED.cancelled_at,
+    metadata = EXCLUDED.metadata,
     updated_at = now();
   
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create trigger for subscription changes
 CREATE TRIGGER on_stripe_subscription_change
@@ -519,6 +527,43 @@ export default function SubscribeButton({
   );
 }
 ```
+
+### Using the Subscription Button in Your App
+
+Create a pricing page that uses the subscription button with your stored price IDs:
+
+```tsx
+import SubscribeButton from '@/components/SubscribeButton';
+
+export default function PricingPage() {
+  return (
+    <div className="pricing-container">
+      <div className="pricing-plan">
+        <h2>Monthly Plan</h2>
+        <p className="price">$9.99/month</p>
+        <SubscribeButton 
+          priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_MONTHLY!}
+          planType="monthly"
+          text="Subscribe Monthly"
+        />
+      </div>
+      
+      <div className="pricing-plan featured">
+        <h2>Annual Plan</h2>
+        <p className="price">$99.99/year</p>
+        <p className="savings">Save 16%</p>
+        <SubscribeButton 
+          priceId={process.env.NEXT_PUBLIC_STRIPE_PRICE_YEARLY!}
+          planType="yearly"
+          text="Subscribe Yearly"
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+Note that we prefix the environment variables with `NEXT_PUBLIC_` so they're accessible in the client-side code.
 
 ## 8. Tracking Specific Products in Webhooks
 
