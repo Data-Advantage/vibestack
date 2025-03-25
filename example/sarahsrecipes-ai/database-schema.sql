@@ -19,6 +19,71 @@ CREATE DOMAIN util.email AS text
 CHECK (VALUE ~ '^[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$');
 
 -- ------------------------------
+-- Enums
+-- ------------------------------
+
+-- Create dietary tag enum
+CREATE TYPE reference.dietary_tag_type AS ENUM (
+    'vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 
+    'low-carb', 'keto', 'paleo', 'pescatarian', 'whole30', 
+    'sugar-free', 'low-sodium', 'high-protein', 'low-fat',
+    'mediterranean', 'halal', 'kosher'
+);
+
+CREATE TYPE reference.cuisine_type AS ENUM (
+    'american', 'italian', 'mexican', 'french', 'chinese', 'japanese', 
+    'indian', 'thai', 'mediterranean', 'middle_eastern', 'korean', 
+    'vietnamese', 'greek', 'spanish', 'german', 'brazilian', 
+    'caribbean', 'british', 'irish', 'african', 'turkish', 'moroccan', 
+    'swedish', 'russian', 'hungarian', 'peruvian', 'ethiopian', 
+    'lebanese', 'filipino', 'malaysian', 'other'
+);
+
+CREATE TYPE reference.course_type AS ENUM (
+    'appetizer', 'breakfast', 'lunch', 'dinner', 'dessert', 
+    'snack', 'side', 'beverage', 'brunch', 'salad', 'soup', 'other'
+);
+
+-- New enums for updated features
+CREATE TYPE reference.social_platform_type AS ENUM (
+    'website', 'instagram', 'facebook', 'twitter', 'pinterest',
+    'youtube', 'tiktok', 'linkedin', 'other'
+);
+
+CREATE TYPE reference.potluck_slot_type AS ENUM (
+    'appetizer', 'main', 'side', 'dessert', 'drink', 'other'
+);
+
+CREATE TYPE reference.potluck_participant_role AS ENUM (
+    'host', 'cohost', 'participant', 'guest'
+);
+
+CREATE TYPE reference.ai_feature_type AS ENUM (
+    'url_extraction', 'text_extraction', 'image_recognition', 
+    'recipe_image_generation', 'conversation'
+);
+
+CREATE TYPE reference.subscription_tier AS ENUM (
+    'free', 'pro'
+);
+
+CREATE TYPE reference.subscription_status AS ENUM (
+    'active', 'inactive', 'canceled', 'past_due',
+    'trialing', 'incomplete', 'incomplete_expired', 'unpaid', 'paused'
+);
+
+CREATE TYPE reference.guest_conversion_status AS ENUM (
+    'pending', 'converted', 'declined'
+);
+
+-- ------------------------------
+-- Stripe Specific Types
+-- ------------------------------
+
+CREATE TYPE stripe.pricing_type AS ENUM ('one_time', 'recurring');
+CREATE TYPE stripe.pricing_plan_interval AS ENUM ('day', 'week', 'month', 'year');
+
+-- ------------------------------
 -- Functions & Utilities
 -- ------------------------------
 
@@ -105,47 +170,6 @@ END;
 $$;
 
 COMMENT ON FUNCTION util.generate_recipe_slug IS 'Creates a URL-friendly slug from a recipe name';
-
--- Helper function to check if user is admin
-CREATE OR REPLACE FUNCTION util.is_admin(user_id uuid)
-RETURNS boolean
-LANGUAGE sql
-SECURITY DEFINER
-AS $$
-  SELECT EXISTS (
-    SELECT 1 FROM api.user_role_mappings urm
-    JOIN api.user_roles ur ON urm.role_id = ur.id
-    WHERE urm.user_id = user_id AND ur.name = 'admin'
-  );
-$$;
-
-COMMENT ON FUNCTION util.is_admin IS 'Checks if a user has the admin role';
-
--- Helper function for RLS policy to check recipe ownership or admin status
-CREATE OR REPLACE FUNCTION util.can_modify_recipe(recipe_owner_id uuid)
-RETURNS boolean
-LANGUAGE plpgsql
-SECURITY DEFINER
-AS $$
-BEGIN
-  RETURN (auth.uid() = recipe_owner_id OR util.is_admin(auth.uid()));
-END;
-$$;
-
-COMMENT ON FUNCTION util.can_modify_recipe IS 'Checks if the current user can modify a recipe (owner or admin)';
-
--- Helper function for RLS policy to check user record ownership or admin status
-CREATE OR REPLACE FUNCTION util.can_modify_user_record(record_owner_id uuid)
-RETURNS boolean
-LANGUAGE plpgsql
-SECURITY DEFINER
-AS $$
-BEGIN
-  RETURN (auth.uid() = record_owner_id OR util.is_admin(auth.uid()));
-END;
-$$;
-
-COMMENT ON FUNCTION util.can_modify_user_record IS 'Checks if the current user can modify a user-owned record (owner or admin)';
 
 -- Transaction function to create a complete recipe with ingredients and instructions
 CREATE OR REPLACE FUNCTION api.create_complete_recipe(
@@ -887,71 +911,6 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 COMMENT ON FUNCTION stripe.handle_webhook_event IS 'Processes incoming Stripe webhook events';
 
 -- ------------------------------
--- Enums
--- ------------------------------
-
--- Create dietary tag enum
-CREATE TYPE reference.dietary_tag_type AS ENUM (
-    'vegetarian', 'vegan', 'gluten-free', 'dairy-free', 'nut-free', 
-    'low-carb', 'keto', 'paleo', 'pescatarian', 'whole30', 
-    'sugar-free', 'low-sodium', 'high-protein', 'low-fat',
-    'mediterranean', 'halal', 'kosher'
-);
-
-CREATE TYPE reference.cuisine_type AS ENUM (
-    'american', 'italian', 'mexican', 'french', 'chinese', 'japanese', 
-    'indian', 'thai', 'mediterranean', 'middle_eastern', 'korean', 
-    'vietnamese', 'greek', 'spanish', 'german', 'brazilian', 
-    'caribbean', 'british', 'irish', 'african', 'turkish', 'moroccan', 
-    'swedish', 'russian', 'hungarian', 'peruvian', 'ethiopian', 
-    'lebanese', 'filipino', 'malaysian', 'other'
-);
-
-CREATE TYPE reference.course_type AS ENUM (
-    'appetizer', 'breakfast', 'lunch', 'dinner', 'dessert', 
-    'snack', 'side', 'beverage', 'brunch', 'salad', 'soup', 'other'
-);
-
--- New enums for updated features
-CREATE TYPE reference.social_platform_type AS ENUM (
-    'website', 'instagram', 'facebook', 'twitter', 'pinterest',
-    'youtube', 'tiktok', 'linkedin', 'other'
-);
-
-CREATE TYPE reference.potluck_slot_type AS ENUM (
-    'appetizer', 'main', 'side', 'dessert', 'drink', 'other'
-);
-
-CREATE TYPE reference.potluck_participant_role AS ENUM (
-    'host', 'cohost', 'participant', 'guest'
-);
-
-CREATE TYPE reference.ai_feature_type AS ENUM (
-    'url_extraction', 'text_extraction', 'image_recognition', 
-    'recipe_image_generation', 'conversation'
-);
-
-CREATE TYPE reference.subscription_tier AS ENUM (
-    'free', 'pro'
-);
-
-CREATE TYPE reference.subscription_status AS ENUM (
-    'active', 'inactive', 'canceled', 'past_due',
-    'trialing', 'incomplete', 'incomplete_expired', 'unpaid', 'paused'
-);
-
-CREATE TYPE reference.guest_conversion_status AS ENUM (
-    'pending', 'converted', 'declined'
-);
-
--- ------------------------------
--- Stripe Specific Types
--- ------------------------------
-
-CREATE TYPE stripe.pricing_type AS ENUM ('one_time', 'recurring');
-CREATE TYPE stripe.pricing_plan_interval AS ENUM ('day', 'week', 'month', 'year');
-
--- ------------------------------
 -- Core Tables
 -- ------------------------------
 
@@ -981,6 +940,47 @@ CREATE TABLE api.user_role_mappings (
 );
 
 COMMENT ON TABLE api.user_role_mappings IS 'Maps users to their assigned roles';
+
+-- Helper function to check if user is admin
+CREATE OR REPLACE FUNCTION util.is_admin(user_id uuid)
+RETURNS boolean
+LANGUAGE sql
+SECURITY DEFINER
+AS $$
+  SELECT EXISTS (
+    SELECT 1 FROM api.user_role_mappings urm
+    JOIN api.user_roles ur ON urm.role_id = ur.id
+    WHERE urm.user_id = user_id AND ur.name = 'admin'
+  );
+$$;
+
+COMMENT ON FUNCTION util.is_admin IS 'Checks if a user has the admin role';
+
+-- Helper function for RLS policy to check recipe ownership or admin status
+CREATE OR REPLACE FUNCTION util.can_modify_recipe(recipe_owner_id uuid)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  RETURN (auth.uid() = recipe_owner_id OR util.is_admin(auth.uid()));
+END;
+$$;
+
+COMMENT ON FUNCTION util.can_modify_recipe IS 'Checks if the current user can modify a recipe (owner or admin)';
+
+-- Helper function for RLS policy to check user record ownership or admin status
+CREATE OR REPLACE FUNCTION util.can_modify_user_record(record_owner_id uuid)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+BEGIN
+  RETURN (auth.uid() = record_owner_id OR util.is_admin(auth.uid()));
+END;
+$$;
+
+COMMENT ON FUNCTION util.can_modify_user_record IS 'Checks if the current user can modify a user-owned record (owner or admin)';
 
 -- User profiles table - extends auth.users
 CREATE TABLE api.profiles (
@@ -1892,7 +1892,7 @@ CREATE INDEX idx_active_recipes ON api.recipes(user_id, created_at)
   WHERE deleted_at IS NULL;
 
 CREATE INDEX idx_recent_recipes ON api.recipes(created_at)
-  WHERE deleted_at IS NULL AND created_at > (CURRENT_DATE - INTERVAL '30 days');
+  WHERE deleted_at IS NULL;
 
 CREATE INDEX idx_popular_recipes ON api.recipes(likes_count)
   WHERE deleted_at IS NULL AND likes_count > 10;
@@ -1903,8 +1903,7 @@ CREATE INDEX idx_shopping_checked_items ON api.shopping_list_items(user_id, chec
 CREATE INDEX idx_forked_recipes ON api.recipes(user_id)
   WHERE is_fork = true;
 
-CREATE INDEX idx_upcoming_potlucks ON api.potluck_events(event_date)
-  WHERE event_date >= CURRENT_DATE AND event_date <= (CURRENT_DATE + INTERVAL '30 days');
+CREATE INDEX idx_upcoming_potlucks ON api.potluck_events(event_date);
 
 CREATE INDEX idx_active_subscriptions ON api.user_subscriptions(user_id)
   WHERE status = 'active';
@@ -2331,7 +2330,7 @@ CREATE POLICY "Participants can be added by hosts or self" ON api.potluck_partic
     -- Adding as host/cohost
     OR EXISTS (
       SELECT 1 FROM api.potluck_participants
-      WHERE event_id = NEW.event_id
+      WHERE event_id = event_id
       AND user_id = auth.uid()
       AND role IN ('host', 'cohost')
     )

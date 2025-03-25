@@ -62,61 +62,30 @@ This guide outlines the architecture, best practices, and implementation details
 
 ## Implementation Roadmap
 
-### Phase 1: Project Foundation
-1. Create a new Next.js 15 project with TypeScript and App Router
-2. Set up Tailwind CSS v4 with shadcn/ui (new-york style)
-3. Implement basic project structure following [project-structure.md](source/project-structure.md)
-4. Configure fonts and global styling
-5. Create root layout with proper HTML structure
+For detailed implementation steps and phases, refer to the [implementation-roadmap.md](source/implementation-roadmap.md) guide. This document outlines a ruthlessly prioritized approach to building a Next.js/Supabase application with Google Login and Stripe integration.
 
-### Phase 2: Authentication Framework
-1. Set up Supabase project and configure environment variables
-2. Implement auth utilities (client, server, middleware)
-3. Create login, signup, and password reset pages
-4. Implement server actions for auth flows
-5. Set up protected routes with middleware
+## Development Guides
 
-### Phase 3: Core UI Components
-1. Install and configure shadcn/ui components
-2. Implement theme switching capability
-3. Create responsive layout components
-4. Build navigation components for different screen sizes
-5. Implement accessibility features
+For detailed implementation instructions, refer to the following development guides that are in the v0 Project Sources:
 
-### Phase 4: Protected Dashboard
-1. Create dashboard layout with navigation
-2. Implement user profile management
-3. Build data visualization components
-4. Create feature-specific sections
-5. Implement permission-based UI elements
+### Architecture & Structure
+- [project-structure.md](source/project-structure.md) - Complete project directory organization
+- [config-files.md](source/config-files.md) - Configuration file setup and options
+- [typescript-patterns.md](source/typescript-patterns.md) - TypeScript best practices and patterns
 
-### Phase 5: Database and Data Management
-1. Design database schema with proper relationships
-2. Implement Row Level Security policies
-3. Create type definitions for database entities
-4. Build data fetching hooks and utilities
-5. Implement CRUD operations with proper error handling
+### Backend & Data
+- [database-patterns.md](source/database-patterns.md) - Database schema design and RLS policies
+- [integration-details.md](source/integration-details.md) - External service integration specifications
 
-### Phase 6: Feature Development
-1. Implement specific business features
-2. Create domain-specific components
-3. Build specialized forms and interactions
-4. Implement real-time updates where needed
-5. Add Google analytics and monitoring
+### Authentication
+- [auth-implementation.md](source/auth-implementation.md) - Supabase Auth implementation
+- [login-with-google.md](source/login-with-google.md) - Login with Google setup
 
-## Detailed Implementation Guides
+### Frontend
+- [ui-components.md](source/ui-components.md) - Component architecture and shadcn/ui implementation
+- [accessibility-standards.md](source/accessibility-standards.md) - Accessibility requirements and practices
 
-For detailed instructions, refer to the following Source documents in the v0 Project Settings:
-
-- [project-structure.md](source/project-structure.md)
-- [config-files.md](source/config-files.md)
-- [integration-details.md](source/integration-details.md)
-- [auth-implementation.md](source/auth-implementation.md)
-- [database-patterns.md](source/database-patterns.md)
-- [ui-components.md](source/ui-components.md)
-- [typescript-patterns.md](source/typescript-patterns.md)
-- [accessibility-standards.md](source/accessibility-standards.md)
-- AI SDK
-  - [ai-sdk-core](source/ai-sdk-core.md)
-  - [ai-sdk-ui](source/ai-sdk-core.md)
-  - [ai-sdk-providers](source/ai-sdk-providers.md)
+### AI Implementation
+- [ai-sdk-core.md](source/ai-sdk-core.md) - Core Vercel AI SDK implementation
+- [ai-sdk-ui.md](source/ai-sdk-ui.md) - UI components for AI features
+- [ai-sdk-providers.md](source/ai-sdk-providers.md) - AI model provider configuration
