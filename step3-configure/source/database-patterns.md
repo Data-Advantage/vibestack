@@ -101,6 +101,95 @@ create policy "Team members can view team data"
   );
 ```
 
+## Database Function Security
+
+### Function Search Path
+
+PostgreSQL functions can be vulnerable to "search path injection" attacks if not properly secured. Always set an explicit search path for your functions:
+
+```sql
+CREATE OR REPLACE FUNCTION api.my_function()
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = api, pg_temp
+AS $$
+BEGIN
+  -- function body
+END;
+$$;
+```
+
+### Key Best Practices:
+
+- Always set explicit search paths for all functions to prevent search path injection attacks
+- Include only necessary schemas in the search path (principle of least privilege)
+- Always include pg_temp at the end of the search path for temporary object access
+- Choose security context carefully:
+  - Use `SECURITY DEFINER` when the function needs elevated permissions
+  - Use `SECURITY INVOKER` (default) when the function should run with caller's permissions
+- Be extra cautious with trigger functions that modify data across schemas
+
+### Security Implications:
+
+Without an explicit search path, functions inherit the calling user's search path, which can lead to:
+- Execution of unintended code
+- Privilege escalation
+- Data exposure through malicious search path manipulation
+
+This best practice is flagged by the Supabase Security Advisor and should be addressed for all database functions.
+
+## Trigger Function Best Practices
+
+### Handling the NEW Record in Trigger Functions
+
+PostgreSQL trigger functions often need to access the `NEW` record (the row being inserted or updated). 
+When using `NEW` in SQL contexts within PL/pgSQL functions, you may encounter the error 
+"missing FROM-clause entry for table 'new'".
+
+#### Best Practice: Use Local Variables
+
+Always assign the `NEW` record to a local variable at the beginning of your trigger function, 
+then reference this variable instead of directly using `NEW` in SQL operations:
+
+```sql
+CREATE OR REPLACE FUNCTION my_trigger_function()
+RETURNS TRIGGER AS $$
+DECLARE
+  record_data RECORD;  -- Local variable to store NEW
+BEGIN
+  -- Assign NEW to local variable
+  record_data := NEW;
+  
+  -- Use record_data instead of NEW in SQL contexts
+  INSERT INTO api.audit_log(
+    entity_id, 
+    changed_by
+  ) VALUES (
+    record_data.id,
+    auth.uid()
+  );
+  
+  -- Return the record_data (or NEW if no modifications needed)
+  RETURN record_data;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+This approach ensures:
+- SQL operations can properly reference the fields of the record
+- Prevents the common "missing FROM-clause entry for table 'new'" error
+- Works even when the trigger function is defined before the table it operates on
+- Maintains consistent behavior across different PostgreSQL versions
+
+### Additional Trigger Function Considerations
+
+- Use `DECLARE` section to create any needed local variables
+- Include descriptive comments about the trigger's purpose
+- Return the modified record (`RETURN record_data`) when using `BEFORE` triggers
+- Return `NULL` when using `AFTER` triggers that don't need to modify the record
+- Always handle potential exceptions with appropriate error messages
+
 ## Storage Implementation
 
 ### Storage Buckets

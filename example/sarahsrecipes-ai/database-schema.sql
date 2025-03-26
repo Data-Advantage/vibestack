@@ -91,6 +91,7 @@ CREATE TYPE stripe.pricing_plan_interval AS ENUM ('day', 'week', 'month', 'year'
 CREATE OR REPLACE FUNCTION util.update_modified_column()
 RETURNS trigger
 LANGUAGE plpgsql
+SET search_path = util, pg_temp
 AS $$
 BEGIN
     NEW.updated_at = NOW();
@@ -104,6 +105,7 @@ COMMENT ON FUNCTION util.update_modified_column IS 'Generic trigger function to 
 CREATE OR REPLACE FUNCTION api.handle_new_user()
 RETURNS trigger
 LANGUAGE plpgsql SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
   username_base TEXT;
@@ -163,6 +165,7 @@ COMMENT ON FUNCTION api.handle_new_user IS 'Creates a user profile in the api.pr
 CREATE OR REPLACE FUNCTION util.generate_recipe_slug(name text)
 RETURNS text
 LANGUAGE plpgsql
+SET search_path = util, pg_temp
 AS $$
 BEGIN
   RETURN lower(regexp_replace(name, '[^a-zA-Z0-9]', '-', 'g'));
@@ -180,6 +183,7 @@ CREATE OR REPLACE FUNCTION api.create_complete_recipe(
 RETURNS uuid
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
   new_recipe_id uuid;
@@ -276,6 +280,7 @@ CREATE OR REPLACE FUNCTION api.check_ai_usage_limits(user_id uuid, feature_type 
 RETURNS boolean
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
   subscription_tier reference.subscription_tier;
@@ -314,6 +319,7 @@ CREATE OR REPLACE FUNCTION api.create_potluck_event(
 RETURNS uuid
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
   new_event_id uuid;
@@ -403,6 +409,7 @@ CREATE OR REPLACE FUNCTION api.claim_potluck_slot(
 RETURNS uuid
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
   new_participant_id uuid;
@@ -514,6 +521,7 @@ CREATE OR REPLACE FUNCTION api.export_user_data(user_id uuid)
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
     export_data jsonb;
@@ -577,6 +585,7 @@ CREATE OR REPLACE FUNCTION api.delete_user_account(
 RETURNS boolean
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = api, pg_temp
 AS $$
 DECLARE
     user_email text;
@@ -701,8 +710,17 @@ COMMENT ON FUNCTION api.delete_user_account IS 'Completely deletes all user data
 
 -- Function to sync Stripe subscription to user_subscriptions
 CREATE OR REPLACE FUNCTION stripe.sync_subscription_to_app()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER 
+LANGUAGE plpgsql 
+SECURITY DEFINER
+SET search_path = stripe, api, pg_temp
+AS $$
+DECLARE
+  subscription_record RECORD;
 BEGIN
+  -- Assign the NEW record to a variable to avoid "missing FROM-clause entry for table 'new'" error
+  subscription_record := NEW;
+  
   -- Insert or update the user_subscriptions record
   INSERT INTO api.user_subscriptions(
     user_id,
@@ -723,18 +741,18 @@ BEGIN
       WHEN sp.metadata->>'tier' = 'pro' THEN 'pro'::reference.subscription_tier
       ELSE 'free'::reference.subscription_tier
     END,
-    NEW.status,
+    subscription_record.status,
     'stripe',
-    NEW.id,
-    NEW.id,
-    NEW.price_id,
-    NEW.current_period_start,
-    NEW.current_period_end,
-    NEW.cancel_at_period_end,
-    NEW.canceled_at
+    subscription_record.id,
+    subscription_record.id,
+    subscription_record.price_id,
+    subscription_record.current_period_start,
+    subscription_record.current_period_end,
+    subscription_record.cancel_at_period_end,
+    subscription_record.canceled_at
   FROM stripe.customers sc
-  LEFT JOIN stripe.prices sp ON sp.id = NEW.price_id
-  WHERE sc.stripe_customer_id = (NEW.metadata->>'stripe_customer_id')
+  LEFT JOIN stripe.prices sp ON sp.id = subscription_record.price_id
+  WHERE sc.stripe_customer_id = (subscription_record.metadata->>'stripe_customer_id')
   ON CONFLICT (user_id) DO UPDATE SET
     subscription_tier = CASE 
       WHEN EXCLUDED.stripe_price_id IN (SELECT id FROM stripe.prices WHERE metadata->>'tier' = 'pro') 
@@ -751,7 +769,7 @@ BEGIN
     metadata = EXCLUDED.metadata,
     updated_at = now();
   
-  RETURN NEW;
+  RETURN subscription_record;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
@@ -759,11 +777,19 @@ COMMENT ON FUNCTION stripe.sync_subscription_to_app IS 'Syncs Stripe subscriptio
 
 -- Function to process Stripe webhook events
 CREATE OR REPLACE FUNCTION stripe.handle_webhook_event()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER 
+LANGUAGE plpgsql 
+SECURITY DEFINER
+SET search_path = stripe, pg_temp
+DECLARE
+  webhook_event RECORD;
 BEGIN
+  -- Assign the NEW record to a variable to avoid "missing FROM-clause entry for table 'new'" error
+  webhook_event := NEW;
+
   -- Handle different event types
-  IF NEW.event_type = 'customer.subscription.created' OR 
-     NEW.event_type = 'customer.subscription.updated' THEN
+  IF webhook_event.event_type = 'customer.subscription.created' OR 
+     webhook_event.event_type = 'customer.subscription.updated' THEN
     -- Extract subscription data and insert/update in subscriptions table
     INSERT INTO stripe.subscriptions (
       id,
@@ -779,20 +805,20 @@ BEGIN
       canceled_at
     )
     SELECT
-      (NEW.data->'object'->>'id'),
-      (SELECT id FROM stripe.customers WHERE stripe_customer_id = (NEW.data->'object'->>'customer')),
-      (NEW.data->'object'->>'status')::reference.subscription_status,
-      (NEW.data->'object'->'metadata'),
-      (NEW.data->'object'->'items'->'data'->0->>'price'),
-      (NEW.data->'object'->'items'->'data'->0->>'quantity')::integer,
-      (NEW.data->'object'->>'cancel_at_period_end')::boolean,
-      to_timestamp((NEW.data->'object'->>'current_period_start')::integer),
-      to_timestamp((NEW.data->'object'->>'current_period_end')::integer),
-      CASE WHEN NEW.data->'object'->>'cancel_at' IS NOT NULL 
-           THEN to_timestamp((NEW.data->'object'->>'cancel_at')::integer) 
+      (webhook_event.data->'object'->>'id'),
+      (SELECT id FROM stripe.customers WHERE stripe_customer_id = (webhook_event.data->'object'->>'customer')),
+      (webhook_event.data->'object'->>'status')::reference.subscription_status,
+      (webhook_event.data->'object'->'metadata'),
+      (webhook_event.data->'object'->'items'->'data'->0->>'price'),
+      (webhook_event.data->'object'->'items'->'data'->0->>'quantity')::integer,
+      (webhook_event.data->'object'->>'cancel_at_period_end')::boolean,
+      to_timestamp((webhook_event.data->'object'->>'current_period_start')::integer),
+      to_timestamp((webhook_event.data->'object'->>'current_period_end')::integer),
+      CASE WHEN webhook_event.data->'object'->>'cancel_at' IS NOT NULL 
+           THEN to_timestamp((webhook_event.data->'object'->>'cancel_at')::integer) 
            ELSE NULL END,
-      CASE WHEN NEW.data->'object'->>'canceled_at' IS NOT NULL 
-           THEN to_timestamp((NEW.data->'object'->>'canceled_at')::integer) 
+      CASE WHEN webhook_event.data->'object'->>'canceled_at' IS NOT NULL 
+           THEN to_timestamp((webhook_event.data->'object'->>'canceled_at')::integer) 
            ELSE NULL END
     ON CONFLICT (id) DO UPDATE SET
       status = EXCLUDED.status,
@@ -805,7 +831,7 @@ BEGIN
       cancel_at = EXCLUDED.cancel_at,
       canceled_at = EXCLUDED.canceled_at;
   
-  ELSIF NEW.event_type = 'product.created' OR NEW.event_type = 'product.updated' THEN
+  ELSIF webhook_event.event_type = 'product.created' OR webhook_event.event_type = 'product.updated' THEN
     -- Handle product events
     INSERT INTO stripe.products (
       id,
@@ -816,12 +842,12 @@ BEGIN
       metadata
     )
     SELECT
-      (NEW.data->'object'->>'id'),
-      (NEW.data->'object'->>'active')::boolean,
-      (NEW.data->'object'->>'name'),
-      (NEW.data->'object'->>'description'),
-      (NEW.data->'object'->>'images'->0),
-      (NEW.data->'object'->'metadata')
+      (webhook_event.data->'object'->>'id'),
+      (webhook_event.data->'object'->>'active')::boolean,
+      (webhook_event.data->'object'->>'name'),
+      (webhook_event.data->'object'->>'description'),
+      (webhook_event.data->'object'->>'images'->0),
+      (webhook_event.data->'object'->'metadata')
     ON CONFLICT (id) DO UPDATE SET
       active = EXCLUDED.active,
       name = EXCLUDED.name,
@@ -830,7 +856,7 @@ BEGIN
       metadata = EXCLUDED.metadata,
       updated_at = now();
       
-  ELSIF NEW.event_type = 'price.created' OR NEW.event_type = 'price.updated' THEN
+  ELSIF webhook_event.event_type = 'price.created' OR webhook_event.event_type = 'price.updated' THEN
     -- Handle price events
     INSERT INTO stripe.prices (
       id,
@@ -845,25 +871,25 @@ BEGIN
       metadata
     )
     SELECT
-      (NEW.data->'object'->>'id'),
-      (NEW.data->'object'->>'product'),
-      (NEW.data->'object'->>'active')::boolean,
-      (NEW.data->'object'->>'nickname'),
-      (NEW.data->'object'->>'unit_amount')::bigint,
-      (NEW.data->'object'->>'currency'),
+      (webhook_event.data->'object'->>'id'),
+      (webhook_event.data->'object'->>'product'),
+      (webhook_event.data->'object'->>'active')::boolean,
+      (webhook_event.data->'object'->>'nickname'),
+      (webhook_event.data->'object'->>'unit_amount')::bigint,
+      (webhook_event.data->'object'->>'currency'),
       CASE 
-        WHEN NEW.data->'object'->>'type' = 'recurring' THEN 'recurring'::stripe.pricing_type
+        WHEN webhook_event.data->'object'->>'type' = 'recurring' THEN 'recurring'::stripe.pricing_type
         ELSE 'one_time'::stripe.pricing_type
       END,
       CASE 
-        WHEN NEW.data->'object'->'recurring'->>'interval' = 'month' THEN 'month'::stripe.pricing_plan_interval
-        WHEN NEW.data->'object'->'recurring'->>'interval' = 'year' THEN 'year'::stripe.pricing_plan_interval
-        WHEN NEW.data->'object'->'recurring'->>'interval' = 'week' THEN 'week'::stripe.pricing_plan_interval
-        WHEN NEW.data->'object'->'recurring'->>'interval' = 'day' THEN 'day'::stripe.pricing_plan_interval
+        WHEN webhook_event.data->'object'->'recurring'->>'interval' = 'month' THEN 'month'::stripe.pricing_plan_interval
+        WHEN webhook_event.data->'object'->'recurring'->>'interval' = 'year' THEN 'year'::stripe.pricing_plan_interval
+        WHEN webhook_event.data->'object'->'recurring'->>'interval' = 'week' THEN 'week'::stripe.pricing_plan_interval
+        WHEN webhook_event.data->'object'->'recurring'->>'interval' = 'day' THEN 'day'::stripe.pricing_plan_interval
         ELSE NULL
       END,
-      (NEW.data->'object'->'recurring'->>'interval_count')::integer,
-      (NEW.data->'object'->'metadata')
+      (webhook_event.data->'object'->'recurring'->>'interval_count')::integer,
+      (webhook_event.data->'object'->'metadata')
     ON CONFLICT (id) DO UPDATE SET
       product_id = EXCLUDED.product_id,
       active = EXCLUDED.active,
@@ -876,15 +902,15 @@ BEGIN
       metadata = EXCLUDED.metadata,
       updated_at = now();
   
-  ELSIF NEW.event_type = 'customer.created' OR NEW.event_type = 'customer.updated' THEN
+  ELSIF webhook_event.event_type = 'customer.created' OR webhook_event.event_type = 'customer.updated' THEN
     -- Handle customer events
     INSERT INTO stripe.customers (
       id,
       stripe_customer_id
     )
     SELECT
-      (SELECT id FROM auth.users WHERE email = (NEW.data->'object'->>'email')),
-      (NEW.data->'object'->>'id')
+      (SELECT id FROM auth.users WHERE email = (webhook_event.data->'object'->>'email')),
+      (webhook_event.data->'object'->>'id')
     ON CONFLICT (id) DO UPDATE SET
       stripe_customer_id = EXCLUDED.stripe_customer_id;
   END IF;
@@ -892,9 +918,9 @@ BEGIN
   -- Mark the webhook event as processed
   UPDATE stripe.webhook_events
   SET processed = true
-  WHERE id = NEW.id;
+  WHERE id = webhook_event.id;
   
-  RETURN NEW;
+  RETURN webhook_event;
 EXCEPTION
   WHEN OTHERS THEN
     -- Log the error and mark as failed
@@ -902,9 +928,9 @@ EXCEPTION
     SET 
       processed = true,
       processing_error = SQLERRM
-    WHERE id = NEW.id;
+    WHERE id = webhook_event.id;
     
-    RETURN NEW;
+    RETURN webhook_event;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
@@ -946,6 +972,7 @@ CREATE OR REPLACE FUNCTION util.is_admin(user_id uuid)
 RETURNS boolean
 LANGUAGE sql
 SECURITY DEFINER
+SET search_path = api, util, pg_temp
 AS $$
   SELECT EXISTS (
     SELECT 1 FROM api.user_role_mappings urm
@@ -961,6 +988,7 @@ CREATE OR REPLACE FUNCTION util.can_modify_recipe(recipe_owner_id uuid)
 RETURNS boolean
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = auth, util, pg_temp
 AS $$
 BEGIN
   RETURN (auth.uid() = recipe_owner_id OR util.is_admin(auth.uid()));
@@ -974,6 +1002,7 @@ CREATE OR REPLACE FUNCTION util.can_modify_user_record(record_owner_id uuid)
 RETURNS boolean
 LANGUAGE plpgsql
 SECURITY DEFINER
+SET search_path = auth, util, pg_temp
 AS $$
 BEGIN
   RETURN (auth.uid() = record_owner_id OR util.is_admin(auth.uid()));
@@ -1060,14 +1089,20 @@ COMMENT ON COLUMN api.recipes.is_fork IS 'Indicates if this recipe is a fork of 
 
 -- Trigger to generate slug if not provided
 CREATE OR REPLACE FUNCTION api.generate_recipe_slug_if_needed()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = api, util, pg_temp
+AS $$
+DECLARE
+  recipe_record RECORD;
 BEGIN
-  IF NEW.slug IS NULL OR NEW.slug = '' THEN
+  recipe_record := NEW;
+  IF recipe_record.slug IS NULL OR recipe_record.slug = '' THEN
     -- Extract last 4 characters of UUID
-    NEW.slug := util.generate_recipe_slug(NEW.name) || '-' || 
-                substring(NEW.id::text, (length(NEW.id::text) - 3));
+    recipe_record.slug := util.generate_recipe_slug(recipe_record.name) || '-' || 
+                substring(recipe_record.id::text, (length(recipe_record.id::text) - 3));
   END IF;
-  RETURN NEW;
+  RETURN recipe_record;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -1178,12 +1213,18 @@ COMMENT ON TABLE api.pinned_recipes IS 'User-pinned recipes (limited to 3 per us
 
 -- Create a constraint function to limit pinned recipes
 CREATE OR REPLACE FUNCTION api.check_pinned_recipe_limit()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = api, pg_temp
+AS $$
+DECLARE
+  pin_record RECORD; 
 BEGIN
-  IF (SELECT COUNT(*) FROM api.pinned_recipes WHERE user_id = NEW.user_id) >= 3 THEN
+  pin_record := NEW;
+  IF (SELECT COUNT(*) FROM api.pinned_recipes WHERE user_id = pin_record.user_id) >= 3 THEN
     RAISE EXCEPTION 'Users can only pin up to 3 recipes';
   END IF;
-  RETURN NEW;
+  RETURN pin_record;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -1471,12 +1512,17 @@ COMMENT ON TABLE stripe.webhook_events IS 'Records Stripe webhook events for pro
 
 -- Check constraint function for custom slots
 CREATE OR REPLACE FUNCTION api.check_custom_slot_allowed()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SET search_path = api, pg_temp
+AS $$
 DECLARE
+  slot_record RECORD;
   allow_custom boolean;
   custom_when_full boolean;
   all_slots_filled boolean;
 BEGIN
+  slot_record := NEW;
   -- Get the potluck event settings
   SELECT 
     pe.allow_custom_slots,
@@ -1485,13 +1531,13 @@ BEGIN
     allow_custom,
     custom_when_full
   FROM api.potluck_events pe
-  WHERE pe.id = NEW.event_id;
+  WHERE pe.id = slot_record.event_id;
   
   -- If this is a custom slot, check if it's allowed
-  IF NEW.custom_slot = true THEN
+  IF slot_record.custom_slot = true THEN
     -- If custom slots are always allowed, we're good
     IF allow_custom = true THEN
-      RETURN NEW;
+      RETURN slot_record;
     END IF;
     
     -- If custom slots are allowed when all other slots are filled
@@ -1499,12 +1545,12 @@ BEGIN
       -- Check if all non-custom slots are claimed
       SELECT COUNT(*) = 0 INTO all_slots_filled
       FROM api.potluck_slots ps
-      WHERE ps.event_id = NEW.event_id
+      WHERE ps.event_id = slot_record.event_id
       AND ps.custom_slot = false
       AND ps.claimed = false;
       
       IF all_slots_filled THEN
-        RETURN NEW;
+        RETURN slot_record;
       ELSE
         RAISE EXCEPTION 'Custom slots are only allowed when all predefined slots are filled';
       END IF;
@@ -1515,7 +1561,7 @@ BEGIN
   END IF;
   
   -- For non-custom slots, always allow
-  RETURN NEW;
+  RETURN slot_record;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -1988,16 +2034,24 @@ CREATE TRIGGER update_stripe_customer_billing_modtime
 
 -- Trigger to update recipe likes counter
 CREATE OR REPLACE FUNCTION api.update_recipe_likes_count()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = api, pg_temp
+AS $$
+DECLARE
+  like_record RECORD;
 BEGIN
   IF TG_OP = 'INSERT' THEN
+    like_record := NEW;
     UPDATE api.recipes 
     SET likes_count = likes_count + 1
-    WHERE id = NEW.recipe_id;
+    WHERE id = like_record.recipe_id;
   ELSIF TG_OP = 'DELETE' THEN
+    like_record := OLD;
     UPDATE api.recipes 
     SET likes_count = greatest(0, likes_count - 1)
-    WHERE id = OLD.recipe_id;
+    WHERE id = like_record.recipe_id;
   END IF;
   RETURN NULL;
 END;
@@ -2009,10 +2063,17 @@ FOR EACH ROW EXECUTE FUNCTION api.update_recipe_likes_count();
 
 -- Track AI usage
 CREATE OR REPLACE FUNCTION api.track_ai_conversation_usage()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = api, pg_temp
+AS $$
+DECLARE
+  message_record RECORD;
 BEGIN
+  message_record := NEW;
   -- Only track user messages (not system or assistant)
-  IF NEW.role = 'user' THEN
+  IF message_record.role = 'user' THEN
     INSERT INTO api.ai_feature_usage (
       user_id,
       feature_type,
@@ -2021,11 +2082,11 @@ BEGIN
     SELECT 
       user_id,
       'conversation',
-      NEW.conversation_id
+      message_record.conversation_id
     FROM api.ai_conversations
-    WHERE id = NEW.conversation_id;
+    WHERE id = message_record.conversation_id;
   END IF;
-  RETURN NEW;
+  RETURN message_record;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -2035,18 +2096,24 @@ FOR EACH ROW EXECUTE FUNCTION api.track_ai_conversation_usage();
 
 -- Enforce AI usage limits for free tier
 CREATE OR REPLACE FUNCTION api.enforce_ai_usage_limits()
-RETURNS TRIGGER AS $$
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = api, pg_temp
+AS $$
 DECLARE
+  usage_record RECORD;
   can_use boolean;
 BEGIN
+  usage_record := NEW;
   -- Check if user can use this AI feature
-  SELECT api.check_ai_usage_limits(NEW.user_id, NEW.feature_type) INTO can_use;
+  SELECT api.check_ai_usage_limits(usage_record.user_id, usage_record.feature_type) INTO can_use;
   
   IF NOT can_use THEN
     RAISE EXCEPTION 'You have reached your AI usage limit. Please upgrade to Pro for unlimited AI features.';
   END IF;
   
-  RETURN NEW;
+  RETURN usage_record;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -2284,16 +2351,16 @@ CREATE POLICY "Potluck slots are insertable by hosts or participants based on ru
     -- Hosts and cohosts can always add slots
     EXISTS (
       SELECT 1 FROM api.potluck_participants
-      WHERE event_id = event_id
+      WHERE event_id = api.potluck_slots.event_id
       AND user_id = auth.uid()
       AND role IN ('host', 'cohost')
     )
     -- For custom slots by participants, rules are enforced by trigger
     OR (
-      NEW.custom_slot = true
+      custom_slot = true
       AND EXISTS (
         SELECT 1 FROM api.potluck_events
-        WHERE id = NEW.event_id
+        WHERE id = api.potluck_slots.event_id
         AND (allow_custom_slots = true OR custom_slots_when_full = true)
       )
     )
