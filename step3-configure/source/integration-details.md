@@ -1,8 +1,17 @@
-# Icons
+# Integration Details
+
+## Table of Contents
+- [Icons](#icons)
+- [Image Generation](#image-generation)
+- [Chat Assistant](#chat-assistant)
+- [Environment Setup](#environment-setup)
+- [Troubleshooting](#troubleshooting)
+
+## Icons
 
 Use the `lucide-react` library:
 
-```
+```javascript
 import { Camera } from 'lucide-react';
 
 // Usage
@@ -13,17 +22,17 @@ const App = () => {
 export default App;
 ```
 
-# Image Generation
+## Image Generation
 
-## Integration Information: Google Gemini Flash 2.0
+### Integration Information: Google Gemini Flash 2.0
 
-To generate images with AI integrate with Google Gemini's model `gemini-2.0-flash-exp-image-generation` through the Vercel AI SDK library `@ai-sdk/google` with the `responseModalities` option.
+To generate images with AI, integrate with Google Gemini's model `gemini-2.0-flash-exp-image-generation` through the Vercel AI SDK library `@ai-sdk/google` with the `responseModalities` option.
 
-## Project Requirements
+### Project Requirements
 
 Make sure the project has a valid `GEMINI_API_KEY` environment variable installed.
 
-## Code Sample
+### Code Sample
 
 Here is the Vercel `@ai-sdk/google` library sample code from the [documentation](https://sdk.vercel.ai/docs/ai-sdk-core/image-generation#generating-images-with-language-models):
 
@@ -46,17 +55,17 @@ for (const file of result.files) {
 }
 ```
 
-# Chat Assistant
+## Chat Assistant
 
-## Integration Information: OpenAI Responses API
+### Integration Information: OpenAI Responses API
 
-To generate AI chats for the user integrate with the OpenAI Responses API and the `gpt-4o-mini` model through the Vercel `@ai-sdk/openai` library. Allow search tools. The Responses API documentation is [here](https://sdk.vercel.ai/docs/guides/openai-responses).
+To generate AI chats for the user, integrate with the OpenAI Responses API and the `gpt-4o-mini` model through the Vercel `@ai-sdk/openai` library. Allow search tools. The Responses API documentation is [here](https://sdk.vercel.ai/docs/guides/openai-responses).
 
-## Project Requirements
+### Project Requirements
 
 Make sure the project has a valid `OPENAI_API_KEY` environment variable installed.
 
-## Code Sample w/ StreamText
+### Code Sample with StreamText
 
 ```typescript
 import { openai } from '@ai-sdk/openai';
@@ -76,23 +85,30 @@ for await (const textPart of result.textStream) {
 }
 ```
 
-You can use streamText on its own or in combination with AI SDK UI and AI SDK RSC. The result object contains several helper functions to make the integration into AI SDK UI easier:
+### Helper Functions
 
-`result.toDataStreamResponse()`: Creates a data stream HTTP response (with tool calls etc.) that can be used in a Next.js App Router API route.
-`result.pipeDataStreamToResponse()`: Writes data stream delta output to a Node.js response-like object.
-`result.toTextStreamResponse()`: Creates a simple text stream HTTP response.
-`result.pipeTextStreamToResponse()`: Writes text delta output to a Node.js response-like object.
-`streamText` is using backpressure and only generates tokens as they are requested. You need to consume the stream in order for it to finish.
+The result object contains several helper functions to make integration easier:
 
-It also provides several promises that resolve when the stream is finished:
+- `result.toDataStreamResponse()`: Creates a data stream HTTP response (with tool calls etc.) for Next.js App Router API routes.
+- `result.pipeDataStreamToResponse()`: Writes data stream delta output to a Node.js response-like object.
+- `result.toTextStreamResponse()`: Creates a simple text stream HTTP response.
+- `result.pipeTextStreamToResponse()`: Writes text delta output to a Node.js response-like object.
 
-`result.text`: The generated text.
-`result.reasoning`: The reasoning text of the model (only available for some models).
-`result.sources`: Sources that have been used as input to generate the response (only available for some models).
-`result.finishReason`: The reason the model finished generating text.
-`result.usage`: The usage of the model during text generation.
+**Note:** `streamText` uses backpressure and only generates tokens as requested. You must consume the stream for it to finish.
 
-Using the `onError` callback:
+### Result Promises
+
+Several promises resolve when the stream is finished:
+
+- `result.text`: The generated text.
+- `result.reasoning`: The reasoning text of the model (only available for some models).
+- `result.sources`: Sources used as input to generate the response (only available for some models).
+- `result.finishReason`: The reason the model finished generating text.
+- `result.usage`: The usage of the model during text generation.
+
+### Callback Examples
+
+#### Using the `onError` callback:
 
 ```typescript
 import { streamText } from 'ai';
@@ -106,8 +122,9 @@ const result = streamText({
 });
 ```
 
-Using the `onChunk` callback with the following chunks:
+#### Using the `onChunk` callback:
 
+The following chunk types are available:
 - `text-delta`
 - `reasoning`
 - `source`
@@ -131,7 +148,7 @@ const result = streamText({
 });
 ```
 
-Using the `onFinish` callback:
+#### Using the `onFinish` callback:
 
 ```typescript
 import { streamText } from 'ai';
@@ -141,13 +158,12 @@ const result = streamText({
   prompt: 'Invent a new holiday and describe its traditions.',
   onFinish({ text, finishReason, usage, response }) {
     // your own logic, e.g. for saving the chat history or recording usage
-
     const messages = response.messages; // messages that were generated
   },
 });
 ```
 
-### Web Search
+### Web Search Integration
 
 ```typescript
 import { openai } from '@ai-sdk/openai';
