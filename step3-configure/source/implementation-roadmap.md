@@ -10,12 +10,13 @@
 5. Configure environment variables for both services
 
 ### Phase 2: Authentication Framework
-1. Set up Supabase Auth (follow [auth-implementation.md](auth-implementation.md)) with Google provider (follow [login-with-google](login-with-google.md))
-2. Create auth middleware for protected routes as outlined in project-structure.md
+1. Set up Supabase Auth with email/password authentication (follow [auth-implementation.md](auth-implementation.md)) 
+2. Create auth middleware for protected routes as outlined in [project-structure.md](project-structure.md)
 3. Implement essential auth utilities in lib/supabase/client.ts and server.ts
-4. Build minimal login/signup components with Google OAuth
-5. Create auth provider component for global state
-6. Implement protected route redirection logic
+4. Build minimal login/signup components with email/password authentication using shadcn/ui blocks per [ui-components.md](ui-components.md)
+5. Add code stubs for Google OAuth (to be implemented later following [login-with-google](login-with-google.md))
+6. Create auth provider component for global state
+7. Implement protected route redirection logic
 
 ### Phase 3: Minimal Database Schema
 1. Design core tables (users, subscriptions, products) using patterns from [database-patterns.md](database-patterns.md)
@@ -49,8 +50,9 @@
 1. Set up error boundaries and fallbacks
 2. Implement essential SEO metadata (see architecture principles above)
 3. Add loading states and optimistic updates
-4. Test full user journey from signup to payment
-5. Deploy to Vercel with proper environment configuration
+4. Implement Google OAuth authentication
+5. Test full user journey from signup to payment
+6. Deploy to Vercel with proper environment configuration
 
 ### Phase 8: Quality Assurance
 1. Test all critical paths (auth, payment, navigation)

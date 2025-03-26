@@ -1,6 +1,6 @@
 ## Project Structure
 
-### Next.js App Directory Structure
+### Full Next.js App Directory Structure
 
 ```
 app/
