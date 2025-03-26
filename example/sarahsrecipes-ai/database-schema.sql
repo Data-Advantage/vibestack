@@ -2196,6 +2196,137 @@ CREATE POLICY "Account deletions viewable by admin" ON api.account_deletions
 CREATE POLICY "Account deletions insertable by calling function" ON api.account_deletions
   FOR INSERT WITH CHECK (true);
 
+-- api.ai_conversations policies
+CREATE POLICY "Users can view their own conversations" 
+  ON api.ai_conversations FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can create their own conversations" 
+  ON api.ai_conversations FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can update their own conversations" 
+  ON api.ai_conversations FOR UPDATE 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can delete their own conversations" 
+  ON api.ai_conversations FOR DELETE 
+  USING (user_id = auth.uid());
+
+-- api.ai_conversation_messages policies
+CREATE POLICY "Users can view messages from their conversations" 
+  ON api.ai_conversation_messages FOR SELECT 
+  USING (EXISTS (
+    SELECT 1 FROM api.ai_conversations 
+    WHERE id = conversation_id AND user_id = auth.uid()
+  ));
+
+CREATE POLICY "Users can add messages to their conversations" 
+  ON api.ai_conversation_messages FOR INSERT 
+  WITH CHECK (EXISTS (
+    SELECT 1 FROM api.ai_conversations 
+    WHERE id = conversation_id AND user_id = auth.uid()
+  ));
+
+CREATE POLICY "Users can delete messages from their conversations" 
+  ON api.ai_conversation_messages FOR DELETE 
+  USING (EXISTS (
+    SELECT 1 FROM api.ai_conversations 
+    WHERE id = conversation_id AND user_id = auth.uid()
+  ));
+
+-- api.ai_feature_usage policies
+CREATE POLICY "Users can view their own feature usage" 
+  ON api.ai_feature_usage FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "System can insert AI feature usage" 
+  ON api.ai_feature_usage FOR INSERT 
+  WITH CHECK (true);
+
+CREATE POLICY "Admins can view all AI feature usage" 
+  ON api.ai_feature_usage FOR SELECT 
+  USING (util.is_admin(auth.uid()));
+
+-- api.ai_generated_recipes policies
+CREATE POLICY "Users can view their own generated recipes" 
+  ON api.ai_generated_recipes FOR SELECT 
+  USING (EXISTS (
+    SELECT 1 FROM api.ai_conversations 
+    WHERE id = conversation_id AND user_id = auth.uid()
+  ));
+
+CREATE POLICY "System can insert generated recipes" 
+  ON api.ai_generated_recipes FOR INSERT 
+  WITH CHECK (EXISTS (
+    SELECT 1 FROM api.ai_conversations 
+    WHERE id = conversation_id AND user_id = auth.uid()
+  ));
+
+-- api.meal_plan policies
+CREATE POLICY "Users can view their own meal plans" 
+  ON api.meal_plan FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can create their own meal plans" 
+  ON api.meal_plan FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can update their own meal plans" 
+  ON api.meal_plan FOR UPDATE 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can delete their own meal plans" 
+  ON api.meal_plan FOR DELETE 
+  USING (user_id = auth.uid());
+
+-- api.recipe_likes policies
+CREATE POLICY "Recipe likes are viewable by anyone" 
+  ON api.recipe_likes FOR SELECT 
+  USING (true);
+
+CREATE POLICY "Users can like recipes" 
+  ON api.recipe_likes FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can unlike recipes" 
+  ON api.recipe_likes FOR DELETE 
+  USING (user_id = auth.uid());
+
+-- api.shopping_list_items policies
+CREATE POLICY "Users can view their own shopping list" 
+  ON api.shopping_list_items FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can add to their shopping list" 
+  ON api.shopping_list_items FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can update their shopping list" 
+  ON api.shopping_list_items FOR UPDATE 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can delete from their shopping list" 
+  ON api.shopping_list_items FOR DELETE 
+  USING (user_id = auth.uid());
+
+-- api.user_favorites policies
+CREATE POLICY "Users can view their own favorites" 
+  ON api.user_favorites FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Anyone can view favorites" 
+  ON api.user_favorites FOR SELECT 
+  USING (true);
+
+CREATE POLICY "Users can add favorites" 
+  ON api.user_favorites FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can remove favorites" 
+  ON api.user_favorites FOR DELETE 
+  USING (user_id = auth.uid());
+
 -- User social links policies
 CREATE POLICY "Social links are viewable by anyone" ON api.user_social_links
   FOR SELECT USING (true);
@@ -2468,6 +2599,79 @@ CREATE POLICY "Stripe customer billing updatable by self" ON stripe.customer_bil
 
 CREATE POLICY "Stripe customer billing insertable by self" ON stripe.customer_billing
   FOR INSERT WITH CHECK (user_id = auth.uid());
+
+-- api.user_api_keys policies
+CREATE POLICY "Users can view their own API keys" 
+  ON api.user_api_keys FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can create their own API keys" 
+  ON api.user_api_keys FOR INSERT 
+  WITH CHECK (user_id = auth.uid());
+
+CREATE POLICY "Users can update their own API keys" 
+  ON api.user_api_keys FOR UPDATE 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Users can delete their own API keys" 
+  ON api.user_api_keys FOR DELETE 
+  USING (user_id = auth.uid());
+
+-- api.user_roles policies
+CREATE POLICY "User roles are viewable by anyone" 
+  ON api.user_roles FOR SELECT 
+  USING (true);
+
+CREATE POLICY "Only admins can manage roles" 
+  ON api.user_roles FOR ALL 
+  USING (util.is_admin(auth.uid()));
+
+-- api.user_role_mappings policies
+CREATE POLICY "Users can view their own role mappings" 
+  ON api.user_role_mappings FOR SELECT 
+  USING (user_id = auth.uid());
+
+CREATE POLICY "Admins can view all role mappings" 
+  ON api.user_role_mappings FOR SELECT 
+  USING (util.is_admin(auth.uid()));
+
+CREATE POLICY "Only admins can manage role mappings" 
+  ON api.user_role_mappings FOR INSERT 
+  WITH CHECK (util.is_admin(auth.uid()));
+
+CREATE POLICY "Only admins can update role mappings" 
+  ON api.user_role_mappings FOR UPDATE 
+  USING (util.is_admin(auth.uid()));
+
+CREATE POLICY "Only admins can delete role mappings" 
+  ON api.user_role_mappings FOR DELETE 
+  USING (util.is_admin(auth.uid()));
+
+-- stripe.customers policies
+CREATE POLICY "Users can view their own Stripe customer data" 
+  ON stripe.customers FOR SELECT 
+  USING (id = auth.uid());
+
+CREATE POLICY "Admins can view all Stripe customers" 
+  ON stripe.customers FOR SELECT 
+  USING (util.is_admin(auth.uid()));
+
+CREATE POLICY "System can manage Stripe customers" 
+  ON stripe.customers FOR ALL 
+  USING (util.is_admin(auth.uid()));
+
+-- stripe.webhook_events policies
+CREATE POLICY "Only system and admins can view webhook events" 
+  ON stripe.webhook_events FOR SELECT 
+  USING (util.is_admin(auth.uid()));
+
+CREATE POLICY "Only system can insert webhook events" 
+  ON stripe.webhook_events FOR INSERT 
+  WITH CHECK (true);
+
+CREATE POLICY "Only system can update webhook events" 
+  ON stripe.webhook_events FOR UPDATE 
+  USING (util.is_admin(auth.uid()));
 
 -- No direct access to customers or webhook events (managed by backend only)
 
