@@ -21,7 +21,7 @@ Note that Supabase integration has already been configured with necessary enviro
 # Prompt 2: Authentication Framework
 
 ```
-Implement the authentication system using Supabase Auth with Google OAuth as specified in auth-implementation.md.
+Implement the authentication system using Supabase Auth with email/password authentication as specified in Project Settings Sources file `auth-implementation.md`, and add code stubs for Google OAuth to be fully implemented later. Use the UI components for Authentication/Login as specified in `ui-components.md`.
 
 Files to create:
 - middleware.ts (auth middleware for protected routes)
@@ -45,7 +45,14 @@ Files to create:
 - types/api/requests.ts (auth-related requests)
 - types/api/responses.ts (auth-related responses)
 
-Follow the patterns and best practices outlined in auth-implementation.md and project-structure.md for implementing protected route redirection and Google OAuth support.```
+For Google OAuth implementation:
+1. Create UI components with visually complete "Login with Google" buttons in the login/signup forms
+2. Add code stubs with clearly marked TODO comments indicating Google OAuth will be implemented later
+3. Include commented-out code showing what the eventual implementation will look like
+4. Do not implement the actual Google OAuth functionality yet (this will be done later)
+
+Follow the patterns and best practices outlined in auth-implementation.md and project-structure.md for implementing protected route redirection and properly structuring the auth code.
+```
 
 # Prompt 3: Database Schema and Data Access
 
@@ -131,8 +138,11 @@ Files to create:
 - app/(marketing)/pricing/page.tsx
 - app/(marketing)/contact/page.tsx
 
+Add a small informational note near the Google login buttons to clarify that Google login will be available after deployment.
+
 Create a subscription management page that displays current subscription status and allows upgrades/downgrades. Build an account settings page where users can manage their profile information. Implement a Stripe customer portal redirect for subscription management. Add subscription tier gating for features using Row Level Security.
 ```
+
 
 #Prompt 7: AI SDK Integration (Optional)
 
@@ -156,9 +166,16 @@ Implement the UI components for AI interactions as outlined in ai-sdk-ui.md. Ens
 # Prompt 8: Finalization and Quality Assurance
 
 ```
-Implement error boundaries, SEO, and finalize the application.
+Implement error boundaries, SEO, Google OAuth authentication, and finalize the application.
 
-Files to create:
+Files to update or create:
+- lib/supabase/client.ts (update with Google OAuth implementation)
+- lib/actions/auth.ts (update with Google OAuth implementation)
+- components/auth/login-form.tsx (enable Google login button functionality)
+- components/auth/signup-form.tsx (enable Google login button functionality)
+- app/(auth)/login/actions.ts (update to handle Google OAuth)
+
+New files to create:
 - app/(seo)/layout.tsx
 - app/(seo)/[category]/page.tsx
 - app/(seo)/[category]/[slug]/page.tsx
@@ -170,6 +187,12 @@ Files to create:
 - components/layout/error-boundary.tsx
 - components/ui/fallback.tsx
 - lib/utils/error-handling.ts
+
+For Google OAuth implementation:
+1. Uncomment and complete the Google OAuth code stubs created in Prompt 2
+2. Connect the Google login buttons to the actual authentication flow
+3. Ensure proper redirection and error handling for Google OAuth
+4. Test the complete authentication flow with Google
 
 Add SEO metadata to all relevant pages. Implement loading states and optimistic updates for better user experience. Create a comprehensive test plan covering authentication, payment processing, and general navigation. Configure all environment variables for production deployment to Vercel. Verify that all Row Level Security policies are working correctly and that Stripe webhooks are processing as expected. Ensure mobile responsiveness according to accessibility-standards.md.
 ```
