@@ -2,6 +2,40 @@
 
 This document outlines the essential configuration files needed for a Next.js 15+ and Supabase application with Tailwind CSS v4.
 
+## Environment Variables
+
+### .env.example
+
+```
+# Authentication Redirect URLs
+NEXT_PUBLIC_SITE_URL=http://sara...s-ai.vercel.app
+NEXT_PUBLIC_AUTH_REDIRECT_URL=http://sara...s-ai:3000/auth/callback
+
+# Supabase Configuration (usually installed via Vercel-Supabase integration)
+NEXT_PUBLIC_SUPABASE_URL=https://qify...dzxs.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJh...jyK8
+SUPABASE_SERVICE_ROLE_KEY=eyJh...F12o
+POSTGRES_URL=postgres://postgres.qjfy...dzxs:Pj7d...HWGT@aws-0-us-west-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x
+POSTGRES_PRISMA_URL=postgres://postgres.qjfy...dzxs:Pj7d...HWGT@aws-0-us-west-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x
+POSTGRES_URL_NON_POOLING=postgres://postgres.qjfy...dzxs:Pj7d...HWGT@aws-0-us-west-1.pooler.supabase.com:5432/postgres?sslmode=require
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=Pj7d...HWGT
+POSTGRES_DATABASE=postgres
+POSTGRES_HOST=db.qjfy...dzxs.supabase.co
+
+# Stripe Integration (if applicable)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_51R6...ELpo
+STRIPE_SECRET_KEY=sk_test_51R6...dxumE
+STRIPE_WEBHOOK_SECRET=whsec_hb4D...R1Qq
+NEXT_PUBLIC_STRIPE_PRICE_MONTHLY=price_1R6f...xgAYF
+NEXT_PUBLIC_STRIPE_PRICE_YEARLY=price_1R6...fTPn
+STRIPE_PRODUCT_ID=prod_S0gz...KxPU
+
+# AI Integration (if applicable)
+OPENAI_API_KEY=sk-MjR0...wX6C
+GEMINI_API_KEY=AJza...ofog
+```
+
 ## Tailwind CSS Setup
 
 ### tailwind.config.ts
