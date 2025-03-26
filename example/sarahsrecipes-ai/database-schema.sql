@@ -1587,6 +1587,26 @@ CREATE TABLE reference.daily_nutritional_values (
 
 COMMENT ON TABLE reference.daily_nutritional_values IS 'Reference data for recommended daily nutritional values';
 
+INSERT INTO reference.daily_nutritional_values (
+    nutrient_name,
+    daily_value,
+    unit,
+    notes
+) VALUES
+    ('calories', '2000', 'kcal', 'Based on a 2000 calorie diet for general adult nutrition'),
+    ('protein', '50', 'g', 'Based on 0.8g per kg of body weight for average adult'),
+    ('total_fat', '78', 'g', '35% of daily calories'),
+    ('saturated_fat', '20', 'g', 'Less than 10% of daily calories'),
+    ('cholesterol', '300', 'mg', 'For healthy adults'),
+    ('sodium', '2300', 'mg', 'FDA recommended limit'),
+    ('total_carbohydrates', '275', 'g', 'Based on 55% of daily calories'),
+    ('dietary_fiber', '28', 'g', 'For adults based on 14g per 1000 calories'),
+    ('total_sugars', '50', 'g', 'Recommended limit'),
+    ('vitamin_c', '90', 'mg', 'For adult males; 75mg for females'),
+    ('calcium', '1300', 'mg', 'For adults 19-50 years'),
+    ('iron', '18', 'mg', 'Higher for women of childbearing age'),
+    ('potassium', '4700', 'mg', 'Adequate intake for adults');
+
 -- ------------------------------
 -- Storage bucket setup
 -- ------------------------------
