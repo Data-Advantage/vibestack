@@ -42,6 +42,8 @@ Files to create:
 - app/(auth)/confirm/route.ts
 - app/(auth)/reset-password/page.tsx
 - app/(auth)/reset-password/actions.ts
+- app/dashboard/page.tsx (basic dashboard showing successful login)
+- app/dashboard/layout.tsx (dashboard layout)
 - types/api/requests.ts (auth-related requests)
 - types/api/responses.ts (auth-related responses)
 
@@ -50,6 +52,8 @@ For Google OAuth implementation:
 2. Add code stubs with clearly marked TODO comments indicating Google OAuth will be implemented later
 3. Include commented-out code showing what the eventual implementation will look like
 4. Do not implement the actual Google OAuth functionality yet (this will be done later)
+
+Create a basic dashboard page that displays the logged-in user's email and name (if available) to provide visual confirmation that authentication was successful. Redirect unauthenticated users to the login page.
 
 Follow the patterns and best practices outlined in auth-implementation.md and project-structure.md for implementing protected route redirection and properly structuring the auth code.
 ```
