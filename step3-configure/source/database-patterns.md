@@ -63,6 +63,24 @@ create table api.profiles (
 - Use `auth.uid()` function to identify the authenticated user
 - Start with restrictive policies, then add permissions as needed
 
+### RLS Implementation Sequence
+
+When implementing Row Level Security, be aware of this critical sequence:
+
+1. **Plan your policies first:** Document who needs what access to which tables
+2. **Create policies before or immediately after enabling RLS:** Tables with RLS enabled but no policies will block all access by default
+3. **Test each policy:** Verify that legitimate access works and unauthorized access is blocked
+
+#### Common Warning: RLS Enabled Without Policies
+
+If you see the linter warning "RLS Enabled No Policy," it means:
+- The table has Row Level Security turned on
+- No access policies have been defined
+- Regular users cannot access any data in this table
+- You need to create appropriate policies based on your application's needs
+
+This is a common issue during development that should be resolved before deployment.
+
 ### Common Policy Patterns
 
 #### Ownership-based Access
