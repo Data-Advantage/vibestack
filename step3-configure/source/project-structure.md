@@ -122,6 +122,7 @@ public/                        # Static assets (only if needed - mostly use Verc
 ├── robots.txt                 # Instructions for search engine crawlers
 └── ...                        # Other static assets
 
+.env.example                    # Documentation artifact
 middleware.ts                  # Root Next.js middleware for auth protection
 next.config.js                 # Next.js configuration
 postcss.config.mjs             # Configuration for PostCSS
