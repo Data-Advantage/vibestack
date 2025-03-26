@@ -20,6 +20,87 @@ Note that Supabase integration has already been configured with necessary enviro
 
 # Prompt 2: Authentication Framework
 
+## Step 1: Basic Supabase Setup & Environment Configuration
+
+This step focuses on establishing the foundation and validating the basic connection to Supabase.
+
+```
+Implement the core Supabase configuration and test the connection.
+
+Files to create:
+- lib/supabase/client.ts (browser client)
+- lib/supabase/server.ts (server client)
+- .env.local (ensure all Supabase environment variables are set correctly)
+- components/auth/client-test-connection.tsx (client component with interactive button to test browser connectivity)
+- components/auth/server-test-connection.tsx (server component that automatically tests server connectivity)
+- components/auth/env-variables-check.tsx (shows if the env relevant env vars are installed)
+- app/auth-test/page.tsx (test page to verify setup)
+
+First, ensure your .env.local file contains the correct Supabase variables:
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY
+- SUPABASE_SERVICE_ROLE_KEY (for admin functions)
+
+Create the basic Supabase clients and a simple test page to verify you can connect to Supabase successfully before proceeding to authentication flows.
+
+Connection Tests:
+- Both tests should use `auth.getSession()` which is guaranteed to work with any Supabase project
+- Display the actual JSON response data to confirm data is being returned
+- Include proper loading states, success/error handling, and user feedback
+- The test page should display environment variable status to verify configuration
+- Show if relevant Environment Variables are set
+```
+
+## Step 2: Core Authentication UI & Client-Side Auth
+
+This step implements the basic authentication UI and client-side authentication flows without relying on server actions initially.
+
+```
+Implement the core authentication UI components and basic client-side authentication.
+
+Files to create:
+- components/auth/login-form.tsx (client-side authentication)
+- components/auth/signup-form.tsx (client-side authentication)
+- components/providers/auth-provider.tsx (global auth state)
+- lib/hooks/use-auth.ts (simplified auth hooks)
+- app/(auth)/layout.tsx (basic layout for auth pages)
+- app/(auth)/login/page.tsx
+- app/(auth)/signup/page.tsx
+- app/dashboard/page.tsx (simple dashboard showing auth success)
+
+Focus on implementing client-side authentication first using the createClientComponentClient from Supabase. Don't implement server actions yet. The goal is to get a simple login/signup flow working that can authenticate users and store their session information properly. Use simple React state and context for managing authentication state.
+```
+
+## Step 3: Server Actions, Middleware & Advanced Features
+
+After basic authentication is working, this step adds the more complex server-side components and protected routes.
+
+```
+Implement server actions, middleware, and additional authentication features.
+
+Files to create:
+- middleware.ts (auth middleware for protected routes)
+- lib/supabase/middleware.ts (auth refresh helpers)
+- lib/actions/auth.ts (auth-related server actions)
+- app/(auth)/login/actions.ts
+- app/(auth)/signup/actions.ts
+- app/(auth)/confirm/route.ts
+- app/(auth)/reset-password/page.tsx
+- app/(auth)/reset-password/actions.ts
+- components/auth/password-reset-form.tsx
+- app/dashboard/layout.tsx (dashboard layout with auth protection)
+- types/api/requests.ts (auth-related requests)
+- types/api/responses.ts (auth-related responses)
+
+For Google OAuth implementation:
+1. Add UI components with visually complete "Login with Google" buttons
+2. Include code stubs with TODO comments for future implementation
+
+Once basic email/password authentication is working correctly, gradually implement the more complex server-side authentication features. Convert client-side auth to server actions if desired. Add middleware to protect routes and implement additional features like password reset.
+```
+
+## Original (working to decompose this)
+
 ```
 Implement the authentication system using Supabase Auth with email/password authentication as specified in Project Settings Sources file `auth-implementation.md`, and add code stubs for Google OAuth to be fully implemented later. Use the UI components for Authentication/Login as specified in `ui-components.md`.
 
