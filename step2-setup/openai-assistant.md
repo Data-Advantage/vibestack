@@ -6,7 +6,7 @@ Get an OpenAI API Secret Key and install into the Project Environment Variables 
 
 Configure the entire assistant, create any filestores and tools and store the `ASSISTANT_ID` environment variable in the Project Environment Variables.
 
-# Step 3: Create a route.ts for api/assistant:
+# Step 3: Create a route.ts that uses Vercel's AI SDK:
 
 This will create a server that communicates with the OpenAI Assistant API.
 
@@ -167,9 +167,9 @@ export async function POST(req: Request) {
 }
 ```
 
-# Step 4: Create a web Assistant that users can interact with.
+# Step 4: Create a web Assistant that users can interact with the Assistant using Vercel's AI SDK UI
 
-```
+```typescript
 'use client';
 
 import { Message, useAssistant } from '@ai-sdk/react';
