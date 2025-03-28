@@ -9,9 +9,12 @@ This guide outlines the architecture, best practices, and implementation details
 - **React 19+** for UI components
 - **Next.js 15+** with App Router
 - **Tailwind CSS v4** for styling
-- **shadcn/ui** component library
-- **Lucide** icon library
-- **Google Fonts** with the `Inter` font
+- **shadcn/ui** component library such as `import { Button } from "@/components/ui/button"` installed with `shadcn@canary`
+- **Lucide** icon library such as `import { Camera } from 'lucide-react'`
+- **Google Fonts** with `import { Inter } from 'next/font/google'`
+- **Image Optimization** with `import Image from 'next/image'`
+- **Lazy Loading** with `import dynamic from 'next/dynamic'`
+- **Dark Mode** with `import { ThemeProvider as NextThemesProvider } from 'next-themes'`
 
 ### Backend
 - **Supabase** for PostgreSQL database

@@ -114,8 +114,6 @@ types/                         # TypeScript type definitions
     └── index.ts               # Domain type exports
 
 public/                        # Static assets (only if needed - mostly use Vercel Storage Blob Store or Supabase Storage)
-├── favicon.ico                # Main favicon for browser tabs
-├── apple-touch-icon.png       # Icon for iOS when added to home screen (180x180px)
 ├── logo.svg                   # Primary brand logo (light mode)
 ├── logo-dark.svg              # Dark mode variant of the logo
 ├── logo-mark.svg              # Symbol/icon-only version of the logo
@@ -126,6 +124,14 @@ public/                        # Static assets (only if needed - mostly use Verc
 middleware.ts                  # Root Next.js middleware for auth protection
 next.config.js                 # Next.js configuration
 postcss.config.mjs             # Configuration for PostCSS
-tailwind.config.js             # Tailwind CSS configuration
 tsconfig.json                  # TypeScript configuration
+```
+
+### Files to NOT Create with V0
+
+```
+public/
+├── favicon.ico                # Main favicon for browser tabs
+├── apple-touch-icon.png       # Icon for iOS when added to home screen (180x180px)
+tailwind.config.js             # Old Tailwind v3 CSS configuration - not used in Tailwind v4
 ```

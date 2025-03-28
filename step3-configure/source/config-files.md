@@ -36,13 +36,12 @@ OPENAI_API_KEY=sk-MjR0...wX6C
 GEMINI_API_KEY=AJza...ofog
 ```
 
-## Tailwind CSS Setup
+## Tailwind v4 CSS Setup
 
-### tailwind.config.ts
-- Minimal configuration required for Tailwind v4
-- Include content paths to your application files
-- Enable dark mode with `darkMode: ["class", '[data-theme="dark"]']`
-- Extend theme colors to support shadcn/ui components with CSS variables
+### ./tailwind.config.ts (no longer necessary)
+
+- No longer needed in Tailwind v4!
+- New directives: @plugin and @source replace the need for configuration in tailwind.config.ts
 
 ### postcss.config.mjs
 - Configure with Tailwind v4 plugin:
@@ -54,27 +53,48 @@ GEMINI_API_KEY=AJza...ofog
   }
   ```
 
-### globals.css
-- Import Tailwind CSS with `@import "tailwindcss";`
+### app/globals.css
+
+- Import Tailwind v4 CSS with `@import "tailwindcss";`
+  - old method in Tailwind v3 was `@tailwind base;`, `@tailwind components`, `@tailwind utilities` - this is no longer used in v4
+  - old Tailwind v3 method `@layer base {}` is replaced by Tailwind v4 method `@theme`
+- Use `@plugin` in v4
+- Use `@oklch` in v4 to define colors
 - Include CSS variables for theming that support shadcn/ui components
-- Define light and dark theme color palettes using HSL values
+- Define light and dark theme color palettes
 - Place in `app/` directory and import in root layout
+
+```css
+@import "tailwindcss";
+
+@theme {
+  --font-sans: ui-sans-serif;
+  --font-serif: ui-serif;
+  --font-mono: ui-monospace;
+}
+```
+
+### app/layout.tsx
+
+```
+import "./globals.css"
+```
 
 ## Core Configuration Files
 
-### next.config.js
+### ./next.config.js
 - Configure image domains for external images (including Supabase)
 - Add security headers
 - Enable experimental features as needed
 - Configure redirects and rewrites if necessary
 
-### tsconfig.json
+### ./tsconfig.json
 - Use Next.js recommended TypeScript settings
 - Set paths alias for easier imports (`@/*`)
 - Include Next.js types
 - Configure strict mode for better type safety
 
-### middleware.ts
+### ./middleware.ts
 - Implement authentication session refresh logic
 - Configure route matching pattern to exclude static assets
 
@@ -157,5 +177,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     // ...blogRoutes, // Uncomment when implemented
   ];
+}
+```
+
+# Dark Mode / Theme Provider
+
+## components/providers/theme-provider.tsx
+
+```typescript
+"use client"
+
+import * as React from "react"
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export function ThemeProvider({
+  children,
+  ...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+
+```
+
+## app/layout.tsx
+
+```typescript
+import { ThemeProvider } from "@/components/theme-provider"
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
+  )
 }
 ```

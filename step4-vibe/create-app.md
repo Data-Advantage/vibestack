@@ -1,11 +1,10 @@
 # Prompt 1: Project Setup with Existing Supabase Integration
 ```
-Create a stub Next.js 15 project with a root landing page that will eventually become the app described in the Project Settings Sources file `product-requirements-document.md`. Use TypeScript, App Router, and Tailwind CSS according to the specifications in Project Settings Sources file `config-files.md`. Install shadcn/ui and Lucide icons. Set up only the following core files and directories:
+Create a stub Next.js 15 project with a root landing page that will eventually become the app described in the Project Settings Source file `product-requirements-document.md`. Use TypeScript, App Router, and Tailwind CSS according to the specifications in Project Settings Sources file `config-files.md`. Install shadcn/ui and Lucide icons. Set up only the following core files and directories:
 
-Files to create:
-- next.config.js
+Files to create (see details in Project Settings Source file `config-files.md`):
+- next.config.js (Next 15)
 - postcss.config.mjs
-- tailwind.config.js
 - tsconfig.json
 - .env.example (documenting all required environment variables)
 - app/layout.tsx (root layout)
@@ -15,6 +14,9 @@ Files to create:
 - lib/constants/routes.ts
 - public/logo.svg
 - public/robots.txt
+
+Files to NOT create:
+- tailwind.config.ts (obsolete in Tailwind v4)
 
 Note that Supabase integration has already been configured with necessary environment variables. The .env.example file should document all the required environment variables for future reference including placeholders for Supabase credentials, authentication redirect URLs, and any other configuration variables mentioned in integration-details.md.```
 
