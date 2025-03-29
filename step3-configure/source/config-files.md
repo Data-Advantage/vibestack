@@ -45,21 +45,24 @@ GEMINI_API_KEY=AJza...ofog
 
 ### postcss.config.mjs
 - Configure with Tailwind v4 plugin:
-  ```js
-  export default {
-    plugins: {
-      '@tailwindcss/postcss': {},
-    },
-  }
-  ```
+
+```js
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+export default config;
+```
 
 ### app/globals.css
 
 - Import Tailwind v4 CSS with `@import "tailwindcss";`
-  - old method in Tailwind v3 was `@tailwind base;`, `@tailwind components`, `@tailwind utilities` - this is no longer used in v4
+  - The old method in Tailwind v3 was `@tailwind base;`, `@tailwind components`, `@tailwind utilities` - this is no longer used in v4
   - old Tailwind v3 method `@layer base {}` is replaced by Tailwind v4 method `@theme`
 - Use `@plugin` in v4
 - Use `@oklch` in v4 to define colors
+- Implement styling with utility classes
 - Include CSS variables for theming that support shadcn/ui components
 - Define light and dark theme color palettes
 - Place in `app/` directory and import in root layout
