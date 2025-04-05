@@ -59,6 +59,57 @@ create table api.profiles (
 
 When creating UUIDs as primary keys in Supabase, use `pgcrypto` with the `gen_random_uuid()` function.
 
+## Best Practices for Trigger Functions
+
+### 1. Use Proper Schema Qualification
+
+Always place utility functions in the `public` schema and fully qualify their names when referenced:
+
+```sql
+-- Create function in public schema
+CREATE FUNCTION public.update_timestamp() RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Reference with full schema qualification
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON api.my_table 
+FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
+```
+
+### 2. Avoid Dynamic SQL for Trigger Creation
+
+Use explicit trigger creation statements instead of DO blocks or dynamic SQL:
+
+```sql
+-- Create triggers with explicit statements for better reliability
+CREATE TRIGGER set_updated_at BEFORE UPDATE ON api.profiles 
+FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
+```
+
+### 3. Follow Proper Function Order
+
+1. Create utility functions first (at the beginning of your migration)
+2. Create tables next
+3. Create triggers referencing the functions
+4. Apply other constraints and policies
+
+### 4. Test Before Deployment
+
+Before deploying, verify that trigger functions work properly by:
+- Checking function visibility in the correct schema
+- Testing trigger creation on a sample table
+- Verifying the trigger behavior with simple CRUD operations
+
+### 5. Common Issues to Avoid
+
+- **Missing schema qualification**: Always use `public.function_name()` not just `function_name()`
+- **Creation order problems**: Create functions before they're referenced by triggers
+- **Search path confusion**: Don't rely on search_path for function resolution in triggers
+- **Dynamic SQL failures**: Be careful with DO blocks that create triggers
+
 ## Row Level Security (RLS)
 
 ### General RLS Best Practices
