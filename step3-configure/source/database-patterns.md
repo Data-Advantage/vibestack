@@ -334,3 +334,46 @@ Remember: When in doubt, fully qualify all column references in complex queries 
 - Use appropriate foreign key constraints and cascading operations
 
 Remember that proper database design is crucial for application scalability and security. Always consider the implications of your schema design on performance, security, and maintainability.
+
+## The Array Indexing Pattern with Storage Functions
+
+When working with Supabase storage functions (`storage.foldername()` and `storage.filename()`), remember these functions return arrays, not scalar values. Always use array indexing to access individual elements.
+
+### Common Error: Array-to-Text Comparison
+
+```sql
+-- ❌ INCORRECT: Will produce operator error
+CREATE POLICY "Access policy" ON storage.objects FOR SELECT USING (
+  storage.foldername(storage.objects.name) = 'some_folder' 
+);
+```
+
+This produces: `ERROR: operator does not exist: text[] = text`
+
+### Correct Pattern: Array Indexing
+
+```sql
+-- ✅ CORRECT: Use array indexing syntax
+CREATE POLICY "Access policy" ON storage.objects FOR SELECT USING (
+  storage.foldername(storage.objects.name)[1] = 'some_folder'
+);
+```
+
+## Quick Reference
+
+- PostgreSQL arrays are 1-indexed (first element is at position 1)
+- Use `[1]` to access the first folder segment, `[2]` for the second, etc.
+- For UUID comparisons, add type casting: `storage.foldername(...)[1] = entity.id::text`
+- For nested structures: `storage.foldername(...)[2] = 'subfolder'`
+
+## Example: User-specific Content Policy
+
+```sql
+CREATE POLICY "Users can access their own content" ON storage.objects
+FOR SELECT USING (
+  bucket_id = 'user-content' AND 
+  auth.uid()::text = storage.foldername(storage.objects.name)[1]
+);
+```
+
+Remember that accessing non-existent array elements returns NULL rather than an error, so validate your path structure in your policies.
