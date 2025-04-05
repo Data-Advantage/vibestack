@@ -55,6 +55,10 @@ create table api.profiles (
 - Consider soft deletes with a `deleted_at` timestamp instead of hard deletes
 - Use enums for status fields and other fixed-value columns
 
+## UUID Generation Options
+
+When creating UUIDs as primary keys in Supabase, use `pgcrypto` with the `gen_random_uuid()` function.
+
 ## Row Level Security (RLS)
 
 ### General RLS Best Practices
