@@ -335,45 +335,25 @@ Remember: When in doubt, fully qualify all column references in complex queries 
 
 Remember that proper database design is crucial for application scalability and security. Always consider the implications of your schema design on performance, security, and maintainability.
 
-## The Array Indexing Pattern with Storage Functions
+## Supabase Storage Function Array Access Pattern
 
-When working with Supabase storage functions (`storage.foldername()` and `storage.filename()`), remember these functions return arrays, not scalar values. Always use array indexing to access individual elements.
-
-### Common Error: Array-to-Text Comparison
+When working with Supabase storage functions that return arrays (`storage.foldername()`, `storage.filename()`), always use this pattern:
 
 ```sql
--- ❌ INCORRECT: Will produce operator error
-CREATE POLICY "Access policy" ON storage.objects FOR SELECT USING (
-  storage.foldername(storage.objects.name) = 'some_folder' 
-);
+-- Correct pattern for accessing array elements
+(storage.foldername(storage.objects.name))[1]
 ```
 
-This produces: `ERROR: operator does not exist: text[] = text`
+- Always use parentheses around the function call
+- Arrays are 1-indexed in PostgreSQL
+- Type cast when comparing with UUIDs: `(storage.foldername(...))[1] = entity.id::text`
 
-### Correct Pattern: Array Indexing
-
-```sql
--- ✅ CORRECT: Use array indexing syntax
-CREATE POLICY "Access policy" ON storage.objects FOR SELECT USING (
-  storage.foldername(storage.objects.name)[1] = 'some_folder'
-);
-```
-
-## Quick Reference
-
-- PostgreSQL arrays are 1-indexed (first element is at position 1)
-- Use `[1]` to access the first folder segment, `[2]` for the second, etc.
-- For UUID comparisons, add type casting: `storage.foldername(...)[1] = entity.id::text`
-- For nested structures: `storage.foldername(...)[2] = 'subfolder'`
-
-## Example: User-specific Content Policy
+### Example
 
 ```sql
-CREATE POLICY "Users can access their own content" ON storage.objects
+CREATE POLICY "Users can access their files" ON storage.objects
 FOR SELECT USING (
-  bucket_id = 'user-content' AND 
-  auth.uid()::text = storage.foldername(storage.objects.name)[1]
+  bucket_id = 'user-files' AND 
+  auth.uid()::text = (storage.foldername(storage.objects.name))[1]
 );
 ```
-
-Remember that accessing non-existent array elements returns NULL rather than an error, so validate your path structure in your policies.
