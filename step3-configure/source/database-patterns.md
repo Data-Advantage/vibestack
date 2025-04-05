@@ -287,6 +287,19 @@ create policy "Users can upload their own avatar"
   );
 ```
 
+### Preventing Ambiguous Column References in Storage Policies
+
+When writing storage policies that involve JOINs with other tables, always fully qualify column names that exist in multiple tables, especially the `name` column in `storage.objects`.
+
+#### Quick Reference
+
+- Storage functions require table qualification: use `storage.objects.name` not just `name`
+- This is particularly important in EXISTS subqueries that join `storage.objects` with your application tables
+- Common error message to watch for: "column reference is ambiguous"
+- Most frequently affected functions: `storage.foldername()` and `storage.filename()`
+
+Remember: When in doubt, fully qualify all column references in complex queries to avoid ambiguity.
+
 ## Data Access from Next.js
 
 ### Server Components
