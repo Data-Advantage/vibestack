@@ -21,6 +21,7 @@ Avoid using the `public` schema for user data. Instead, create purpose-specific 
 - `reference` - Publicly available lookup tables
 - `analytics` - Reporting data
 - `audit` - Tracking changes
+- `stripe` - Synced data from Stripe webhooks
 
 This separation provides clearer organization, better security isolation, and more maintainable code.
 
@@ -357,3 +358,7 @@ FOR SELECT USING (
   auth.uid()::text = (storage.foldername(storage.objects.name))[1]
 );
 ```
+
+## Stripe Synced Data
+
+- Create a `stripe.customer` and `stripe.subscription` table for synced data from Stripe webhooks.
