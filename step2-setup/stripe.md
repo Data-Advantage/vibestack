@@ -67,6 +67,7 @@ STRIPE_WEBHOOK_SECRET=whsec_live_abc123...  # You'll get this in section 3
    - Production: `https://{appname}.vercel.app/api/webhooks/stripe`
 
 3. For each endpoint, select these events:
+   - `customer.created`
    - `customer.subscription.created`
    - `customer.subscription.updated`
    - `customer.subscription.deleted`
