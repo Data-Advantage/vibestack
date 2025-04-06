@@ -161,7 +161,7 @@ Set up Row Level Security policies as described in the database guide. Generate 
 # Prompt 4: Stripe Integration
 
 ```
-Set up Stripe integration for subscription handling as detailed in integration-details.md.
+Set up Stripe integration for subscription handling as detailed in Project Settings -> Sources: `stripe.md`.
 
 Files to create:
 - app/api/webhooks/stripe/route.ts (webhook endpoint)
@@ -172,7 +172,7 @@ Files to create:
 - types/api/responses.ts (payment-related responses)
 - lib/hooks/use-subscription.ts
 
-Implement the webhook endpoint to process Stripe events. Create the necessary database schema updates to track subscription status. Build checkout session creation logic, and ensure proper synchronization between Stripe and the Supabase database. Implement proper error handling and webhook verification.
+Implement the webhook endpoint to process Stripe events. Ensure that there is a sufficient database schema to track subscription status. Build checkout session creation logic, and ensure proper synchronization between Stripe and the Supabase database. Implement proper error handling and webhook verification. Ask me for any ENV variables that are needed.
 ```
 
 # Prompt 5: Core UI Components
