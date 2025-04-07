@@ -1,6 +1,6 @@
 # Next.js/Supabase Application Development Guide
 
-This guide outlines the architecture, best practices, and implementation details for building a modern web application with v0 AI agents.
+This guide outlines the architecture, best practices, and implementation details for building a modern web application with the v0 AI code agent.
 
 ## Core Technology Stack
 
@@ -8,11 +8,15 @@ This guide outlines the architecture, best practices, and implementation details
 - **TypeScript** as the primary language
 - **React 19+** for UI components
 - **Next.js 15+** with App Router
-- **Tailwind CSS v4** for styling
-- **shadcn/ui** component library such as `import { Button } from "@/components/ui/button"` installed with `shadcn@canary`
+- **Tailwind CSS v3.4** for styling
+- **shadcn** component library such as `import { Button } from "@/components/ui/button"`
 - **Lucide** icon library such as `import { Camera } from 'lucide-react'`
-- **Google Fonts** with `import { Inter } from 'next/font/google'`
+- **Google Fonts** with `import { Inter } from 'next/font/google'` in `app/layout.tsx`
+- **Forms** with `import Form from 'next/form'`
+- **Links** with `import Link from 'next/link'`
 - **Image Optimization** with `import Image from 'next/image'`
+- **Self-Hosted Video** with `<video>`
+- **Externally-Hosted Video** with `<iframe>`
 - **Lazy Loading** with `import dynamic from 'next/dynamic'`
 - **Dark Mode** with `import { ThemeProvider as NextThemesProvider } from 'next-themes'`
 
@@ -29,66 +33,40 @@ This guide outlines the architecture, best practices, and implementation details
   - **Image Generation** uses `model: google('gemini-2.0-flash-exp-image-generation'),`
 - **Vercel AI SDK UI** for chatbots and generative user interfaces
 
+### Metadata & Analytics
+- **<head> tags** using `import type { Metadata } from 'next'` and `export const metadata: Metadata = { title: 'My Page Title' }`
+- **Static Metadata** using `import type { Metadata } from 'next'`
+- **Dynamic Metadata** using `import type { Metadata, ResolvingMetadata } from 'next'`
+- **favicon** in `app/favicon.ico`
+- **icon.svg** in `app/icon.ts` using `import { ImageResponse } from 'next/og'`
+- **apple-icon.png** in `app/apple-icon.ts` using `import { ImageResponse } from 'next/og'`
+- **Open Graph** with `app/{route}/opengraph-image.tsx` using `import { ImageResponse } from 'next/og'`
+- **manifest.json** in `app/manifest.ts` using `import type { MetadataRoute } from 'next'` function `manifest(): MetadataRoute.Manifest`
+- **sitemap.xml** in `app/sitemap.ts` using `import type { MetadataRoute } from 'next'` function `sitemap(): MetadataRoute.Sitemap`
+- **robots.txt** in  `app/robots.ts` using `import type { MetadataRoute } from 'next'` function `robots(): MetadataRoute.Robots`
+- **Core Web Vitals** for analytics with `import { useReportWebVitals } from 'next/web-vitals'`
+
+### Blog & Static Content
+- **Markdwon** files in `/app/blog/post-1.md`
+- **Post URLs** from the `.md` filenames
+- **Post Metadata** with YAML Front Matter using `npm install gray-matter`:
+```
+---
+title: 'My Title Here'
+date: '2020-01-02'
+---
+```
+- **HTML Conversion** at build time using `import fs`, `import path` to connect to the `posts` folder and read the markdown files
+- **Fetch Blog Data** with `getStaticsProps()`
+
 ### Infrastructure
 - **Vercel** for hosting, environment variables, and preview deployments
 - **Vercel Blob Storage** for static assets
 - **Supabase Storage** for user-generated content
 
-## Architecture Principles
-
-### Content & Interactive Requirements
-- Static marketing pages with strong SEO optimization
-- Protected app areas behind authentication
-- Real-time interactive components using Supabase subscriptions
-- Progressive enhancement where static content becomes interactive after hydration
-
-### SEO Optimization
-- pSEO pages organized by category & slug
-- Implement Next.js Metadata API for title, description, and OpenGraph tags
-- Use server-side rendering for SEO-critical content
-- Implement proper canonical URLs and sitemap generation
-- Optimize images with next/image and appropriate alt text
-- Implement JSON-LD structured data as appropriate
-
-### Performance Targets
-- **Core Web Vitals**: LCP: < 2.5s, FID: < 100ms, CLS: < 0.1
-- Mobile-optimized bundle sizes
-- Efficient code splitting and lazy loading
-- Optimized asset delivery
-
-### Responsive Design Approach
+## Responsive Design Approach
 - Mobile-first development methodology
 - Fluid layouts that adapt to any screen size
 - Touch-friendly interface with appropriate sizing
 - Consistent breakpoints (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px)
 - Tailwind responsive modifiers for consistent implementation
-
-## Implementation Roadmap
-
-For detailed implementation steps and phases, refer to the [implementation-roadmap.md](source/implementation-roadmap.md) guide. This document outlines a ruthlessly prioritized approach to building a Next.js/Supabase application with Google Login and Stripe integration.
-
-## Development Guides
-
-For detailed implementation instructions, refer to the following development guides that are in the v0 Project Sources:
-
-### Architecture & Structure
-- [project-structure.md](source/project-structure.md) - Complete project directory organization
-- [config-files.md](source/config-files.md) - Configuration file setup and options
-- [typescript-patterns.md](source/typescript-patterns.md) - TypeScript best practices and patterns
-
-### Backend & Data
-- [database-patterns.md](source/database-patterns.md) - Database schema design and RLS policies
-- [integration-details.md](source/integration-details.md) - External service integration specifications
-
-### Authentication
-- [auth-implementation.md](source/auth-implementation.md) - Supabase Auth implementation
-- [login-with-google.md](source/login-with-google.md) - Login with Google setup
-
-### Frontend
-- [ui-components.md](source/ui-components.md) - Component architecture and shadcn/ui implementation
-- [accessibility-standards.md](source/accessibility-standards.md) - Accessibility requirements and practices
-
-### AI Implementation
-- [ai-sdk-core.md](source/ai-sdk-core.md) - Core Vercel AI SDK implementation
-- [ai-sdk-ui.md](source/ai-sdk-ui.md) - UI components for AI features
-- [ai-sdk-providers.md](source/ai-sdk-providers.md) - AI model provider configuration
