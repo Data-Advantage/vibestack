@@ -18,20 +18,7 @@ This guide outlines the architecture, best practices, and implementation details
 - **Self-Hosted Video** with `<video>`
 - **Externally-Hosted Video** with `<iframe>`
 - **Lazy Loading** with `import dynamic from 'next/dynamic'`
-- **Dark Mode** with `import { ThemeProvider as NextThemesProvider } from 'next-themes'`
-
-### Backend
-- **Supabase** for PostgreSQL database
-- **Supabase Auth** for authentication and user management
-- **Supabase Storage** for user file uploads
-- **Supabase Realtime** for real-time data subscriptions
-
-### AI
-- **Vercel AI SDK** for AI-powered apps & agents
-  - **OpenAI Responses API** uses `model: openai.responses('gpt-4o-mini')` (not Completions API)
-  - **OpenAI Object Generation** uses `model: openai.responses('gpt-4o')`
-  - **Image Generation** uses `model: google('gemini-2.0-flash-exp-image-generation'),`
-- **Vercel AI SDK UI** for chatbots and generative user interfaces
+- **Dark Mode** with `import { ThemeProvider as NextThemesProvider } from 'next-themes'` and enable class-based dark mode in `tailwind.config.js`
 
 ### Metadata & Analytics
 - **<head> tags** using `import type { Metadata } from 'next'` and `export const metadata: Metadata = { title: 'My Page Title' }`
@@ -59,7 +46,26 @@ date: '2020-01-02'
 - **HTML Conversion** at build time using `import fs`, `import path` to connect to the `posts` folder and read the markdown files
 - **Fetch Blog Data** with `getStaticsProps()`
 
-### Infrastructure
+### Backend
+- **Supabase** for PostgreSQL database using `@supabase/supabase-js` with `lib/supabaseAdmin.ts` for reusable access
+- **Supabase Auth** for authentication and user management using `@supabase/ssr`
+- **Supabase Storage** for user file uploads
+- **Supabase Realtime** for real-time data subscriptions
+
+### AI
+- **Vercel AI SDK** for AI-powered apps & agents
+  - **OpenAI Responses API** uses `model: openai.responses('gpt-4o-mini')` (not Completions API)
+  - **OpenAI Object Generation** uses `model: openai.responses('gpt-4o')`
+  - **Image Generation** uses `model: google('gemini-2.0-flash-exp-image-generation'),`
+- **Vercel AI SDK UI** for chatbots and generative user interfaces
+
+## Payments
+- **Stripe** server side code with `import Stripe from 'stripe'`
+- **Stripe Customer Portal** integration
+- **Stripe Webhook Handler** at `app/api/webhooks/stripe/route.tx` to store data in the `stripe` schema in Supabase
+- **Stripe Secrets** stored as `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`
+
+## Infrastructure
 - **Vercel** for hosting, environment variables, and preview deployments
 - **Vercel Blob Storage** for static assets
 - **Supabase Storage** for user-generated content
