@@ -41,17 +41,25 @@ Vibestack bridges the gap between your ideas and functional software by providin
 
 Check out our [Quick Start Guide](./docs/quick-start.md) to build your first component in minutes.
 
-## 📚 Example Use Cases
+## ⚡ Recommended 5-Day Workflow
 
-- Create a landing page for your startup
-- Build a dashboard for your small business
-- Develop a booking system for your service
-- Design a portfolio website
-- Implement an e-commerce storefront
+Here's a potential timeline to take your idea from concept to launch using Vibestack prompts:
+
+- **Day 1: Idea & Initial App Build** - Define your core concept and use prompts to generate the basic structure and key components of your application.
+- **Day 2: Feedback & Refinement** - Share your initial build, gather feedback, and use prompts to iterate on the design and functionality.
+- **Day 3: Full App Build** - Flesh out the remaining features, connect UI elements to backend logic (using appropriate prompts), and ensure responsiveness.
+- **Day 4: Marketing Content Build** - Use prompts to generate marketing copy, landing page content, and promotional materials.
+- **Day 5: Promotion & Launch** - Prepare for launch, push your application live, and start promoting it.
+
+## 💡 Examples
+
+- [SarahsRecipes](https://www.sarahsrecipes.ai)
+- [DannysDrinks.ai](https://www.dannysdrinks.ai)
+- [Kidtales.io](https://www.kidtales.io)
 
 ---
 
 Vibestack is committed to democratizing software development and empowering everyone to bring their ideas to life. No code experience needed—just your creativity.
 
-[![X Follow](https://img.shields.io/twitter/follow/DataAdvantageAI?style=social)](https://twitter.com/dataadvantageai)
+[![X Follow](https://img.shields.io/twitter/follow/DataAdvantageAI?style=social)](https://x.com/dataadvantageai)
 [![GitHub Stars](https://img.shields.io/github/stars/vibestack/vibestack?style=social)](https://github.com/Data-Advantage/vibestack)
