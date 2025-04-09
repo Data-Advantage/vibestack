@@ -52,16 +52,16 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.4 - Programmatic SEO Content | [seo-content-chat](4.4-seo-content-chat.md) | `seo-content.md` |
+| 4.4 - SEO Content Plan | [4.4-seo-plan](4.4-seo-plan.md) | `seo-content.md` |
 | 4.5 - Social Media Materials | [social-media-chat](4.5-social-media-chat.md) | `social-media-kit.md` |
 | 4.6 - Email Campaigns | [email-campaign-chat](4.6-email-campaign-chat.md) | `email-templates.md` |
 
-### 4.4 - Programmatic SEO Content
+### 4.4 - SEO Content Plan
 
-**Goal**: Generate SEO-optimized content to improve your application's visibility in search engines.
+**Goal**: Generate a comprehensive SEO strategy to improve your application's visibility in search engines.
 
 #### Process
-1. Copy paste each Step in [seo-content-chat](4.4-seo-content-chat.md) into an AI chat tool.
+1. Copy paste each section in [4.4-seo-plan](4.4-seo-plan.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `seo-content.md`
 
@@ -106,11 +106,12 @@ Before moving on to Day 5, ensure you have:
   - [ ] Visual description suggestions
   - [ ] Use case examples
 
-- [ ] Created SEO content including:
-  - [ ] Keyword research and targeting
-  - [ ] Meta descriptions and titles
-  - [ ] Content templates for key pages
-  - [ ] Blog post ideas and outlines
+- [ ] Created SEO content plan including:
+  - [ ] Editorial content strategy
+  - [ ] Programmatic SEO framework
+  - [ ] Technical SEO requirements
+  - [ ] Content development roadmap
+  - [ ] Measurement framework
 
 - [ ] Prepared social media kit with:
   - [ ] Launch announcement templates
