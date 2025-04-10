@@ -8,3 +8,14 @@
 
 - GitHub
 
+# Analytics
+
+# User Interface
+
+- shadcn
+
+## Design
+
+- Tailwind CSS
+- tweakcn
+
