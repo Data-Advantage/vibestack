@@ -80,9 +80,10 @@ Follow our proven timeline to take your idea from concept to launch:
 
 ## 💡 Success Stories
 
-- [SarahsRecipes](https://www.sarahsrecipes.ai) - Recipe generation platform
-- [DannysDrinks.ai](https://www.dannysdrinks.ai) - AI-powered cocktail discovery
-- [Kidtales.io](https://www.kidtales.io) - Personalized children's stories
+- [Launch Week](https://www.launchweek.ai) - Build & launch an app in a week
+- [Sarahs Recipes](https://www.sarahsrecipes.ai) - Recipe generation platform
+- [Dannys Drinks](https://www.dannysdrinks.ai) - AI-powered cocktail discovery
+- [Kidtales](https://www.kidtales.io) - Personalized children's stories
 
 ---
 
