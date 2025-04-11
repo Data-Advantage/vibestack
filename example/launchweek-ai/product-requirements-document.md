@@ -6,15 +6,15 @@
 LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into launched products in just one week, without coding skills, by providing AI-powered guidance and tooling throughout the entire build-launch-promote process.
 
 ### Strategic Goals
-1. Help entrepreneurs successfully launch their SaaS products in a 7-day timeframe
+1. Help entrepreneurs successfully launch their SaaS products in a 5-day timeframe
 2. Achieve a 70% completion rate for users who start the 5-day process
-3. Establish LaunchWeek.ai as the go-to platform for rapid AI-assisted SaaS development including non-technical founders
+3. Establish LaunchWeek.ai as the go-to platform for rapid AI-assisted SaaS development
 
 ### Core User Journey
 1. User signs up for LaunchWeek.ai with their SaaS idea
 2. Platform guides user through a structured 5-day process:
    - Day 1: Idea & Initial App Build
-   - Day 2: Feedback & Refinement
+   - Day 2: User Feedback & Refinement
    - Day 3: Full App Build 
    - Day 4: Marketing Content Build
    - Day 5: Promotion & Launch
@@ -61,7 +61,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 
 ### 2. AI Prompt Engine for App Development (Priority: High)
 - Pre-engineered prompts for each development stage
-- Integration with Claude.ai, v0.dev, and other AI tools
+- Integration with Claude.ai, ChatGPT, Cursor, v0.dev, and other AI tools
 - Customization options for specific product types
 - Prompt history and versioning
 
@@ -85,6 +85,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Email campaign templates (welcome, onboarding, engagement)
 - Feature highlight descriptions and benefits framework
 - Landing page copy with conversion-optimized sections
+- Sales & marketing presentation outline
 
 ### 6. SEO Content Planning System (Priority: Medium)
 - Editorial content strategy with 20+ article ideas
@@ -168,7 +169,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - AI-assisted generation of user personas based on target audience inputs
 - Feature prioritization matrix
 - Automatic generation of a formatted PRD document
-- Export options (PDF, Markdown, Google Doc)
+- Export options (PDF, Markdown)
 
 #### US-6: AI-Assisted Requirement Refinement
 **As a** user defining my product requirements,  
@@ -205,7 +206,6 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 **Acceptance Criteria:**
 - Value proposition generator based on PRD
 - Target audience and messaging alignment tools
-- Multiple messaging variations for A/B testing
 - Tone and voice customization options
 - Competitive differentiation highlights
 
@@ -219,7 +219,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Pricing page content with tier structure recommendations
 - About page content framework
 - FAQ generator based on product features
-- Export options compatible with website builders
+- Export as Markdown
 
 #### US-10: Landing Page Creation
 **As a** founder preparing for launch,  
@@ -245,7 +245,6 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Feature announcement templates
 - Re-engagement campaigns for inactive users
 - Best practices for subject lines and email structure
-- A/B testing recommendations for email content
 
 ### SEO Content Planning
 
@@ -383,7 +382,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 
 **Acceptance Criteria:**
 - Email/password registration option
-- Social login options (Google, GitHub)
+- Social login options with Google
 - Clear terms of service and privacy policy acceptance
 - Email verification process
 - Welcome onboarding sequence
@@ -456,9 +455,10 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 
 ### Technology Stack
 - Frontend: Next.js for server-side rendering and optimized performance
+  - Components: shadcn for standard component libary and the Vercel AI SDK UI for AI components
 - Backend: Supabase for serverless functions and Postgres database
 - Authentication: Supabase Auth
-- AI Integration: OpenAI API, Claude API, and v0.dev API
+- AI Integration: OpenAI API, Anthropic Claude API, and the Vercel AI SDK for a generative AI programming wrapper
 - Deployment: Vercel for frontend, Supabase for backend
 
 ### Third-Party Integrations
@@ -497,7 +497,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Create landing page content
 - Develop email marketing templates
 - Generate social media announcements
-- Build SEO content strategy
+- Build SEO strategy & content
 
 ### Day 5: Promotion & Launch
 - Deploy final application
