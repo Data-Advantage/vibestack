@@ -58,6 +58,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Daily objectives and milestones
 - Progress tracking with completion indicators
 - Contextual help and examples for each step
+- Flexible scheduling (intensive 5-day week or spread across 5 weeks)
 
 ### 2. AI Prompt Engine for App Development (Priority: High)
 - Pre-engineered prompts for each development stage
@@ -70,6 +71,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Guided sections for product vision, user personas, features
 - AI-assisted refinement of product requirements
 - Export functionality for use with development tools
+- Visual diff tracking (green for additions, red for deletions)
 
 ### 4. Database Schema Generator (Priority: Medium)
 - Intelligent schema creation based on product requirements
@@ -105,6 +107,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Project management board for tasks
 - Document repository for generated assets
 - Milestone celebration and achievements
+- Simultaneous project management (2 for Free tier, 20 for Pro tier)
 
 ## 4. User Stories and Acceptance Criteria
 
@@ -119,7 +122,8 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Interactive timeline showing all 5 days with core activities
 - Estimated time commitment for each day
 - Required tools and accounts highlighted
-- Option to schedule the 5 days on my calendar
+- Option to schedule the 5 days on my calendar (intensive week or spread across weeks)
+- Calendar integration for scheduled activities
 
 #### US-2: Daily Guided Workflow
 **As a** user following the LaunchWeek process,  
@@ -132,6 +136,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Progress tracking as tasks are completed
 - Option to mark tasks as complete or skip if not applicable
 - Ability to navigate between days while preserving progress
+- Notepad interface with document in center and notes panel on the right
 
 ### AI Prompt Engine
 
@@ -145,6 +150,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Context-sensitive prompt suggestions based on current task
 - One-click copy to clipboard functionality
 - Clear instructions on which AI tool to use for each prompt
+- Indicators for which AI provider works best for each prompt type (OpenAI, Anthropic, etc.)
 
 #### US-4: Customizing Prompts
 **As a** user with specific product requirements,  
@@ -156,6 +162,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Preview of customized prompts before use
 - Save customized prompts to my library
 - Suggestions for effective prompt customization
+- Visual diff tracking showing changes made to prompts (green for additions, red for deletions)
 
 ### Requirements Builder
 
@@ -170,6 +177,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Feature prioritization matrix
 - Automatic generation of a formatted PRD document
 - Export options (PDF, Markdown)
+- Visual change tracking with color-coded diffs
 
 #### US-6: AI-Assisted Requirement Refinement
 **As a** user defining my product requirements,  
@@ -181,6 +189,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Suggestions for additional details or clarifications
 - Detection of potential conflicts or inconsistencies
 - Comparative analysis with successful similar products
+- Side-by-side view with document and AI suggestions
 
 ### Database Schema Generator
 
@@ -195,6 +204,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Customization options for data types and fields
 - Generation of SQL migration scripts compatible with Supabase
 - Implementation instructions for different database platforms
+- Visual diff tracking for schema changes during iterations
 
 ### Marketing Content Generator
 
@@ -208,6 +218,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Target audience and messaging alignment tools
 - Tone and voice customization options
 - Competitive differentiation highlights
+- Visual tracking of content revisions
 
 #### US-9: Website Content Generation
 **As a** founder building a marketing site,  
@@ -220,6 +231,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - About page content framework
 - FAQ generator based on product features
 - Export as Markdown
+- Side-by-side preview and editing panel
 
 #### US-10: Landing Page Creation
 **As a** founder preparing for launch,  
@@ -311,6 +323,7 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Daily task checklist with completion status
 - Upcoming and overdue items highlighted
 - Project settings and customization options
+- Multiple project management (2 for Free tier, 20 for Pro tier)
 
 ## 5. Non-Functional Requirements
 
@@ -331,6 +344,8 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Accessibility compliance with WCAG 2.1 AA standards
 - Mobile-responsive design for all key functions
 - Clear error messages and recovery paths
+- Visual change tracking with color-coded diffs (green for additions, red for deletions)
+- Notepad-style interface with document in center and notes panel on the right
 
 ## 6. Backend Processing & AI Worker Requirements
 
@@ -371,6 +386,33 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Quick access to view and download previous outputs
 - Option to rerun previous requests with modifications
 
+### AI Models & Provider Integration
+
+#### US-21: AI Provider Selection
+**As a** user working with AI tools,  
+**I want to** leverage the optimal AI provider for each task type,  
+**So that** I get the best results for my specific needs.
+
+**Acceptance Criteria:**
+- Support for multiple AI providers (OpenAI, Anthropic, Google)
+- Provider selection recommendations based on task type
+- Provider fallback mechanisms when primary service is unavailable
+- Transparent cost and performance comparisons between providers
+- Integration with Vercel's AI SDK for implementation
+- UI components using Vercel AI SDK UI for a consistent experience
+
+#### US-22: Prompt Management
+**As a** user working with multiple AI providers,  
+**I want to** effectively manage and optimize my prompts,  
+**So that** I minimize costs while maximizing quality.
+
+**Acceptance Criteria:**
+- Prompt versioning and history tracking
+- Token usage estimation before submission
+- Cost optimization recommendations
+- Performance monitoring across different providers
+- A/B testing capability for prompt variations
+
 ## 7. SaaS Business Requirements
 
 ### Authentication & User Management
@@ -406,17 +448,19 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 **So that** I can choose the right plan for my needs.
 
 **Acceptance Criteria:**
-- Clear presentation of available plans (Free, Pro)
+- Clear presentation of available plans:
+  - Free tier: Limited to 2 simultaneous app projects
+  - Pro tier: Up to 20 simultaneous app projects ($7/month or $70/year)
 - Feature comparison table
-- Pricing information with monthly/annual options
 - FAQ section addressing common subscription questions
+
 #### US-26: Subscription Management
 **As a** paying customer,  
 **I want to** manage my subscription,  
 **So that** I can upgrade, downgrade, or cancel as needed.
 
 **Acceptance Criteria:**
-- Self-service upgrade/downgrade process
+- Self-service upgrade/downgrade process via Stripe Customer Portal
 - Prorated billing for plan changes
 - Cancellation flow with feedback collection
 - Clear display of next billing date
@@ -444,21 +488,26 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 **So that** I can keep my billing information up to date.
 
 **Acceptance Criteria:**
+- Full integration with Stripe Customer Portal for billing management
 - Access to all past invoices
 - Downloadable PDF invoices
 - Add/edit/remove payment methods
 - Update billing address and information
 - Tax document access
-- Integration with Stripe Customer Portal
 
 ## 8. Technical Implementation Considerations
 
 ### Technology Stack
 - Frontend: Next.js for server-side rendering and optimized performance
-  - Components: shadcn for standard component libary and the Vercel AI SDK UI for AI components
+  - Components: shadcn for standard component library and the Vercel AI SDK UI for AI components
 - Backend: Supabase for serverless functions and Postgres database
 - Authentication: Supabase Auth
-- AI Integration: OpenAI API, Anthropic Claude API, and the Vercel AI SDK for a generative AI programming wrapper
+- AI Integration: 
+  - OpenAI API (reasoning models such as `o3`, `o1`)
+  - Anthropic Claude API (reasoning models such as `sonnet-3.7` with thinking)
+  - Google AI API (Gemini 2.5)
+  - Vercel AI SDK for consistent implementation
+- Payment Processing: Stripe with Customer Portal integration
 - Deployment: Vercel for frontend, Supabase for backend
 
 ### Third-Party Integrations
@@ -473,39 +522,68 @@ LaunchWeek.ai empowers aspiring entrepreneurs to transform their SaaS ideas into
 - Project data and content in PostgreSQL via Supabase
 - Large text assets in Supabase Storage
 
-## 9. One-Week Implementation Plan
+## 9. Required External Services & Setup
+
+### Required Accounts
+Users will need to set up accounts with the following services:
+
+| Service | Purpose | Cost | Notes |
+|---------|---------|------|-------|
+| [v0.dev](https://v0.dev) | AI-assisted app development | Pro: $20/month or Team: $50/month | Pro or Team subscription recommended |
+| [Vercel](https://vercel.com) | Application hosting | Free tier (included with v0) | Hobby tier ($12/month) for production apps |
+| [GitHub](https://github.com) | Version control | Free | Required for code storage and deployment |
+| [OpenAI API](https://platform.openai.com) | API access for AI integrations | Pay-per-use | Approximate cost: $10-30/month depending on usage |
+| [Anthropic API](https://console.anthropic.com) | API access for AI integrations | Pay-per-use | Approximate cost: $10-30/month depending on usage |
+| [Supabase](https://supabase.com) | Database and backend | Free tier | Pro tier ($25/month) for production apps |
+| [Stripe](https://stripe.com) | Payment processing | Free setup, transaction fees | 2.9% + $0.30 per transaction |
+
+Detailed setup instructions for each service will be provided in the onboarding process.
+
+## 10. One-Week Implementation Plan
 
 ### Day 1: Idea & Initial App Build
-- Define product vision and requirements
-- Create database schema
-- Generate marketing story
-- Build initial app version with v0.dev
+- Morning:
+  - Define product vision and requirements
+  - Create database schema
+  - Generate marketing story
+- Afternoon:
+  - Build initial app version with v0.dev
 
 ### Day 2: Feedback & Refinement
-- Share prototype with potential users
-- Collect and analyze feedback
-- Refine application design and functionality
-- Implement core feature improvements
+- Morning:
+  - Share prototype with potential users
+  - Collect and analyze feedback
+- Afternoon:
+  - Refine application design and functionality
+  - Implement core feature improvements
 
 ### Day 3: Full App Build
-- Complete all essential functionality
-- Implement authentication and user profiles
-- Connect UI components to backend
-- Ensure responsive design across devices
+- Morning:
+  - Complete all essential functionality
+  - Implement authentication and user profiles
+- Afternoon:
+  - Connect UI components to backend
+  - Ensure responsive design across devices
 
 ### Day 4: Marketing Content Build
-- Create landing page content
-- Develop email marketing templates
-- Generate social media announcements
-- Build SEO strategy & content
+- Morning:
+  - Create landing page content
+  - Develop email marketing templates
+- Afternoon:
+  - Generate social media announcements
+  - Build SEO strategy & content
 
 ### Day 5: Promotion & Launch
-- Deploy final application
-- Publish marketing materials
-- Announce launch on social channels
-- Begin initial user acquisition
+- Morning:
+  - Deploy final application
+  - Publish marketing materials
+- Afternoon:
+  - Announce launch on social channels
+  - Begin initial user acquisition
 
-## 10. Success Metrics
+Users can follow this plan as an intensive one-week process or spread it across 5 weeks (10 half-day sessions) to accommodate different schedules.
+
+## 11. Success Metrics
 
 ### User Engagement
 - 80% of users complete Day 1 process
