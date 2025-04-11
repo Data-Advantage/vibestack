@@ -1,4 +1,6 @@
--- 000-initial-migration.sql
+-- 000-initial-migration.sql for LaunchWeek.ai
+-- This script sets up the database schema for the LaunchWeek.ai application
+-- which helps entrepreneurs build & launch their SaaS app in just one week
 
 -- Enable necessary extensions
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
@@ -148,6 +150,19 @@ CREATE TABLE api.user_prompts (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+-- Document versions for tracking changes (for visual diff tracking)
+CREATE TABLE api.document_versions (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  project_id UUID NOT NULL REFERENCES api.projects(id) ON DELETE CASCADE,
+  task_id UUID REFERENCES api.tasks(id),
+  document_type TEXT NOT NULL,
+  version_number INTEGER NOT NULL,
+  content TEXT NOT NULL,
+  changes_summary TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  created_by UUID NOT NULL REFERENCES auth.users(id)
+);
+
 -- Generated content (outputs from AI processing)
 CREATE TABLE api.generated_content (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -162,6 +177,7 @@ CREATE TABLE api.generated_content (
   tokens_used INTEGER,
   processing_time FLOAT,
   is_favorite BOOLEAN NOT NULL DEFAULT FALSE,
+  document_version_id UUID REFERENCES api.document_versions(id),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -199,7 +215,7 @@ CREATE TABLE api.project_assets (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- Project notes and drafts
+-- Project notes and drafts (supports notepad interface)
 CREATE TABLE api.notes (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
@@ -207,7 +223,26 @@ CREATE TABLE api.notes (
   task_id UUID REFERENCES api.tasks(id),
   title TEXT NOT NULL,
   content TEXT,
+  position TEXT NOT NULL DEFAULT 'right',  -- 'center' or 'right' for notepad interface
   is_pinned BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- Calendar events for scheduling activities
+CREATE TABLE api.calendar_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  project_id UUID REFERENCES api.projects(id) ON DELETE CASCADE,
+  task_id UUID REFERENCES api.tasks(id),
+  title TEXT NOT NULL,
+  description TEXT,
+  start_time TIMESTAMPTZ NOT NULL,
+  end_time TIMESTAMPTZ NOT NULL,
+  is_all_day BOOLEAN NOT NULL DEFAULT FALSE,
+  location TEXT,
+  external_calendar_id TEXT,
+  external_event_id TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
@@ -296,13 +331,9 @@ CREATE TABLE analytics.user_progress (
   day_completed BOOLEAN NOT NULL DEFAULT FALSE,
   completion_date TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  CONSTRAINT user_progress_unique_combination UNIQUE (user_id, project_id, day_id)
 );
-
--- Add unique constraint for ON CONFLICT in update_project_progress function
-ALTER TABLE analytics.user_progress 
-ADD CONSTRAINT user_progress_unique_combination 
-UNIQUE (user_id, project_id, day_id);
 
 -- Create audit tables
 CREATE TABLE audit.actions (
@@ -418,7 +449,7 @@ BEGIN
   RETURN record_data;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER
-SET search_path = api, public, pg_temp;
+SET search_path = api, reference, public, pg_temp;
 
 -- Function to update project progress
 CREATE OR REPLACE FUNCTION api.update_project_progress()
@@ -508,6 +539,71 @@ END;
 $$ LANGUAGE plpgsql SECURITY DEFINER
 SET search_path = api, analytics, public, pg_temp;
 
+-- Function to track document version changes
+CREATE OR REPLACE FUNCTION api.create_document_version()
+RETURNS TRIGGER AS $$
+DECLARE
+  record_data RECORD;
+  current_version INTEGER;
+  doc_type TEXT;
+BEGIN
+  record_data := NEW;
+  
+  -- Determine document type based on table
+  IF TG_TABLE_NAME = 'generated_content' THEN
+    doc_type := record_data.content_type;
+  ELSIF TG_TABLE_NAME = 'project_assets' THEN
+    doc_type := record_data.asset_type;
+  ELSIF TG_TABLE_NAME = 'notes' THEN
+    doc_type := 'note';
+  ELSE
+    doc_type := TG_TABLE_NAME;
+  END IF;
+
+  -- Get current highest version number
+  SELECT COALESCE(MAX(version_number), 0) INTO current_version
+  FROM api.document_versions
+  WHERE project_id = record_data.project_id
+  AND task_id = record_data.task_id
+  AND document_type = doc_type;
+  
+  -- Create new version
+  INSERT INTO api.document_versions (
+    project_id,
+    task_id,
+    document_type,
+    version_number,
+    content,
+    changes_summary,
+    created_by
+  ) VALUES (
+    record_data.project_id,
+    record_data.task_id,
+    doc_type,
+    current_version + 1,
+    CASE 
+      WHEN TG_TABLE_NAME = 'generated_content' THEN record_data.content
+      WHEN TG_TABLE_NAME = 'project_assets' AND record_data.content IS NOT NULL THEN record_data.content
+      WHEN TG_TABLE_NAME = 'notes' THEN record_data.content
+      ELSE NULL
+    END,
+    'New version created',
+    auth.uid()
+  )
+  RETURNING id INTO record_data.document_version_id;
+  
+  -- Update the record with the new document_version_id if the field exists
+  IF TG_TABLE_NAME = 'generated_content' THEN
+    UPDATE api.generated_content 
+    SET document_version_id = record_data.document_version_id
+    WHERE id = record_data.id;
+  END IF;
+  
+  RETURN record_data;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER
+SET search_path = api, public, pg_temp;
+
 -- Create triggers for updated_at timestamps
 CREATE TRIGGER set_timestamp_profiles
 BEFORE UPDATE ON api.profiles
@@ -543,6 +639,10 @@ FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
 
 CREATE TRIGGER set_timestamp_notes
 BEFORE UPDATE ON api.notes
+FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
+
+CREATE TRIGGER set_timestamp_calendar_events
+BEFORE UPDATE ON api.calendar_events
 FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
 
 CREATE TRIGGER set_timestamp_content_feedback
@@ -585,6 +685,20 @@ CREATE TRIGGER set_timestamp_reference_subscription_tiers
 BEFORE UPDATE ON reference.subscription_tiers
 FOR EACH ROW EXECUTE FUNCTION public.update_timestamp();
 
+-- Create document version tracking triggers
+CREATE TRIGGER track_content_versions
+AFTER INSERT ON api.generated_content
+FOR EACH ROW EXECUTE FUNCTION api.create_document_version();
+
+CREATE TRIGGER track_asset_versions
+AFTER INSERT ON api.project_assets
+FOR EACH ROW WHEN (NEW.content IS NOT NULL)
+EXECUTE FUNCTION api.create_document_version();
+
+CREATE TRIGGER track_note_versions
+AFTER INSERT OR UPDATE OF content ON api.notes
+FOR EACH ROW EXECUTE FUNCTION api.create_document_version();
+
 -- Create audit log triggers
 CREATE TRIGGER audit_log_profiles
 AFTER INSERT OR UPDATE OR DELETE ON api.profiles
@@ -614,10 +728,12 @@ ALTER TABLE api.projects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.tasks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.prompts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.user_prompts ENABLE ROW LEVEL SECURITY;
+ALTER TABLE api.document_versions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.generated_content ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.processing_queue ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.project_assets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.notes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE api.calendar_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.content_feedback ENABLE ROW LEVEL SECURITY;
 ALTER TABLE api.integrations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE stripe.customers ENABLE ROW LEVEL SECURITY;
@@ -667,6 +783,11 @@ CREATE POLICY "Users can update tasks for their projects"
 
 CREATE POLICY "Users can delete tasks for their projects"
   ON api.tasks FOR DELETE
+  USING (auth.uid() = (SELECT user_id FROM api.projects WHERE id = project_id));
+
+-- Create policies for document versions
+CREATE POLICY "Users can view document versions for their projects"
+  ON api.document_versions FOR SELECT
   USING (auth.uid() = (SELECT user_id FROM api.projects WHERE id = project_id));
 
 -- Create policies for prompts (library prompts are readable by all authenticated users)
@@ -755,6 +876,23 @@ CREATE POLICY "Users can delete their notes"
   ON api.notes FOR DELETE
   USING (auth.uid() = user_id);
 
+-- Create policies for calendar events
+CREATE POLICY "Users can view their calendar events"
+  ON api.calendar_events FOR SELECT
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can create calendar events"
+  ON api.calendar_events FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Users can update their calendar events"
+  ON api.calendar_events FOR UPDATE
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Users can delete their calendar events"
+  ON api.calendar_events FOR DELETE
+  USING (auth.uid() = user_id);
+
 -- Create policies for content feedback
 CREATE POLICY "Users can view their content feedback"
   ON api.content_feedback FOR SELECT
@@ -811,12 +949,16 @@ CREATE POLICY "Users can view their progress data"
 CREATE INDEX idx_projects_user_id ON api.projects(user_id);
 CREATE INDEX idx_tasks_project_id ON api.tasks(project_id);
 CREATE INDEX idx_tasks_day_id ON api.tasks(day_id);
+CREATE INDEX idx_document_versions_project_id ON api.document_versions(project_id);
+CREATE INDEX idx_document_versions_created_by ON api.document_versions(created_by);
 CREATE INDEX idx_generated_content_project_id ON api.generated_content(project_id);
 CREATE INDEX idx_generated_content_task_id ON api.generated_content(task_id);
 CREATE INDEX idx_project_assets_project_id ON api.project_assets(project_id);
 CREATE INDEX idx_project_assets_task_id ON api.project_assets(task_id);
 CREATE INDEX idx_notes_user_id ON api.notes(user_id);
 CREATE INDEX idx_notes_project_id ON api.notes(project_id);
+CREATE INDEX idx_calendar_events_user_id ON api.calendar_events(user_id);
+CREATE INDEX idx_calendar_events_project_id ON api.calendar_events(project_id);
 CREATE INDEX idx_processing_queue_user_id ON api.processing_queue(user_id);
 CREATE INDEX idx_processing_queue_status ON api.processing_queue(status);
 CREATE INDEX idx_user_prompts_user_id ON api.user_prompts(user_id);
