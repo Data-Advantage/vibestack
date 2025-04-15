@@ -1,4 +1,4 @@
-**Vibestack**
+[⬅️ Vibestack Overview](../README.md)
 
 # Day 1: Create
 
@@ -52,7 +52,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
-| 1.4 - Working Prototype | [prototype-app-chat](1.4-prototype-app-chat.md) | Deployed app prototype |
+| 1.4 - Prototype App | [prototype-app-chat](1.4-prototype-app-chat.md) | Deployed working prototype |
 
 ### 1.4 - The Initial App Build
 
