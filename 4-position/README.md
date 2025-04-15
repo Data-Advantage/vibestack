@@ -1,6 +1,8 @@
-**Vibestack**
+[⬅️ Vibestack Overview](../README.md)
 
-# Day 4: Marketing Content Build
+# Day 4: Position
+
+Create compelling marketing content to promote your application.
 
 ## Introduction
 Welcome to Day 4 of the Vibestack workflow! Today focuses on creating compelling marketing content to promote your application. With your functional app ready, it's time to craft the messaging that will attract and engage your target audience.
@@ -52,7 +54,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.4 - SEO Content Plan | [4.4-seo-plan](4.4-seo-plan.md) | `seo-content.md` |
+| 4.4 - SEO Content Plan | [seo-plan-chat](4.4-seo-plan.md) | `seo-content.md` |
 | 4.5 - Social Media Materials | [social-media-chat](4.5-social-media-chat.md) | `social-media-kit.md` |
 | 4.6 - Email Campaigns | [email-campaign-chat](4.6-email-campaign-chat.md) | `email-templates.md` |
 
@@ -61,7 +63,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 **Goal**: Generate a comprehensive SEO strategy to improve your application's visibility in search engines.
 
 #### Process
-1. Copy paste each section in [4.4-seo-plan](4.4-seo-plan.md) into an AI chat tool.
+1. Copy paste each section in [seo-plan-chat](4.4-seo-plan.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `seo-content.md`
 
