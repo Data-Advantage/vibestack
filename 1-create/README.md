@@ -18,8 +18,8 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 1.1 - Product Requirements | [product-requirements-chat](1.1-product-requirements-chat.md) | `product-requirements-document.md` |
-| 1.2 - Database Setup | [database-setup-chat](1.2-database-setup-chat.md) | `000-initial-sql-migration.sql` |
-| 1.3 - Marketing Story | [marketing-story-chat](1.3-marketing-story-chat.md) | `marketing-content.md` |
+| 1.2 - Marketing Story | [marketing-story-chat](1.2-marketing-story-chat.md) | `marketing-content.md` |
+| 1.3 - Database Setup | [database-setup-chat](1.3-database-setup-chat.md) | `000-initial-sql-migration.sql` |
 
 ### 1.1 - The Product Requirements
 
@@ -30,23 +30,23 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output into a file named `product-requirements-document.md`
 
-### 1.2 - The Database Setup
-
-**Goal**: Define the data structure (schema) required for the web application, creating an `000-initial-sql-migration.sql` file that will fully install a custom Postgres database into your Supabase instance.
-
-#### Process
-1. Copy paste each Step in [database-setup-chat](1.2-database-setup-chat.md) into an AI chat tool like Claude.ai.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `000-initial-sql-migration.sql`
-
-### 1.3 - The Marketing Story
+### 1.2 - The Marketing Story
 
 **Goal**: Create compelling marketing narratives and website content that will help users understand and connect with your product.
 
 #### Process
-1. Copy paste each Step in [marketing-story-chat](1.3-marketing-story-chat.md) into an AI chat tool like Claude.ai.
+1. Copy paste each Step in [marketing-story-chat](1.2-marketing-story-chat.md) into an AI chat tool like Claude.ai.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `marketing-content.md`
+
+### 1.3 - The Database Setup
+
+**Goal**: Define the data structure (schema) required for the web application, creating an `000-initial-sql-migration.sql` file that will fully install a custom Postgres database into your Supabase instance.
+
+#### Process
+1. Copy paste each Step in [database-setup-chat](1.3-database-setup-chat.md) into an AI chat tool like Claude.ai.
+2. Follow all directions in [brackets] and replace the bracketed text with your own content.
+3. Save the final output as `000-initial-sql-migration.sql`
 
 ## Afternoon: Building Your Initial App (2-4 hours)
 
