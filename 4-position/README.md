@@ -54,7 +54,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.4 - SEO Content Plan | [seo-plan-chat](4.4-seo-plan.md) | `seo-content.md` |
+| 4.4 - SEO Content Plan | [seo-plan-chat](4.4-seo-plan-chat.md) | `seo-content.md` |
 | 4.5 - Social Media Materials | [social-media-chat](4.5-social-media-chat.md) | `social-media-kit.md` |
 | 4.6 - Email Campaigns | [email-campaign-chat](4.6-email-campaign-chat.md) | `email-templates.md` |
 
