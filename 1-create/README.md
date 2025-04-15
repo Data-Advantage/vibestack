@@ -1,11 +1,13 @@
 **Vibestack**
 
-# Day 1: Idea & Initial App Build
+# Day 1: Create
+
+Turn your idea into a working prototype with core functionality and key components.
 
 ## Introduction
 Welcome to Day 1 of the Vibestack workflow! Today is divided into two key phases:
 - **Morning**: Transform your concept into well-defined plans and requirements
-- **Afternoon**: Build your initial app based on those requirements
+- **Afternoon**: Build your initial app prototype based on those requirements
 
 By the end of today, you'll have both foundational documents AND a working initial version of your application.
 
@@ -13,11 +15,11 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 ## Morning: Planning & Requirements (2-4 hours)
 
-| Phase | AI Chat Conversation Guide | Output Document |
+| Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
-| 1.1 - The Product Requirements | [product-requirements-chat](1.1-product-requirements-chat.md) | `product-requirements-document.md` |
-| 1.2 - The Database Setup | [database-setup-chat](1.2-database-setup-chat.md) | `000-initial-sql-migration.sql` |
-| 1.3 - The Marketing Story | [marketing-story-chat](1.3-marketing-story-chat.md) | `marketing-content.md` |
+| 1.1 - Product Requirements | [product-requirements-chat](1.1-product-requirements-chat.md) | `product-requirements-document.md` |
+| 1.2 - Database Setup | [database-setup-chat](1.2-database-setup-chat.md) | `000-initial-sql-migration.sql` |
+| 1.3 - Marketing Story | [marketing-story-chat](1.3-marketing-story-chat.md) | `marketing-content.md` |
 
 ### 1.1 - The Product Requirements
 
@@ -47,6 +49,10 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 3. Save the final output as `marketing-content.md`
 
 ## Afternoon: Building Your Initial App (2-4 hours)
+
+| Phase | AI Chat Conversation Guide | Output |
+|-------|-----------------|-----------------|
+| 1.4 - Working Prototype | [prototype-app-chat](1.4-prototype-app-chat.md) | Deployed app prototype |
 
 ### 1.4 - The Initial App Build
 
