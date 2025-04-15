@@ -10,6 +10,16 @@ Building a SaaS business typically requires technical skills, significant time i
 
 VibeStack bridges the gap between your ideas and functional software by providing carefully crafted prompts for AI-powered design and development tools. Created by [Data Advantage](https://www.buildadataadvantage.com), we've helped many entrepreneurs launch successful micro-SaaS businesses without writing a single line of code.
 
+## ⚡ 5-Day Journey to Launch
+
+Transform your idea into reality with our proven framework:
+
+- **Day 1: [CREATE](1-create/README.md)** - Turn your idea into a working prototype with core functionality and key components.
+- **Day 2: [REFINE](2-refine/README.md)** - Gather feedback on your prototype and enhance your design and user experience.
+- **Day 3: [BUILD](3-build/README.md)** - Develop a complete application with all features, connected systems, and responsive design.
+- **Day 4: [POSITION](4-position/README.md)** - Craft your marketing message, landing page, and promotional materials to attract your audience.
+- **Day 5: [LAUNCH](5-launch/README.md)** - Deploy your application and start your promotional campaign to reach potential users.
+
 ## Our Proven Plan
 
 1. **Follow our structured 5-day workflow** - From concept to launch in one business week
@@ -67,16 +77,6 @@ To make the most of VibeStack and ensure a smooth building process, prepare the 
 2. Copy the prompt and paste it into Claude.ai, v0.dev or other AI coding tools
 3. Use the generated code in your project
 4. Iterate and refine as needed
-
-## ⚡ 5-Day Journey to Launch
-
-Transform your idea into reality with our proven framework:
-
-- **Day 1: CREATE** - Turn your idea into a working prototype with core functionality and key components.
-- **Day 2: REFINE** - Gather feedback on your prototype and enhance your design and user experience.
-- **Day 3: BUILD** - Develop a complete application with all features, connected systems, and responsive design.
-- **Day 4: POSITION** - Craft your marketing message, landing page, and promotional materials to attract your audience.
-- **Day 5: LAUNCH** - Deploy your application and start your promotional campaign to reach potential users.
 
 ## 💡 Success Stories
 
