@@ -58,6 +58,16 @@ This directory contains resources and guides on various technologies, tools, and
 - [Social Media Marketing](social-media-marketing.md) - Building presence on social platforms
 - [Landing Pages](landing-pages.md) - Converting visitors into customers
 
+## Product & Launch
+
+- [Product Launch](product-launch.md) - Releasing your product to the market
+- [Analytics](analytics.md) - Measuring user behavior and product performance
+- [Product Iteration](product-iteration.md) - Continuously improving based on feedback
+- [MVP](mvp.md) - Minimum Viable Product development
+- [Value Proposition Canvas](value-proposition-canvas.md) - Tool for product/market fit
+- [Positioning Statement](positioning-statement.md) - Defining your market position
+- [Unique Selling Proposition](unique-selling-proposition.md) - Your competitive advantage
+
 ## AI & Machine Learning
 
 - [OpenAI GPT](openai-gpt.md) - Large language models for text generation
@@ -93,10 +103,6 @@ This directory contains resources and guides on various technologies, tools, and
 
 ## Business & Product Strategy
 
-- [Value Proposition Canvas](value-proposition-canvas.md) - Tool for product/market fit
-- [Positioning Statement](positioning-statement.md) - Defining your market position
-- [Unique Selling Proposition](unique-selling-proposition.md) - Your competitive advantage
-- [MVP](mvp.md) - Minimum Viable Product development
 - [StoryBrand](storybrand.md) - Clarifying your brand message
 - [Product Requirements](product-requirements.md) - Defining product features
 
