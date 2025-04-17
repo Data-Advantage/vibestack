@@ -10,47 +10,6 @@ This document outlines the essential configuration files needed for a Next.js 15
 
 ## Project Setup
 
-### package.json
-
-Defines project dependencies, scripts, and metadata.
-
-```package.json
-{
-  "name": "{{appname}}",
-  "version": "{{0.1.0}}",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.487.0",
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.49.4",
-    "tailwind-merge": "^3.2.0",
-    "tw-animate-css": "^1.2.5"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
-}
-```
-
 ### Key Dependencies
 
 - **Core**: `next`, `react`, `react-dom`
@@ -67,12 +26,6 @@ Defines project dependencies, scripts, and metadata.
 4.  Initialize `shadcn/ui` with the "new-york" style (`npx shadcn-ui@latest init`).
 5.  Install utility packages (`npm install zod clsx tailwind-merge sonner`).
 
-## Environment Variables
-
-### .env.example
-
-Store sensitive keys and configuration specific to the deployment environment. Never commit `.env` files directly; use `.env.example` as a template.
-
 ### Key Dependencies
 
 - **Core**: `next`, `react`, `react-dom`
@@ -88,58 +41,6 @@ Store sensitive keys and configuration specific to the deployment environment. N
 3.  Install Tailwind CSS v4 and PostCSS (`npm install -D tailwindcss @tailwindcss/postcss postcss`).
 4.  Initialize `shadcn/ui` with the "new-york" style (`npx shadcn-ui@latest init`).
 5.  Install utility packages (`npm install zod clsx tailwind-merge sonner`).
-
-## Environment Variables
-
-### .env.example
-
-Store sensitive keys and configuration specific to the deployment environment. Never commit `.env` files directly; use `.env.example` as a template.
-
-## Authentication Redirect URLs
-
-```
-NEXT_PUBLIC_SITE_URL=http://localhost:3000 # Change for production (e.g., https://your-app.vercel.app)
-NEXT_PUBLIC_AUTH_REDIRECT_URL=http://localhost:3000/auth/callback # Adjust if necessary
-```
-
-### Supabase Configuration (usually installed via Vercel-Supabase integration or manually from Supabase dashboard)
-
-```
-NEXT_PUBLIC_SUPABASE_URL=YOUR_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY=YOUR_SUPABASE_ANON_KEY
-SUPABASE_SERVICE_ROLE_KEY=YOUR_SUPABASE_SERVICE_ROLE_KEY # Keep this secret!
-```
-
-### Database Connection Strings (provided by Supabase)
-
-```
-POSTGRES_URL=YOUR_SUPABASE_DB_CONNECTION_STRING_POOLED
-POSTGRES_PRISMA_URL=YOUR_SUPABASE_DB_CONNECTION_STRING_POOLED # Prisma uses the pooled URL
-POSTGRES_URL_NON_POOLING=YOUR_SUPABASE_DB_CONNECTION_STRING_NON_POOLED
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=YOUR_SUPABASE_DB_PASSWORD
-POSTGRES_DATABASE=postgres
-POSTGRES_HOST=YOUR_SUPABASE_DB_HOST
-```
-
-### Stripe Integration (if applicable)
-
-```
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-NEXT_PUBLIC_STRIPE_PRICE_MONTHLY=price_...
-NEXT_PUBLIC_STRIPE_PRICE_YEARLY=price_...
-STRIPE_PRODUCT_ID=prod_...
-```
-
-### AI Integration (if applicable)
-
-```
-OPENAI_API_KEY=sk-...
-GEMINI_API_KEY=AIza...
-```
-
 
 ## Core Configuration
 
@@ -351,34 +252,6 @@ const eslintConfig = tseslint.config(
 
 export default eslintConfig;
 
-```
-
-### components.json
-
-Configures `shadcn/ui`, defining the style, component paths, Tailwind setup, and icon library used when adding new UI components via the CLI (`npx shadcn-ui@latest add ...`).
-
-```json:components.json
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "new-york",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "", // Usually empty for Tailwind v4
-    "css": "app/globals.css", // Path to your global CSS file
-    "baseColor": "stone", // Base color scheme for components
-    "cssVariables": true, // Use CSS variables for theming
-    "prefix": "" // Optional prefix for Tailwind classes
-  },
-  "aliases": {
-    "components": "@/components", // Base directory for components
-    "utils": "@/lib/utils",     // Utility functions (like cn)
-    "ui": "@/components/ui",    // Directory for shadcn UI components
-    "lib": "@/lib",             // General library directory
-    "hooks": "@/hooks"          // Custom hooks directory
-  },
-  "iconLibrary": "lucide" // Specify icon library (lucide-react)
-}
 ```
 
 ### middleware.ts
