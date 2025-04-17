@@ -7,8 +7,7 @@ Deploy your Next.js application to production, get it in front of real users, an
 ## Introduction
 Welcome to Day 5 of the Vibestack workflow! Today is when your application goes live:
 - **Morning**: Deploy your application and set up minimal analytics
-- **Afternoon**: Launch your product and get it directly to potential users
-- **Evening**: Capture initial feedback and plan immediate next steps
+- **Afternoon**: Launch your product, get it directly to potential users, and capture feedback
 
 By the end of today, your SaaS application will be live with real users providing feedback. This isn't the end—it's the beginning of your iterative journey to product-market fit.
 
@@ -44,12 +43,14 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
    - Tracking for 3 key events: signups, core feature usage, conversions
    - Skip advanced configurations until you have user traction
 
-## Afternoon: Launch & Get Users (3-4 hours)
+## Afternoon: Launch & Feedback (4-5 hours)
 
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 5.3 - Simple Launch Announcement | [launch-announcement-chat](5.3-launch-announcement-chat.md) | Live announcement on key platforms |
 | 5.4 - Direct User Outreach | [direct-outreach-chat](5.4-direct-outreach-chat.md) | 15-20 personalized invitations |
+| 5.5 - Initial User Conversations | [user-conversations-chat](5.5-user-conversations-chat.md) | User feedback documentation |
+| 5.6 - Day 1 Learning Capture | [learning-capture-chat](5.6-learning-capture-chat.md) | Week 2 action plan |
 
 ### 5.3 - Simple Launch Announcement
 
@@ -74,13 +75,6 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
    - Craft personalized outreach messages 
    - Offer 1:1 onboarding or demo calls
    - Ask for specific feedback on core features
-
-## Evening: Quick Assessment (1 hour)
-
-| Phase | AI Chat Conversation Guide | Output |
-|-------|-----------------|-----------------|
-| 5.5 - Initial User Conversations | [user-conversations-chat](5.5-user-conversations-chat.md) | User feedback documentation |
-| 5.6 - Day 1 Learning Capture | [learning-capture-chat](5.6-learning-capture-chat.md) | Week 2 action plan |
 
 ### 5.5 - Initial User Conversations
 
