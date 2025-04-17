@@ -50,6 +50,14 @@ This directory contains resources and guides on various technologies, tools, and
 - [Web Vitals](web-vitals.md) - Key metrics for web performance
 - [Testing & QA](testing-qa.md) - Ensuring application quality and reliability
 
+## Marketing & Growth
+
+- [SEO](seo.md) - Search engine optimization for visibility
+- [Content Marketing](content-marketing.md) - Creating valuable content to attract users
+- [Email Marketing](email-marketing.md) - Engaging users through email campaigns
+- [Social Media Marketing](social-media-marketing.md) - Building presence on social platforms
+- [Landing Pages](landing-pages.md) - Converting visitors into customers
+
 ## AI & Machine Learning
 
 - [OpenAI GPT](openai-gpt.md) - Large language models for text generation
