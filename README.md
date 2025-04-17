@@ -20,6 +20,37 @@ Transform your idea into reality with our proven framework:
 - **Day 4: [POSITION](4-position/README.md)** - Craft your marketing message, landing page, and promotional materials to attract your audience.
 - **Day 5: [LAUNCH](5-launch/README.md)** - Deploy your application and start your promotional campaign to reach potential users.
 
+## Day-by-Day Summary
+
+| Day | Theme | Session 1 | Session 2 | Session 3 |
+|-----|-------|-----------|-----------|-----------|
+| **Day 1** | **CREATE** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Prototype App | |
+| **Day 2** | **REFINE** | • Feedback Collection<br>• UX Improvement Plan<br>• Visual Design Enhancement | • Implementing Improvements | |
+| **Day 3** | **BUILD** | • Authentication System<br>• Payment Integration<br>• Advanced Features | • API & Data Integration<br>• Performance Optimization<br>• Testing & Quality Assurance | |
+| **Day 4** | **POSITION** | • Website Static Marketing Pages<br>• Website SEO Content Pages | • Email Sequences<br>• Social Channels | |
+| **Day 5** | **LAUNCH** | • Final Deployment & Verification<br>• Minimal Analytics Setup | • Simple Launch Announcement<br>• Direct User Outreach | • Initial User Conversations<br>• Day 1 Learning Capture |
+
+## Before You Begin: [LEARN](0-learn/README.md)
+
+Before diving into your 5-day journey, take some time to review our comprehensive learning resources. These materials cover essential technologies, concepts, and best practices that will help you build a successful SaaS business:
+
+- Web Development Fundamentals (HTML, CSS, TypeScript, React, Next.js)
+- Backend & Infrastructure (Supabase, PostgreSQL, Vercel)
+- UI/UX Components & Libraries
+- Authentication & Security
+- Marketing & Growth
+- AI & Machine Learning integration
+- Development Tools & Practices
+
+## After Launch: [GROW](6-grow/README.md)
+
+Your journey doesn't end with launch! Use these resources to continue growing your SaaS business:
+
+- Feedback & Roadmap Board setup
+- User Community development
+- Paid Advertising strategies
+- Analytics & continuous improvement
+
 ## Our Proven Plan
 
 1. **Follow our structured 5-day workflow** - From concept to launch in one business week
