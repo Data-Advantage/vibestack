@@ -48,9 +48,8 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 5.3 - Simple Launch Announcement | [launch-announcement-chat](5.3-launch-announcement-chat.md) | Live announcement on key platforms |
-| 5.4 - Direct User Outreach | [direct-outreach-chat](5.4-direct-outreach-chat.md) | 15-20 personalized invitations |
-| 5.5 - Initial User Conversations | [user-conversations-chat](5.5-user-conversations-chat.md) | User feedback documentation |
-| 5.6 - Day 1 Learning Capture | [learning-capture-chat](5.6-learning-capture-chat.md) | Week 2 action plan |
+| 5.4 - User Targeting & Conversations | [user-targeting-chat](5.4-user-targeting-chat.md) | Personalized outreach and user feedback sessions |
+| 5.5 - Feedback Documentation & Action Planning | [feedback-capture-chat](5.5-feedback-capture-chat.md) | Documentation and Week 2 action plan |
 
 ### 5.3 - Simple Launch Announcement
 
@@ -64,41 +63,33 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
    - Post in 1-2 relevant communities
    - Brief launch email to your pre-launch list
 
-### 5.4 - Direct User Outreach
+### 5.4 - User Targeting & Conversations
 
-**Goal**: Personally invite potential users to try your product and provide feedback.
+**Goal**: Identify potential users, reach out to them personally, and conduct productive feedback conversations.
 
 #### Process
-1. Copy paste each Step in [direct-outreach-chat](5.4-direct-outreach-chat.md) into a Claude.ai conversation.
+1. Copy paste each Step in [user-targeting-chat](5.4-user-targeting-chat.md) into a Claude.ai conversation.
 2. Follow directions to:
-   - Identify 15-20 potential users to contact directly
-   - Craft personalized outreach messages 
+   - Identify 15-20 ideal candidates for early feedback
+   - Craft personalized outreach messages
    - Offer 1:1 onboarding or demo calls
-   - Ask for specific feedback on core features
+   - Prepare structured conversation guides
+   - Observe users interacting with your product
+   - Implement effective follow-up strategies
 
-### 5.5 - Initial User Conversations
+### 5.5 - Feedback Documentation & Action Planning
 
-**Goal**: Talk directly to early users to understand their experience and gather actionable feedback.
-
-#### Process
-1. Copy paste each Step in [user-conversations-chat](5.5-user-conversations-chat.md) into a Claude.ai conversation.
-2. Follow directions to:
-   - Schedule 3-5 user calls as soon as possible
-   - Prepare specific questions to understand user needs
-   - Watch them use the product in real-time if possible
-   - Document all feedback systematically
-
-### 5.6 - Day 1 Learning Capture
-
-**Goal**: Convert early feedback into immediate action items and a Week 2 plan.
+**Goal**: Document user feedback systematically and convert it into an actionable improvement plan.
 
 #### Process
-1. Copy paste each Step in [learning-capture-chat](5.6-learning-capture-chat.md) into a Claude.ai conversation.
+1. Copy paste each Step in [feedback-capture-chat](5.5-feedback-capture-chat.md) into a Claude.ai conversation.
 2. Follow directions to:
-   - Document initial feedback themes
+   - Create a system for documenting feedback
+   - Synthesize feedback into meaningful patterns
    - Identify top 3 issues to fix immediately
-   - Create a simple 1-week plan focused on user retention
-   - Set specific metrics goals for Week 2
+   - Develop a focused Week 1 action plan
+   - Set success metrics for Week 2
+   - Create a communication plan for early users
 
 ## Day 5 Completion Checklist
 
