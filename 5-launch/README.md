@@ -48,7 +48,7 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 5.3 - Simple Launch Announcement | [launch-announcement-chat](5.3-launch-announcement-chat.md) | Live announcement on key platforms |
-| 5.4 - User Targeting & Conversations | [user-targeting-chat](5.4-user-targeting-chat.md) | Personalized outreach and user feedback sessions |
+| 5.4 - User Targeting & Conversations | [user-invitation-chat](5.4-user-invitation-chat.md) | Personalized outreach and user feedback sessions |
 | 5.5 - Feedback Documentation & Action Planning | [feedback-capture-chat](5.5-feedback-capture-chat.md) | Documentation and Week 2 action plan |
 
 ### 5.3 - Simple Launch Announcement
@@ -68,7 +68,7 @@ This process typically takes 6-8 hours total. Focus on speed of execution and ga
 **Goal**: Identify potential users, reach out to them personally, and conduct productive feedback conversations.
 
 #### Process
-1. Copy paste each Step in [user-targeting-chat](5.4-user-targeting-chat.md) into a Claude.ai conversation.
+1. Copy paste each Step in [user-invitation-chat](5.4-user-invitation-chat.md) into a Claude.ai conversation.
 2. Follow directions to:
    - Identify 15-20 ideal candidates for early feedback
    - Craft personalized outreach messages
