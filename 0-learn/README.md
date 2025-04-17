@@ -30,6 +30,26 @@ This directory contains resources and guides on various technologies, tools, and
 - [Lucide Icons](lucide.md) - Beautiful & consistent icon set
 - [Responsive Design](responsive-design.md) - Making web apps work on all devices
 
+## Design & User Experience
+
+- [UX Design](ux-design.md) - Creating intuitive and effective user experiences
+- [Visual Design](visual-design.md) - Creating aesthetically pleasing interfaces
+- [Accessibility](accessibility.md) - Making web apps usable for everyone
+- [User Feedback](user-feedback.md) - Collecting and analyzing user input
+
+## Authentication & Security
+
+- [Authentication](authentication.md) - User identity verification and management
+- [Security](security.md) - Protecting web applications from threats
+- [API Integration](api-integration.md) - Connecting with external services
+- [Payment Integration](payment-integration.md) - Implementing payment processing
+
+## Performance & Quality
+
+- [Performance Optimization](performance-optimization.md) - Improving app speed and efficiency
+- [Web Vitals](web-vitals.md) - Key metrics for web performance
+- [Testing & QA](testing-qa.md) - Ensuring application quality and reliability
+
 ## AI & Machine Learning
 
 - [OpenAI GPT](openai-gpt.md) - Large language models for text generation
