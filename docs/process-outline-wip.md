@@ -1,5 +1,41 @@
 # VibeStack Process Outline
 
+## scratchpad
+
+```
+global ideas:
+Replace detailed implementation steps with templates/pre-built solutions wherever possible
+
+1-create
+Make sure we direct it to plan out user onboarding requirements
+Make sure we add an explicit technical architecture section after detailed Business & Feature Requirements
+add an explicit instructions in the right places to direct the consideration of Admin, User, and Developer Dashboards if appropriate
+
+2-refine
+find a way to prioritize the critical path for the user and only work on UX issues on this path
+Seems like Responsive Design should be handled only one place
+Seems like Accessibility standards can be universal and not really need to be generated... just implemented
+2.3 let's drastically cut down on 2.3.3, 2.3.4, 2.3.5, 2.3.6, 2.3.7, and 2.3.8 into more of a template. Identify the key custom changes, but otherwise have a pre-made document that a few variables are changed if necessary.
+
+3-build
+3.1 most ideas should be implemented into a starter template, only have prompting for things that might be different depending on the app like a user profile management
+3.2.7 try to put webhook implementation into the starter template
+shrink 3.2.2-3.2.4 to just one feature that can be copy/pasted as many times as are needed
+remove Admin dashboard from 3.3... it'll be put in 3.5
+remove performance optimization
+Remove testing/QA
+put in a standalone section 3.5 that creates user dashboard/admin dashboard/developer dashboard
+API integration should happen sooner than 3.4... after payment integration and before advanced features. Let's get the key API or APIs configured in a standalone test/playground/chat page to make sure the connections and types and error handling is working before we build the advanced features.
+
+4-position
+production happens in background so consolidate 4.2 into 4.1, 4.4 into 4.3, etc. as the last step of the planning
+so now 4.1-4.4... slot for a 4.5 for app technical documentation and guides and videos
+
+5-launch
+second round of testing
+have auto-create Launch Announcements per channel... e.g. Email/Product Hunt/LinkedIn/X/Reddit/Discord/Slack/Web forum. Just consolidate 5.3.2-5.3.5 more into one description that always uses the same input and generates these fiferent outputs for each channel each time. Keep the core announcement, keep the specific template ideas for each channel, but just make it 2 steps: 1 define the core announcement and then the user can pick from the channels they want to launch with - but all get generated each time
+```
+
 ## Day 1: Create
 
 ### 1.1 Product Requirements
