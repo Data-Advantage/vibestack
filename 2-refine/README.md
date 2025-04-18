@@ -53,6 +53,7 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
 | 2.4 - Refining Your Application | [refined-app-chat](2.4-refined-app-chat.md) | Deployed refined prototype |
+| 2.5 - Domain Purchase & Setup | [domain-setup-chat](2.5-domain-setup-chat.md) | Configured domain for your application |
 
 ### 2.4 - Refining Your Application
 
@@ -92,6 +93,12 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
    - Document any technical debt or follow-up items
    - Prepare for tomorrow's complete application build
 
+6. **Domain Setup** (30-60 minutes)
+   - Purchase a domain name for your application
+   - Configure DNS settings
+   - Connect your domain to your deployment
+   - Verify domain setup works correctly
+
 ## Day 2 Completion Checklist
 
 Before moving on to Day 3, ensure you have:
@@ -119,5 +126,11 @@ Before moving on to Day 3, ensure you have:
   - [ ] Applied visual design enhancements
   - [ ] Fixed bugs identified through feedback
   - [ ] Improved overall responsiveness and performance
+
+- [ ] Purchased and configured domain:
+  - [ ] Selected and bought appropriate domain
+  - [ ] Configured DNS settings properly
+  - [ ] Connected domain to your application
+  - [ ] Verified domain is working correctly
 
 **What's Next**: On Day 3, you'll build upon your refined prototype to develop a complete application with all features, connected systems, and responsive design.
