@@ -28,7 +28,7 @@ Transform your idea into reality with our proven framework:
 | **Day 2** | **REFINE** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Improvements |
 | **Day 3** | **BUILD** | • Authentication System<br>• Payment Integration<br>• Advanced Features | • API & Data Integration<br>• Performance Optimization<br>• Testing |
 | **Day 4** | **POSITION** | • Marketing Website<br>• SEO Content | • Email Sequences<br>• Social Channels |
-| **Day 5** | **LAUNCH** | • Final Deployment<br>• Analytics Integration | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
+| **Day 5** | **LAUNCH** | • Analytics Integration<br>• Final Deployment | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
 
 ## Before You Begin: [LEARN](0-learn/README.md)
 
