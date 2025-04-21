@@ -5,24 +5,22 @@
 Create compelling marketing content to promote your application.
 
 ## Introduction
-Welcome to Day 4 of the Vibestack workflow! Today focuses on creating compelling marketing content to promote your application. With your functional app ready, it's time to craft the messaging that will attract and engage your target audience.
+Welcome to Day 4 of the Vibestack workflow! Today focuses on creating compelling marketing content to promote your application:
+- **Morning**: Develop your marketing website and comprehensive SEO strategy
+- **Afternoon**: Create email sequences, social media content, and technical documentation
 
-Today is divided into five key marketing areas:
-1. **Marketing Website**: Creating your static pages and core marketing content
-2. **SEO Content**: Developing search-optimized content strategy and implementation
-3. **Email Sequences**: Creating email flows for user onboarding and engagement
-4. **Social Channels**: Strategic platform selection and content development
-5. **Technical Documentation**: Creating user guides, admin documentation, and API docs
+With your functional app ready, it's time to craft the messaging that will attract and engage your target audience.
 
 By the end of today, you'll have a complete marketing package ready to deploy alongside your application launch.
 
 This process typically takes 6-8 hours total. You'll need access to an AI assistant like Claude.ai, a text editor for content creation, and accounts for any marketing platforms you plan to use.
 
-## 1. Marketing Website
+## Morning: Website & SEO (2-4 hours)
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
 | 4.1 - Marketing Website | [marketing-website-chat](4.1-marketing-website-chat.md) | `marketing-website.md` |
+| 4.2 - SEO Content | [seo-content-chat](4.2-seo-content-chat.md) | `seo-content.md` |
 
 ### 4.1 - Marketing Website
 
@@ -33,12 +31,6 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output into a file named `marketing-website.md`
 
-## 2. SEO Content
-
-| Phase | AI Chat Conversation Guide | Output Document |
-|-------|-----------------|-----------------|
-| 4.2 - SEO Content | [seo-content-chat](4.2-seo-content-chat.md) | `seo-content.md` |
-
 ### 4.2 - SEO Content
 
 **Goal**: Develop a comprehensive SEO strategy and create valuable, search-optimized content that attracts visitors through search engines and converts them to users.
@@ -48,11 +40,13 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `seo-content.md`
 
-## 3. Email Sequences
+## Afternoon: Email, Social Media & Documentation (2-4 hours)
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
 | 4.3 - Email Sequences | [email-sequences-chat](4.3-email-sequences-chat.md) | `email-sequences.md` |
+| 4.4 - Social Channels | [social-channels-chat](4.4-social-channels-chat.md) | `social-channels.md` |
+| 4.5 - Technical Documentation | [technical-documentation-chat](4.5-technical-documentation-chat.md) | `technical-documentation.md` |
 
 ### 4.3 - Email Sequences
 
@@ -63,12 +57,6 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `email-sequences.md`
 
-## 4. Social Channels
-
-| Phase | AI Chat Conversation Guide | Output Document |
-|-------|-----------------|-----------------|
-| 4.4 - Social Channels | [social-channels-chat](4.4-social-channels-chat.md) | `social-channels.md` |
-
 ### 4.4 - Social Channels
 
 **Goal**: Strategically select social media channels and create a content kit with templates for announcements, updates, and engagement posts.
@@ -77,12 +65,6 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 1. Copy paste each Step in [social-channels-chat](4.4-social-channels-chat.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `social-channels.md`
-
-## 5. Technical Documentation
-
-| Phase | AI Chat Conversation Guide | Output Document |
-|-------|-----------------|-----------------|
-| 4.5 - Technical Documentation | [technical-documentation-chat](4.5-technical-documentation-chat.md) | `technical-documentation.md` |
 
 ### 4.5 - Technical Documentation
 

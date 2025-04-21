@@ -52,7 +52,7 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 2.4 - Refining Your Application | [refined-app-chat](2.4-refined-app-chat.md) | Deployed refined prototype |
+| 2.4 - Refine Your Application | [app-refinement-chat](2.4-app-refinement-chat.md) | Deploy a refined prototype |
 | 2.5 - Domain Name | [domain-name-chat](2.5-domain-name-chat.md) | Configured domain for your application |
 
 ### 2.4 - Refining Your Application
@@ -60,7 +60,7 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
 **Goal**: Transform your prototype into a refined application by implementing the most impactful improvements identified in your morning analysis sessions.
 
 **Process**:
-1. Copy paste each Step in [refined-app-chat](2.4-refined-app-chat.md) into an AI chat tool.
+1. Copy paste each Step in [app-refinement-chat](2.4-app-refinement-chat.md) into an AI chat tool.
 2. Implement improvements in the following order:
    - Critical UX fixes identified in your feedback analysis
    - Core visual design enhancements from your design spec

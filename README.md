@@ -24,11 +24,11 @@ Transform your idea into reality with our proven framework:
 
 | Day | Theme | Session 1 | Session 2 |
 |-----|-------|-----------|-----------|
-| **Day 1** | **CREATE** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Prototype App |
-| **Day 2** | **REFINE** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Improvements<br>• Domain Name |
-| **Day 3** | **BUILD** | • Authentication System<br>• Payment Integration<br>• Advanced Features | • API & Data Integration<br>• Performance Optimization<br>• Testing |
+| **Day 1** | **CREATE** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Working Prototype |
+| **Day 2** | **REFINE** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Refinement<br>• Domain Name |
+| **Day 3** | **BUILD** | • Authentication System<br>• API & Data Integration<br>• Payment Integration | • Advanced Features<br>• Dashboard Implementation |
 | **Day 4** | **POSITION** | • Marketing Website<br>• SEO Content | • Email Sequences<br>• Social Channels<br>• Technical Documentation |
-| **Day 5** | **LAUNCH** | • Analytics Integration<br>• Final Deployment | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
+| **Day 5** | **LAUNCH** | • Analytics Integration<br>• Final Testing<br>• Final Deployment | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
 
 ## Before You Begin: [LEARN](0-learn/README.md)
 
