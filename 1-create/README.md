@@ -48,7 +48,7 @@ TODO
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 1.4 - Database Setup | [database-setup-chat](1.4-database-setup-chat.md) | `000-initial-sql-migration.sql` |
-| 1.5 - Prototype App | [prototype-app-chat](1.5-prototype-app-chat.md) | Deployed working prototype |
+| 1.5 - Prototype App | [working-prototype-chat](1.5-working-prototype-chat.md) | Deployed working prototype |
 
 ### 1.4 - Database Setup
 
@@ -65,7 +65,7 @@ TODO
 
 #### Process
 1. Set up accounts on necessary platforms (Supabase, Vercel, etc.)
-2. Copy paste each Step in [prototype-app-chat](1.5-initial-app-chat.md) into an AI chat tool.
+2. Copy paste each Step in [working-prototype-chat](1.5-working-prototype-chat.md) into an AI chat tool.
 3. Use the PRD, database schema, and marketing story you created in the morning to guide the AI.
 4. Follow the implementation instructions to deploy your initial app.
 5. By day's end, you'll have a basic working version online!
