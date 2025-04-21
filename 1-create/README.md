@@ -17,8 +17,8 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
-| 1.1 - Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements-document.md` |
-| 1.2 - Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-content.md` |
+| 1.1 - Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md` |
+| 1.2 - Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md` |
 | 1.3 - Landing Page | [landing-page](1.3-landing-page.md) | Deployed landing page |
 
 ### 1.1 - Product Requirements
