@@ -59,16 +59,20 @@ TODO
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `000-initial-sql-migration.sql`
 
-### 1.5 - Prototype App
+### 1.5 - Working Prototype
 
 **Goal**: Create a working basic version of your application using the requirements developed in the morning.
 
 #### Process
-1. Set up accounts on necessary platforms (Supabase, Vercel, etc.)
-2. Copy paste each Step in [working-prototype-chat](1.5-working-prototype-chat.md) into an AI chat tool.
-3. Use the PRD, database schema, and marketing story you created in the morning to guide the AI.
-4. Follow the implementation instructions to deploy your initial app.
-5. By day's end, you'll have a basic working version online!
+1. Follow each subsection in [working-prototype-chat](1.5-working-prototype-chat.md):
+   - 1.5.1: Fork the Supabase Starter Project
+   - 1.5.2: Add Supabase Integration
+   - 1.5.3: Add Your Documents to Project Settings
+   - 1.5.4: Install Database Schema
+   - 1.5.5: Begin v0.dev Chat
+   - 1.5.6-1.5.11: Use the provided prompts to build each component of your app
+2. Use the PRD, database schema, and marketing story you created in the morning to guide the AI.
+3. By day's end, you'll have a basic working version online!
 
 ## Day 1 Completion Checklist
 
