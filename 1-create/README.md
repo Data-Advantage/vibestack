@@ -41,7 +41,15 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 ### 1.3 - Landing Page
 
-TODO
+**Goal**: Publish a real landing page at a *.vercel.app domain. Take in email address signups of interested users.
+
+#### Process
+1. Begin by adding your product requirements and marketing documents to your v0 project.
+2. Set up the Supabase starter template and use the Vercel Supabase integration for automatic configuration.
+3. Create a compelling landing page based on your marketing content.
+4. Apply a cohesive visual style to your design.
+5. Deploy to Vercel and thoroughly test your waitlist signup functionality.
+6. Follow the detailed guide in [landing-page-chat](1.3-landing-page-chat.md).
 
 ## Afternoon: Building Your Initial App (2-4 hours)
 
