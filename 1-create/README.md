@@ -48,7 +48,7 @@ TODO
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
 | 1.4 - Database Setup | [database-setup-chat](1.4-database-setup-chat.md) | `000-initial-sql-migration.sql` |
-| 1.5 - Prototype App | [working-prototype-chat](1.5-working-prototype-chat.md) | Deployed working prototype |
+| 1.5 - Working Prototype | [working-prototype-chat](1.5-working-prototype-chat.md) | Deployed working prototype |
 
 ### 1.4 - Database Setup
 
@@ -61,18 +61,19 @@ TODO
 
 ### 1.5 - Working Prototype
 
-**Goal**: Create a working basic version of your application using the requirements developed in the morning.
+**Goal**: Expand your landing page into a working prototype with core functionality.
 
 #### Process
-1. Follow each subsection in [working-prototype-chat](1.5-working-prototype-chat.md):
-   - 1.5.1: Fork the Supabase Starter Project
-   - 1.5.2: Add Supabase Integration
-   - 1.5.3: Add Your Documents to Project Settings
-   - 1.5.4: Install Database Schema
-   - 1.5.5: Begin v0.dev Chat
-   - 1.5.6-1.5.11: Use the provided prompts to build each component of your app
-2. Use the PRD, database schema, and marketing story you created in the morning to guide the AI.
-3. By day's end, you'll have a basic working version online!
+1. Review your existing progress from sections 1.3 and 1.4
+2. Follow each subsection in [working-prototype-chat](1.5-working-prototype-chat.md):
+   - 1.5.1: Review Existing Progress
+   - 1.5.2: Add Database Schema to Project Settings
+   - 1.5.3: App Implementation Planning
+   - 1.5.4: Enhance the Homepage
+   - 1.5.5: Navigation Structure
+   - 1.5.6: Database Connection
+   - 1.5.7-1.5.10: Implement core features and prepare for deployment
+3. By day's end, you'll have a functional prototype that uses your database schema and builds upon your landing page!
 
 ## Day 1 Completion Checklist
 
