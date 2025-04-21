@@ -1,16 +1,16 @@
-# Day 3: Build
+# Post-Launch Performance Optimization
 
-[⬅️ Day 3 Overview](README.md)
+[⬅️ Growth Overview](README.md)
 
-## 3.5 Performance Optimization
+## Performance Optimization
 
-**Goal**: Optimize your application for speed, responsiveness, and efficiency.
+**Goal**: Optimize your application for speed, responsiveness, and efficiency after launch to improve user retention and satisfaction.
 
-**Process**: Follow this chat pattern with your AI coding tool such as [v0.dev](https://www.v0.dev). Pay attention to the notes in `[brackets]` and replace the bracketed text with your own content.
+**Process**: Follow this chat pattern with your AI coding tool such as [Claude](https://claude.ai) or [v0.dev](https://www.v0.dev). Pay attention to the notes in `[brackets]` and replace the bracketed text with your own content.
 
-**Timeframe**: 30-45 minutes
+**Timeframe**: Implement over 1-2 weeks post-launch based on analytics data and user feedback
 
-### 3.5.1: Performance Audit & Baseline
+### 1: Performance Audit & Baseline
 
 ```
 I need to optimize the performance of my application to ensure it loads quickly, responds efficiently to user interactions, and uses resources efficiently. Before making any changes, I want to conduct a performance audit and establish baselines.
@@ -44,7 +44,7 @@ Please help me:
 Please provide code examples for implementing these performance measurement tools and explain how to interpret the results to prioritize optimization efforts.
 ```
 
-### 3.5.2: Frontend Optimization Strategies
+### 2: Frontend Optimization Strategies
 
 ```
 Based on our performance audit, I need to implement frontend optimizations to improve loading speed and runtime performance.
@@ -81,7 +81,7 @@ Please help me implement the following optimizations:
 Please provide specific code examples for these optimizations that I can apply to my [Next.js/React/etc.] application. Include before/after comparisons where possible to illustrate the impact.
 ```
 
-### 3.5.3: Backend & Database Optimization
+### 3: Backend & Database Optimization
 
 ```
 I need to optimize the backend and database performance of my application to reduce latency and improve scalability.
@@ -118,7 +118,7 @@ Please help me implement:
 Please provide specific code examples for these backend optimizations, focusing on my Supabase implementation and any server-side components of my application.
 ```
 
-### 3.5.4: Mobile & Responsive Performance
+### 4: Mobile & Responsive Performance
 
 ```
 I need to ensure my application performs well on mobile devices and across different screen sizes.
@@ -155,7 +155,7 @@ Please help me implement:
 Please provide code examples for these mobile optimizations and explain how to validate their effectiveness across different devices and screen sizes.
 ```
 
-### 3.5.5: Caching & Data Persistence
+### 5: Caching & Data Persistence
 
 ```
 I need to implement effective caching strategies throughout my application to reduce redundant data fetching and improve responsiveness.
@@ -192,7 +192,7 @@ Please help me implement:
 Please provide code examples for these caching strategies and explain how to properly invalidate caches when data changes to prevent stale data issues.
 ```
 
-### 3.5.6: Resource Loading Optimization
+### 6: Resource Loading Optimization
 
 ```
 I need to optimize how resources are loaded in my application to improve perceived performance and reduce loading times.
@@ -229,7 +229,7 @@ Please help me implement:
 Please provide code examples for these resource loading optimizations and explain how to measure their impact on user-perceived performance metrics.
 ```
 
-### 3.5.7: JavaScript & Runtime Performance
+### 7: JavaScript & Runtime Performance
 
 ```
 I need to optimize the JavaScript execution and runtime performance of my application to ensure smooth interactivity and responsiveness.
@@ -266,7 +266,7 @@ Please help me implement:
 Please provide code examples for these JavaScript optimizations, focusing on framework-specific best practices for my application.
 ```
 
-### 3.5.8: Performance Monitoring & Continuous Improvement
+### 8: Performance Monitoring & Continuous Improvement
 
 ```
 Finally, I need to implement ongoing performance monitoring and establish a process for continuous performance improvement.
