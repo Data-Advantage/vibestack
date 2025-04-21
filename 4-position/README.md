@@ -7,88 +7,59 @@ Create compelling marketing content to promote your application.
 ## Introduction
 Welcome to Day 4 of the Vibestack workflow! Today focuses on creating compelling marketing content to promote your application. With your functional app ready, it's time to craft the messaging that will attract and engage your target audience.
 
-Today is divided into four key marketing areas, each with a planning and content production phase:
-1. **Website Static Marketing Pages**: For direct branded traffic
-2. **Website SEO Content Pages**: For attracting search visitors
-3. **Email Sequences**: For free users and pro users onboarding
-4. **Social Channels**: Strategic selection and content
+Today is divided into five key marketing areas:
+1. **Marketing Website**: Creating your static pages and core marketing content
+2. **SEO Content**: Developing search-optimized content strategy and implementation
+3. **Email Sequences**: Creating email flows for user onboarding and engagement
+4. **Social Channels**: Strategic platform selection and content development
+5. **Technical Documentation**: Creating user guides, admin documentation, and API docs
 
 By the end of today, you'll have a complete marketing package ready to deploy alongside your application launch.
 
 This process typically takes 6-8 hours total. You'll need access to an AI assistant like Claude.ai, a text editor for content creation, and accounts for any marketing platforms you plan to use.
 
-## 1. Website Static Marketing Pages (For Direct Branded Traffic)
+## 1. Marketing Website
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.1 - Static Pages Planning | [static-pages-planning-chat](4.1-static-pages-planning-chat.md) | `static-pages-plan.md` |
-| 4.2 - Static Pages Production | [static-pages-production-chat](4.2-static-pages-production-chat.md) | `static-pages-content.md` |
+| 4.1 - Marketing Website | [marketing-website-chat](4.1-marketing-website-chat.md) | `marketing-website.md` |
 
-### 4.1 - Static Pages Planning
+### 4.1 - Marketing Website
 
-**Goal**: Plan the structure and strategy for your core website pages that communicate your brand's value proposition to direct visitors.
-
-#### Process
-1. Copy paste each Step in [static-pages-planning-chat](4.1-static-pages-planning-chat.md) into a Claude.ai conversation.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output into a file named `static-pages-plan.md`
-
-### 4.2 - Static Pages Production
-
-**Goal**: Create compelling, conversion-focused content for your main marketing pages including homepage, features, pricing, and about pages.
+**Goal**: Plan and develop the structure and content for your core website pages that communicate your brand's value proposition to direct visitors.
 
 #### Process
-1. Copy paste each Step in [static-pages-production-chat](4.2-static-pages-production-chat.md) into a Claude.ai conversation.
+1. Copy paste each Step in [marketing-website-chat](4.1-marketing-website-chat.md) into a Claude.ai conversation.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output into a file named `static-pages-content.md`
+3. Save the final output into a file named `marketing-website.md`
 
-## 2. Website SEO Content Pages (For Search Visitors)
+## 2. SEO Content
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.3 - SEO Content Planning | [seo-content-planning-chat](4.3-seo-content-planning-chat.md) | `seo-content-plan.md` |
-| 4.4 - SEO Content Production | [seo-content-production-chat](4.4-seo-content-production-chat.md) | `seo-content-pages.md` |
+| 4.2 - SEO Content | [seo-content-chat](4.2-seo-content-chat.md) | `seo-content.md` |
 
-### 4.3 - SEO Content Planning
+### 4.2 - SEO Content
 
-**Goal**: Develop a comprehensive SEO strategy to improve your application's visibility in search engines and AI search results.
-
-#### Process
-1. Copy paste each section in [seo-content-planning-chat](4.3-seo-content-planning-chat.md) into an AI chat tool.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `seo-content-plan.md`
-
-### 4.4 - SEO Content Production
-
-**Goal**: Create valuable, search-optimized content that attracts visitors through search engines and converts them to users.
+**Goal**: Develop a comprehensive SEO strategy and create valuable, search-optimized content that attracts visitors through search engines and converts them to users.
 
 #### Process
-1. Copy paste each section in [seo-content-production-chat](4.4-seo-content-production-chat.md) into an AI chat tool.
+1. Copy paste each section in [seo-content-chat](4.2-seo-content-chat.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `seo-content-pages.md`
+3. Save the final output as `seo-content.md`
 
 ## 3. Email Sequences
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.5 - Email Sequence Planning | [email-sequence-planning-chat](4.5-email-sequence-planning-chat.md) | `email-sequence-plan.md` |
-| 4.6 - Email Sequence Production | [email-sequence-production-chat](4.6-email-sequence-production-chat.md) | `email-sequences.md` |
+| 4.3 - Email Sequences | [email-sequences-chat](4.3-email-sequences-chat.md) | `email-sequences.md` |
 
-### 4.5 - Email Sequence Planning
+### 4.3 - Email Sequences
 
-**Goal**: Plan effective email sequences for both free user signups and pro user onboarding to maximize engagement and conversion.
-
-#### Process
-1. Copy paste each Step in [email-sequence-planning-chat](4.5-email-sequence-planning-chat.md) into an AI chat tool.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `email-sequence-plan.md`
-
-### 4.6 - Email Sequence Production
-
-**Goal**: Create compelling email content for free user nurturing and pro user onboarding sequences.
+**Goal**: Plan and create effective email sequences for both free user signups and pro user onboarding to maximize engagement and conversion.
 
 #### Process
-1. Copy paste each Step in [email-sequence-production-chat](4.6-email-sequence-production-chat.md) into an AI chat tool.
+1. Copy paste each Step in [email-sequences-chat](4.3-email-sequences-chat.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `email-sequences.md`
 
@@ -96,32 +67,37 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output Document |
 |-------|-----------------|-----------------|
-| 4.7 - Social Channel Planning | [social-channel-planning-chat](4.7-social-channel-planning-chat.md) | `social-channel-plan.md` |
-| 4.8 - Social Content Production | [social-content-production-chat](4.8-social-content-production-chat.md) | `social-content-kit.md` |
+| 4.4 - Social Channels | [social-channels-chat](4.4-social-channels-chat.md) | `social-channels.md` |
 
-### 4.7 - Social Channel Planning
+### 4.4 - Social Channels
 
-**Goal**: Strategically select and plan your social media channels based on your target audience and product category.
-
-#### Process
-1. Copy paste each Step in [social-channel-planning-chat](4.7-social-channel-planning-chat.md) into an AI chat tool.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `social-channel-plan.md`
-
-### 4.8 - Social Content Production
-
-**Goal**: Create a social media content kit with templates for announcements, updates, and engagement posts.
+**Goal**: Strategically select social media channels and create a content kit with templates for announcements, updates, and engagement posts.
 
 #### Process
-1. Copy paste each Step in [social-content-production-chat](4.8-social-content-production-chat.md) into an AI chat tool.
+1. Copy paste each Step in [social-channels-chat](4.4-social-channels-chat.md) into an AI chat tool.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `social-content-kit.md`
+3. Save the final output as `social-channels.md`
+
+## 5. Technical Documentation
+
+| Phase | AI Chat Conversation Guide | Output Document |
+|-------|-----------------|-----------------|
+| 4.5 - Technical Documentation | [technical-documentation-chat](4.5-technical-documentation-chat.md) | `technical-documentation.md` |
+
+### 4.5 - Technical Documentation
+
+**Goal**: Create comprehensive user guides, admin documentation, developer resources, and API documentation.
+
+#### Process
+1. Copy paste each Step in [technical-documentation-chat](4.5-technical-documentation-chat.md) into an AI chat tool.
+2. Follow all directions in [brackets] and replace the bracketed text with your own content.
+3. Save the final output as `technical-documentation.md`
 
 ## Day 4 Completion Checklist
 
 Before moving on to Day 5, ensure you have:
 
-- [ ] Completed website static marketing pages:
+- [ ] Completed marketing website content:
   - [ ] Strategy and structure plan
   - [ ] Homepage content
   - [ ] Features page content
@@ -148,5 +124,12 @@ Before moving on to Day 5, ensure you have:
   - [ ] Launch announcement templates
   - [ ] Ongoing content calendar structure
   - [ ] Engagement frameworks
+
+- [ ] Created technical documentation:
+  - [ ] User guides
+  - [ ] Admin documentation
+  - [ ] Developer resources
+  - [ ] API documentation
+  - [ ] Tutorial content
 
 **What's Next**: On Day 5, you'll finalize your launch strategy, deploy all marketing materials, and officially launch your application to the world.
