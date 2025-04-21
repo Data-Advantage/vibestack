@@ -17,16 +17,16 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
-| 1.1 - Product Requirements | [product-requirements-chat](1.1-product-requirements-chat.md) | `product-requirements-document.md` |
-| 1.2 - Marketing Story | [marketing-story-chat](1.2-marketing-story-chat.md) | `marketing-content.md` |
-| 1.3 - Landing Page | [landing-page-chat](1.3-landing-page-chat.md) | Deployed landing page |
+| 1.1 - Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements-document.md` |
+| 1.2 - Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-content.md` |
+| 1.3 - Landing Page | [landing-page](1.3-landing-page.md) | Deployed landing page |
 
 ### 1.1 - Product Requirements
 
 **Goal**: Create a `product-requirements-document.md` file that has a full written description of your product vision, features, and implementation details.
 
 #### Process
-1. Copy paste each Step in [product-requirements-chat](1.1-product-requirements-chat.md) into a Claude.ai conversation.
+1. Copy paste each Step in [product-requirements](1.1-product-requirements.md) into a Claude.ai conversation.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output into a file named `product-requirements-document.md`
 
@@ -35,7 +35,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 **Goal**: Create compelling marketing narratives and website content that will help users understand and connect with your product.
 
 #### Process
-1. Copy paste each Step in [marketing-story-chat](1.2-marketing-story-chat.md) into an AI chat tool like Claude.ai.
+1. Copy paste each Step in [marketing-story](1.2-marketing-story.md) into an AI chat tool like Claude.ai.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `marketing-content.md`
 
@@ -49,21 +49,21 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 3. Create a compelling landing page based on your marketing content.
 4. Apply a cohesive visual style to your design.
 5. Deploy to Vercel and thoroughly test your waitlist signup functionality.
-6. Follow the detailed guide in [landing-page-chat](1.3-landing-page-chat.md).
+6. Follow the detailed guide in [landing-page](1.3-landing-page.md).
 
 ## Afternoon: Building Your Initial App (2-4 hours)
 
 | Phase | AI Chat Conversation Guide | Output |
 |-------|-----------------|-----------------|
-| 1.4 - Database Setup | [database-setup-chat](1.4-database-setup-chat.md) | `000-initial-sql-migration.sql` |
-| 1.5 - Working Prototype | [working-prototype-chat](1.5-working-prototype-chat.md) | Deployed working prototype |
+| 1.4 - Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-sql-migration.sql` |
+| 1.5 - Working Prototype | [working-prototype](1.5-working-prototype.md) | Deployed working prototype |
 
 ### 1.4 - Database Setup
 
 **Goal**: Define the data structure (schema) required for the web application, creating an `000-initial-sql-migration.sql` file that will fully install a custom Postgres database into your Supabase instance.
 
 #### Process
-1. Copy paste each Step in [database-setup-chat](1.4-database-setup-chat.md) into an AI chat tool like Claude.ai.
+1. Copy paste each Step in [database-setup](1.4-database-setup.md) into an AI chat tool like Claude.ai.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
 3. Save the final output as `000-initial-sql-migration.sql`
 
@@ -73,7 +73,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 #### Process
 1. Review your existing progress from sections 1.3 and 1.4
-2. Follow each subsection in [working-prototype-chat](1.5-working-prototype-chat.md):
+2. Follow each subsection in [working-prototype](1.5-working-prototype.md):
    - 1.5.1: Review Existing Progress
    - 1.5.2: Add Database Schema to Project Settings
    - 1.5.3: App Implementation Planning
