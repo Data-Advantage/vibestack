@@ -101,22 +101,29 @@ Before moving on to Day 2, ensure you have:
   - [ ] Activation optimization approach
   - [ ] Key acquisition metrics and economics
 
-- [ ] Created database schema with:
-  - [ ] Tables for all key entities in your application
-  - [ ] Defined relationships between tables
-  - [ ] Appropriate data types and constraints
-  - [ ] SQL ready to implement in Supabase
-
 - [ ] Developed marketing content including:
   - [ ] Value proposition
   - [ ] Key messaging for target audience
   - [ ] Website structure outline
   - [ ] Content for main landing page sections
 
-- [ ] Initial app implementation with:
+- [ ] Deployed landing page with:
+  - [ ] Compelling design based on marketing content
+  - [ ] Waitlist/email signup functionality
+  - [ ] Clear call-to-action elements
+  - [ ] Vercel deployment with accessible URL
+
+- [ ] Created database schema with:
+  - [ ] Tables for all key entities in your application
+  - [ ] Defined relationships between tables
+  - [ ] Appropriate data types and constraints
+  - [ ] SQL ready to implement in Supabase
+
+- [ ] Implemented working prototype with:
   - [ ] Basic app functionality deployed online
   - [ ] Database connected and functioning
   - [ ] Core user flows working as expected
+  - [ ] Navigation structure completed
   - [ ] URL where you can access your working application
 
 **What's Next**: On Day 2, you'll gather feedback on your initial app and begin refining both the user experience and functionality based on that feedback.
