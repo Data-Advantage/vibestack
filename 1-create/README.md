@@ -11,7 +11,7 @@ Welcome to Day 1 of the Vibestack workflow! Today is divided into two key phases
 
 By the end of today, you'll have both foundational documents AND a working initial version of your application.
 
-This process typically takes 6-8 hours total. You'll need access to an AI assistant like Claude.ai, a basic text editor to save your outputs, and accounts for the recommended tools. No coding experience is required—the AI will help you navigate technical challenges.
+This process typically takes 6-8 hours total. You'll need access to an AI assistant like [Claude.ai](https://claude.ai), a basic text editor to save your outputs, and accounts for the recommended tools. No coding experience is required—the AI will help you navigate technical challenges.
 
 ## Morning: Planning & Requirements (2-4 hours)
 
