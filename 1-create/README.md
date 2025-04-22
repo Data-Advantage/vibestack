@@ -17,7 +17,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | Objective | Guide | Output |
 |-----|----|-------------|-----------------|
-| 1.1 | Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md` |
+| 1.1 | Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md`<br>`user-acquisition.md` |
 | 1.2 | Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md`<br>`landing-content.md` |
 | 1.3 | Landing Page | [landing-page](1.3-landing-page.md) | NextJS codebase deployed on Vercel |
 
@@ -28,7 +28,8 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 #### Process
 1. Copy paste each Step in [product-requirements](1.1-product-requirements.md) into a Claude.ai conversation.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output into a file named `product-requirements.md`
+3. Save the final PRD output into a file named `product-requirements.md`
+4. Also save the user acquisition strategy from Section 1.1.6 as a separate file named `user-acquisition.md`
 
 ### 1.2 - Marketing Story
 
@@ -93,6 +94,12 @@ Before moving on to Day 2, ensure you have:
   - [ ] Prioritized MVP features
   - [ ] User stories with acceptance criteria
   - [ ] Non-functional requirements (security, performance, etc.)
+
+- [ ] Created user acquisition strategy with:
+  - [ ] First 100 users acquisition plan
+  - [ ] Growth strategy to 1,000 users
+  - [ ] Activation optimization approach
+  - [ ] Key acquisition metrics and economics
 
 - [ ] Created database schema with:
   - [ ] Tables for all key entities in your application

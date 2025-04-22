@@ -26,9 +26,11 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
 **Goal**: Create a `feedback-analysis.md` file that systematically organizes feedback from initial users and identifies key improvement areas.
 
 #### Process
-1. Copy paste each Step in [feedback-collection-chat](2.1-feedback-collection-chat.md) into a Claude.ai conversation.
-2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output into a file named `feedback-analysis.md`
+1. Review your `user-acquisition.md` file from Day 1 to identify and reach out to potential users from your target audience.
+2. Use the "First 100 Users Strategy" section to guide your approach for finding at least 5 people to interview.
+3. Copy paste each Step in [feedback-collection-chat](2.1-feedback-collection-chat.md) into a Claude.ai conversation.
+4. Follow all directions in [brackets] and replace the bracketed text with your own content.
+5. Save the final output into a file named `feedback-analysis.md`
 
 ### 2.2 - UX Improvement Plan
 
