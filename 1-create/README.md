@@ -15,20 +15,20 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 ## Morning: Planning & Requirements (2-4 hours)
 
-| Phase | AI Chat Conversation Guide | Output |
-|-------|-----------------|-----------------|
-| 1.1 - Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md` |
-| 1.2 - Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md` |
-| 1.3 - Landing Page | [landing-page](1.3-landing-page.md) | Deployed landing page |
+| Phase | Objective | Guide | Output |
+|-----|----|-------------|-----------------|
+| 1.1 | Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md` |
+| 1.2 | Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md`<br>`landing-content.md` |
+| 1.3 | Landing Page | [landing-page](1.3-landing-page.md) | NextJS codebase deployed on Vercel |
 
 ### 1.1 - Product Requirements
 
-**Goal**: Create a `product-requirements-document.md` file that has a full written description of your product vision, features, and implementation details.
+**Goal**: Create a `product-requirements.md` file that has a full written description of your product vision, features, and implementation details.
 
 #### Process
 1. Copy paste each Step in [product-requirements](1.1-product-requirements.md) into a Claude.ai conversation.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output into a file named `product-requirements-document.md`
+3. Save the final output into a file named `product-requirements.md`
 
 ### 1.2 - Marketing Story
 
@@ -53,10 +53,10 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 ## Afternoon: Building Your Initial App (2-4 hours)
 
-| Phase | AI Chat Conversation Guide | Output |
-|-------|-----------------|-----------------|
-| 1.4 - Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-sql-migration.sql` |
-| 1.5 - Working Prototype | [working-prototype](1.5-working-prototype.md) | Deployed working prototype |
+| Phase | Objective | Guide | Output |
+|-----|----|-------------|-----------------|
+| 1.4 | Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-sql-migration.sql` |
+| 1.5 | Working Prototype | [working-prototype](1.5-working-prototype.md) | NextJS codebase deployed on Vercel |
 
 ### 1.4 - Database Setup
 
