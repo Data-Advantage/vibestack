@@ -56,7 +56,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | Objective | Guide | Output |
 |-----|----|-------------|-----------------|
-| 1.4 | Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-migration.sql` |
+| 1.4 | Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-migration.sql`<br>`seed.sql` |
 | 1.5 | Working Prototype | [working-prototype](1.5-working-prototype.md) | NextJS codebase deployed on Vercel |
 
 ### 1.4 - Database Setup
