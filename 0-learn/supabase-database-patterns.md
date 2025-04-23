@@ -354,6 +354,172 @@ Remember: When in doubt, fully qualify all column references in complex queries 
 
 Remember that proper database design is crucial for application scalability and security. Always consider the implications of your schema design on performance, security, and maintainability.
 
+## Standard Utility Functions
+
+Common utility functions simplify database operations and ensure consistent behavior. These should be placed in the `public` schema for organization and accessibility.
+
+### Timestamp Management Examples
+
+```sql
+CREATE OR REPLACE FUNCTION public.update_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, pg_temp;
+
+-- Usage example
+CREATE TRIGGER set_updated_at
+BEFORE UPDATE ON api.profiles
+FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
+```
+
+### User Management Examples
+
+```sql
+-- Create profile automatically when a new user signs up
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER SET search_path = public, pg_temp
+AS $$
+BEGIN
+  INSERT INTO api.profiles (id, display_name)
+  VALUES (new.id, new.email);
+  
+  RETURN new;
+END;
+$$;
+
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+```
+
+### Business Logic Function Examples
+
+If these functions are needed, they should be placed in the relevant schema (e.g., `api`) when they operate on domain-specific data:
+
+```sql
+-- Function to check and deduct credits
+CREATE OR REPLACE FUNCTION api.check_and_deduct_credits(
+  user_uuid UUID,
+  required_credits INTEGER
+) RETURNS BOOLEAN
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = api, public, pg_temp
+AS $$
+DECLARE
+  current_balance INTEGER;
+BEGIN
+  -- Get current balance
+  SELECT credit_balance INTO current_balance
+  FROM api.profiles
+  WHERE id = user_uuid;
+  
+  -- Check if enough credits
+  IF current_balance >= required_credits THEN
+    -- Deduct credits
+    UPDATE api.profiles
+    SET credit_balance = credit_balance - required_credits
+    WHERE id = user_uuid;
+    
+    RETURN TRUE;
+  ELSE
+    RETURN FALSE;
+  END IF;
+END;
+$$;
+```
+
+Remember to always:
+- Set the appropriate security context (`SECURITY DEFINER` when elevated privileges are needed)
+- Explicitly define the search path to prevent search path injection
+- Include proper error handling for robust function behavior
+- Document the purpose and usage of each function
+
+## Standard Stripe Tables
+
+When integrating Stripe payments with your application, a consistent table structure helps maintain webhook data and synchronize payment state. These tables should be placed in the `stripe` schema as mentioned in the schema organization section.
+
+### Core Stripe Tables
+
+```sql
+-- Customers table - links Stripe customers to application users
+CREATE TABLE stripe.customers (
+  id TEXT PRIMARY KEY, -- Stripe customer ID (e.g., cus_...)
+  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  email TEXT NOT NULL,
+  name TEXT,
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Products table - stores Stripe products
+CREATE TABLE stripe.products (
+  id TEXT PRIMARY KEY, -- Stripe product ID (e.g., prod_...)
+  name TEXT NOT NULL,
+  description TEXT,
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Prices table - stores Stripe prices for products
+CREATE TABLE stripe.prices (
+  id TEXT PRIMARY KEY, -- Stripe price ID (e.g., price_...)
+  product_id TEXT NOT NULL REFERENCES stripe.products(id),
+  active BOOLEAN NOT NULL DEFAULT TRUE,
+  currency TEXT NOT NULL,
+  unit_amount INTEGER NOT NULL, -- Amount in cents/smallest currency unit
+  type TEXT NOT NULL, -- 'one_time' or 'recurring'
+  interval TEXT, -- 'month', 'year', etc. (for recurring)
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Subscriptions table - stores active subscriptions
+CREATE TABLE stripe.subscriptions (
+  id TEXT PRIMARY KEY, -- Stripe subscription ID (e.g., sub_...)
+  customer_id TEXT NOT NULL REFERENCES stripe.customers(id),
+  status TEXT NOT NULL, -- 'active', 'canceled', 'past_due', etc.
+  price_id TEXT NOT NULL REFERENCES stripe.prices(id),
+  cancel_at_period_end BOOLEAN NOT NULL DEFAULT FALSE,
+  current_period_start TIMESTAMPTZ NOT NULL,
+  current_period_end TIMESTAMPTZ NOT NULL,
+  metadata JSONB,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+```
+
+### Recommended Indexes
+
+For optimal performance when querying these tables, create appropriate indexes:
+
+```sql
+CREATE INDEX idx_stripe_customers_user_id ON stripe.customers(user_id);
+CREATE INDEX idx_stripe_prices_product_id ON stripe.prices(product_id);
+CREATE INDEX idx_stripe_subscriptions_customer_id ON stripe.subscriptions(customer_id);
+CREATE INDEX idx_stripe_subscriptions_status ON stripe.subscriptions(status);
+```
+
+### Webhook Handling
+
+When setting up Stripe webhooks, ensure your webhook handler updates these tables accordingly:
+
+1. `customer.created` → Insert into `stripe.customers`
+2. `product.created/updated` → Insert/update `stripe.products`
+3. `price.created/updated` → Insert/update `stripe.prices`
+4. `subscription.created/updated/deleted` → Update `stripe.subscriptions`
+
+This standardized structure ensures your application maintains an accurate record of Stripe data while keeping it properly isolated in its own schema.
+
 ## Supabase Storage Function Array Access Pattern
 
 When working with Supabase storage functions that return arrays (`storage.foldername()`, `storage.filename()`), always use this pattern:
