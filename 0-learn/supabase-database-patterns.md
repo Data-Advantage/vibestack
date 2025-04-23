@@ -25,6 +25,24 @@ Avoid using the `public` schema for user data. Instead, create purpose-specific 
 
 This separation provides clearer organization, better security isolation, and more maintainable code.
 
+### Enum Placement
+PostgreSQL enums should usually be placed in the `reference` schema. Since enums represent fixed sets of values that are referenced across multiple tables, they align with the purpose of the reference schema as a container for lookup data.
+
+Example:
+```sql
+-- Create enum in reference schema
+CREATE TYPE reference.status AS ENUM ('pending', 'active', 'completed', 'cancelled');
+
+-- Use enum in table definition
+CREATE TABLE api.tasks (
+  id uuid primary key default gen_random_uuid(),
+  status reference.status NOT NULL DEFAULT 'pending',
+  -- other columns
+);
+```
+
+This approach keeps all reference data organized in a single schema and makes it clear that these values are shared across the application.
+
 ## Table Structure Best Practices
 
 ### User Profiles
