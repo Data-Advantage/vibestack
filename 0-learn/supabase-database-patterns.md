@@ -496,6 +496,21 @@ CREATE TABLE stripe.subscriptions (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+-- Webhook events table - stores raw Stripe webhook events
+CREATE TABLE stripe.webhook_events (
+  id TEXT PRIMARY KEY, -- Stripe event ID (e.g., evt_...)
+  type TEXT NOT NULL, -- Event type (e.g., 'customer.created', 'invoice.paid')
+  api_version TEXT NOT NULL, -- Stripe API version
+  created TIMESTAMPTZ NOT NULL, -- Timestamp from Stripe
+  data JSONB NOT NULL, -- Raw event data from Stripe
+  idempotency_key TEXT, -- Optional idempotency key
+  processing_status TEXT NOT NULL DEFAULT 'pending', -- 'pending', 'processed', 'failed'
+  processing_error TEXT, -- Error message if processing failed
+  processing_attempts INTEGER NOT NULL DEFAULT 0, -- Number of processing attempts
+  processed_at TIMESTAMPTZ, -- When event was processed
+  received_at TIMESTAMPTZ NOT NULL DEFAULT NOW() -- When event was received
+);
 ```
 
 ### Recommended Indexes
@@ -507,18 +522,21 @@ CREATE INDEX idx_stripe_customers_user_id ON stripe.customers(user_id);
 CREATE INDEX idx_stripe_prices_product_id ON stripe.prices(product_id);
 CREATE INDEX idx_stripe_subscriptions_customer_id ON stripe.subscriptions(customer_id);
 CREATE INDEX idx_stripe_subscriptions_status ON stripe.subscriptions(status);
+CREATE INDEX idx_stripe_webhook_events_type ON stripe.webhook_events(type);
+CREATE INDEX idx_stripe_webhook_events_processing_status ON stripe.webhook_events(processing_status);
 ```
 
 ### Webhook Handling
 
 When setting up Stripe webhooks, ensure your webhook handler updates these tables accordingly:
 
-1. `customer.created` → Insert into `stripe.customers`
-2. `product.created/updated` → Insert/update `stripe.products`
-3. `price.created/updated` → Insert/update `stripe.prices`
-4. `subscription.created/updated/deleted` → Update `stripe.subscriptions`
+1. Store the raw event in `stripe.webhook_events` for all event types
+2. `customer.created` → Insert into `stripe.customers`
+3. `product.created/updated` → Insert/update `stripe.products`
+4. `price.created/updated` → Insert/update `stripe.prices`
+5. `subscription.created/updated/deleted` → Update `stripe.subscriptions`
 
-This standardized structure ensures your application maintains an accurate record of Stripe data while keeping it properly isolated in its own schema.
+This standardized structure ensures your application maintains an accurate record of Stripe data while keeping it properly isolated in its own schema. The raw webhook events table provides an audit log and enables replaying events if needed.
 
 ## Supabase Storage Function Array Access Pattern
 
