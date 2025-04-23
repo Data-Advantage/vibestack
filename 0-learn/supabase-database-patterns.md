@@ -76,7 +76,7 @@ create table api.profiles (
 
 ## UUID Generation Options
 
-When creating UUIDs as primary keys in Supabase, use `pgcrypto` with the `gen_random_uuid()` function.
+When creating UUIDs as primary keys in Supabase, use `pgcrypto` with the `gen_random_uuid()` function unless there is the need for the more advanced features of `uuid-ossp`.
 
 ## Best Practices for Trigger Functions
 
