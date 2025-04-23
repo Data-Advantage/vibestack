@@ -15,21 +15,21 @@ VibeStack empowers you with both, bridging the gap between your vision and funct
 
 Transform your idea into reality with our proven framework:
 
-- **Day 1: [CREATE](1-create/README.md)** - Turn your idea into a working prototype with core functionality and key components.
-- **Day 2: [REFINE](2-refine/README.md)** - Gather feedback on your prototype and enhance your design and user experience.
-- **Day 3: [BUILD](3-build/README.md)** - Develop a complete application with all features, connected systems, and responsive design.
-- **Day 4: [POSITION](4-position/README.md)** - Craft your marketing message, landing page, and promotional materials to attract your audience.
-- **Day 5: [LAUNCH](5-launch/README.md)** - Deploy your application and start your promotional campaign to reach potential users.
+- **Day 1: [Create](1-create/README.md)** - Turn your idea into a working prototype with core functionality and key components.
+- **Day 2: [Refine](2-refine/README.md)** - Gather feedback on your prototype and enhance your design and user experience.
+- **Day 3: [Build](3-build/README.md)** - Develop a complete application with all features, connected systems, and responsive design.
+- **Day 4: [Position](4-position/README.md)** - Craft your marketing message, landing page, and promotional materials to attract your audience.
+- **Day 5: [Launch](5-launch/README.md)** - Deploy your application and start your promotional campaign to reach potential users.
 
 ## Day-by-Day Summary
 
 | Day | Theme | Session 1 | Session 2 |
 |-----|-------|-----------|-----------|
-| **Day 1** | **CREATE** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Working Prototype |
-| **Day 2** | **REFINE** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Refinement<br>• Domain Name |
-| **Day 3** | **BUILD** | • Authentication System<br>• API & Data Integration<br>• Payment Integration | • Advanced Features<br>• Dashboard Implementation |
-| **Day 4** | **POSITION** | • Marketing Website<br>• SEO Content | • Email Sequences<br>• Social Channels<br>• Technical Documentation |
-| **Day 5** | **LAUNCH** | • Analytics Integration<br>• Final Testing<br>• Final Deployment | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
+| **Day 1** | **Create** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Working Prototype |
+| **Day 2** | **Refine** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Refinement<br>• Domain Name |
+| **Day 3** | **Build** | • Authentication System<br>• API & Data Integration<br>• Payment Integration | • Advanced Features<br>• Dashboard Implementation |
+| **Day 4** | **Position** | • Marketing Website<br>• SEO Content | • Email Sequences<br>• Social Channels<br>• Technical Documentation |
+| **Day 5** | **Launch** | • Analytics Integration<br>• Final Testing<br>• Final Deployment | • Launch Announcement<br>• User Invitations<br>• Feedback Capture |
 
 ## Before You Begin: [LEARN](0-learn/README.md)
 
@@ -113,8 +113,8 @@ To make the most of VibeStack and ensure a smooth building process, prepare the 
 ## 💡 Success Stories
 
 - [Launch Week](https://www.launchweek.ai) - Build & launch an app in a week
-- [Sarahs Recipes](https://www.sarahsrecipes.ai) - Recipe generation platform
-- [Dannys Drinks](https://www.dannysdrinks.ai) - AI-powered cocktail discovery
+- [Sarah's Recipes](https://www.sarahsrecipes.ai) - Recipe generation platform
+- [Danny's Drinks](https://www.dannysdrinks.ai) - AI-powered cocktail discovery
 - [Kidtales](https://www.kidtales.io) - Personalized children's stories
 
 ---
