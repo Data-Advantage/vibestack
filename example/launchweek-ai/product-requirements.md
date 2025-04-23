@@ -496,6 +496,8 @@ For non-technical founders with SaaS ideas who struggle to translate concepts in
 - Upgrade/downgrade capabilities
 - Cancellation process
 
+*Note: Subscription accounts are capped at 50 credits per month, which refill automatically when the subscription renews. These credits expire at the end of each billing cycle if not used (use-it-or-lose-it model). For yearly subscriptions, credits still refill monthly (50 credits each month) rather than providing all credits upfront. This limit helps control our AI costs while ensuring consistent credit management across the platform.*
+
 *Technical Considerations:*
 - Stripe Subscription API integration
 - Recurring billing management
