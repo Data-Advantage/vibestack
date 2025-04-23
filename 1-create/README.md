@@ -56,17 +56,17 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 
 | Phase | Objective | Guide | Output |
 |-----|----|-------------|-----------------|
-| 1.4 | Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-sql-migration.sql` |
+| 1.4 | Database Setup | [database-setup](1.4-database-setup.md) | `000-initial-migration.sql` |
 | 1.5 | Working Prototype | [working-prototype](1.5-working-prototype.md) | NextJS codebase deployed on Vercel |
 
 ### 1.4 - Database Setup
 
-**Goal**: Define the data structure (schema) required for the web application, creating an `000-initial-sql-migration.sql` file that will fully install a custom Postgres database into your Supabase instance.
+**Goal**: Define the data structure (schema) required for the web application, creating an `000-initial-migration.sql` file that will fully install a custom Postgres database into your Supabase instance.
 
 #### Process
 1. Copy paste each Step in [database-setup](1.4-database-setup.md) into an AI chat tool like Claude.ai.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `000-initial-sql-migration.sql`
+3. Save the final output as `000-initial-migration.sql`
 
 ### 1.5 - Working Prototype
 
