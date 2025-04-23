@@ -18,7 +18,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 | Phase | Objective | Guide | Output |
 |-----|----|-------------|-----------------|
 | 1.1 | Product Requirements | [product-requirements](1.1-product-requirements.md) | `product-requirements.md`<br>`user-acquisition.md` |
-| 1.2 | Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md`<br>`landing-content.md` |
+| 1.2 | Marketing Story | [marketing-story](1.2-marketing-story.md) | `marketing-story.md`<br>`landing-page.md` |
 | 1.3 | Landing Page | [landing-page](1.3-landing-page.md) | NextJS codebase deployed on Vercel |
 
 ### 1.1 - Product Requirements
@@ -38,7 +38,7 @@ This process typically takes 6-8 hours total. You'll need access to an AI assist
 #### Process
 1. Copy paste each Step in [marketing-story](1.2-marketing-story.md) into an AI chat tool like Claude.ai.
 2. Follow all directions in [brackets] and replace the bracketed text with your own content.
-3. Save the final output as `marketing-content.md`
+3. Save the final output as `marketing-story.md`
 
 ### 1.3 - Landing Page
 
