@@ -9,7 +9,7 @@ This document outlines the recommended database patterns and best practices for 
 #### Reserved Schemas
 Respect Supabase's built-in schemas which have special purposes:
 - `auth` - Authentication and user management
-- `public` - Open access to database tables and objects
+- `public` - Open access to database tables and objects (insecure)
 - `storage` - File storage and management
 - `graphql` - GraphQL API
 - `realtime` - Realtime subscriptions
