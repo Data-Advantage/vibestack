@@ -18,9 +18,10 @@ These schemas are managed by Supabase and should not be modified directly.
 Avoid using the `public` schema for user data. Instead, create purpose-specific schemas:
 
 - `api` - User-generated content and application data
+- `config` - Application configuration data
 - `reference` - Publicly available lookup tables
-- `analytics` - Reporting data
-- `audit` - Tracking changes
+- `analytics` - Reporting data - (try to use only views)
+- `audit` - Tracking changes - (use only if needed in requirements)
 - `stripe` - Synced data from Stripe webhooks
 
 This separation provides clearer organization, better security isolation, and more maintainable code.
@@ -73,6 +74,138 @@ create table api.profiles (
 - Use foreign key constraints to maintain referential integrity
 - Consider soft deletes with a `deleted_at` timestamp instead of hard deletes
 - Use enums for status fields and other fixed-value columns
+
+## Simplified Constraints in Initial Migrations
+
+When creating your initial database schema, focus on essential constraints and defer complex ones:
+
+### Start With Essential Constraints Only
+
+- **Primary Keys**: Always include these from the beginning
+- **Foreign Keys**: Include these for basic referential integrity
+- **NOT NULL**: Apply to columns that must have values
+- **Simple CHECK constraints**: Use for basic data validation (e.g., `CHECK (amount >= 0)`)
+
+### Defer Complex Constraints
+
+Defer these types of constraints until their need is validated through actual usage:
+
+```sql
+-- Too complex for initial migration - defer this
+CONSTRAINT valid_deleted_status CHECK (
+  (deleted_at IS NULL) OR 
+  (deleted_at IS NOT NULL AND status = 'archived')
+)
+
+-- Non-critical constraint - implement later if needed
+CONSTRAINT unique_document_type_per_project UNIQUE (project_id, type)
+```
+
+### Minimize Metadata JSONB Fields
+
+Avoid adding metadata JSONB fields to every table in your initial migration:
+
+```sql
+-- Don't add this to every table by default
+metadata JSONB DEFAULT '{}',
+```
+
+Instead:
+- Add metadata fields only to tables where you know they'll be needed
+- Consider explicit columns for known attributes instead of generic metadata
+- Add metadata columns later when their specific use case is identified
+
+### Simplified Versioning Patterns
+
+When implementing document versioning, start with the simplest approach that meets your immediate needs:
+
+#### Start Simple
+
+Instead of creating complex versioning systems with:
+- Multiple interconnected tables
+- Circular foreign key references
+- Custom version management functions
+- Multiple triggers
+
+Simply add a version counter to your main table:
+```sql
+CREATE TABLE api.documents (
+  /* other fields */
+  content TEXT,
+  version INTEGER NOT NULL DEFAULT 1,
+  /* other fields */
+);
+```
+
+#### Add History Only If Needed
+
+If history tracking is required, consider:
+1. Using a simple history table that stores just what changed
+2. Adding this table later when the need is confirmed
+3. Using a basic trigger to update the version number and store history
+
+Here's a simple approach that avoids complexity while still tracking changes:
+
+```sql
+-- Main document table with version counter
+CREATE TABLE api.documents (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  content TEXT,
+  version INTEGER NOT NULL DEFAULT 1,
+  updated_by UUID REFERENCES auth.users(id),
+  -- other fields
+);
+
+-- Simple history table - only created when needed
+CREATE TABLE api.document_history (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  document_id UUID REFERENCES api.documents(id) ON DELETE CASCADE,
+  content TEXT NOT NULL, -- Previous content snapshot
+  changed_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  changed_by UUID REFERENCES auth.users(id),
+  from_version INTEGER NOT NULL,
+  to_version INTEGER NOT NULL
+);
+
+-- Simple trigger to track changes
+CREATE FUNCTION api.track_document_changes()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Only track if content changed
+  IF OLD.content IS DISTINCT FROM NEW.content THEN
+    -- Increment version counter
+    NEW.version = OLD.version + 1;
+    
+    -- Record history
+    INSERT INTO api.document_history (
+      document_id, content, changed_at, changed_by, 
+      from_version, to_version
+    ) VALUES (
+      OLD.id, OLD.content, NOW(), NEW.updated_by,
+      OLD.version, NEW.version
+    );
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Apply trigger to documents table
+CREATE TRIGGER track_document_changes
+BEFORE UPDATE ON api.documents
+FOR EACH ROW EXECUTE FUNCTION api.track_document_changes();
+```
+
+This approach captures previous versions without circular references or complex joins.
+
+#### When to Use Complex Versioning
+
+Only implement complex versioning systems with separate version tables when you have specific requirements for:
+- Branching versions (non-linear history)
+- Comparing arbitrary versions
+- Extensive metadata for each version
+- Version-specific permissions
+
+For most applications, simple versioning is sufficient for initial development.
 
 ## UUID Generation Options
 
@@ -191,6 +324,45 @@ create policy "Team members can view team data"
       where team_id = api.team_data.team_id
     )
   );
+```
+
+### RLS Optimization Patterns
+
+As applications grow, Row Level Security policies can become complex and impact performance. Follow these simplified patterns:
+
+#### 1. Use Functions for Common Policy Patterns
+
+For repeated policy logic (especially admin access), use a shared function:
+
+```sql
+-- Create once, use everywhere
+CREATE FUNCTION public.is_admin() RETURNS BOOLEAN AS $$
+  SELECT auth.jwt() ->> 'role' = 'admin';
+$$ LANGUAGE sql SECURITY DEFINER;
+
+-- Then in policies
+CREATE POLICY "Admin access" ON api.table USING (public.is_admin());
+```
+
+#### 2. Simplify Relationship Checks
+
+For complex ownership hierarchies (e.g., users → projects → documents):
+- Create views that join related tables instead of using nested EXISTS subqueries
+- Apply simpler policies to these views
+- Consider adding ownership fields (e.g., adding user_id to documents) for direct checks
+
+#### 3. Index Policy Columns
+
+Always add indexes on columns used in RLS policies:
+```sql
+CREATE INDEX ON api.table(user_id);
+```
+
+#### 4. Avoid Redundant Conditions
+
+When USING and WITH CHECK conditions are identical, use WITH CHECK only:
+```sql
+CREATE POLICY "Users edit own data" ON api.table FOR UPDATE WITH CHECK (auth.uid() = user_id);
 ```
 
 ## Database Function Security
@@ -346,7 +518,8 @@ Remember: When in doubt, fully qualify all column references in complex queries 
 
 ## Performance Considerations
 
-- Create appropriate indexes for frequently queried columns
+- Focus on primary key and foreign key indexes
+- Only add other appropriate indexes later when we identify performance bottlenecks
 - Use pagination for large datasets
 - Implement query optimization for complex joins
 - Consider materialized views for complex analytical queries
@@ -354,26 +527,146 @@ Remember: When in doubt, fully qualify all column references in complex queries 
 
 Remember that proper database design is crucial for application scalability and security. Always consider the implications of your schema design on performance, security, and maintainability.
 
+## Avoiding Premature Optimization
+
+Follow the principle of "optimize later" when building your database:
+
+### Anti-Patterns to Avoid
+
+#### 1. Cache Warming Functions
+Do not implement cache warming functions (like `warm_database_caches()`) in initial database setup. These are premature optimizations that:
+- Add unnecessary complexity 
+- Often provide limited benefits
+- Are difficult to test effectively
+- May interfere with PostgreSQL's built-in query planner and caching mechanisms
+
+PostgreSQL has sophisticated caching mechanisms that adapt to actual usage patterns. Let the database engine handle caching automatically until you have concrete evidence that manual intervention is required.
+
+#### 2. Over-Indexing
+Resist the urge to add indexes to every column "just in case." Each index:
+- Slows down write operations
+- Increases storage requirements
+- Complicates the query planner's job
+
+#### 3. Complex Stored Procedures for Simple Logic
+Keep application logic in your application code when possible. Only move logic to database functions when there's a clear performance or security benefit.
+
+#### 4. Materialized Views in Initial Setup
+Avoid creating materialized views and their refresh functions in your initial schema:
+
+```sql
+-- Avoid this in initial setup
+CREATE MATERIALIZED VIEW analytics.credit_usage_summary AS
+SELECT user_id, DATE_TRUNC('day', created_at) AS usage_date, SUM(amount) as total
+FROM api.credit_transactions
+GROUP BY user_id, DATE_TRUNC('day', created_at)
+WITH NO DATA;
+
+-- Also avoid the accompanying refresh function
+CREATE FUNCTION analytics.refresh_all_materialized_views()...
+```
+
+Instead:
+- Start with regular views that don't require refresh management
+- Only convert to materialized views when you have evidence of performance issues
+- Add refresh infrastructure only when the performance benefit is measurable and necessary
+
+Materialized views introduce additional complexity with caching invalidation, refresh timing, and transaction management that aren't justified without proven performance needs.
+
+### When to Optimize
+
+1. **Measure first**: Use query analysis tools to identify actual bottlenecks
+2. **Start simple**: Basic optimizations (proper indexing, query restructuring) often yield the biggest gains
+3. **Document why**: When implementing optimizations, document the specific performance issue being addressed
+4. **Test thoroughly**: Verify that optimizations improve performance under realistic conditions
+
+By avoiding premature optimization, you keep your database schema cleaner, more maintainable, and paradoxically, often faster than an over-engineered solution.
+
+## Simplified Analytics Approach
+
+When creating analytics capabilities for your application, start with minimal infrastructure:
+
+### Use Views Instead of Complex Infrastructure
+
+For a new application, avoid creating complex analytics infrastructure with dedicated tables, functions, and ETL processes. Instead:
+
+1. **Create Simple Views Only**: 
+   - Place read-only analytical views in the `analytics` schema
+   - Base these views directly on your application tables in the `api` schema
+   - Start with aggregate counts and basic metrics only
+
+```sql
+-- Example of a simple analytics view
+CREATE VIEW analytics.daily_user_signups AS
+SELECT 
+  DATE_TRUNC('day', created_at) AS signup_date,
+  COUNT(*) AS signup_count
+FROM auth.users
+GROUP BY DATE_TRUNC('day', created_at)
+ORDER BY signup_date DESC;
+```
+
+2. **Avoid These Until Needed**:
+   - Dedicated analytics tables
+   - Complex ETL processes
+   - Scheduled data transformations
+   - Custom aggregation functions
+   - Materialized views (unless performance issues arise)
+
+### Incremental Approach to Analytics
+
+As your application and data needs grow:
+
+1. First, expand your analytics views to answer specific business questions
+2. Only when views become too slow, consider materialized views
+3. If materialized views need frequent refreshing, then consider dedicated analytics tables
+
+This measured approach prevents overbuilding analytics infrastructure before you understand your actual reporting needs.
+
 ## Standard Utility Functions
 
 Common utility functions simplify database operations and ensure consistent behavior. These should be placed in the `public` schema for organization and accessibility.
 
-### Timestamp Management Examples
+### Timestamp Management Best Practices
+
+#### Standardizing Timestamp Functions
+
+A common issue in database schemas is the creation of multiple redundant timestamp management functions (e.g., `update_updated_at()`, `set_timestamps()`, `trigger_updated_at()`). To prevent this:
+
+**1. Standardize on a single timestamp function implementation:**
 
 ```sql
-CREATE OR REPLACE FUNCTION public.update_updated_at()
+-- Single standard timestamp function for the entire project
+CREATE OR REPLACE FUNCTION public.handle_timestamps()
 RETURNS TRIGGER AS $$
 BEGIN
+  -- Set created_at for new records
+  IF TG_OP = 'INSERT' THEN
+    NEW.created_at = NOW();
+  END IF;
+  
+  -- Always update the updated_at timestamp
   NEW.updated_at = NOW();
+  
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, pg_temp;
-
--- Usage example
-CREATE TRIGGER set_updated_at
-BEFORE UPDATE ON api.profiles
-FOR EACH ROW EXECUTE FUNCTION public.update_updated_at();
 ```
+
+**2. Use consistent trigger naming:**
+
+```sql
+-- Use this exact pattern for all tables
+CREATE TRIGGER handle_timestamps
+BEFORE INSERT OR UPDATE ON api.table_name
+FOR EACH ROW EXECUTE FUNCTION public.handle_timestamps();
+```
+
+**3. Add this function ONCE at the beginning of your migrations:**
+The timestamp function should be defined once at the start of your migrations and reused across all tables.
+
+**4. Never create alternative timestamp functions:**
+If you find yourself writing a new function that updates timestamps, stop and use the standard one instead.
 
 ### User Management Examples
 
@@ -446,97 +739,186 @@ When integrating Stripe payments with your application, a consistent table struc
 
 ### Core Stripe Tables
 
-```sql
--- Customers table - links Stripe customers to application users
-CREATE TABLE stripe.customers (
-  id TEXT PRIMARY KEY, -- Stripe customer ID (e.g., cus_...)
-  user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  email TEXT NOT NULL,
-  name TEXT,
-  metadata JSONB,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+A complete Stripe integration requires syncing data from webhooks into several related tables. Here's a comprehensive set of tables for managing Stripe data:
 
--- Products table - stores Stripe products
-CREATE TABLE stripe.products (
-  id TEXT PRIMARY KEY, -- Stripe product ID (e.g., prod_...)
-  name TEXT NOT NULL,
-  description TEXT,
-  active BOOLEAN NOT NULL DEFAULT TRUE,
-  metadata JSONB,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+1. **stripe.customers** - Links Stripe customers to application users
+   ```sql
+   CREATE TABLE stripe.customers (
+     id TEXT PRIMARY KEY, -- Stripe customer ID (e.g., cus_...)
+     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+     email TEXT NOT NULL,
+     name TEXT,
+     metadata JSONB,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
--- Prices table - stores Stripe prices for products
-CREATE TABLE stripe.prices (
-  id TEXT PRIMARY KEY, -- Stripe price ID (e.g., price_...)
-  product_id TEXT NOT NULL REFERENCES stripe.products(id),
-  active BOOLEAN NOT NULL DEFAULT TRUE,
-  currency TEXT NOT NULL,
-  unit_amount INTEGER NOT NULL, -- Amount in cents/smallest currency unit
-  type TEXT NOT NULL, -- 'one_time' or 'recurring'
-  interval TEXT, -- 'month', 'year', etc. (for recurring)
-  metadata JSONB,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+2. **stripe.products** - Stores Stripe products
+   ```sql
+   CREATE TABLE stripe.products (
+     id TEXT PRIMARY KEY, -- Stripe product ID (e.g., prod_...)
+     name TEXT NOT NULL,
+     description TEXT,
+     active BOOLEAN NOT NULL DEFAULT TRUE,
+     metadata JSONB,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
--- Subscriptions table - stores active subscriptions
-CREATE TABLE stripe.subscriptions (
-  id TEXT PRIMARY KEY, -- Stripe subscription ID (e.g., sub_...)
-  customer_id TEXT NOT NULL REFERENCES stripe.customers(id),
-  status TEXT NOT NULL, -- 'active', 'canceled', 'past_due', etc.
-  price_id TEXT NOT NULL REFERENCES stripe.prices(id),
-  cancel_at_period_end BOOLEAN NOT NULL DEFAULT FALSE,
-  current_period_start TIMESTAMPTZ NOT NULL,
-  current_period_end TIMESTAMPTZ NOT NULL,
-  metadata JSONB,
-  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-);
+3. **stripe.prices** - Stores Stripe prices for products
+   ```sql
+   CREATE TABLE stripe.prices (
+     id TEXT PRIMARY KEY, -- Stripe price ID (e.g., price_...)
+     product_id TEXT REFERENCES stripe.products(id),
+     active BOOLEAN NOT NULL DEFAULT TRUE,
+     currency TEXT NOT NULL,
+     unit_amount INTEGER NOT NULL, -- Amount in cents/smallest currency unit
+     type TEXT NOT NULL, -- 'one_time' or 'recurring'
+     interval TEXT, -- 'month', 'year', etc. (for recurring)
+     metadata JSONB,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
--- Webhook events table - stores raw Stripe webhook events
-CREATE TABLE stripe.webhook_events (
-  id TEXT PRIMARY KEY, -- Stripe event ID (e.g., evt_...)
-  type TEXT NOT NULL, -- Event type (e.g., 'customer.created', 'invoice.paid')
-  api_version TEXT NOT NULL, -- Stripe API version
-  created TIMESTAMPTZ NOT NULL, -- Timestamp from Stripe
-  data JSONB NOT NULL, -- Raw event data from Stripe
-  idempotency_key TEXT, -- Optional idempotency key
-  processing_status TEXT NOT NULL DEFAULT 'pending', -- 'pending', 'processed', 'failed'
-  processing_error TEXT, -- Error message if processing failed
-  processing_attempts INTEGER NOT NULL DEFAULT 0, -- Number of processing attempts
-  processed_at TIMESTAMPTZ, -- When event was processed
-  received_at TIMESTAMPTZ NOT NULL DEFAULT NOW() -- When event was received
-);
-```
+4. **stripe.subscriptions** - Stores active subscriptions
+   ```sql
+   CREATE TABLE stripe.subscriptions (
+     id TEXT PRIMARY KEY, -- Stripe subscription ID (e.g., sub_...)
+     customer_id TEXT REFERENCES stripe.customers(id),
+     status TEXT NOT NULL, -- 'active', 'canceled', 'past_due', etc.
+     price_id TEXT REFERENCES stripe.prices(id),
+     cancel_at_period_end BOOLEAN NOT NULL DEFAULT FALSE,
+     current_period_start TIMESTAMPTZ NOT NULL,
+     current_period_end TIMESTAMPTZ NOT NULL,
+     metadata JSONB,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
-### Recommended Indexes
+5. **stripe.webhook_events** - Stores raw Stripe webhook events
+   ```sql
+   CREATE TABLE stripe.webhook_events (
+     id TEXT PRIMARY KEY, -- Stripe event ID (e.g., evt_...)
+     type TEXT NOT NULL, -- Event type (e.g., 'customer.created', 'invoice.paid')
+     api_version TEXT NOT NULL, -- Stripe API version
+     created TIMESTAMPTZ NOT NULL, -- Timestamp from Stripe
+     data JSONB NOT NULL, -- Raw event data from Stripe
+     idempotency_key TEXT, -- Optional idempotency key
+     processing_status TEXT NOT NULL DEFAULT 'pending', -- 'pending', 'processed', 'failed'
+     processing_error TEXT, -- Error message if processing failed
+     processing_attempts INTEGER NOT NULL DEFAULT 0, -- Number of processing attempts
+     processed_at TIMESTAMPTZ, -- When event was processed
+     received_at TIMESTAMPTZ NOT NULL DEFAULT NOW() -- When event was received
+   );
+   ```
 
-For optimal performance when querying these tables, create appropriate indexes:
+### Additional Recommended Tables
 
-```sql
-CREATE INDEX idx_stripe_customers_user_id ON stripe.customers(user_id);
-CREATE INDEX idx_stripe_prices_product_id ON stripe.prices(product_id);
-CREATE INDEX idx_stripe_subscriptions_customer_id ON stripe.subscriptions(customer_id);
-CREATE INDEX idx_stripe_subscriptions_status ON stripe.subscriptions(status);
-CREATE INDEX idx_stripe_webhook_events_type ON stripe.webhook_events(type);
-CREATE INDEX idx_stripe_webhook_events_processing_status ON stripe.webhook_events(processing_status);
-```
+6. **stripe.invoices** - Tracks invoice data
+   ```sql
+   CREATE TABLE stripe.invoices (
+     id TEXT PRIMARY KEY, -- Stripe invoice ID (e.g., in_...)
+     customer_id TEXT REFERENCES stripe.customers(id),
+     subscription_id TEXT REFERENCES stripe.subscriptions(id),
+     status TEXT NOT NULL, -- 'draft', 'open', 'paid', 'uncollectible', 'void'
+     currency TEXT NOT NULL,
+     amount_due INTEGER NOT NULL,
+     amount_paid INTEGER NOT NULL,
+     amount_remaining INTEGER NOT NULL,
+     invoice_pdf TEXT, -- URL to PDF invoice
+     hosted_invoice_url TEXT, -- URL to hosted invoice page
+     period_start TIMESTAMPTZ,
+     period_end TIMESTAMPTZ,
+     created TIMESTAMPTZ NOT NULL,
+     metadata JSONB,
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
-### Webhook Handling
+7. **stripe.payment_methods** - Stores customer payment methods
+   ```sql
+   CREATE TABLE stripe.payment_methods (
+     id TEXT PRIMARY KEY, -- Stripe payment method ID (e.g., pm_...)
+     customer_id TEXT REFERENCES stripe.customers(id),
+     type TEXT NOT NULL, -- 'card', 'bank_account', etc.
+     card_brand TEXT, -- 'visa', 'mastercard', etc.
+     card_last4 TEXT, -- Last 4 digits of card
+     card_exp_month INTEGER,
+     card_exp_year INTEGER,
+     is_default BOOLEAN DEFAULT FALSE,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
-When setting up Stripe webhooks, ensure your webhook handler updates these tables accordingly:
+8. **stripe.charges** - Records charge data
+   ```sql
+   CREATE TABLE stripe.charges (
+     id TEXT PRIMARY KEY, -- Stripe charge ID (e.g., ch_...)
+     customer_id TEXT REFERENCES stripe.customers(id),
+     invoice_id TEXT REFERENCES stripe.invoices(id),
+     payment_intent_id TEXT,
+     amount INTEGER NOT NULL,
+     currency TEXT NOT NULL,
+     payment_method_id TEXT,
+     status TEXT NOT NULL, -- 'succeeded', 'pending', 'failed'
+     created TIMESTAMPTZ NOT NULL,
+     metadata JSONB,
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
 
-1. Store the raw event in `stripe.webhook_events` for all event types
-2. `customer.created` → Insert into `stripe.customers`
-3. `product.created/updated` → Insert/update `stripe.products`
-4. `price.created/updated` → Insert/update `stripe.prices`
-5. `subscription.created/updated/deleted` → Update `stripe.subscriptions`
+### Application-Specific Tables
 
-This standardized structure ensures your application maintains an accurate record of Stripe data while keeping it properly isolated in its own schema. The raw webhook events table provides an audit log and enables replaying events if needed.
+9. **config.subscription_benefits** - Maps subscription tiers to application benefits
+   ```sql
+   CREATE TABLE config.subscription_benefits (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     product_id TEXT REFERENCES stripe.products(id) ON DELETE CASCADE,
+     monthly_credits INTEGER NOT NULL DEFAULT 0,
+     max_projects INTEGER,
+     has_priority_support BOOLEAN NOT NULL DEFAULT FALSE,
+     has_advanced_features BOOLEAN NOT NULL DEFAULT FALSE,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
+
+### Webhook Syncing Strategy
+
+When implementing webhook handlers, follow this sequence:
+
+1. **Capture raw event** - Always store the complete webhook payload in `stripe.webhook_events`
+2. **Extract relevant data** - Parse the event data for the specific tables that need updating
+3. **Maintain referential integrity** - Ensure related records exist before creating dependent records
+4. **Update application state** - After syncing to Stripe tables, update application tables as needed (e.g., credit balances)
+5. **Mark event as processed** - Update the webhook event record to reflect successful processing
+
+## Config Schema for Application Settings
+
+A dedicated `config` schema provides a clear separation between application configuration and user/business data, keeping settings separate from your core application data.
+
+### Recommended Config Tables
+
+1. **config.subscription_benefits** - Maps product IDs to application features
+   ```sql
+   CREATE TABLE config.subscription_benefits (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     product_id TEXT REFERENCES stripe.products(id) ON DELETE CASCADE,
+     monthly_credits INTEGER NOT NULL DEFAULT 0,
+     max_projects INTEGER,
+     has_priority_support BOOLEAN NOT NULL DEFAULT FALSE,
+     has_advanced_features BOOLEAN NOT NULL DEFAULT FALSE,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+   );
+   ```
+
+This approach separates your application configuration from both your business data and external integrations like Stripe, making your schema more maintainable and clearly organized.
 
 ## Supabase Storage Function Array Access Pattern
 
@@ -560,7 +942,3 @@ FOR SELECT USING (
   auth.uid()::text = (storage.foldername(storage.objects.name))[1]
 );
 ```
-
-## Stripe Synced Data
-
-- Create a `stripe.customer` and `stripe.subscription` table for synced data from Stripe webhooks.
