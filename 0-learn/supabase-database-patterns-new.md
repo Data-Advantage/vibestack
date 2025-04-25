@@ -18,6 +18,26 @@ Respect Supabase's built-in schemas which have special purposes:
 - `storage` - File storage and management
 - `supabase_functions` - Edge functions
 
+#### Default Database Roles
+
+Supabase provides several pre-configured database roles to manage access control:
+
+- **anon**: Public role for unauthenticated requests
+- **authenticated**: Default role for authenticated users
+- **authenticator**: Special role used by the API to switch between roles
+- **dashboard_user**: Used for Supabase dashboard access
+- **pgbouncer**: Used by the connection pooler
+- **service_role**: Server-side role that bypasses Row Level Security (RLS)
+- **supabase_admin**: Administrative role for Supabase
+- **supabase_auth_admin**: Manages authentication tables and functions
+- **supabase_read_only_user**: Read-only access to the database
+- **supabase_realtime_admin**: Manages realtime subscription features
+- **supabase_replication_admin**: Handles database replication
+- **supabase_storage_admin**: Manages storage functionality
+- **postgres**: Superuser role with full database access
+
+These roles are managed by Supabase and have specific permissions designed for their intended use cases. When building your application, you'll typically interact with the database through either the `anon` role (for unauthenticated access) or the `authenticated` role (for logged-in users). The `service_role` is useful for server-side operations that need to bypass RLS.
+
 #### Custom Schema Structure
 Avoid using the `public` schema for user data. Instead, create purpose-specific schemas:
 
@@ -77,70 +97,70 @@ Supabase provides several pre-installed PostgreSQL extensions to enhance databas
 
 #### Optional Extensions
 Supabase also provides many optional extensions that can be enabled when needed. While it's best to rely on core extensions when possible, you may enable these additional extensions for specific use cases.
-
 Available optional extensions include:
-- pgstattuple
+
 - address_standardizer
-- pg_trgm
-- tsm_system_time
-- rum
-- sslinfo
-- pg_repack
-- dblink
-- cube
-- pgroonga
-- btree_gist
-- pg_net
-- btree_gin
-- plcoffee
-- pgroonga_database
-- autoinc
-- tablefunc
-- pg_jsonschema
-- insert_username
-- http
-- intarray
-- unaccent
-- timescaledb
 - address_standardizer_data_us
-- pgrowlocks
-- citext
-- pgsodium
+- autoinc
 - bloom
-- plpgsql_check
-- hstore
-- wrappers
-- pgmq
-- plv8
-- seg
-- pgrouting
-- moddatetime
-- fuzzystrmatch
-- tsm_system_rows
-- pg_prewarm
-- postgis_tiger_geocoder
-- pg_hashids
-- pg_stat_monitor
-- pg_walinspect
-- ltree
-- hypopg
-- pgaudit
-- isn
-- earthdistance
-- postgis_topology
-- vector
-- pgtap
-- index_advisor
+- btree_gin
+- btree_gist
+- citext
+- cube
+- dblink
 - dict_int
+- dict_xsyn
+- earthdistance
+- fuzzystrmatch
+- hstore
+- http
+- hypopg
+- index_advisor
+- insert_username
+- intarray
+- isn
+- ltree
+- moddatetime
+- pg_cron
+- pg_hashids
+- pg_jsonschema
+- pg_net
+- pg_prewarm
+- pg_repack
+- pg_stat_monitor
+- pg_trgm
+- pg_walinspect
+- pgaudit
+- pgmq
+- pgroonga
+- pgroonga_database
+- pgrouting
+- pgrowlocks
+- pgs
+- pgstattuple
+- pgtap
+- plcoffee
+- pls
+- plpgsql_check
+- plv8
 - postgres_fdw
-- postgis_sfcgal
 - postgis
 - postgis_raster
+- postgis_sfcgal
+- postgis_tiger_geocoder
+- postgis_topology
 - refint
-- pls
-- dict_xsyn
-- pg_cron
+- rum
+- seg
+- sslinfo
+- tablefunc
 - tcn
+- timescaledb
+- tsm_system_rows
+- tsm_system_time
+- unaccent
+- vector
+- wrappers
 
 ### Database Type Safety
 - Generate TypeScript types from your database schema using Supabase CLI
