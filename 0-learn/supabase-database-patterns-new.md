@@ -9,10 +9,13 @@ This document outlines the recommended database patterns and best practices for 
 #### Reserved Schemas
 Respect Supabase's built-in schemas which have special purposes:
 - `auth` - Authentication and user management
+- `extensions` - PostgreSQL extensions and their objects
+- `graphql` - GraphQL API implementation and schema definitions
+- `graphql_public` - Public GraphQL interface and exposed operations
+- `pgbouncer` - Connection pooling configuration and management
 - `public` - Open access to database tables and objects (insecure)
-- `storage` - File storage and management
-- `graphql` - GraphQL API
 - `realtime` - Realtime subscriptions
+- `storage` - File storage and management
 - `supabase_functions` - Edge functions
 
 #### Custom Schema Structure
@@ -38,6 +41,106 @@ CREATE TABLE api.tasks (
   status reference.status NOT NULL DEFAULT 'pending'
 );
 ```
+
+### Default PostgreSQL Extensions
+Supabase provides several pre-installed PostgreSQL extensions to enhance database functionality:
+
+#### Core Extensions
+1. **plpgsql (1.0)** - Installed in `pg_catalog` schema
+   - PL/pgSQL procedural language for creating functions and triggers
+   - Core procedural language used throughout PostgreSQL
+
+2. **pg_stat_statements (1.10)** - Installed in `extensions` schema
+   - Tracks planning and execution statistics of all SQL statements
+   - Used by Query Performance monitoring tools
+   - Helps identify slow queries and optimization opportunities
+
+3. **pgjwt (0.2.0)** - Installed in `extensions` schema
+   - JSON Web Token API for PostgreSQL
+   - Provides functions for token generation and verification
+   - Useful for custom authentication implementations
+
+4. **pgcrypto (1.3)** - Installed in `extensions` schema
+   - Cryptographic functions for PostgreSQL
+   - Provides secure hashing, encryption, and UUID generation
+   - Used for `gen_random_uuid()` function in primary keys
+
+5. **uuid-ossp (1.1)** - Installed in `extensions` schema
+   - Functions for generating universally unique identifiers (UUIDs)
+   - Alternative UUID generation with more options than pgcrypto
+   - Includes functions for creating UUIDs based on time, MAC address, etc.
+
+6. **pg_graphql (1.5.11)** - Installed in `graphql` schema
+   - GraphQL support for PostgreSQL
+   - Automatically generates a GraphQL schema from your database schema
+   - Provides a GraphQL API for your PostgreSQL database
+
+#### Optional Extensions
+Supabase also provides many optional extensions that can be enabled when needed. While it's best to rely on core extensions when possible, you may enable these additional extensions for specific use cases.
+
+Available optional extensions include:
+- pgstattuple
+- address_standardizer
+- pg_trgm
+- tsm_system_time
+- rum
+- sslinfo
+- pg_repack
+- dblink
+- cube
+- pgroonga
+- btree_gist
+- pg_net
+- btree_gin
+- plcoffee
+- pgroonga_database
+- autoinc
+- tablefunc
+- pg_jsonschema
+- insert_username
+- http
+- intarray
+- unaccent
+- timescaledb
+- address_standardizer_data_us
+- pgrowlocks
+- citext
+- pgsodium
+- bloom
+- plpgsql_check
+- hstore
+- wrappers
+- pgmq
+- plv8
+- seg
+- pgrouting
+- moddatetime
+- fuzzystrmatch
+- tsm_system_rows
+- pg_prewarm
+- postgis_tiger_geocoder
+- pg_hashids
+- pg_stat_monitor
+- pg_walinspect
+- ltree
+- hypopg
+- pgaudit
+- isn
+- earthdistance
+- postgis_topology
+- vector
+- pgtap
+- index_advisor
+- dict_int
+- postgres_fdw
+- postgis_sfcgal
+- postgis
+- postgis_raster
+- refint
+- pls
+- dict_xsyn
+- pg_cron
+- tcn
 
 ### Database Type Safety
 - Generate TypeScript types from your database schema using Supabase CLI
