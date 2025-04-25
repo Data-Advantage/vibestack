@@ -41,11 +41,12 @@ These roles are managed by Supabase and have specific permissions designed for t
 #### Custom Schema Structure
 Avoid using the `public` schema for user data. Instead, create purpose-specific schemas:
 
-- `api` - User-generated content and application data
-- `config` - Application configuration data
-- `reference` - Publicly available lookup tables
 - `analytics` - Reporting data (primarily views)
 - `audit` - Tracking changes (use only if needed)
+- `api` - User-generated content and application data
+- `config` - Application configuration data
+- `internal` - Sensitive internal operations not directly accessible to users
+- `reference` - Publicly available lookup tables
 - `stripe` - Synced data from Stripe webhooks
 
 #### Enum Placement
@@ -344,6 +345,22 @@ ORDER BY signup_date DESC;
 ## 5. Security Migration
 
 ### Database Function Security
+
+#### Function Security Organization
+Organize functions by security sensitivity to create layers of protection:
+
+1. **Functions in `internal` schema** - Highest security
+   - Place sensitive operations here (financial, permissions, admin)
+   - Never allow direct access from application code
+   - Only call these from controlled database triggers or API functions
+
+2. **Functions in `api` schema** - Public API with permission checks
+   - Create wrapper functions that validate permissions
+   - Then call internal functions if validation passes
+
+3. **Functions in `public` schema** - General utilities only
+   - Place only non-sensitive, general-purpose utilities here
+   - Avoid financial, permissions, or sensitive data operations
 
 #### Function Search Path
 PostgreSQL functions can be vulnerable to "search path injection" attacks if not properly secured. Always set an explicit search path for your functions:
