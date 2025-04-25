@@ -46,8 +46,25 @@ Avoid using the `public` schema for user data. Instead, create purpose-specific 
 - `api` - User-generated content and application data
 - `config` - Application configuration data
 - `internal` - Sensitive internal operations not directly accessible to users
-- `reference` - Publicly available lookup tables
+- `reference` - Publicly available lookup tables and reusable templates
 - `stripe` - Synced data from Stripe webhooks
+
+#### Schema Placement Considerations
+
+**Financial/Billing Data**
+Financial data like credit balances and transactions should be placed in the `internal` schema (e.g., `internal.credit_transactions`).
+
+Financial data is different from user-generated content as it:
+- Consists of system-generated records (not user-authored)
+- Requires special access controls
+- Is administrative in nature rather than creative content
+
+**Content Templates vs User-Specific Content**
+For features that include both reusable templates and user-specific customizations:
+- Place reusable templates in the `reference` schema (e.g., `reference.guide_templates`)
+- Store user-specific instances in the `api` schema (e.g., `api.implementation_guides`)
+
+This hybrid approach separates reusable content from user-specific customizations, providing better content management and reducing duplication.
 
 #### Enum Placement
 PostgreSQL enums should usually be placed in the `reference` schema as they represent fixed sets of values referenced across multiple tables.
