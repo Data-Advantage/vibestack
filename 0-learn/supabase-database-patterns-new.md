@@ -320,6 +320,31 @@ CREATE TABLE api.documents (
 - Add unique constraints or composite keys where needed
 - Implement check constraints to enforce business rules
 
+### PostgreSQL CHECK Constraint Limitations
+
+PostgreSQL does not allow subqueries in CHECK constraints. This means you cannot use EXISTS, IN, or any other construct that requires a subquery to validate data against records in another table directly within a CHECK constraint.
+
+#### Alternative Approaches
+
+1. **Use Foreign Keys Instead** (preferred)
+   - If you're simply verifying the existence of a record in another table, use a foreign key constraint instead.
+   - Foreign keys are more efficient and are specifically designed to maintain referential integrity between tables.
+   - This is the preferred approach when the relationship is direct (one table references another).
+
+2. **Implement a Trigger Function**
+   - For more complex business rules that can't be expressed with simple constraints, create a trigger function.
+   - Triggers can contain any SQL code, including subqueries, and can perform complex validation logic.
+   - The trigger will execute before insert or update operations and can prevent invalid data by raising exceptions.
+   - This approach is more flexible but adds processing overhead compared to declarative constraints.
+
+3. **Use Stored Procedures for Data Modification**
+   - Rather than letting clients directly modify tables, create API functions that handle data validation.
+   - These functions can perform any necessary validation checks before inserting or updating data.
+   - This approach centralizes business logic in the database and provides a controlled interface for data modification.
+   - It's particularly useful when combined with Row Level Security for a comprehensive security strategy.
+
+When migrating from a CHECK constraint with a subquery, choose the alternative that best fits your specific use case, considering both data integrity requirements and performance implications.
+
 ### Indexes
 Create indexes for:
 - Foreign keys that will be frequently queried
