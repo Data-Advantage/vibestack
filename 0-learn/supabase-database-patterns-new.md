@@ -41,13 +41,17 @@ These roles are managed by Supabase and have specific permissions designed for t
 #### Custom Schema Structure
 Avoid using the `public` schema for user data. Instead, create purpose-specific schemas:
 
+- `api` - User-generated content and application data, including user-specific instances of templates
+- `internal` - Sensitive internal operations not directly accessible to users, financial data (credit balances, transactions), and system-generated records requiring special access controls
+- `reference` - Publicly available lookup tables and reusable templates for features that have both templates and user customizations
+
+#### Optional Custom Schemas
+Additional custom schemas can be created for specialized functionality when needed:
+
 - `analytics` - Reporting data (primarily views)
 - `audit` - Tracking changes (use only if needed)
-- `api` - User-generated content and application data
 - `config` - Application configuration data
-- `internal` - Sensitive internal operations not directly accessible to users
-- `reference` - Publicly available lookup tables and reusable templates
-- `stripe` - Synced data from Stripe webhooks
+- `stripe` - Synced data from Stripe webhooks (if using Stripe)
 
 #### Schema Placement Considerations
 
