@@ -607,7 +607,7 @@ For non-technical founders with SaaS ideas who struggle to translate concepts in
 **User Story:** As a user, I want high-quality AI assistance for document creation so that the outputs meet my expectations.
 
 *Acceptance Criteria:*
-- Integration with Claude 3.5 Sonnet via Vercel AI SDK
+- Integration with Claude 3.7 Sonnet via Vercel AI SDK
 - Appropriate context management for document generation
 - Basic error handling for API issues
 - Quality output formatting for all document types
