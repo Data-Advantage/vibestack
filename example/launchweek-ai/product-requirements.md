@@ -1430,8 +1430,9 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - **Basic Authentication** - Leveraging Supabase Auth
 - **Project Management (Simple)** - Basic project creation and management
 - **Simple Progress Tracking** - Visual indication of progress through framework
+- **Document Preview Panel** - Basic implementation of the split-screen interface showing document evolution
 
-**Justification:** These components establish the minimum viable experience to test our core hypothesis that guided AI assistance can help non-technical users build SaaS products. By implementing these first, we can validate the fundamental user journey before investing in more complex features.
+**Justification:** These components establish the minimum viable experience to test our core hypothesis that guided AI assistance can help non-technical users build SaaS products. By implementing these first, we can validate the fundamental user journey before investing in more complex features. The document preview panel is essential from day one to provide immediate visual feedback to users.
 
 #### 7.1.2 Full App Build (Day 3)
 - **Schema Generator** - Technical translation of requirements
@@ -1441,8 +1442,11 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - **AI Worker Infrastructure** - Reliable processing of AI tasks
 - **Status Updates** - Real-time feedback during processing
 - **Free/Pro Tier Implementation** - Using Stripe Customer Portal
+- **Document Evolution Visualization** - Full implementation of real-time document updates with visual indicators
+- **Iterative Feedback System** - Implementation of checkpoint reviews and guided refinement
+- **Interactive Progress Dashboard** - Enhanced visualization of progress through the framework
 
-**Justification:** These features complete the end-to-end user journey and enable monetization. They build upon the foundation established in the working prototype but add the capabilities needed for a marketable product.
+**Justification:** These features complete the end-to-end user journey and enable monetization. They build upon the foundation established in the working prototype but add the capabilities needed for a marketable product. The document evolution, feedback system, and interactive progress tracking are essential for providing users with the guided experience that differentiates our platform.
 
 #### 7.1.3 Deferred to Post-MVP
 - **Advanced Deployment Integration** - Initially simplified to instructions
@@ -1451,8 +1455,10 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - **Advanced AI Model Selection** - Begin with focused model integration
 - **Developer API** - No immediate user need
 - **Comprehensive Admin Dashboard** - Start with basic monitoring
+- **Task Dependency Graph** - Advanced visualization of relationships between tasks
+- **Alternative Generation System** - Advanced feature for generating multiple variations
 
-**Justification:** These features enhance rather than enable the core experience. Deferring them allows us to focus resources on delivering a compelling MVP while still planning for their future integration.
+**Justification:** These features enhance rather than enable the core experience. Deferring them allows us to focus resources on delivering a compelling MVP while still planning for their future integration. The more advanced visualization features can be added incrementally as we validate the core visualization concept.
 
 ### 7.2 Sprint Sequencing
 
@@ -1462,8 +1468,9 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - Initial Database Schema
 - AI Prompt Engine Prototype (address highest technical risk)
 - Project Creation Flow
+- **Basic Document Preview Panel** (address visualization technical risk)
 
-*Can be developed in parallel:* Authentication, Framework Structure, Database Schema
+*Can be developed in parallel:* Authentication, Framework Structure, Database Schema, Basic Document Preview
 
 #### 7.2.2 Sprint 2: Core Experience - Days 1-2
 - Requirements Builder
@@ -1471,8 +1478,9 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - Progress Tracking (basic)
 - Initial Schema Generator
 - User Dashboard
+- **Document Evolution Foundation** (real-time preview updates)
 
-*Dependencies:* AI Prompt Engine, Framework Structure
+*Dependencies:* AI Prompt Engine, Framework Structure, Basic Document Preview
 
 #### 7.2.3 Sprint 3: Validation & Feedback
 - Prototype Generation (basic)
@@ -1480,8 +1488,10 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - Feedback Collection
 - User Profile Management
 - Project Saving & Resume
+- **Iterative Feedback Implementation** (checkpoint reviews)
+- **Document Versioning** (saving document states at milestones)
 
-*Dependencies:* Requirements Builder, Schema Generator
+*Dependencies:* Requirements Builder, Schema Generator, Document Evolution Foundation
 
 #### 7.2.4 Sprint 4: Business Infrastructure
 - Subscription Tiers (Stripe integration)
@@ -1489,8 +1499,9 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - Initial Admin Monitoring
 - Status Update System
 - Error Handling Improvements
+- **Interactive Progress Dashboard** (enhanced visualization)
 
-*Can be developed in parallel:* Subscription Integration, Admin Monitoring
+*Can be developed in parallel:* Subscription Integration, Admin Monitoring, Progress Dashboard
 
 #### 7.2.5 Sprint 5: App Completion
 - Marketing Content Creator
@@ -1498,8 +1509,10 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - AI Worker Optimization
 - Performance Enhancements
 - Security Hardening
+- **Visual Indicators for Document Changes** (highlighting new/modified content)
+- **Guided Refinement Options** (implementation of specific refinement paths)
 
-*Dependencies:* Status Update System, AI Prompt Engine
+*Dependencies:* Status Update System, AI Prompt Engine, Document Evolution Foundation, Iterative Feedback Implementation
 
 #### 7.2.6 Sprint 6: Polish & Launch Preparation
 - End-to-End Testing
@@ -1507,6 +1520,8 @@ This structured approach to feedback maintains momentum while ensuring quality a
 - Documentation Completion
 - Analytics Implementation
 - Final Performance Optimization
+- **Cross-Component Integration Testing** (ensuring visualization systems work with all content types)
+- **Contextual Examples Implementation** (providing examples when users struggle)
 
 ### 7.3 Technical Risk Management
 
@@ -1530,6 +1545,18 @@ This structured approach to feedback maintains momentum while ensuring quality a
    - *Simplified Implementation:* Focus on UI mockups rather than functional prototypes initially
    - *Fallback:* Gallery of pre-built components with customization options
 
+4. **Document Evolution Visualization**
+   - *Risk:* Real-time updates may be technically challenging or performance-intensive
+   - *Prototype:* Build proof-of-concept with simulated document changes
+   - *Simplified Implementation:* Start with periodic updates rather than continuous real-time
+   - *Fallback:* Manual "preview" button that generates point-in-time document snapshots
+
+5. **Interactive Progress Dashboard**
+   - *Risk:* Complex visualization may be confusing to users
+   - *Prototype:* Test various visualization approaches with user feedback
+   - *Simplified Implementation:* Begin with linear progress indicators before adding branching
+   - *Fallback:* Simple checklist-style progress tracking
+
 #### 7.3.2 Implementation Simplifications
 
 1. **Deployment Integration**
@@ -1547,6 +1574,17 @@ This structured approach to feedback maintains momentum while ensuring quality a
    - Implement simple queue with visibility into progress
    - Start with synchronous processing for MVP
 
+4. **Document Evolution System**
+   - Begin with key document types only (requirements, marketing)
+   - Implement visual diff highlighting only for major sections
+   - Start with core markdown rendering before adding interactive editing
+   - Use simplified state persistence (local storage + cloud backup)
+
+5. **Iterative Feedback System**
+   - Start with predefined refinement options rather than fully adaptive suggestions
+   - Implement checkpoint reviews at major milestones only
+   - Begin with a limited set of contextual examples for common scenarios
+
 ### 7.4 Definition of Done for MVP
 
 The MVP will be considered complete when:
@@ -1556,22 +1594,30 @@ The MVP will be considered complete when:
 - AI assistance produces usable outputs at each stage
 - Projects can be saved, resumed, and completed across sessions
 - Free and Pro tiers are implemented with clear differentiation
+- Document evolution visualization provides real-time feedback
+- Interactive progress dashboard shows clear path through the framework
+- Iterative feedback system enables refinement at critical checkpoints
 
 #### 7.4.2 Quality Thresholds
 - 90% of AI-generated outputs are usable without significant editing
 - Average time from requirements to prototype under 2 hours
 - 70% of test users can complete the process without support intervention
 - Error rates below 5% for critical user flows
+- Document preview accurately reflects changes within 3 seconds
+- Interactive progress indicators reflect actual state with 99% accuracy
+- 80% of users report finding the visualization features helpful
 
 #### 7.4.3 Business Readiness
 - Payment processing and subscription management functional
 - Basic analytics capturing key user metrics
 - Security measures implemented and tested
 - Performance optimized for anticipated initial load
+- Document visualization system tested with various document sizes and complexity
+- Progress tracking verified across interrupted sessions and device changes
 
 **Working Prototype vs. Complete MVP:**
-- **Working Prototype:** Core user journey functional with limited templates and some manual interventions
-- **Complete MVP:** Full journey with streamlined UX, automation of all critical paths, subscription management, basic error handling, and optimized performance
+- **Working Prototype:** Core user journey functional with limited templates, basic document preview, and simple progress tracking
+- **Complete MVP:** Full journey with streamlined UX, document evolution visualization, interactive progress dashboard, iterative feedback system, automation of all critical paths, subscription management, basic error handling, and optimized performance
 
 ### 7.5 Visual Implementation Mapping
 
