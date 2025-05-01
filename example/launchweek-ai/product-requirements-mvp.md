@@ -167,28 +167,28 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - Progress visualization shows completion across all 5 days of the framework
 - System tracks time spent in each stage for analytics purposes
 
-### 3.3 Pricing & Subscription Management
+### 3.3 Project Credits & Purchasing
 
-**Description:** Project-based tier system with free tier and paid options, enabling users to access all platform features with different project creation limits within a rolling timeframe.
+**Description:** Simple credit-based system that gives users flexibility to create projects as needed without subscription commitments.
 
 **User Stories:**
-- As a new user, I want to access a free tier (Explore) that allows me to create up to 2 projects in the past 365 days so that I can evaluate the platform before making a purchase decision.
-- As a free tier (Explore) user who has reached my project limit, I want to purchase the Build tier ($50 one-time payment) to receive 3 permanent project credits that never expire and don't count in my yearly look-back allocation so that I can create more projects as needed.
-- As a regular user, I want to subscribe to a monthly or annual Scale plan ($7/month or $70/year) to create up to 30 projects in a rolling 30 day look back period so that I can build multiple SaaS products without significant limits.
-- As a Scale tier user who has reached my limit, I want to purchase additional Build credits ($50 for 3 credits) to create +3 more permanent projects beyond my monthly allocation without upgrading my plan.
-- As a subscriber, I want to manage my subscription settings so that I can update payment methods or cancel when needed.
-- As an annual subscriber, I want a discount compared to the monthly plan so that I'm rewarded for my longer commitment.
+- As a new user, I want to receive 1 free project credit when I sign up so that I can experience the complete platform without an initial purchase.
+- As a user who wants to create additional projects, I want to purchase a 3-pack of project credits for $50 so that I can build multiple applications at a reasonable price.
+- As a power user, I want to purchase a 10-pack of project credits for $125 so that I can get a better value while creating multiple projects.
+- As a user working on multiple concepts, I want to be able to work on several PRDs simultaneously so that I can compare different ideas before committing a credit.
+- As a project creator, I want to clearly understand when my credit will be consumed so that I can make informed decisions about progressing through the framework.
+- As a returning user, I want to see my current credit balance prominently displayed so that I know how many projects I can complete.
 
 **Acceptance Criteria:**
-- New users can create up to 2 projects per 365-day rolling period in the Explore tier
-- Build tier ($50 one-time) provides 3 permanent project credits that never expire and don't count in the rolling period, used only after yearly allocation is exhausted
-- Scale tier offers 30 projects per 30-day rolling period for $7/month or $70/year (16% discount)
-- Scale users can also purchase additional Build credits at $50 for 3 permanent credits
-- Build credits are only consumed after primary allocation (yearly or monthly) is exhausted
-- Projects created with Build credits are excluded from yearly/monthly limit calculations
-- Subscription management interface integrates with Stripe Customer Portal
-- Account status (Explore, Build, Scale) and available project allocations are clearly displayed
-- Email notifications alert users when reaching 80% of their project limits
+- New users automatically receive 1 free project credit upon account creation
+- Project credit is consumed when user accepts their PRD and progresses to the marketing-story step
+- Users can work on multiple PRDs simultaneously without consuming credits
+- Users cannot progress past the PRD stage without available credits
+- Purchase options include 3-pack ($50) and 10-pack ($125) of project credits
+- Credit balance is prominently displayed throughout the user interface
+- Email notifications alert users when credits are consumed or purchased
+- Purchase flow integrates with Stripe for secure payment processing
+- Transaction history shows all credit additions and consumptions with timestamps
 
 ## 4. Technology & Design Strategy
 
@@ -198,11 +198,11 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **Database & Backend**: Supabase - providing PostgreSQL, authentication, and real-time capabilities
 - **AI Integration**: Vercel AI SDK - for consistent interface with multiple AI providers
 - **UI Framework**: Tailwind CSS with shadcn/ui components - for rapid, consistent UI development
-- **Payment Processing**: Stripe with Customer Portal integration for subscription and credit purchasing
-- **Product Management**: Project-based tier system with:
-  - Explore: 2 projects per 365 days (free)
-  - Build: 2 projects per 365 days + 3 permanent project credits ($50 one-time)
-  - Scale: 30 projects per 30 days ($7/month or $70/year) with option to purchase additional Build credits
+- **Payment Processing**: Stripe integration for project credit purchases
+- **Product Management**: Credit-based system with:
+  - 1 free project credit for new users
+  - Additional credits available in 3-pack ($50) or 10-pack ($125) bundles
+  - Credits consumed when progressing from PRD to marketing story stage
 
 ### 4.2 Design Philosophy
 
@@ -267,10 +267,9 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **Completion Rate**: 40%+ of users who begin day 1 complete all 5 days
 - **Deployment Rate**: 30%+ of users who complete the framework successfully launch
 - **Time Efficiency**: 80%+ of users report significant time savings vs. alternative methods
-- **Conversion Rate**: 7-10% of free users upgrade to paid tier after initial project
-- **Project Utilization**: 85%+ of Explore users utilize their yearly project allocation, indicating strong initial engagement
-- **Tier Progression**: 20% of one-time "Build" tier customers convert to "Scale" subscription within 60 days
-- **Build Credit Utilization**: 70%+ of purchased Build credits are utilized within 180 days
+- **Conversion Rate**: 10-15% of users purchase additional credits after using their free credit
+- **Credit Pack Distribution**: 70% of purchases are 3-packs, 30% are 10-packs
+- **Credit Utilization**: 80%+ of purchased credits are utilized within 180 days
 - **NPS Score**: 40+ among users who complete a launch
 
 ### 6.2 Functional Completion
