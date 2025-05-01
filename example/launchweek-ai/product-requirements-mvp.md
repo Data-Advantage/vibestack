@@ -16,8 +16,8 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 ### 1.2 Strategic Goals
 
 1. **User Success Rate**: Enable 1,000+ SaaS launches with 30% achieving initial user adoption and revenue
-2. **Platform Adoption**: Reach 10,000 active users with 8% conversion to paid subscriptions (Build tier at $50 or Scale tier at $7/month or $70/year)
-3. **Tier Distribution**: Maintain a healthy distribution of 70% Explore free tier, 20% Build tier (one-time), and 10% Scale tier (subscription) users
+2. **Platform Adoption**: Reach 10,000 active users with 8% conversion to purchasing additional project credits
+3. **Credit Conversion**: Achieve 20% of users purchasing additional credits after using their free credit
 4. **Framework Optimization**: Refine the 5-day process to achieve 70%+ completion rate and establish proprietary methodology
 
 ### 1.3 Market Positioning
@@ -131,7 +131,7 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 **Acceptance Criteria:**
 - Users can create accounts via email/password or OAuth (Google, GitHub)
 - New accounts trigger email verification with secure token
-- Email verification required before accessing paid features
+- Email verification required before purchasing additional credits
 - Password reset flow includes email confirmation and secure token
 - Passwords stored using industry-standard hashing (bcrypt/Argon2)
 
