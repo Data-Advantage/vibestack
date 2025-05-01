@@ -16,8 +16,9 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 ### 1.2 Strategic Goals
 
 1. **User Success Rate**: Enable 1,000+ SaaS launches with 30% achieving initial user adoption and revenue
-2. **Platform Adoption**: Reach 10,000 active users with 8% conversion to paid subscriptions
-3. **Framework Optimization**: Refine the 5-day process to achieve 70%+ completion rate and establish proprietary methodology
+2. **Platform Adoption**: Reach 10,000 active users with 8% conversion to paid subscriptions (Build tier at $50 or Scale tier at $7/month or $70/year)
+3. **Tier Distribution**: Maintain a healthy distribution of 70% Explore free tier, 20% Build tier (one-time), and 10% Scale tier (subscription) users
+4. **Framework Optimization**: Refine the 5-day process to achieve 70%+ completion rate and establish proprietary methodology
 
 ### 1.3 Market Positioning
 
@@ -166,6 +167,29 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - Progress visualization shows completion across all 5 days of the framework
 - System tracks time spent in each stage for analytics purposes
 
+### 3.3 Pricing & Subscription Management
+
+**Description:** Project-based tier system with free tier and paid options, enabling users to access all platform features with different project creation limits within a rolling timeframe.
+
+**User Stories:**
+- As a new user, I want to access a free tier (Explore) that allows me to create up to 2 projects in the past 365 days so that I can evaluate the platform before making a purchase decision.
+- As a free tier (Explore) user who has reached my project limit, I want to purchase the Build tier ($50 one-time payment) to receive 3 permanent project credits that never expire and don't count in my yearly look-back allocation so that I can create more projects as needed.
+- As a regular user, I want to subscribe to a monthly or annual Scale plan ($7/month or $70/year) to create up to 30 projects in a rolling 30 day look back period so that I can build multiple SaaS products without significant limits.
+- As a Scale tier user who has reached my limit, I want to purchase additional Build credits ($50 for 3 credits) to create +3 more permanent projects beyond my monthly allocation without upgrading my plan.
+- As a subscriber, I want to manage my subscription settings so that I can update payment methods or cancel when needed.
+- As an annual subscriber, I want a discount compared to the monthly plan so that I'm rewarded for my longer commitment.
+
+**Acceptance Criteria:**
+- New users can create up to 2 projects per 365-day rolling period in the Explore tier
+- Build tier ($50 one-time) provides 3 permanent project credits that never expire and don't count in the rolling period, used only after yearly allocation is exhausted
+- Scale tier offers 30 projects per 30-day rolling period for $7/month or $70/year (16% discount)
+- Scale users can also purchase additional Build credits at $50 for 3 permanent credits
+- Build credits are only consumed after primary allocation (yearly or monthly) is exhausted
+- Projects created with Build credits are excluded from yearly/monthly limit calculations
+- Subscription management interface integrates with Stripe Customer Portal
+- Account status (Explore, Build, Scale) and available project allocations are clearly displayed
+- Email notifications alert users when reaching 80% of their project limits
+
 ## 4. Technology & Design Strategy
 
 ### 4.1 Technology Stack & Architecture
@@ -174,7 +198,11 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **Database & Backend**: Supabase - providing PostgreSQL, authentication, and real-time capabilities
 - **AI Integration**: Vercel AI SDK - for consistent interface with multiple AI providers
 - **UI Framework**: Tailwind CSS with shadcn/ui components - for rapid, consistent UI development
-- **Payment Processing**: Stripe with Customer Portal integration
+- **Payment Processing**: Stripe with Customer Portal integration for subscription and credit purchasing
+- **Product Management**: Project-based tier system with:
+  - Explore: 2 projects per 365 days (free)
+  - Build: 2 projects per 365 days + 3 permanent project credits ($50 one-time)
+  - Scale: 30 projects per 30 days ($7/month or $70/year) with option to purchase additional Build credits
 
 ### 4.2 Design Philosophy
 
@@ -240,6 +268,9 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **Deployment Rate**: 30%+ of users who complete the framework successfully launch
 - **Time Efficiency**: 80%+ of users report significant time savings vs. alternative methods
 - **Conversion Rate**: 7-10% of free users upgrade to paid tier after initial project
+- **Project Utilization**: 85%+ of Explore users utilize their yearly project allocation, indicating strong initial engagement
+- **Tier Progression**: 20% of one-time "Build" tier customers convert to "Scale" subscription within 60 days
+- **Build Credit Utilization**: 70%+ of purchased Build credits are utilized within 180 days
 - **NPS Score**: 40+ among users who complete a launch
 
 ### 6.2 Functional Completion
