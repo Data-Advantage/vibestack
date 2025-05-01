@@ -172,7 +172,9 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 **Description:** Simple credit-based system that gives users flexibility to create projects as needed without subscription commitments.
 
 **User Stories:**
+- As a new user, I want to create unlimited product requirements documents without consuming credits so that I can explore and plan many ideas before committing.
 - As a new user, I want to receive 1 free project credit when I sign up so that I can experience the complete platform without an initial purchase.
+- As a user, I want credits to be consumed only when I'm ready to build, not during the exploration phase, so that I can fully evaluate ideas before investing resources.
 - As a user who wants to create additional projects, I want to purchase a 3-pack of project credits for $50 so that I can build multiple applications at a reasonable price.
 - As a power user, I want to purchase a 10-pack of project credits for $125 so that I can get a better value while creating multiple projects.
 - As a user working on multiple concepts, I want to be able to work on several PRDs simultaneously so that I can compare different ideas before committing a credit.
@@ -180,6 +182,7 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - As a returning user, I want to see my current credit balance prominently displayed so that I know how many projects I can complete.
 
 **Acceptance Criteria:**
+- Users can create and work on unlimited product requirements documents without consuming credits
 - New users automatically receive 1 free project credit upon account creation
 - Project credit is consumed when user accepts their PRD and progresses to the marketing-story step
 - Users can work on multiple PRDs simultaneously without consuming credits
@@ -200,9 +203,10 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **UI Framework**: Tailwind CSS with shadcn/ui components - for rapid, consistent UI development
 - **Payment Processing**: Stripe integration for project credit purchases
 - **Product Management**: Credit-based system with:
-  - 1 free project credit for new users
+  - Free Tier allowing unlimited PRD creation and exploration
+  - 1 free project credit for new users to launch their first product
   - Additional credits available in 3-pack ($50) or 10-pack ($125) bundles
-  - Credits consumed when progressing from PRD to marketing story stage
+  - Credits consumed only when progressing from PRD to marketing story stage
 
 ### 4.2 Design Philosophy
 
@@ -267,6 +271,7 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 - **Completion Rate**: 40%+ of users who begin day 1 complete all 5 days
 - **Deployment Rate**: 30%+ of users who complete the framework successfully launch
 - **Time Efficiency**: 80%+ of users report significant time savings vs. alternative methods
+- **PRD Creation Rate**: 70%+ of free tier users create at least one product requirements document
 - **Conversion Rate**: 10-15% of users purchase additional credits after using their free credit
 - **Credit Pack Distribution**: 70% of purchases are 3-packs, 30% are 10-packs
 - **Credit Utilization**: 80%+ of purchased credits are utilized within 180 days

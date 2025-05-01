@@ -141,7 +141,7 @@ A2: For Day 1 (CREATE), you'll need approximately 4-8 hours of focused work. The
 A3: After completing Day 1, you'll have: 1) A comprehensive product requirements document, 2) Technical specifications including database schema, 3) Marketing content for your landing page, 4) A deployed landing page with prototype elements, and 5) Implementation guidance for next steps.
 
 **Q4: How much does LaunchWeek.ai cost?**
-A4: New users receive 2 free credits to evaluate the platform. Additional credits are available for $50 for 3 credits (one-time purchase) or unlimited access through our monthly ($7) or annual ($70) subscription plans.
+A4: New users receive 1 free project credit upon account creation. Additional credits are available for purchase in different packages - a 3-pack for $50 or a 10-pack for $125, giving you flexibility based on your needs.
 
 **Q5: What tools do I need to have before starting?**
 A5: You'll need accounts with: 1) Claude.ai (for AI assistance), 2) v0.dev (for UI generation), 3) Vercel (for deployment), 4) GitHub (for project storage), and 5) Supabase (for database). We provide detailed guidance on setting up these accounts as part of our onboarding.
@@ -180,31 +180,24 @@ LaunchWeek.ai is created by Data Advantage, a team of AI implementation experts 
 ## Simple, Transparent Pricing
 
 **Tagline:**
-Start for free, scale as you grow
+Start for free, scale as you need
 
 **Free Tier:**
-### Explore
-- 2 free credits for new users
-- Complete one full product journey
-- All Day 1 (CREATE) features
-- Basic support
+### Get Started
+- Create unlimited product requirements documents
+- Explore and plan as many ideas as you want
+- 1 free project credit to launch your first product
+- Consume a credit only when you're ready to build
 - **Free**
 
-**Credit Purchase:**
-### Build
-- 3 additional credits
-- All Day 1 (CREATE) features
-- Email support
-- Access to implementation guides
+**Credit Packages:**
+### 3-Credit Pack
+- 3 additional project credits
 - **$50 one-time purchase**
 
-**Subscription Plans:**
-### Scale
-- Unlimited credits
-- All current and future features
-- Priority support
-- Early access to Days 2-5
-- **$7/month or $70/year (save 16%)**
+### 10-Credit Pack
+- 10 additional project credits
+- **$125 one-time purchase (save 16%)**
 
 ## Waitlist Signup Page Content
 
