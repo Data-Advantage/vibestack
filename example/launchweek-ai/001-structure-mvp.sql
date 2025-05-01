@@ -265,12 +265,6 @@ CREATE TABLE config.credit_packages (
 );
 COMMENT ON TABLE config.credit_packages IS 'Configuration for available credit purchase packages';
 
--- Initialize default credit packages
-INSERT INTO config.credit_packages (name, credits, price_cents, is_active)
-VALUES 
-  ('3-Pack', 3, 5000, true),
-  ('10-Pack', 10, 12500, true);
-
 ------------------------------------------------------------------------------
 -- PART 4: CONFIG TABLES
 ------------------------------------------------------------------------------
