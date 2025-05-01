@@ -228,12 +228,12 @@ COMMENT ON TABLE internal.ai_tasks IS 'Queue for asynchronous AI task processing
 CREATE TABLE internal.user_credits (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
-  balance INTEGER NOT NULL DEFAULT 0,
+  balance INTEGER NOT NULL DEFAULT 1, -- Start with 1 free credit on account creation
   last_updated TIMESTAMPTZ NOT NULL DEFAULT now(),
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE UNIQUE INDEX user_credits_user_id_idx ON internal.user_credits(user_id);
-COMMENT ON TABLE internal.user_credits IS 'Tracks available credits for premium features on user accounts';
+COMMENT ON TABLE internal.user_credits IS 'Tracks available credits for premium features on user accounts, starting with 1 free credit';
 
 -- Credit transaction history
 CREATE TABLE internal.credit_transactions (
@@ -241,14 +241,35 @@ CREATE TABLE internal.credit_transactions (
   user_id UUID NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
   amount INTEGER NOT NULL,
   balance_after INTEGER NOT NULL,
-  transaction_type TEXT NOT NULL,
-  reference TEXT,
+  transaction_type reference.credit_transaction_type NOT NULL,
+  stripe_payment_id TEXT,
+  price_cents INTEGER,
   metadata JSONB,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX credit_transactions_user_id_idx ON internal.credit_transactions(user_id);
 CREATE INDEX credit_transactions_created_at_idx ON internal.credit_transactions(created_at);
-COMMENT ON TABLE internal.credit_transactions IS 'Audit log of all credit additions and deductions';
+CREATE INDEX credit_transactions_type_idx ON internal.credit_transactions(transaction_type);
+COMMENT ON TABLE internal.credit_transactions IS 'Audit log of all credit additions and deductions with pricing information';
+
+-- Credit packages configuration
+CREATE TABLE config.credit_packages (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name TEXT NOT NULL,
+  credits INTEGER NOT NULL,
+  price_cents INTEGER NOT NULL,
+  stripe_price_id TEXT,
+  is_active BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+COMMENT ON TABLE config.credit_packages IS 'Configuration for available credit purchase packages';
+
+-- Initialize default credit packages
+INSERT INTO config.credit_packages (name, credits, price_cents, is_active)
+VALUES 
+  ('3-Pack', 3, 5000, true),
+  ('10-Pack', 10, 12500, true);
 
 ------------------------------------------------------------------------------
 -- PART 4: CONFIG TABLES

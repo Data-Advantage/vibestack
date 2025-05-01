@@ -562,6 +562,29 @@ END $$;
 COMMENT ON INDEX api.documents_title_content_idx IS 
   'Enables full-text search across document titles and content';
 
+-- Credit-related indexes
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_indexes WHERE indexname = 'credit_packages_is_active_idx'
+  ) THEN
+    CREATE INDEX credit_packages_is_active_idx ON config.credit_packages(is_active);
+  END IF;
+END $$;
+COMMENT ON INDEX config.credit_packages_is_active_idx IS 
+  'Improves performance when filtering active credit packages';
+
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_indexes WHERE indexname = 'credit_transactions_stripe_payment_id_idx'
+  ) THEN
+    CREATE INDEX credit_transactions_stripe_payment_id_idx ON internal.credit_transactions(stripe_payment_id);
+  END IF;
+END $$;
+COMMENT ON INDEX internal.credit_transactions_stripe_payment_id_idx IS 
+  'Improves performance when looking up transactions by Stripe payment ID';
+
 ------------------------------------------------------------------------------
 -- PART 3: VIEWS
 ------------------------------------------------------------------------------
@@ -777,3 +800,47 @@ ORDER BY
 
 COMMENT ON VIEW analytics.subscription_metrics IS 
   'Provides monthly subscription metrics, including new subscriptions, cancellations, and revenue';
+
+-- Credit usage analytics view
+CREATE OR REPLACE VIEW analytics.credit_usage AS
+SELECT
+  DATE_TRUNC('month', ct.created_at) AS month,
+  ct.transaction_type,
+  COUNT(*) AS transaction_count,
+  SUM(ct.amount) AS total_credits,
+  SUM(CASE WHEN ct.price_cents IS NOT NULL THEN ct.price_cents ELSE 0 END) / 100.0 AS total_revenue,
+  COUNT(DISTINCT ct.user_id) AS unique_users
+FROM
+  internal.credit_transactions ct
+GROUP BY
+  DATE_TRUNC('month', ct.created_at), ct.transaction_type
+ORDER BY
+  month DESC, ct.transaction_type;
+
+COMMENT ON VIEW analytics.credit_usage IS 
+  'Provides monthly metrics on credit usage, including purchases, consumption, and revenue';
+
+-- User credit status view
+CREATE OR REPLACE VIEW analytics.user_credit_status AS
+SELECT
+  u.id AS user_id,
+  u.email,
+  p.display_name,
+  uc.balance AS current_balance,
+  COUNT(ct.id) AS transaction_count,
+  SUM(CASE WHEN ct.amount > 0 THEN ct.amount ELSE 0 END) AS total_credits_earned,
+  SUM(CASE WHEN ct.amount < 0 THEN ABS(ct.amount) ELSE 0 END) AS total_credits_used,
+  SUM(CASE WHEN ct.price_cents IS NOT NULL THEN ct.price_cents ELSE 0 END) / 100.0 AS total_spent,
+  MAX(ct.created_at) AS last_transaction_date
+FROM
+  auth.users u
+  JOIN api.profiles p ON u.id = p.id
+  LEFT JOIN internal.user_credits uc ON u.id = uc.user_id
+  LEFT JOIN internal.credit_transactions ct ON u.id = ct.user_id
+GROUP BY
+  u.id, u.email, p.display_name, uc.balance
+ORDER BY
+  uc.balance DESC;
+
+COMMENT ON VIEW analytics.user_credit_status IS 
+  'Provides overview of user credit balances, usage, and spending patterns';

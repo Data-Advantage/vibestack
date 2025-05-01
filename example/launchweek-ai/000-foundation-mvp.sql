@@ -136,6 +136,17 @@ CREATE TYPE reference.message_role AS ENUM (
 );
 COMMENT ON TYPE reference.message_role IS 'Roles in AI conversation messages';
 
+-- Credit transaction type enum for tracking different credit operations
+CREATE TYPE reference.credit_transaction_type AS ENUM (
+  'signup_bonus',
+  'project_progression',
+  'purchase_3pack',
+  'purchase_10pack',
+  'admin_adjustment',
+  'refund'
+);
+COMMENT ON TYPE reference.credit_transaction_type IS 'Types of credit transactions in the system';
+
 -- Domain types for common data patterns with validation
 
 -- Email address domain with validation

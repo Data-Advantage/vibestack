@@ -236,17 +236,42 @@ CREATE OR REPLACE FUNCTION internal.process_credit_transaction()
 RETURNS TRIGGER AS $$
 DECLARE
   current_balance INTEGER;
+  credit_constant INTEGER;
 BEGIN
   -- Get current balance
   SELECT balance INTO current_balance
   FROM internal.user_credits
   WHERE user_id = NEW.user_id;
   
-  -- If no record exists, create one with 0 balance
+  -- If no record exists, create one with initial free credits
   IF current_balance IS NULL THEN
-    INSERT INTO internal.user_credits (user_id, balance, last_updated)
-    VALUES (NEW.user_id, 0, now());
-    current_balance := 0;
+    -- Get the constant for initial credits
+    SELECT COALESCE(value::INTEGER, 1) INTO credit_constant
+    FROM constants.credit_system
+    WHERE name = 'INITIAL_FREE_CREDITS';
+    
+    -- Only create a new record if this isn't already a signup bonus transaction
+    -- This prevents double-crediting when the handle_new_user trigger fires
+    IF NEW.transaction_type != 'signup_bonus' THEN
+      INSERT INTO internal.user_credits (user_id, balance, last_updated)
+      VALUES (NEW.user_id, credit_constant, now());
+      current_balance := credit_constant;
+    ELSE
+      -- For signup bonus, start from 0 since we're adding the bonus now
+      INSERT INTO internal.user_credits (user_id, balance, last_updated)
+      VALUES (NEW.user_id, 0, now());
+      current_balance := 0;
+    END IF;
+  END IF;
+  
+  -- For debits, check if the user has enough credits
+  IF NEW.amount < 0 AND (current_balance + NEW.amount) < 0 THEN
+    -- Set error in the transaction record
+    NEW.operation_result := 'insufficient_credits';
+    NEW.error_details := format('Insufficient credits: balance %s, requested %s', current_balance, ABS(NEW.amount));
+    -- Don't modify the balance
+    NEW.balance_after := current_balance;
+    RETURN NEW;
   END IF;
   
   -- Calculate new balance
@@ -261,15 +286,53 @@ BEGIN
   
   -- Set the balance_after field on the transaction
   NEW.balance_after := current_balance;
+  NEW.operation_result := 'success';
   
   RETURN NEW;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = internal, public, pg_temp;
-COMMENT ON FUNCTION internal.process_credit_transaction() IS 'Updates user credit balance when a transaction is processed';
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = internal, constants, public, pg_temp;
+COMMENT ON FUNCTION internal.process_credit_transaction() IS 'Updates user credit balance when a transaction is processed, with error handling';
 
 CREATE TRIGGER process_credit_transaction
 BEFORE INSERT ON internal.credit_transactions
 FOR EACH ROW EXECUTE FUNCTION internal.process_credit_transaction();
+
+-- Add initial credit for new user
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER AS $$
+DECLARE
+  credit_constant INTEGER;
+BEGIN
+  -- Create profile
+  INSERT INTO api.profiles (id, display_name)
+  VALUES (NEW.id, COALESCE(NEW.raw_user_meta_data->>'name', NEW.email));
+  
+  -- Get the constant for initial credits
+  SELECT COALESCE(value::INTEGER, 1) INTO credit_constant
+  FROM constants.credit_system
+  WHERE name = 'INITIAL_FREE_CREDITS';
+  
+  -- Add initial credit as a transaction
+  INSERT INTO internal.credit_transactions (
+    user_id,
+    amount,
+    transaction_type,
+    metadata
+  )
+  VALUES (
+    NEW.id,
+    credit_constant,
+    'signup_bonus',
+    jsonb_build_object(
+      'source', 'new_user_signup',
+      'signup_date', now()
+    )
+  );
+  
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public, constants, pg_temp;
+COMMENT ON FUNCTION public.handle_new_user() IS 'Creates a profile record and adds initial credit when a new user signs up';
 
 ------------------------------------------------------------------------------
 -- PART 2: ROW LEVEL SECURITY (RLS) POLICIES
@@ -1282,19 +1345,7 @@ BEGIN
     auth.uid()
   );
   
-  -- Add initial credits for the user
-  INSERT INTO internal.credit_transactions (
-    user_id,
-    amount,
-    transaction_type,
-    reference
-  )
-  VALUES (
-    auth.uid(),
-    10,
-    'welcome_bonus',
-    'Initial credits for new user'
-  );
+  -- Note: We don't add additional credits here since users already get 1 free credit at signup
   
   RETURN project_record;
 END;
@@ -1352,3 +1403,450 @@ END;
 $$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = api, public, pg_temp;
 COMMENT ON FUNCTION api.get_project_statistics(UUID) IS 
   'Returns detailed statistics about a specific project';
+
+-- Centralized function to check user credit balance
+CREATE OR REPLACE FUNCTION internal.get_user_credit_balance(
+  user_id UUID
+)
+RETURNS INTEGER AS $$
+DECLARE
+  balance INTEGER;
+BEGIN
+  -- Get user's credit balance
+  SELECT uc.balance INTO balance
+  FROM internal.user_credits uc
+  WHERE uc.user_id = get_user_credit_balance.user_id;
+  
+  -- Return 0 if no record exists
+  RETURN COALESCE(balance, 0);
+END;
+$$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = internal, public, pg_temp;
+COMMENT ON FUNCTION internal.get_user_credit_balance(UUID) IS 'Gets the current credit balance for a user';
+
+-- Centralized function to check if a credit has already been consumed for a project progression
+CREATE OR REPLACE FUNCTION internal.has_consumed_credit_for_progression(
+  project_id UUID,
+  progression_type TEXT
+)
+RETURNS BOOLEAN AS $$
+DECLARE
+  consumption_exists BOOLEAN;
+BEGIN
+  SELECT EXISTS (
+    SELECT 1
+    FROM internal.project_credit_consumption
+    WHERE project_id = has_consumed_credit_for_progression.project_id
+    AND progression_type = has_consumed_credit_for_progression.progression_type
+  ) INTO consumption_exists;
+  
+  RETURN consumption_exists;
+END;
+$$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = internal, public, pg_temp;
+COMMENT ON FUNCTION internal.has_consumed_credit_for_progression(UUID, TEXT) IS 'Checks if a credit has already been consumed for a specific project progression';
+
+-- Function to progress from PRD to marketing story (Day 1 to Day 2)
+CREATE OR REPLACE FUNCTION api.progress_to_marketing_story(
+  project_id UUID
+)
+RETURNS JSONB AS $$
+DECLARE
+  user_id UUID;
+  project_record api.projects;
+  user_credit_balance INTEGER;
+  min_credits INTEGER;
+  transaction_id UUID;
+  result JSONB;
+BEGIN
+  -- Get the project details
+  SELECT * INTO project_record
+  FROM api.projects p
+  WHERE p.id = project_id;
+  
+  -- Check if project exists
+  IF project_record IS NULL THEN
+    RETURN jsonb_build_object(
+      'success', false,
+      'result', 'system_error',
+      'message', 'Project not found'
+    );
+  END IF;
+  
+  -- Check if user owns the project
+  IF project_record.user_id != auth.uid() THEN
+    RETURN jsonb_build_object(
+      'success', false,
+      'result', 'system_error',
+      'message', 'Not authorized to access this project'
+    );
+  END IF;
+  
+  -- Check if the project is already past day 1
+  IF project_record.current_framework_day != 'day_1' THEN
+    RETURN jsonb_build_object(
+      'success', false,
+      'result', 'already_consumed',
+      'message', 'Project has already progressed past PRD stage'
+    );
+  END IF;
+  
+  -- Check if a credit has already been consumed for this progression
+  IF internal.has_consumed_credit_for_progression(project_id, 'prd_to_marketing') THEN
+    RETURN jsonb_build_object(
+      'success', false,
+      'result', 'already_consumed',
+      'message', 'Credit has already been consumed for this progression'
+    );
+  END IF;
+  
+  -- Get minimum credits needed
+  SELECT COALESCE(value::INTEGER, 1) INTO min_credits
+  FROM constants.credit_system
+  WHERE name = 'MIN_CREDITS_FOR_PROGRESSION';
+  
+  -- Get user's credit balance
+  user_credit_balance := internal.get_user_credit_balance(auth.uid());
+  
+  -- Check if user has enough credits
+  IF user_credit_balance < min_credits THEN
+    RETURN jsonb_build_object(
+      'success', false,
+      'result', 'insufficient_credits',
+      'message', format('Insufficient credits. Required: %s, Current balance: %s', min_credits, user_credit_balance)
+    );
+  END IF;
+  
+  -- Start a transaction block for atomic operations
+  BEGIN
+    -- Consume a credit
+    INSERT INTO internal.credit_transactions (
+      user_id,
+      amount,
+      transaction_type,
+      metadata
+    )
+    VALUES (
+      auth.uid(),
+      -min_credits,
+      'project_progression',
+      jsonb_build_object(
+        'project_id', project_id, 
+        'progression_type', 'prd_to_marketing', 
+        'framework_day_from', 'day_1',
+        'framework_day_to', 'day_2'
+      )
+    )
+    RETURNING id INTO transaction_id;
+    
+    -- Check if the transaction was successful by getting its result
+    DECLARE
+      transaction_result reference.credit_operation_result;
+    BEGIN
+      SELECT operation_result INTO transaction_result
+      FROM internal.credit_transactions
+      WHERE id = transaction_id;
+      
+      -- If there was an issue with the credit deduction, return an error
+      IF transaction_result != 'success' THEN
+        RAISE EXCEPTION 'Credit transaction failed: %', transaction_result;
+      END IF;
+    END;
+    
+    -- Record the consumption for this project progression
+    INSERT INTO internal.project_credit_consumption (
+      project_id,
+      user_id,
+      transaction_id,
+      progression_type,
+      framework_day_from,
+      framework_day_to,
+      metadata
+    )
+    VALUES (
+      project_id,
+      auth.uid(),
+      transaction_id,
+      'prd_to_marketing',
+      'day_1',
+      'day_2',
+      jsonb_build_object(
+        'project_name', project_record.name,
+        'progression_date', now()
+      )
+    );
+    
+    -- Update project to day 2
+    UPDATE api.projects
+    SET current_framework_day = 'day_2'
+    WHERE id = project_id;
+    
+    -- Update framework progress for day 2
+    UPDATE api.framework_progress
+    SET 
+      status = 'in_progress',
+      started_at = now()
+    WHERE project_id = project_id
+    AND framework_day = 'day_2';
+    
+    -- Mark the first step of day 2 as in_progress
+    UPDATE api.framework_steps
+    SET 
+      status = 'in_progress',
+      started_at = now()
+    WHERE project_id = project_id
+    AND framework_day = 'day_2'
+    AND step_number = (
+      SELECT MIN(step_number)
+      FROM api.framework_steps
+      WHERE project_id = project_id
+      AND framework_day = 'day_2'
+    );
+    
+    -- Successful completion
+    RETURN jsonb_build_object(
+      'success', true,
+      'result', 'success',
+      'message', 'Successfully progressed project to marketing story stage',
+      'framework_day', 'day_2',
+      'credits_remaining', user_credit_balance - min_credits
+    );
+    
+  EXCEPTION
+    WHEN OTHERS THEN
+      -- Log error and roll back everything
+      RAISE NOTICE 'Error in progress_to_marketing_story: %', SQLERRM;
+      RETURN jsonb_build_object(
+        'success', false,
+        'result', 'system_error',
+        'message', format('System error occurred: %s', SQLERRM)
+      );
+  END;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = api, internal, constants, public, pg_temp;
+COMMENT ON FUNCTION api.progress_to_marketing_story(UUID) IS 'Consumes a credit and progresses a project from PRD (Day 1) to marketing story (Day 2) with comprehensive error handling';
+
+-- Function to check if user can progress to marketing story
+CREATE OR REPLACE FUNCTION api.can_progress_to_marketing_story(
+  project_id UUID
+)
+RETURNS JSONB AS $$
+DECLARE
+  user_credit_balance INTEGER;
+  min_credits INTEGER;
+  project_record api.projects;
+BEGIN
+  -- Get the project record
+  SELECT * INTO project_record
+  FROM api.projects p
+  WHERE p.id = project_id;
+  
+  -- Check if project exists
+  IF project_record IS NULL THEN
+    RETURN jsonb_build_object(
+      'can_progress', false,
+      'reason', 'project_not_found',
+      'message', 'Project not found'
+    );
+  END IF;
+  
+  -- Check if user owns the project
+  IF project_record.user_id != auth.uid() THEN
+    RETURN jsonb_build_object(
+      'can_progress', false,
+      'reason', 'not_authorized',
+      'message', 'Not authorized to access this project'
+    );
+  END IF;
+  
+  -- Check if the project is already past day 1
+  IF project_record.current_framework_day != 'day_1' THEN
+    RETURN jsonb_build_object(
+      'can_progress', false,
+      'reason', 'already_progressed',
+      'message', 'Project has already progressed past PRD stage'
+    );
+  END IF;
+  
+  -- Check if a credit has already been consumed for this progression
+  IF internal.has_consumed_credit_for_progression(project_id, 'prd_to_marketing') THEN
+    RETURN jsonb_build_object(
+      'can_progress', false,
+      'reason', 'already_consumed',
+      'message', 'Credit has already been consumed for this progression'
+    );
+  END IF;
+  
+  -- Get minimum credits needed
+  SELECT COALESCE(value::INTEGER, 1) INTO min_credits
+  FROM constants.credit_system
+  WHERE name = 'MIN_CREDITS_FOR_PROGRESSION';
+  
+  -- Get user's credit balance
+  user_credit_balance := internal.get_user_credit_balance(auth.uid());
+  
+  -- Return results
+  IF user_credit_balance >= min_credits THEN
+    RETURN jsonb_build_object(
+      'can_progress', true,
+      'credits_available', user_credit_balance,
+      'credits_required', min_credits
+    );
+  ELSE
+    RETURN jsonb_build_object(
+      'can_progress', false,
+      'reason', 'insufficient_credits',
+      'credits_available', user_credit_balance,
+      'credits_required', min_credits,
+      'message', format('You need %s credit(s) to progress (you have %s)', min_credits, user_credit_balance)
+    );
+  END IF;
+END;
+$$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = api, internal, constants, public, pg_temp;
+COMMENT ON FUNCTION api.can_progress_to_marketing_story(UUID) IS 'Checks if the current user has enough credits to progress a specific project to the marketing story stage';
+
+-- Function to purchase credit packages with improved error handling
+CREATE OR REPLACE FUNCTION api.purchase_credit_package(
+  package_id UUID,
+  stripe_payment_id TEXT
+)
+RETURNS JSONB AS $$
+DECLARE
+  package_record config.credit_packages;
+  transaction_id UUID;
+BEGIN
+  -- Start a transaction block
+  BEGIN
+    -- Get package information
+    SELECT * INTO package_record
+    FROM config.credit_packages
+    WHERE id = package_id AND is_active = true;
+    
+    -- Check if package exists
+    IF package_record IS NULL THEN
+      RETURN jsonb_build_object(
+        'success', false,
+        'result', 'invalid_package',
+        'message', 'Credit package not found or inactive'
+      );
+    END IF;
+    
+    -- Add credits to user account
+    INSERT INTO internal.credit_transactions (
+      user_id,
+      amount,
+      transaction_type,
+      stripe_payment_id,
+      price_cents,
+      metadata
+    )
+    VALUES (
+      auth.uid(),
+      package_record.credits,
+      package_record.transaction_type,
+      stripe_payment_id,
+      package_record.price_cents,
+      jsonb_build_object(
+        'package_id', package_record.id,
+        'package_name', package_record.name,
+        'purchase_date', now()
+      )
+    )
+    RETURNING id INTO transaction_id;
+    
+    -- Get the new balance
+    DECLARE
+      new_balance INTEGER;
+    BEGIN
+      SELECT balance_after INTO new_balance
+      FROM internal.credit_transactions
+      WHERE id = transaction_id;
+      
+      RETURN jsonb_build_object(
+        'success', true,
+        'result', 'success',
+        'message', format('Successfully purchased %s credits', package_record.credits),
+        'credits_purchased', package_record.credits,
+        'new_balance', new_balance,
+        'transaction_id', transaction_id
+      );
+    END;
+  EXCEPTION
+    WHEN OTHERS THEN
+      -- Log error and return failure
+      RAISE NOTICE 'Error in purchase_credit_package: %', SQLERRM;
+      RETURN jsonb_build_object(
+        'success', false,
+        'result', 'system_error',
+        'message', format('System error occurred: %s', SQLERRM)
+      );
+  END;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = api, internal, config, public, pg_temp;
+COMMENT ON FUNCTION api.purchase_credit_package(UUID, TEXT) IS 'Processes a credit package purchase and adds credits to the user account with enhanced error handling';
+
+-- Function to get summary of available credit packages
+CREATE OR REPLACE FUNCTION api.get_credit_packages()
+RETURNS JSONB AS $$
+DECLARE
+  packages JSONB;
+BEGIN
+  SELECT jsonb_agg(
+    jsonb_build_object(
+      'id', id,
+      'name', name,
+      'credits', credits,
+      'price_cents', price_cents,
+      'price_formatted', format('$%s.%s', price_cents / 100, LPAD((price_cents % 100)::TEXT, 2, '0'))
+    )
+  )
+  INTO packages
+  FROM config.credit_packages
+  WHERE is_active = true
+  ORDER BY credits ASC;
+  
+  RETURN jsonb_build_object(
+    'packages', COALESCE(packages, '[]'::JSONB)
+  );
+END;
+$$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = config, public, pg_temp;
+COMMENT ON FUNCTION api.get_credit_packages() IS 'Returns a list of active credit packages available for purchase with formatted prices';
+
+-- Enhanced function to get user credit history
+CREATE OR REPLACE FUNCTION api.get_my_credit_history()
+RETURNS JSONB AS $$
+DECLARE
+  history JSONB;
+  balance INTEGER;
+BEGIN
+  -- Get current balance
+  balance := internal.get_user_credit_balance(auth.uid());
+  
+  -- Get transaction history
+  SELECT jsonb_agg(
+    jsonb_build_object(
+      'id', ct.id,
+      'date', ct.created_at,
+      'type', ct.transaction_type,
+      'amount', ct.amount,
+      'balance_after', ct.balance_after,
+      'price_cents', ct.price_cents,
+      'price_formatted', CASE 
+        WHEN ct.price_cents IS NOT NULL 
+        THEN format('$%s.%s', ct.price_cents / 100, LPAD((ct.price_cents % 100)::TEXT, 2, '0'))
+        ELSE NULL
+      END,
+      'status', ct.operation_result,
+      'metadata', ct.metadata
+    )
+    ORDER BY ct.created_at DESC
+  )
+  INTO history
+  FROM internal.credit_transactions ct
+  WHERE ct.user_id = auth.uid();
+  
+  RETURN jsonb_build_object(
+    'current_balance', balance,
+    'transactions', COALESCE(history, '[]'::JSONB)
+  );
+END;
+$$ LANGUAGE plpgsql STABLE SECURITY DEFINER SET search_path = api, internal, public, pg_temp;
+COMMENT ON FUNCTION api.get_my_credit_history() IS 'Returns the current user''s credit balance and transaction history';
