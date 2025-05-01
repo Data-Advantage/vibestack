@@ -624,14 +624,17 @@ If refinement is needed, consider:
 
 ## 9. Implementation Examples
 
-### Standard Stripe Tables
-When integrating Stripe payments with your application, use a consistent table structure in the `stripe` schema:
+### Stripe Integration Patterns
+When integrating Stripe payments with your application, choose the appropriate table structure based on your business model.
 
-#### Core Stripe Tables
+#### 9.1 Subscription-Based Stripe Model
+Use this model when your application relies on recurring subscriptions:
+
+##### Core Subscription Tables
 1. **stripe.customers** - Links Stripe customers to application users
    - Fields: id, user_id, email, name, metadata, created_at, updated_at
 
-2. **stripe.products** - Stores Stripe products
+2. **stripe.products** - Stores Stripe products (subscription plans)
    - Fields: id, name, description, active, metadata, created_at, updated_at
 
 3. **stripe.prices** - Stores Stripe prices for products
@@ -643,21 +646,53 @@ When integrating Stripe payments with your application, use a consistent table s
 5. **stripe.webhook_events** - Stores raw Stripe webhook events
    - Fields: id, type, api_version, created, data, processing_status, processing_error, processing_attempts, processed_at, received_at
 
-#### Additional Recommended Tables
+##### Additional Subscription Tables
 6. **stripe.invoices** - Tracks invoice data
    - Fields: id, customer_id, subscription_id, status, currency, amount_due, amount_paid, amount_remaining, invoice_pdf, hosted_invoice_url, period_start, period_end, created, metadata, updated_at
 
 7. **stripe.payment_methods** - Stores customer payment methods
    - Fields: id, customer_id, type, card_brand, card_last4, card_exp_month, card_exp_year, is_default, created_at, updated_at
 
-8. **stripe.charges** - Records charge data
-   - Fields: id, customer_id, invoice_id, payment_intent_id, amount, currency, payment_method_id, status, created, metadata, updated_at
+8. **stripe.subscription_items** - For metered or tiered subscriptions
+   - Fields: id, subscription_id, price_id, quantity, created, metadata, updated_at
 
-### Config Schema for Application Settings
-A dedicated `config` schema provides a clear separation between application configuration and user/business data.
+9. **config.subscription_benefits** - Maps subscription tiers to application benefits
+   - Fields: id, product_id, feature_limits, has_premium_features, created_at, updated_at
 
-9. **config.subscription_benefits** - Maps subscription tiers to application benefits (sample only)
-   - Fields: id, product_id, monthly_credits, max_projects, has_priority_support, has_advanced_features, created_at, updated_at
+#### 9.2 Credit/One-Time Purchase Stripe Model
+Use this model when your application relies on one-time purchases or credit packs:
+
+##### Core Credit-Based Tables
+1. **stripe.customers** - Links Stripe customers to application users
+   - Fields: id, user_id, email, name, metadata, created_at, updated_at
+
+2. **stripe.products** - Stores Stripe products (credit packs)
+   - Fields: id, name, description, active, metadata, created_at, updated_at
+
+3. **stripe.prices** - Stores Stripe prices for credit packs
+   - Fields: id, product_id, active, currency, unit_amount, metadata, created_at, updated_at
+
+4. **stripe.payment_methods** - Stores customer payment methods
+   - Fields: id, customer_id, type, card_brand, card_last4, card_exp_month, card_exp_year, is_default, created_at, updated_at
+
+5. **stripe.webhook_events** - Stores raw Stripe webhook events
+   - Fields: id, type, api_version, created, data, processing_status, processing_error, processing_attempts, processed_at, received_at
+
+##### Credit Management Tables
+6. **stripe.payment_intents** - Records payment intent data
+   - Fields: id, customer_id, amount, currency, status, payment_method_id, created, metadata, updated_at
+
+7. **stripe.charges** - Records successful charge data
+   - Fields: id, customer_id, payment_intent_id, amount, currency, payment_method_id, status, created, metadata, updated_at
+
+8. **internal.user_credits** - Tracks user credit balances
+   - Fields: id, user_id, total_credits, remaining_credits, updated_at
+
+9. **internal.credit_transactions** - Records credit history
+   - Fields: id, user_id, amount, transaction_type, description, payment_id, created_at
+
+10. **config.credit_packs** - Defines what each credit pack contains
+    - Fields: id, product_id, credits_amount, bonus_credits, created_at, updated_at
 
 ### Data Access from Next.js
 
