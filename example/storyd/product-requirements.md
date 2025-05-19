@@ -157,7 +157,7 @@ Converting analytics and insights into narrative-driven visual presentations.
 #### 3.2.2 Research Phase Implementation
 > As a developer, I want the system to analyze inputs and generate relevant insights so that presentations include data-driven content and storytelling.
 
-- **Priority**: MVP-Secondary
+- **Priority**: MVP-Core
 - **Acceptance Criteria**:
   - System performs SWOT or similar analysis on provided topic
   - Research process identifies key insights and recommendations
@@ -165,8 +165,9 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Research can be enhanced with supplementary information
   - Option to skip or customize research phase available
 - **Technical Considerations**:
-  - May require integration with external data sources
+  - Integrate with Perplexity models for research tasks
   - Need to manage AI usage costs for research tasks
+  - Implement structured outputs using JSON schemas
 - **Dependencies**: 3.2.1 Plan Phase Implementation
 
 #### 3.2.3 Write Phase Implementation
@@ -198,6 +199,46 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Need secure storage for generated presentations
   - Must handle Aspose conversion efficiently
 - **Dependencies**: 3.2.3 Write Phase Implementation
+
+#### 3.2.5 File Analysis and Processing
+> As a developer, I want to upload and analyze various file types so that presentations can incorporate data from multiple sources.
+
+- **Priority**: MVP-Core
+- **Acceptance Criteria**:
+  - Support for multiple file formats: PDF, JPEG, PNG, TIFF, HEIC, DOCX, PPTX, XLSX, HWP, HWPX (Max 50MB)
+  - Automatic categorization of images into: Photos, Charts, Logos, Diagrams, Icons, Screenshots
+  - Analysis of datasets/CSV files to extract insights
+  - Document parsing for text extraction and summarization
+  - Link scraping to extract content from web resources
+  - Extracted content available for use in presentation generation
+- **Technical Considerations**:
+  - Utilize Upstage models for document parsing
+  - Employ Anthropic models for image analysis and categorization
+  - Use Apify for link scraping and web content extraction
+  - Implement basic dataset analysis using LLM capabilities
+  - Structure all outputs using JSON schemas for consistency
+- **Dependencies**: 3.2.1 Plan Phase Implementation
+- **Performance Requirements**: Process most file types in <30 seconds
+
+#### 3.2.6 Image Generation
+> As a developer, I want to generate relevant images for presentations so that slides can include custom visuals aligned with the content.
+
+- **Priority**: MVP-Core
+- **Acceptance Criteria**:
+  - AI-powered image generation for presentation content
+  - Images match slide content and context
+  - Style consistency with presentation branding
+  - Appropriate aspect ratios for presentation use cases
+  - Generated images available in the Plan phase for review
+  - Option to regenerate or skip image generation
+- **Technical Considerations**:
+  - Integrate with OpenAI's `gpt-image-1` model for image generation
+  - Handle prompt engineering for consistent, high-quality results
+  - Implement proper error handling for generation failures
+  - Optimize storage and delivery of generated images
+  - Include image generation cost within standard credit pricing
+- **Dependencies**: 3.2.1 Plan Phase Implementation
+- **Performance Requirements**: Generate images in <15 seconds
 
 ### 3.3 Presentation Visualization System
 
@@ -810,14 +851,13 @@ Converting analytics and insights into narrative-driven visual presentations.
 
 - **Acceptance Criteria**:
   - API key authentication mechanism
-  - Optional OAuth 2.0 support for enterprise users
   - Granular permission controls for different API functions
   - Secure key management and rotation capabilities
   - Comprehensive authentication documentation
 - **Technical Considerations**:
   - Need secure storage for authentication credentials
   - Must implement rate limiting by authentication
-  - Should support multiple authentication methods
+  - Should establish a foundation for expanding authentication options in the future
 - **Dependencies**: None
 - **Performance Requirements**: Authentication validation in <100ms
 
@@ -942,16 +982,16 @@ Converting analytics and insights into narrative-driven visual presentations.
 > As a new user, I want a streamlined signup process so that I can quickly start using the platform.
 
 - **Acceptance Criteria**:
-  - Email-based signup with validation
-  - Google, Microsoft, and GitHub social login options
+  - Email-based signup with validation via Supabase
+  - Google social login option
   - Secure password requirements enforcement
-  - Protection against automated signups (CAPTCHA or equivalent)
+  - Protection against automated signups
   - Clear communication of terms of service and privacy policy
   - Automatic enrollment in free tier with 5 credits
 - **Technical Considerations**:
-  - Need secure password handling (hashing, etc.)
-  - Must support OAuth 2.0 flows for social logins
-  - Should implement fraud prevention measures
+  - Implement Supabase authentication for secure credential management
+  - Implement fraud prevention measures
+  - Design for future expansion to additional auth providers
 - **Dependencies**: None
 
 #### 5.2.2 User Login Functionality
@@ -1034,51 +1074,35 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Should avoid friction for legitimate free tier users
 - **Dependencies**: 5.2.1 User Signup Process
 
-#### 5.3.2 Premium Subscription Offerings
-> As a user, I want flexible premium subscription options so that I can choose the plan that best meets my needs.
+#### 5.3.2 Credit Package Offerings
+> As a user, I want flexible credit purchase options so that I can buy credits according to my usage needs.
 
 - **Acceptance Criteria**:
-  - Monthly and annual billing options (with discount for annual)
-  - Clear presentation of subscription features and benefits
-  - Transparent pricing and credit allocation
-  - Support for team/enterprise subscription levels
-  - Trial period option for premium features
+  - Various credit package sizes available (e.g., 10, 50, 100 credits)
+  - Volume discounts for larger credit packages
+  - Clear presentation of credit pricing and value
+  - One-click purchase process for additional credits
+  - Optional auto top-up when credits fall below threshold
 - **Technical Considerations**:
-  - Need subscription tracking system
-  - Must integrate with billing provider
-  - Should implement subscription lifecycle management
+  - Integrate with Stripe for payment processing
+  - Implement credit balance tracking system
+  - Develop clear purchase confirmation flow
 - **Dependencies**: 5.3.1 Free Tier Implementation, 5.4.1 Payment Processor Integration
 
-#### 5.3.3 Subscription Limits and Feature Access
-> As a platform operator, I want a system to manage subscription limits and feature access so that users receive appropriate functionality for their tier.
+#### 5.3.3 Credit Usage and Limits
+> As a platform operator, I want a system to manage credit usage so that users receive appropriate feedback about their consumption.
 
 - **Acceptance Criteria**:
-  - Automated enforcement of credit limits by tier
-  - Feature flagging system based on subscription level
-  - Clear user messaging when approaching limits
+  - Real-time tracking of credit balance
+  - Clear user messaging when approaching low credit balance
   - Usage reports for users to track consumption
-  - Graceful handling when limits are reached
+  - Graceful handling when credits are depleted
+  - Support for bundled services (e.g., AI image generation included in credit cost)
 - **Technical Considerations**:
-  - Need real-time limit tracking
-  - Must implement feature access control system
+  - Need real-time credit tracking
+  - Must implement clear feedback mechanisms
   - Should provide usage analytics to users
-- **Dependencies**: 5.3.2 Premium Subscription Offerings
-
-#### 5.3.4 Upgrade/Downgrade Paths
-> As a user, I want smooth upgrade and downgrade processes so that I can change my subscription as my needs evolve.
-
-- **Acceptance Criteria**:
-  - One-click upgrade from free to paid tier
-  - Self-service plan switching between premium tiers
-  - Prorated billing for mid-cycle changes
-  - Clear explanation of what happens when downgrading
-  - Retention of data when changing plans
-  - Option to cancel subscription and revert to free tier
-- **Technical Considerations**:
-  - Need to handle billing adjustments
-  - Must manage feature access changes
-  - Should implement win-back strategies for downgrades
-- **Dependencies**: 5.3.2 Premium Subscription Offerings, 5.4.1 Payment Processor Integration
+- **Dependencies**: 5.3.2 Credit Package Offerings
 
 ### 5.4 Payment Processing
 
@@ -1097,30 +1121,30 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Should implement proper error tracking
 - **Dependencies**: None
 
-#### 5.4.2 Subscription Billing Management
-> As a user, I want clear and transparent billing so that I understand what I'm being charged for.
+#### 5.4.2 Credit Purchase Management
+> As a user, I want clear and transparent billing for credit purchases so that I understand what I'm being charged for.
 
 - **Acceptance Criteria**:
-  - Automated recurring billing for subscriptions
+  - Immediate credit delivery upon successful payment
   - Email receipts for all transactions
-  - Billing history viewable in account dashboard
+  - Purchase history viewable in account dashboard
   - Clear line items for all charges
   - Tax calculation and reporting
   - Support for different currencies
 - **Technical Considerations**:
-  - Need invoice generation system
+  - Need receipt generation system
   - Must implement tax calculation logic
   - Should support multiple payment methods per account
 - **Dependencies**: 5.4.1 Payment Processor Integration
 
 #### 5.4.3 Stripe Customer Portal Integration
-> As a user, I want self-service billing management so that I can update payment methods and view invoices without contacting support.
+> As a user, I want self-service payment management so that I can update payment methods and view purchase history without contacting support.
 
 - **Acceptance Criteria**:
   - Integration with Stripe Customer Portal
   - Ability to update payment methods
-  - Access to billing history and invoices
-  - Subscription management capabilities
+  - Access to purchase history and receipts
+  - Auto top-up management capabilities
   - Seamless authentication between platforms
 - **Technical Considerations**:
   - Need secure portal authentication
@@ -1152,7 +1176,7 @@ Converting analytics and insights into narrative-driven visual presentations.
 - **Acceptance Criteria**:
   - Search and filter users by various attributes
   - View detailed user information and activity
-  - Manually adjust credits or subscription status
+  - Manually adjust credits or account status
   - Reset passwords and help with account issues
   - Implement account holds or suspensions when needed
   - Audit trail of administrative actions
@@ -1193,13 +1217,12 @@ Converting analytics and insights into narrative-driven visual presentations.
 - **Dependencies**: 5.5.1 User Account Administration
 
 #### 5.5.4 System Error Monitoring
-> As a platform operator, I want comprehensive error tracking so that we can quickly identify and resolve issues.
+> As a platform operator, I want basic error tracking so that we can quickly identify and resolve issues.
 
 - **Acceptance Criteria**:
   - Centralized error logging and monitoring
   - Error categorization and prioritization
   - Real-time alerting for critical errors
-  - Trend analysis to identify recurring issues
   - Context capture for debugging
   - Integration with issue tracking system
 - **Technical Considerations**:
@@ -1208,97 +1231,19 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Should balance detail with performance impact
 - **Dependencies**: None
 
-#### 5.5.5 Integration Status Monitoring
-> As a platform operator, I want monitoring of external service integrations so that we can quickly detect and address integration issues.
-
-- **Acceptance Criteria**:
-  - Health checks for all external dependencies
-  - Status dashboard for integration health
-  - Historical uptime and performance tracking
-  - Automated alerting for integration failures
-  - Fallback procedures for critical integrations
-- **Technical Considerations**:
-  - Need non-intrusive health check mechanisms
-  - Must implement circuit breaker patterns
-  - Should track SLA compliance
-- **Dependencies**: None
-
-#### 5.5.6 Usage Analytics Dashboard
-> As an administrator, I want comprehensive usage analytics so that I can understand platform utilization and make informed decisions.
+#### 5.5.5 Usage Analytics Dashboard
+> As an administrator, I want basic usage analytics so that I can understand platform utilization.
 
 - **Acceptance Criteria**:
   - Real-time and historical usage metrics
   - User acquisition and retention analytics
   - Feature usage breakdown and trends
-  - Performance metrics correlating with usage patterns
-  - Customizable reports and visualizations
+  - Performance metrics for key operations
   - Export capabilities for further analysis
 - **Technical Considerations**:
   - Need efficient analytics data storage
   - Must balance detail with performance
   - Should implement data aggregation strategies
-- **Dependencies**: None
-
-#### 5.5.7 Data Backup Management
-> As a platform operator, I want automated data backup systems so that we can recover from data loss scenarios.
-
-- **Acceptance Criteria**:
-  - Automated regular backups of all critical data
-  - Backup verification and validation
-  - Clear restoration procedures
-  - Compliance with data retention policies
-  - Monitoring and alerting for backup failures
-- **Technical Considerations**:
-  - Need efficient backup mechanisms
-  - Must implement secure backup storage
-  - Should minimize performance impact during backups
-- **Dependencies**: None
-
-#### 5.5.8 Queue Management Interface
-> As an administrator, I want visibility into processing queues so that I can monitor and optimize system throughput.
-
-- **Acceptance Criteria**:
-  - Real-time view of queue depths and processing rates
-  - Ability to prioritize or reschedule queued items
-  - Historical queue performance analytics
-  - Alerting for queue bottlenecks or delays
-  - Manual intervention capabilities for stuck items
-- **Technical Considerations**:
-  - Need efficient queue monitoring mechanisms
-  - Must implement appropriate access controls
-  - Should balance detail with interface performance
-- **Dependencies**: None
-
-#### 5.5.9 System Health Monitoring
-> As a platform operator, I want comprehensive system health monitoring so that we can proactively address potential issues.
-
-- **Acceptance Criteria**:
-  - Real-time monitoring of all system components
-  - Resource utilization tracking (CPU, memory, disk, network)
-  - Performance metrics for key operations
-  - Threshold-based alerting
-  - Historical trend analysis
-  - Visualization of system health metrics
-- **Technical Considerations**:
-  - Need efficient monitoring agent deployment
-  - Must balance monitoring detail with overhead
-  - Should implement appropriate retention policies for metrics
-- **Dependencies**: None
-
-#### 5.5.10 Security Audit Logging
-> As a security officer, I want comprehensive audit logging so that we can track sensitive operations and investigate security incidents.
-
-- **Acceptance Criteria**:
-  - Logging of all security-relevant events
-  - User authentication attempts (successful and failed)
-  - Administrative actions and privilege use
-  - Data access and modification events
-  - Tamper-evident log storage
-  - Compliance with relevant security standards
-- **Technical Considerations**:
-  - Need secure, immutable audit log storage
-  - Must implement appropriate log retention
-  - Should balance detail with storage requirements
 - **Dependencies**: None
 
 ---
@@ -1330,6 +1275,7 @@ Converting analytics and insights into narrative-driven visual presentations.
   - 80%+ of users configure and use brand settings
   - Brand settings consistently applied across all presentation outputs
   - Enterprises report 90%+ brand compliance in outputs
+  - Multiple brand profiles are supported per account
 
 **6.1.4 Credit-Based Processing System**
 - **Description**: Simple mechanism for tracking presentation generation credits (5 free, then $1 per presentation)
@@ -1339,27 +1285,67 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Users understand pricing model without support intervention
   - Credit system handles edge cases gracefully (refunds, errors, etc.)
 
+**6.1.5 Complete Four-Phase Process Implementation**
+- **Description**: Full implementation of all four phases: Plan, Research, Write, and Automate
+- **Direct Pain Point**: Partial automation solutions miss the critical research and planning steps
+- **Success Criteria**:
+  - All four phases complete successfully for 95%+ of presentation requests
+  - Research phase provides valuable additional insights
+  - End-to-end process completes in reasonable time (<5 minutes for average presentation)
+
+**6.1.6 Multi-Format Output Support**
+- **Description**: Support for both PPTX and PDF output formats
+- **Direct Pain Point**: Different distribution scenarios require different output formats
+- **Success Criteria**:
+  - PDF outputs maintain visual fidelity with PPTX version
+  - Conversion process is reliable for all template types
+  - Users can select preferred output format(s)
+
+**6.1.7 File Analysis and Processing**
+- **Description**: Support for analyzing and extracting content from various file formats
+- **Direct Pain Point**: Manual extraction of content from different file types is time-consuming
+- **Success Criteria**:
+  - Successful processing of all supported file types
+  - Accurate image categorization for 85%+ of images
+  - Useful insights extracted from datasets/documents
+
+**6.1.8 AI Image Generation**
+- **Description**: Generation of custom images for presentation content
+- **Direct Pain Point**: Finding or creating appropriate visual assets is time-consuming
+- **Success Criteria**:
+  - Generated images are relevant to presentation content
+  - Images maintain consistent style and quality
+  - Generation process is reliable and timely
+
+**6.1.9 Credits Dashboard**
+- **Description**: Dashboard displaying credit usage, history, and purchase options
+- **Direct Pain Point**: Users need visibility into resource consumption
+- **Success Criteria**:
+  - Dashboard clearly shows current credit balance
+  - Purchase flow is simple and intuitive
+  - Transaction history is complete and accurate
+
 ### 6.2 MVP-Secondary Features
 
 **6.2.1 Developer Dashboard**
-- **Description**: Web interface showing API key management, credit usage, and generation history
-- **Simplified Version**: Basic usage history and credit tracking only
+- **Description**: Web interface showing API key management, generation history, and advanced settings
+- **Simplified Version**: Basic API key management only
 - **Criteria for Enhancement**: Required when >50% of users generate more than 5 presentations monthly
 
-**6.2.2 Multiple Output Formats**
-- **Description**: Support for PDF export and web viewer in addition to PPTX
-- **Simplified Version**: PPTX only with basic preview images
-- **Criteria for Enhancement**: Required when >25% of users request alternative formats
-
-**6.2.3 Interactive API Playground**
+**6.2.2 Interactive API Playground**
 - **Description**: Web-based environment for testing API calls and previewing outputs
 - **Simplified Version**: Basic form with limited parameters and result preview
 - **Criteria for Enhancement**: Required when documentation-related support requests exceed 20%
 
-**6.2.4 Basic Structure for Four-Phase Process**
-- **Description**: Simplified implementation of Plan and Write phases only
-- **Simplified Version**: Combined process without distinct phase separation in API
-- **Criteria for Enhancement**: Required when users need more granular control over process steps
+**6.2.3 MCP Protocol Support**
+- **Description**: Integration with Anthropic's Model Context Protocol for AI agent compatibility
+- **Simplified Version**: Basic JSON API only
+- **Criteria for Enhancement**: Required when >15% of traffic comes from AI agents
+
+**6.2.4 Low-Fidelity Content Preview**
+- **Description**: Quick rendering of presentation content for validation
+- **Simplified Version**: Text-only outline preview
+- **Criteria for Enhancement**: Required when users request iterative preview capabilities
 
 **6.2.5 Webhook Notifications**
 - **Description**: Simple webhooks for process completion and errors
@@ -1369,46 +1355,60 @@ Converting analytics and insights into narrative-driven visual presentations.
 ### 6.3 Implementation Plan
 
 #### Sprint 1: Foundation & High-Risk Prototyping
-- Set up NextJS project with v0 components and Supabase integration
+- Set up NextJS project with shadcn/ui components and Tailwind CSS
+- Integrate Supabase for authentication and database
 - Prototype PowerPoint generation with Aspose (highest technical risk)
 - Establish basic API structure with authentication
 - Create database schema for core entities
 
-#### Sprint 2: Core Generation Pipeline
-- Implement Plan phase JSON structure and processing
-- Build simplified Write phase content generation
+#### Sprint 2: AI Framework Setup
+- Implement LangChain for agent orchestration
+- Create structured JSON schemas for all API inputs/outputs
+- Set up AI provider integrations (OpenAI, Anthropic, Perplexity, Upstage)
+- Develop prompt templates for different generation tasks
+- Build document processing pipeline
+
+#### Sprint 3: Core Generation Pipeline
+- Implement Plan phase with JSON structure and processing
+- Build Research phase with Perplexity model integration
+- Develop Write phase content generation
 - Create basic template library API access
 - Develop brand configuration storage and API
 
-#### Sprint 3: Output Generation
-- Implement PPTX file generation from JSON content
-- Create preview image generation system
-- Build output storage and retrieval mechanism
-- Develop basic error handling and status updates
+#### Sprint 4: Media Processing
+- Implement file upload and processing system
+- Build image categorization with Anthropic models
+- Create image generation with OpenAI's gpt-image-1
+- Develop dataset analysis capabilities
+- Integrate Apify for web content extraction
 
-#### Sprint 4: Developer Experience
-- Create developer dashboard (usage history view)
+#### Sprint 5: Output Generation
+- Implement PPTX file generation from JSON content
+- Create PDF export functionality
+- Build preview image generation system
+- Develop output storage and retrieval mechanism
+- Implement error handling and status updates
+
+#### Sprint 6: Developer Experience
+- Create credits dashboard and management UI
 - Implement API key management
 - Build basic API playground for testing
-- Establish credit tracking system
+- Develop comprehensive API documentation
+- Create user onboarding flow
 
-#### Sprint 5: Monetization
-- Integrate Stripe for payment processing
-- Implement credit purchasing workflow
+#### Sprint 7: Monetization
+- Integrate Stripe for credit purchases
+- Implement credit tracking system
 - Build free tier with 5 presentation credits
 - Create webhook handling for payment events
+- Develop auto top-up functionality
 
-#### Sprint 6: Integration & Enhancement
-- Add webhook notification system for status updates
-- Implement additional output formats (PDF, web viewer)
-- Enhance error handling and logging
-- Build basic MCP support for AI agents
-
-#### Sprint 7: MVP Completion
+#### Sprint 8: MVP Completion
 - Implement comprehensive testing across entire flow
 - Optimize performance for high-traffic scenarios
-- Enhance monitoring and observability
-- Polish developer documentation
+- Enhance error handling and recovery
+- Polish user interface and experience
+- Deploy to Vercel production environment
 
 ### 6.4 Technical Risk Assessment
 
@@ -1454,12 +1454,20 @@ The MVP is considered complete when:
 
 ### 7.1 Core Technology Choices
 - **Frontend Framework**: Next.js with App Router for server components and API routes
-- **UI Component Library**: v0 by Vercel for rapid development of developer-focused interfaces
+- **UI Component Library**: shadcn/ui with Tailwind CSS for consistent and customizable UI components
 - **Backend/Database**: Supabase for authentication, database, and storage
-- **Payment Processing**: Stripe with Customer Portal for subscription management
+- **Payment Processing**: Stripe for credit purchases and auto top-up functionality
 - **Presentation Generation**: Aspose.Slides for PPTX creation and manipulation
-- **AI Integration**: Vercel AI SDK for model provider integration
+- **AI Integration**: 
+  - Vercel AI SDK for model provider integration and AI UI components
+  - LangChain for AI agent orchestration and structured outputs
+  - Perplexity models for research phase
+  - Upstage models for document parsing
+  - Anthropic models for image processing and analysis
+  - OpenAI models (including gpt-image-1) for image generation
+  - Apify for link scraping and web content extraction
 - **Job Processing**: Background workers for presentation generation tasks
+- **Hosting**: Vercel for application hosting and serverless functions
 
 ### 7.2 High-Level Architecture Approach
 
@@ -1577,7 +1585,7 @@ The MVP is considered complete when:
 ### 9.1 Authentication & Authorization
 
 **Multi-Layered Security Model**
-- Leverage Supabase Authentication for user identity management
+- Leverage Supabase Authentication for user identity management (email and Google login)
 - API key-based authentication for programmatic access
 - JWT-based session management for dashboard access
 - Role-based access control for team features
@@ -1604,25 +1612,25 @@ The MVP is considered complete when:
    - Protection against common API vulnerabilities
    - Secure API key management with rotation capabilities
 
-### 9.3 Key Compliance Considerations
+### 9.3 Foundational Security Requirements
 
-1. **Privacy Compliance**
-   - GDPR compliance for EU users
-   - CCPA compliance for California residents
-   - Clear privacy policies and data processing agreements
-   - User data export and deletion capabilities
+1. **Basic Security Practices**
+   - Implement recommended OWASP security practices
+   - Regular vulnerability scanning
+   - Secure development practices and code reviews
+   - Proper input validation and sanitization
 
-2. **Security Standards**
-   - SOC 2 compliance roadmap
-   - Implementation of OWASP security best practices
-   - Regular vulnerability scanning and remediation
-   - Comprehensive audit logging of security events
+2. **Data Storage**
+   - Retain uploaded files and generated presentations until account deletion
+   - Consider implementing storage limits in future versions
+   - Secure storage of all user assets
+   - Regular monitoring of storage usage
 
-3. **Enterprise Requirements**
-   - Data residency options for sensitive industries
-   - Compliance documentation for enterprise customers
-   - Support for customer security reviews
-   - Transparent security practices and incident response
+3. **Rate Limiting**
+   - Implement reasonable rate limits to prevent abuse
+   - Clear communication of limits in documentation
+   - Monitoring for unusual usage patterns
+   - Graceful handling of limit exceedances
 
 ---
 
@@ -1630,15 +1638,27 @@ The MVP is considered complete when:
 
 **API (Application Programming Interface)**: Set of definitions and protocols for building and integrating application software.
 
+**Apify**: Web scraping and data extraction platform used for gathering content from websites.
+
+**Anthropic**: AI company that provides large language models with capabilities for image analysis and processing.
+
 **Aspose**: Third-party library used for PowerPoint file generation and manipulation.
 
 **Brand Configuration**: Set of visual guidelines including colors, fonts, and logos that define an organization's visual identity.
 
 **Credits**: The currency used within the platform for presentation generation (1 credit = $1 = 1 presentation).
 
+**gpt-image-1**: OpenAI's model for AI image generation.
+
+**JSON Schema**: A vocabulary that allows you to annotate and validate JSON documents.
+
+**LangChain**: Framework for developing applications powered by language models, focused on agent orchestration.
+
 **MCP (Model Context Protocol)**: Anthropic's protocol for standardized interaction with AI models.
 
 **NextJS**: React framework for building web applications with server-side rendering capabilities.
+
+**Perplexity**: AI company providing models specialized in research and information retrieval.
 
 **PPTX**: File extension for Microsoft PowerPoint presentation files.
 
@@ -1646,15 +1666,21 @@ The MVP is considered complete when:
 
 **SaaS (Software as a Service)**: Software licensing and delivery model in which software is centrally hosted and licensed on a subscription basis.
 
-**SOC 2**: System and Organization Controls 2 - compliance standard for managing customer data.
+**shadcn/ui**: Component library built on Radix UI and Tailwind CSS for building web interfaces.
 
-**Stripe**: Payment processing platform used for handling credit card payments and subscriptions.
+**Stripe**: Payment processing platform used for handling credit card payments.
+
+**Structured Output**: Data returned from an API in a consistent, predictable format (typically JSON).
 
 **Supabase**: Open-source Firebase alternative providing authentication, database, and storage services.
 
+**Tailwind CSS**: Utility-first CSS framework used for designing web interfaces.
+
 **Template**: Pre-designed presentation structure that follows specific business storytelling frameworks.
 
-**v0**: Vercel's UI component library for building web interfaces.
+**Upstage**: AI company providing models specialized in document parsing and understanding.
+
+**Vercel**: Cloud platform for hosting web applications, providing serverless functions and edge computing.
 
 **Webhook**: HTTP callback that occurs when something happens; a way for an app to provide other applications with real-time information.
 
