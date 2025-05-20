@@ -1619,6 +1619,42 @@ The main application sidebar should be present across the application except whe
     - Custom template creation and editing
     - Template categorization by industry and use case
     - Template version history and management
+  - Sub-routes:
+    - `/narratives/:narrative_slug` - Public narrative detail page with examples and usage guide
+      - Features:
+        - Comprehensive description of narrative structure
+        - Example presentations using this narrative
+        - Usage guidance and best practices
+        - Related templates and categories
+        - SEO-optimized content for discoverability
+    - `/narratives/category/:narrative_category_slug` - Public category landing page with related narratives
+      - Features:
+        - Collection of narratives within a specific category (e.g., Sales, Management)
+        - Category-specific usage guidance
+        - Industry-specific examples and case studies
+        - Comparison of narratives within the category
+        - SEO-optimized category descriptions
+    - `/narratives/private` - User's private narrative collection (for logged-in users)
+      - Features:
+        - Gallery of all private narratives available to the account
+        - Private narratives not tagged to a project are available account-wide
+        - Filterable by attributes and usage context
+        - Bulk management options
+        - Project tagging for organizational purposes
+        - Option to publish narratives as public if not tagged to a project
+    - `/narratives/new` - Create a new narrative template
+      - Features:
+        - Visual narrative structure builder
+        - Slide template configuration
+        - AI prompt customization for each slide
+        - Metadata and categorization settings
+        - Public/private visibility settings
+        - Project tagging options
+    - `/narratives/:narrative_slug/edit` - Edit an existing narrative template
+      - Features:
+        - Full editing capabilities for narrative structure
+        - Preview capabilities for testing changes
+        - Publishing workflow for making private narratives public
 
 - **Design**: Manage visual styling elements for presentations
   - Route: `/design`
@@ -1659,6 +1695,25 @@ The main application sidebar should be present across the application except whe
     - External data source configuration
     - Integration templates and recipes
     - Integration status monitoring
+  - Supported Integrations:
+    - **Google**: Authentication and login integration
+      - Description: Use Google login feature to easily secure and access accounts
+      - Status: Live
+    - **PowerPoint**: Native PPTX export
+      - Description: Directly download presentations in PowerPoint format for meetings
+      - Status: Live
+    - **Google Slides**: Presentation export
+      - Description: Create presentations fully compatible with Google Slides
+      - Status: Beta
+    - **Canva**: Design compatibility
+      - Description: Download presentations in Canva-compatible PPTX format
+      - Status: Live
+    - **Keynote**: Apple presentation export
+      - Description: Download presentations in universal PPTX format for use in Keynote
+      - Status: Live
+    - **PDF**: Document export
+      - Description: Convert presentations into high-quality PDF files for distribution
+      - Status: Live
 
 - **Documentation**: Access to API documentation and guides
   - Route: `/docs`
