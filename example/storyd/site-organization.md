@@ -22,6 +22,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
 2. **Application Context**: Main dashboard and tools for authenticated users
 3. **Presentation Context**: In-depth presentation creation workflow with phase-based navigation
 4. **Admin Context**: Administrative tools for platform management
+5. **Auth Context**: Handles user authentication processes like login, signup, and password recovery
 
 ### 1.2 Architectural Philosophy
 
@@ -52,6 +53,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
   /(app)                 # Application routes (authenticated)
   /(presentation)        # Presentation creation routes
   /(admin)               # Admin routes
+  /(auth)                # Authentication routes
 /components              # Shared React components
   /ui                    # shadcn/ui components
   /marketing             # Marketing-specific components
@@ -294,6 +296,18 @@ STORYD.AI consists of four distinct application contexts, each serving different
     /settings/page.tsx     # Admin settings
 ```
 
+### 3.5 Auth Routes
+
+```
+/app/(auth)
+  /login/page.tsx          # Login page
+  /signup/page.tsx         # Signup page
+  /forgot-password/page.tsx # Forgot password page
+  /reset-password/page.tsx   # Reset password page (requires token)
+  /verify-email/page.tsx     # Email verification page (requires token)
+  /magic-link/page.tsx       # Magic link login processing page
+```
+
 ---
 
 ## 4. Navigation Contexts
@@ -460,6 +474,7 @@ The admin-sidebar contains:
 |---------|--------------|---------|------------|
 | Marketing | `/<page>` | `/features` | `page`: Page identifier |
 | Marketing Sub-pages | `/<page>/<subpage>` | `/features/api` | `subpage`: Section identifier |
+| Auth | `/<auth_action>` | `/login` | `auth_action`: e.g., login, signup |
 | App Dashboard | `/dashboard` | `/dashboard` | None |
 | Presentations List | `/presentations` | `/presentations` | None |
 | Presentation Detail | `/presentations/:id` | `/presentations/pres_123abc` | `id`: Presentation ID |
@@ -916,27 +931,24 @@ The following diagram illustrates the overall navigation architecture of STORYD.
 #### Navigation System Flow
 
 ```
-+---------------------------+
-|                           |
-|     GLOBAL HEADER         |
-|      (Consistent)         |
-+-----+-----------+---------+
-      |           |
-+-----v---+ +-----v-----+
-|Marketing| |Authenticated|
-|Context  | |Contexts    |
-+-----+---+ +-----+-----+
-      |           |
-      |     +-----+-----+-----+
-      |     |     |     |     |
-+-----v---+ |     |     |     |
-|Marketing| |     |     |     |
-|Navigation|v     v     v     v
-+---------+ +-----+-----+-----+
-            |App  |Pres.|Admin|
-            |Side-|Side-|Side-|
-            |bar  |bar  |bar  |
-            +-----+-----+-----+
++--------------------------------------------------------------------------+
+|                                                                          |
+|                             GLOBAL HEADER                                |
+|                              (Consistent)                                |
++---------------------+---------------------+------------------------------+
+          |                       |                              |
++---------v---------+   +---------v---------+   +--------------v-------------+
+| Marketing Context |   |    Auth Context   |   |   Authenticated Contexts   |
++---------+---------+   +---------+---------+   +--------------+-------------+
+          |                       |                              |
+          |                       |                  +-----------v-----------+
+          |                       |                  |     |     |     |     |
++---------v---------+   +---------v---------+        |     |     |     |     |
+|Marketing Navigation |   |   Auth Pages    |        |     |     |     |     |
+|                     |   |  (Login, etc.)  |        v     v     v     v     v
++---------------------+   +-----------------+     +-----+-----+-----+-----+-----+
+                                                  | App Sidebar | Pres. Sidebar | Admin Sidebar |
+                                                  +-------------+---------------+---------------+
 ```
 
 ### 7.8 Navigation Component Relationships
