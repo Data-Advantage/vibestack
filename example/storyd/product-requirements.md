@@ -1579,14 +1579,136 @@ The MVP is considered complete when:
 - Context API for global application state (authentication, preferences)
 - URL-based state for shareable configurations
 
-### 8.6 Navigation Specification
+### 8.6 Marketing Site Navigation
 
-#### 8.6.1 Main App Sidebar Navigation
+This navigation should be available to logged out users, logged in users, and scrapers/search engines.
 
-The main application sidebar should be present across the application except when in a specific presentation context:
+#### 8.6.1 Marketing Site Navigation
 
-- **Dashboard**: Homepage showing credits, recent presentations, and usage statistics
+**Primary Navigation**
+
+- **Home**: Landing page showcasing the platform's value proposition
   - Route: `/`
+  - Features:
+    - Hero section with clear value proposition
+    - Visual demonstration of presentation generation capabilities
+    - Key benefits and use cases for developers and businesses
+    - Social proof with customer testimonials and logos
+    - Quick-start guide with pathway to documentation
+    - Credit-based pricing overview
+
+- **Features/Narratives**: Comprehensive overview of platform capabilities
+  - Route: `/features`
+  - Features:
+    - Detailed breakdown of the four-phase process (Plan, Think, Write, Automate)
+    - Interactive examples of API capabilities with code snippets
+    - Narrative structure showcase with business storytelling frameworks
+    - Visual comparison of traditional presentation creation vs. API approach
+    - Feature comparison matrix for different use cases
+    - Integration examples with popular developer tools
+  - Sub-routes:
+    - `/features/api` - API capabilities and integration examples
+    - `/features/business-storytelling` - Narrative structures and templates
+    - `/features/customization` - Brand integration and design control
+    - `/features/output` - Demonstration of output quality and formats
+
+- **Solutions**: Industry-specific use cases and implementations
+  - Route: `/solutions`
+  - Features:
+    - Vertical-specific landing pages with tailored messaging
+    - Solution architecture diagrams for common integration patterns
+    - ROI calculators for different implementation scenarios
+    - Integration examples with industry-specific tools
+  - Sub-routes:
+    - `/solutions/sales` - Sales presentation automation
+    - `/solutions/reporting` - Business intelligence and data reporting
+    - `/solutions/training` - Educational and training materials
+    - `/solutions/enterprise` - Enterprise workflow integration
+
+- **Pricing**: Credit packages and enterprise options
+  - Route: `/pricing`
+  - Features:
+    - Clear explanation of credit model (1 credit = $1 = 1 presentation)
+    - Volume discount packages with transparent pricing
+    - Free tier promotion with 5 credits for new users
+    - Enterprise pricing options with additional support
+    - ROI calculator based on current presentation creation costs
+    - FAQ section addressing common pricing questions
+
+- **About**: Company information and mission
+  - Route: `/about`
+  - Features:
+    - Company mission and vision statement
+    - Team profiles and expertise
+    - Development roadmap and future plans
+    - Partnership information and integration ecosystem
+    - Press resources and media kit
+    - Career opportunities and company culture
+
+- **Contact**: Support and sales inquiries
+  - Route: `/contact`
+  - Features:
+    - Support ticket submission form
+    - Sales inquiry process for enterprise customers
+    - Live chat option for immediate assistance
+    - Regional contact information
+    - Response time expectations
+    - FAQ section for common inquiries
+
+**Secondary Navigation**
+
+- **Developers**: Resources for technical implementation
+  - Route: `/developers`
+  - Features:
+    - Getting started guide for developers
+    - API documentation with interactive examples
+    - SDKs and client libraries for popular languages
+    - Implementation tutorials with step-by-step instructions
+    - Playground environment for testing API capabilities
+    - Code examples for common integration patterns
+  - Sub-routes:
+    - `/developers/docs` - API documentation
+    - `/developers/guides` - Implementation guides
+    - `/developers/playground` - Interactive API testing
+    - `/developers/sdks` - Language-specific resources
+
+**Footer Navigation**
+
+- **Terms of Service**: Legal terms for platform usage
+  - Route: `/terms`
+  - Features:
+    - Comprehensive terms of service document
+    - Plain language summaries of key points
+    - Usage restrictions and limitations
+    - Intellectual property rights
+    - Termination and cancelation policies
+    - Updates and changes to terms process
+
+- **Privacy Policy**: Data handling practices
+  - Route: `/privacy`
+  - Features:
+    - Detailed privacy policy document
+    - Data collection and usage explanations
+    - Information on third-party data processing
+    - User rights and data access procedures
+    - Data retention and deletion policies
+    - Compliance with GDPR, CCPA, and other regulations
+
+**Social Media Links**
+- Direct links to platform social accounts with appropriate icons:
+  - X: https://x.com/storyd_ai
+  - LinkedIn: https://www.linkedin.com/company/storyd-ai/
+  - YouTube: https://www.youtube.com/@storyd_ai
+  - GitHub: https://github.com/StorydAI
+
+### 8.7 App Navigation Specification
+
+#### 8.7.1 Main App Sidebar Navigation
+
+The main application sidebar should be present across the application for logged in users except when in a specific presentation context:
+
+- **Dashboard**: User homepage showing credits, recent presentations, and usage statistics
+  - Route: `/dashboard`
   - Features:
     - Overview of recent presentation activities
     - Credit balance and usage statistics
@@ -1760,7 +1882,7 @@ The main application sidebar should be present across the application except whe
     - Quick access to billing and user settings
     - Sign out option
 
-#### 8.6.2 Presentation Sidebar Navigation
+#### 8.7.2 Presentation Sidebar Navigation
 
 The presentation sidebar should be visible when working on a specific presentation (URL pattern: `/presentations/:id/*`) and follow the four-phase process:
 
@@ -1973,7 +2095,7 @@ The presentation sidebar should be visible when working on a specific presentati
     - Project context indicator
     - Return to main app button
 
-#### 8.6.3 Additional Routes
+#### 8.7.3 Additional Routes
 
 - **New Presentation**: Create a new presentation
   - Route: `/presentations/new`
@@ -2057,7 +2179,7 @@ The presentation sidebar should be visible when working on a specific presentati
     - View and manage AI memory and context history
     - Knowledge base organization and categorization
 
-#### 8.6.4 Route Parameters
+#### 8.7.4 Route Parameters
 
 - **URL Path Parameters**:
   - `:id` - The unique identifier for a presentation
@@ -2073,128 +2195,6 @@ The presentation sidebar should be visible when working on a specific presentati
   - `?filter=<filter_type>` - For filtering project list (e.g., recent, shared, archived)
   - `?sort=<sort_criteria>` - For sorting projects (e.g., name, date, activity)
   - `?view=<view_type>` - For switching between different project view modes (e.g., grid, list, detailed)
-
----
-
-### 8.7 Marketing Site Navigation
-
-#### 8.7.1 Marketing Site Navigation
-
-**Primary Navigation**
-
-- **Home**: Landing page showcasing the platform's value proposition
-  - Route: `/`
-  - Features:
-    - Hero section with clear value proposition
-    - Visual demonstration of presentation generation capabilities
-    - Key benefits and use cases for developers and businesses
-    - Social proof with customer testimonials and logos
-    - Quick-start guide with pathway to documentation
-    - Credit-based pricing overview
-
-- **Features/Narratives**: Comprehensive overview of platform capabilities
-  - Route: `/features`
-  - Features:
-    - Detailed breakdown of the four-phase process (Plan, Think, Write, Automate)
-    - Interactive examples of API capabilities with code snippets
-    - Narrative structure showcase with business storytelling frameworks
-    - Visual comparison of traditional presentation creation vs. API approach
-    - Feature comparison matrix for different use cases
-    - Integration examples with popular developer tools
-  - Sub-routes:
-    - `/features/api` - API capabilities and integration examples
-    - `/features/business-storytelling` - Narrative structures and templates
-    - `/features/customization` - Brand integration and design control
-    - `/features/output` - Demonstration of output quality and formats
-
-- **Solutions**: Industry-specific use cases and implementations
-  - Route: `/solutions`
-  - Features:
-    - Vertical-specific landing pages with tailored messaging
-    - Solution architecture diagrams for common integration patterns
-    - ROI calculators for different implementation scenarios
-    - Integration examples with industry-specific tools
-  - Sub-routes:
-    - `/solutions/sales` - Sales presentation automation
-    - `/solutions/reporting` - Business intelligence and data reporting
-    - `/solutions/training` - Educational and training materials
-    - `/solutions/enterprise` - Enterprise workflow integration
-
-- **Pricing**: Credit packages and enterprise options
-  - Route: `/pricing`
-  - Features:
-    - Clear explanation of credit model (1 credit = $1 = 1 presentation)
-    - Volume discount packages with transparent pricing
-    - Free tier promotion with 5 credits for new users
-    - Enterprise pricing options with additional support
-    - ROI calculator based on current presentation creation costs
-    - FAQ section addressing common pricing questions
-
-- **About**: Company information and mission
-  - Route: `/about`
-  - Features:
-    - Company mission and vision statement
-    - Team profiles and expertise
-    - Development roadmap and future plans
-    - Partnership information and integration ecosystem
-    - Press resources and media kit
-    - Career opportunities and company culture
-
-- **Contact**: Support and sales inquiries
-  - Route: `/contact`
-  - Features:
-    - Support ticket submission form
-    - Sales inquiry process for enterprise customers
-    - Live chat option for immediate assistance
-    - Regional contact information
-    - Response time expectations
-    - FAQ section for common inquiries
-
-**Secondary Navigation**
-
-- **Developers**: Resources for technical implementation
-  - Route: `/developers`
-  - Features:
-    - Getting started guide for developers
-    - API documentation with interactive examples
-    - SDKs and client libraries for popular languages
-    - Implementation tutorials with step-by-step instructions
-    - Playground environment for testing API capabilities
-    - Code examples for common integration patterns
-  - Sub-routes:
-    - `/developers/docs` - API documentation
-    - `/developers/guides` - Implementation guides
-    - `/developers/playground` - Interactive API testing
-    - `/developers/sdks` - Language-specific resources
-
-**Footer Navigation**
-
-- **Terms of Service**: Legal terms for platform usage
-  - Route: `/terms`
-  - Features:
-    - Comprehensive terms of service document
-    - Plain language summaries of key points
-    - Usage restrictions and limitations
-    - Intellectual property rights
-    - Termination and cancelation policies
-    - Updates and changes to terms process
-
-- **Privacy Policy**: Data handling practices
-  - Route: `/privacy`
-  - Features:
-    - Detailed privacy policy document
-    - Data collection and usage explanations
-    - Information on third-party data processing
-    - User rights and data access procedures
-    - Data retention and deletion policies
-    - Compliance with GDPR, CCPA, and other regulations
-
-**Social Media Links**
-- Direct links to platform social accounts with appropriate icons:
-  - X: https://x.com/storyd_ai
-  - LinkedIn: https://www.linkedin.com/company/storyd-ai/
-  - YouTube: https://www.youtube.com/@storyd_ai
-  - GitHub: https://github.com/StorydAI
 
 ---
 
