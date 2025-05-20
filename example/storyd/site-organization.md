@@ -75,8 +75,12 @@ STORYD.AI consists of four distinct application contexts, each serving different
 ```
 /components/ui
   /navigation              # Navigation components
-    /sidebar               # Sidebar components
-    /navbar                # Top navigation components
+    /header                # Global header component
+    /marketing-navigation  # Marketing-specific navigation
+    /app-navigation        # App-specific navigation
+    /app-sidebar           # App context sidebar
+    /admin-sidebar         # Admin context sidebar
+    /presentation-sidebar  # Presentation context sidebar
     /tabs                  # Tab navigation components
     /breadcrumbs           # Breadcrumb components
   /layout                  # Layout components
@@ -294,9 +298,36 @@ STORYD.AI consists of four distinct application contexts, each serving different
 
 ## 4. Navigation Contexts
 
-### 4.1 Marketing Navigation
+### 4.1 Global App Header
 
-#### 4.1.1 Primary Navigation
+The global header appears on all pages across all contexts and contains:
+
+- **Logo**: Company logo with link to appropriate home (marketing or app dashboard)
+- **Authentication Controls**: 
+  - For unauthenticated users: Login and Signup buttons
+  - For authenticated users: User menu with profile picture and logout option
+- **Theme Toggle**: Switch between light and dark mode
+- **Search**: Global search functionality in authenticated contexts
+- **Notifications**: User-specific notification center in authenticated contexts
+- **Context Indicator**: Visual indication of current application context
+- **Any additional global actions as needed**
+
+### 4.1.1 Alert Header
+
+An alert header appears above the global header when needed:
+
+- **System Announcements**: Platform-wide notices that affect all users
+- **Maintenance Notices**: Scheduled downtime or performance warnings
+- **Critical Updates**: Important information that needs immediate attention
+- **Feature Announcements**: New functionality notifications
+
+This area is typically hidden when not in use but takes precedence when displayed.
+
+### 4.2 Marketing Navigation
+
+#### 4.2.1 Primary Navigation
+
+The marketing-navigation appears below the global header on marketing pages:
 
 - **Home**: Landing page with value proposition
 - **Features**: Platform capabilities overview
@@ -313,7 +344,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
 - **About**: Company information
 - **Contact**: Support and sales
 
-#### 4.1.2 Secondary Navigation
+#### 4.2.2 Secondary Navigation
 
 - **Developers**: Technical resources
   - API Documentation
@@ -321,15 +352,17 @@ STORYD.AI consists of four distinct application contexts, each serving different
   - Playground
   - SDKs
 
-#### 4.1.3 Footer Navigation
+#### 4.2.3 Footer Navigation
 
 - Terms of Service
 - Privacy Policy
 - Social Media Links (X, LinkedIn, YouTube, GitHub)
 
-### 4.2 Application Navigation
+### 4.3 Application Navigation
 
-#### 4.2.1 Main Sidebar
+#### 4.3.1 Main Sidebar
+
+The app-sidebar contains:
 
 - **Dashboard**: User homepage
 - **Presentations**: List of presentations
@@ -348,15 +381,18 @@ STORYD.AI consists of four distinct application contexts, each serving different
   - Usage
 - **Settings**: Application preferences
 
-#### 4.2.2 Bottom Sidebar
+#### 4.3.2 Bottom Sidebar
 
+Bottom area of app-sidebar contains:
 - Account button with dropdown menu
 - Credit balance indicator
 - Sign out option
 
-### 4.3 Presentation Navigation
+### 4.4 Presentation Navigation
 
-#### 4.3.1 Phase-Based Navigation
+#### 4.4.1 Phase-Based Navigation
+
+The presentation-sidebar contains phase-based navigation:
 
 - **Plan**: Initial setup phase
   - Topic definition
@@ -383,16 +419,23 @@ STORYD.AI consists of four distinct application contexts, each serving different
   - API examples
   - MCP configuration
 
-#### 4.3.2 Presentation Context Actions
+Bottom area of presentation-sidebar contains:
+- Account button with dropdown menu
+- Credit balance indicator
+- Sign out option
+
+#### 4.4.2 Presentation Context Actions
 
 - Return to presentations list
 - Presentation settings
 - Version history
 - Sharing options
 
-### 4.4 Admin Navigation
+### 4.5 Admin Navigation
 
-#### 4.4.1 Admin Sidebar
+#### 4.5.1 Admin Sidebar
+
+The admin-sidebar contains:
 
 - **Dashboard**: Platform overview
 - **User Management**: Account control
@@ -402,7 +445,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
 - **Analytics**: Usage metrics
 - **Settings**: Platform configuration
 
-#### 4.4.2 Admin Context
+#### 4.5.2 Admin Context
 
 - Return to normal app
 - Admin user identification
@@ -457,6 +500,8 @@ STORYD.AI consists of four distinct application contexts, each serving different
 - `tab` - Pre-select specific tab
 - `panel` - Open specific panel
 - `notification` - Highlight notification
+- `search` - Initial search query
+- `breadcrumb` - Deep linking with breadcrumb state
 
 **Presentation**:
 - `template` - Specify template for new presentations
@@ -465,6 +510,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
 - `project` - Associate with project
 - `slide` - Jump to specific slide
 - `compare` - Compare with version
+- `phase` - Select specific presentation phase
 
 **Project**:
 - `filter` - Filter items
@@ -480,6 +526,7 @@ STORYD.AI consists of four distinct application contexts, each serving different
 - `after` - Items after timestamp
 - `limit` - Limit item count
 - `export` - Export format
+- `environment` - Switch between environments (dev/staging/prod)
 
 ---
 
@@ -537,6 +584,9 @@ States managed on the server:
    - Leverage React hooks for state management
 
 3. **Navigation System**
+   - Implement global header as a client component for interactive elements (theme toggle, authentication)
+   - Ensure header is consistent across all contexts
+   - Use context-specific navigation components for marketing, app, presentation, and admin areas
    - Implement parallel routes for layout persistence
    - Use intercepting routes for modals and overlays
    - Create custom navigation hooks for consistent UX
@@ -555,10 +605,12 @@ States managed on the server:
    - Touch-friendly controls for interactive elements
 
 2. **Navigation Adaptations**
-   - Collapsible sidebar for app navigation
+   - Collapsible app-sidebar for application context
+   - Collapsible presentation-sidebar for presentation phases
+   - Simplified admin-sidebar for admin context on mobile
    - Bottom tab bar for presentation phases on mobile
-   - Hamburger menu for marketing navigation
-   - Simplified admin interface for emergency mobile use
+   - Hamburger menu for marketing-navigation
+   - Adaptable header for all screen sizes
 
 ### 7.3 Performance Optimization
 
@@ -623,4 +675,284 @@ States managed on the server:
    - Maintain consistent loading states
    - Implement error boundaries
    - Create layout components for route groups
-   - Document route parameters and requirements 
+   - Document route parameters and requirements
+
+### 7.7 Navigation System Diagram
+
+The following diagram illustrates the overall navigation architecture of STORYD.AI, showing how the global header and context-specific navigation components work together. Each application context has a unique navigation pattern optimized for its specific use case, as detailed in the subsections below.
+
+#### 7.7.1 Marketing Context Navigation
+
+```
++------------------------------------------------------------------------+
+|                                                                        |
+|                          ALERT HEADER                                  |
+| [System announcements/maintenance notices]                             |
+|                                                                        |
++------------------------------------------------------------------------+
+|                                                                        |
+|                         GLOBAL HEADER                                  |
+| [Logo]                [Login] [Signup]                     [Theme]     |
+|                                                                        |
++------------------------------------------------------------------------+
+|                                                                        |
+|                     MARKETING-NAVIGATION                               |
+| [Home] [Features] [Solutions] [Pricing] [About] [Contact] [Developers] |
+|                                                                        |
++------------------------------------------------------------------------+
+|                                                                        |
+|                       MAIN CONTENT AREA                                |
+|                                                                        |
+|  - Hero sections                                                       |
+|  - Feature highlights                                                  |
+|  - Testimonials                                                        |
+|  - Pricing tables                                                      |
+|  - Call-to-action sections                                             |
+|  - SEO-optimized content                                               |
+|                                                                        |
++------------------------------------------------------------------------+
+|                                                                        |
+|                            FOOTER                                      |
+|  [Terms] [Privacy] [Social Links] [Contact] [Blog] [Status]            |
+|  [Copyright]                                                           |
+|                                                                        |
++------------------------------------------------------------------------+
+```
+
+**Key Characteristics:**
+- No sidebar navigation
+- Horizontal marketing-navigation below header
+- Focus on conversion and information
+- SEO-optimized structure
+- Public-facing content only
+- No authentication required
+- Responsive design prioritized
+- Alert header for system-wide announcements
+
+#### 7.7.2 App Context Navigation
+
+```
++----------------------------------------------------------------------+
+|                                                                      |
+|                          ALERT HEADER                                |
+| [System announcements/maintenance notices]                           |
+|                                                                      |
++----------------------------------------------------------------------+
+|                                                                      |
+|                         GLOBAL HEADER                                |
+| [Logo]      [Context: App]     [Search] [Notif] [Profile] [Theme]    |
+|                                                                      |
++----------------------------------------------------------------------+
+|                |                                                     |
+|                |  [Breadcrumbs....................................]  |
+|                |                                                     |
+|                |                                                     |
+|  APP-          |                                                     |
+|  SIDEBAR       |             MAIN CONTENT AREA                       |
+|                |                                                     |
+| Dashboard      |             - Dashboard widgets                     |
+| Projects       |             - Project listings                      |
+| Presentations  |             - Content management                    |
+| Narratives     |             - Configuration forms                   |
+| Design         |             - Analytics displays                    |
+| Credentials    |             - Resource browsers                     |
+| Integrations   |             - Search results                        |
+| Documentation  |             - Status indicators                     |
+| Account        |                                                     |
+| Settings       |                                                     |
+|                |                                                     |
+|                |                                                     |
+| [Account]      |                                                     |
+| [Credits: 123] |                                                     |
+| [Sign out]     |                                                     |
++----------------+-----------------------------------------------------+
+|                                                                      |
+|                            FOOTER                                    |
+|  [Support] [API Docs] [Status] [Privacy] [Terms]                     |
+|  [Copyright]                        [Version: x.x.x]                 |
+|                                                                      |
++----------------------------------------------------------------------+
+```
+
+**Key Characteristics:**
+- Vertical app-sidebar on left side
+- Dashboard-centric layout
+- Tools and resource management
+- Project and presentation listings
+- Personalized content
+- Authentication required
+- User settings and preferences
+- Bottom sidebar with account info and credits
+- Global search functionality
+- Notification center
+- Context indicator in header
+- Breadcrumb navigation
+- Alert header for system-wide announcements
+
+#### 7.7.3 Presentation Context Navigation
+
+```
++----------------------------------------------------------------------+
+|                                                                      |
+|                          ALERT HEADER                                |
+| [System announcements/maintenance notices]                           |
+|                                                                      |
++----------------------------------------------------------------------+
+|                                                                      |
+|                         GLOBAL HEADER                                |
+| [Logo]  [Context: Presentation]   [Search] [Notif] [Profile] [Theme] |
+|                                                                      |
++----------------------------------------------------------------------+
+|                |                                                     |
+|                |  [Breadcrumbs: Projects > Project Name > Phase]     |
+|  PHASE         |                                                     |
+|  NAV           |                                                     |
+|  ---------     |                                                     |
+|  Plan          |                                                     |
+|  Think         |             MAIN CONTENT AREA                       |
+|  Write         |                                                     |
+|  Automate      |             - Phase-specific tools                  |
+|                |             - Interactive editors                   |
+|                |             - Content previews                      |
+|  PHASE         |             - Configuration panels                  |
+|  DETAILS       |             - Progress indicators                   |
+|  ---------     |             - Resource browsers                     |
+|  Topic         |             - Real-time collaboration               |
+|  Documents     |                                                     |
+|  Images        |                                                     |
+|  Links         |                                                     |
+|  Outline       |                                                     |
+|  Settings      |                                                     |
+|                |                                                     |
+| [Back to       |                                                     |
+|  Projects]     |                                                     |
+| [Account]      |                                                     |
+| [Credits: 123] |                                                     |
+| [Sign out]     |                                                     |
++----------------+-----------------------------------------------------+
+|                                                                      |
+|                            FOOTER                                    |
+|  [Support] [API Docs] [Status] [Privacy] [Terms]                     |
+|  [Copyright]                        [Version: x.x.x]                 |
+|                                                                      |
++----------------------------------------------------------------------+
+```
+
+**Key Characteristics:**
+- Process-oriented presentation-sidebar
+- Phase-based navigation structure
+- Tool-centric interface
+- In-depth content creation focus
+- Active project context always visible
+- Authentication required
+- Progress indicators for phases
+- Bottom sidebar with account info and credits
+- Back navigation to projects list
+- Context indicator in header
+- Breadcrumb navigation showing project and phase
+- Version information in footer
+- Alert header for system-wide announcements
+
+#### 7.7.4 Admin Context Navigation
+
+```
++----------------------------------------------------------------------+
+|                                                                      |
+|                          ALERT HEADER                                |
+| [System announcements/maintenance notices]                           |
+|                                                                      |
++----------------------------------------------------------------------+
+|                                                                      |
+|                         GLOBAL HEADER                                |
+| [Logo]   [Context: ADMIN]    [Search] [Alerts] [Profile] [Theme]     |
+|                                                                      |
++----------------------------------------------------------------------+
+|                |                                                     |
+|                |  [Breadcrumbs: Admin > Section > Subsection]        |
+|  ADMIN-        |                                                     |
+|  SIDEBAR       |                                                     |
+|                |                                                     |
+| Dashboard      |             MAIN CONTENT AREA                       |
+| Users          |                                                     |
+| Analytics      |             - Admin dashboards                      |
+| Token Usage    |             - System monitoring                     |
+| Account Status |             - User management tables                |
+| System Errors  |             - Configuration panels                  |
+| Settings       |             - Analytics displays                    |
+|                |             - System logs                           |
+|                |             - Error reports                         |
+|                |             - Audit trails                          |
+|                |                                                     |
+| [Return        |                                                     |
+|  to App]       |                                                     |
+| [Admin         |                                                     |
+|  Level: Full]  |                                                     |
+| [Sign out]     |                                                     |
++----------------+-----------------------------------------------------+
+|                                                                      |
+|                            FOOTER                                    |
+|  [Support] [System Status] [Admin Docs] [API Status]                 |
+|  [Copyright]     [Version: x.x.x]     [Environment: Production]      |
+|                                                                      |
++----------------------------------------------------------------------+
+```
+
+**Key Characteristics:**
+- Admin-specific sidebar
+- System monitoring focus
+- User management tools
+- Platform configuration
+- Elevated permission requirements
+- Limited access (admin users only)
+- System-wide controls
+- Return to normal app option
+- Admin level indicator
+- Alert center for notifications specific to admin functions
+- Breadcrumb navigation
+- Environment indicator in footer (prod/staging/dev)
+- Version information in footer
+- Alert header for system-wide announcements
+
+#### Navigation System Flow
+
+```
++---------------------------+
+|                           |
+|     GLOBAL HEADER         |
+|      (Consistent)         |
++-----+-----------+---------+
+      |           |
++-----v---+ +-----v-----+
+|Marketing| |Authenticated|
+|Context  | |Contexts    |
++-----+---+ +-----+-----+
+      |           |
+      |     +-----+-----+-----+
+      |     |     |     |     |
++-----v---+ |     |     |     |
+|Marketing| |     |     |     |
+|Navigation|v     v     v     v
++---------+ +-----+-----+-----+
+            |App  |Pres.|Admin|
+            |Side-|Side-|Side-|
+            |bar  |bar  |bar  |
+            +-----+-----+-----+
+```
+
+### 7.8 Navigation Component Relationships
+
+| Component            | Present In                | Contains                                     | Mobile Adaptation        |
+|----------------------|---------------------------|----------------------------------------------|--------------------------|
+| Global Header        | All contexts              | Logo, Auth Controls, Theme Toggle            | Fixed, simplified        |
+| Marketing-Navigation | Marketing context only    | Main site sections, sub-navigation           | Hamburger menu           |
+| App-Sidebar          | Application context only  | Main app sections, user controls             | Collapsible drawer       |
+| Presentation-Sidebar | Presentation context only | Phase navigation, context actions            | Bottom tabs or drawer    |
+| Admin-Sidebar        | Admin context only        | Admin sections, monitoring                   | Simplified, collapsible  |
+
+### 7.9 State Sharing Between Navigation Components
+
+- **Global Header**: Shares authentication state with all other navigation components
+- **Theme Toggle**: Controls theme for all contexts via global state/localStorage
+- **Context Detection**: Middleware detects context to activate appropriate navigation
+- **Cross-Context Actions**: Some actions (like creating a new presentation) may navigate between contexts
+- **Breadcrumbs**: Track user path across contexts when performing multi-step operations 
