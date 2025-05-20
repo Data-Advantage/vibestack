@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "created_at": 1693439087771,
+        "name": "Minimal",
+        "description": "Clean and simple",
+        "status": "production",
+        "sort": 1,
+        "default": true,
+        "ratio": "16:9",
+        "color_scheme_id": 11,
+        "font_scheme_id": 18,
+        "background": "dark2"
+    },
+    {
+        "id": 2,
+        "created_at": 1693439094233,
+        "name": "Classic",
+        "description": "Classic stark business theme",
+        "status": "production",
+        "sort": 2,
+        "default": false,
+        "ratio": "16:9",
+        "color_scheme_id": 11,
+        "font_scheme_id": 22,
+        "background": "light1"
+    },
+    {
+        "id": 3,
+        "created_at": 1693439098125,
+        "name": "Dark",
+        "description": "",
+        "status": "production",
+        "sort": 3,
+        "default": false,
+        "ratio": "16:9",
+        "color_scheme_id": 13,
+        "font_scheme_id": 20,
+        "background": "dark1"
+    },
+    {
+        "id": 4,
+        "created_at": 1693439098546,
+        "name": "Bold",
+        "description": "",
+        "status": "production",
+        "sort": 4,
+        "default": false,
+        "ratio": "16:9",
+        "color_scheme_id": 6,
+        "font_scheme_id": 5,
+        "background": "light1"
+    }
+]

@@ -1,0 +1,1808 @@
+[
+    {
+        "id": 1,
+        "name": "Consolas",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "monospace",
+        "major": "Consolas",
+        "minor": "Consolas",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/qFE7cyus6xp3H7uybexKOwDz3c0/nHGMAA../STORYD+Consolas.xml",
+            "name": "STORYD Consolas.xml",
+            "type": "",
+            "size": 363,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/qFE7cyus6xp3H7uybexKOwDz3c0/nHGMAA../STORYD+Consolas.xml"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Courier New",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "monospace",
+        "major": "Courier New",
+        "minor": "Courier New",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-D1fDpKstYcmwJU5qPVA-jMrkUc/wdVXBQ../STORYD+Courier+New.xml",
+            "name": "STORYD Courier New.xml",
+            "type": "",
+            "size": 372,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-D1fDpKstYcmwJU5qPVA-jMrkUc/wdVXBQ../STORYD+Courier+New.xml"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Arial",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Arial Black",
+        "minor": "Arial",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/K6I48oBMffdfxQu7QOAAJt70CTc/2sKH0A../STORYD+Arial.xml",
+            "name": "STORYD Arial.xml",
+            "type": "",
+            "size": 360,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/K6I48oBMffdfxQu7QOAAJt70CTc/2sKH0A../STORYD+Arial.xml"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Calibri",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Calibri",
+        "minor": "Calibri",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/O-xMmcnaeLR33ohgr3ztZ5rz83A/h8GQGg../STORYD+Calibri.xml",
+            "name": "STORYD Calibri.xml",
+            "type": "",
+            "size": 360,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/O-xMmcnaeLR33ohgr3ztZ5rz83A/h8GQGg../STORYD+Calibri.xml"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Impact",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Impact",
+        "minor": "Grandview",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/45X6KoHDX_jT6MpLyjRCMqKLXO8/MNhrfQ../STORYD+Impact.xml",
+            "name": "STORYD Impact.xml",
+            "type": "",
+            "size": 410,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/45X6KoHDX_jT6MpLyjRCMqKLXO8/MNhrfQ../STORYD+Impact.xml"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Lucida Sans",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Lucida Sans",
+        "minor": "Lucida Sans",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/T0UrdU46TnnOPz2iOtvGfOXy1gg/mekojQ../STORYD+Lucida+Sans.xml",
+            "name": "STORYD Lucida Sans.xml",
+            "type": "",
+            "size": 372,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/T0UrdU46TnnOPz2iOtvGfOXy1gg/mekojQ../STORYD+Lucida+Sans.xml"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Segoe UI",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Segoe UI Semibold",
+        "minor": "Segoe UI",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/1BhlTUBzcORmEWy6Pff_UPtqAZ4/6o7now../STORYD+Segoe+UI.xml",
+            "name": "STORYD Segoe UI.xml",
+            "type": "",
+            "size": 372,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/1BhlTUBzcORmEWy6Pff_UPtqAZ4/6o7now../STORYD+Segoe+UI.xml"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Segoe UI Light",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Segoe UI Semilight",
+        "minor": "Segoe UI Light",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/gON5pVlYbPdzc4aCePKrBPsuu40/ha-aLg../STORYD+Segoe+UI+Light.xml",
+            "name": "STORYD Segoe UI Light.xml",
+            "type": "",
+            "size": 435,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/gON5pVlYbPdzc4aCePKrBPsuu40/ha-aLg../STORYD+Segoe+UI+Light.xml"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Tahoma",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Tahoma",
+        "minor": "Tahoma",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ucZeMtza9YHBdiBwFGKv9s43lXg/ibrvIA../STORYD+Tahoma.xml",
+            "name": "STORYD Tahoma.xml",
+            "type": "",
+            "size": 357,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ucZeMtza9YHBdiBwFGKv9s43lXg/ibrvIA../STORYD+Tahoma.xml"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Trebuchet MS",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Trebuchet MS",
+        "minor": "Trebuchet MS",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/unyqfRRojaUdgqUTpgIQ2wYZJww/byxd5Q../STORYD+Trebuchet+MS.xml",
+            "name": "STORYD Trebuchet MS.xml",
+            "type": "",
+            "size": 375,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/unyqfRRojaUdgqUTpgIQ2wYZJww/byxd5Q../STORYD+Trebuchet+MS.xml"
+        }
+    },
+    {
+        "id": 11,
+        "name": "Verdana",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Verdana",
+        "minor": "Verdana",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/0LuXZXo3WNTHZe9AhwhMAKKV34s/mzKXxQ../STORYD+Verdana.xml",
+            "name": "STORYD Verdana.xml",
+            "type": "",
+            "size": 360,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/0LuXZXo3WNTHZe9AhwhMAKKV34s/mzKXxQ../STORYD+Verdana.xml"
+        }
+    },
+    {
+        "id": 12,
+        "name": "Bookman",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Bookman Old Style",
+        "minor": "Bookman Old Style",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/jPnLaQ8Dhij1dJyEdECMoiFINBs/dpeTXA../STORYD+Bookman.xml",
+            "name": "STORYD Bookman.xml",
+            "type": "",
+            "size": 380,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/jPnLaQ8Dhij1dJyEdECMoiFINBs/dpeTXA../STORYD+Bookman.xml"
+        }
+    },
+    {
+        "id": 13,
+        "name": "Century Schoolbook",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Century Schoolbook",
+        "minor": "Century Schoolbook",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/QYdBvGSIvH2hLy-veXXZbrPuP4s/QWMZXg../STORYD+Century+Schoolbook.xml",
+            "name": "STORYD Century Schoolbook.xml",
+            "type": "",
+            "size": 393,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/QYdBvGSIvH2hLy-veXXZbrPuP4s/QWMZXg../STORYD+Century+Schoolbook.xml"
+        }
+    },
+    {
+        "id": 14,
+        "name": "Constantia",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Constantia",
+        "minor": "Constantia",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ZQArq6RfB2tZbZFaT6t5aarXvZU/bkhAZQ../STORYD+Constantia.xml",
+            "name": "STORYD Constantia.xml",
+            "type": "",
+            "size": 369,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ZQArq6RfB2tZbZFaT6t5aarXvZU/bkhAZQ../STORYD+Constantia.xml"
+        }
+    },
+    {
+        "id": 15,
+        "name": "Garamond",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Garamond",
+        "minor": "Garamond",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/W34DtVJJVTveQRSeuo_BGcti95M/pNR8Rw../STORYD+Garamond.xml",
+            "name": "STORYD Garamond.xml",
+            "type": "",
+            "size": 363,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/W34DtVJJVTveQRSeuo_BGcti95M/pNR8Rw../STORYD+Garamond.xml"
+        }
+    },
+    {
+        "id": 16,
+        "name": "Rockwell",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Rockwell",
+        "minor": "Rockwell",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/J6EyLpwiMmL-VUqNOcAnxjhdekM/SKdvuA../STORYD+Rockwell.xml",
+            "name": "STORYD Rockwell.xml",
+            "type": "",
+            "size": 363,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/J6EyLpwiMmL-VUqNOcAnxjhdekM/SKdvuA../STORYD+Rockwell.xml"
+        }
+    },
+    {
+        "id": 17,
+        "name": "Times New Roman",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Times New Roman",
+        "minor": "Times New Roman",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/14Zz4WHAf2GWRsOuMId5MjPq-HQ/5PzuwQ../STORYD+Times+New+Roman.xml",
+            "name": "STORYD Times New Roman.xml",
+            "type": "",
+            "size": 384,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/14Zz4WHAf2GWRsOuMId5MjPq-HQ/5PzuwQ../STORYD+Times+New+Roman.xml"
+        }
+    },
+    {
+        "id": 18,
+        "name": "Aptos",
+        "default": "latin",
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Aptos Display",
+        "minor": "Aptos",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ljT3mZWB5CzRv0CURxsWdWTAazM/omzOzA../STORYD+Aptos.xml",
+            "name": "STORYD Aptos.xml",
+            "type": "",
+            "size": 362,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ljT3mZWB5CzRv0CURxsWdWTAazM/omzOzA../STORYD+Aptos.xml"
+        }
+    },
+    {
+        "id": 19,
+        "name": "Grandview",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Grandview Display",
+        "minor": "Grandview",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/LaXGfvO7ipnayllArz9dVcyxHoI/GefsWw../STORYD+Grandview.xml",
+            "name": "STORYD Grandview.xml",
+            "type": "",
+            "size": 374,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/LaXGfvO7ipnayllArz9dVcyxHoI/GefsWw../STORYD+Grandview.xml"
+        }
+    },
+    {
+        "id": 20,
+        "name": "Seaford",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Seaford Display",
+        "minor": "Seaford",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ghpY6Qvx3YsUGJcSpEiFTuSsZIc/eY3Epw../STORYD+Seaford.xml",
+            "name": "STORYD Seaford.xml",
+            "type": "",
+            "size": 368,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ghpY6Qvx3YsUGJcSpEiFTuSsZIc/eY3Epw../STORYD+Seaford.xml"
+        }
+    },
+    {
+        "id": 21,
+        "name": "Skeena",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Skeena Display",
+        "minor": "Skeena",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/jFCRXEvbjyasF42AM8k3rwF6Ntg/UJefVA../STORYD+Skeena.xml",
+            "name": "STORYD Skeena.xml",
+            "type": "",
+            "size": 365,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/jFCRXEvbjyasF42AM8k3rwF6Ntg/UJefVA../STORYD+Skeena.xml"
+        }
+    },
+    {
+        "id": 22,
+        "name": "Tenorite",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Tenorite Display",
+        "minor": "Tenorite",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/9z6HC9ZP5f7EZcLJ-iFF3grj8DQ/vhFTpw../STORYD+Tenorite.xml",
+            "name": "STORYD Tenorite.xml",
+            "type": "",
+            "size": 371,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/9z6HC9ZP5f7EZcLJ-iFF3grj8DQ/vhFTpw../STORYD+Tenorite.xml"
+        }
+    },
+    {
+        "id": 23,
+        "name": "Georgia",
+        "default": null,
+        "language_family": "latin",
+        "app": "PowerPoint",
+        "languages": [],
+        "type": "serif",
+        "major": "Georgia",
+        "minor": "Georgia",
+        "text_sample": "",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bV3Bo_jv4ul0FGBuAg5Ci0DPT_A/CZ_wDQ../STORYD+Georgia.xml",
+            "name": "STORYD Georgia.xml",
+            "type": "",
+            "size": 360,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bV3Bo_jv4ul0FGBuAg5Ci0DPT_A/CZ_wDQ../STORYD+Georgia.xml"
+        }
+    },
+    {
+        "id": 24,
+        "name": "Microsoft Yahei",
+        "default": "ea",
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (simplified)",
+            "Chinese (traditional)",
+            "Japanese",
+            "Korean"
+        ],
+        "type": "sans-serif",
+        "major": "Microsoft YaHei",
+        "minor": "Microsoft YaHei",
+        "text_sample": "这是用微软雅黑字体写的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/QCe12hTS3PiRujgaNfj3epbFQag/9Sc2cg../STORYD+Microsoft+YaHei.xml",
+            "name": "STORYD Microsoft YaHei.xml",
+            "type": "",
+            "size": 422,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/QCe12hTS3PiRujgaNfj3epbFQag/9Sc2cg../STORYD+Microsoft+YaHei.xml"
+        }
+    },
+    {
+        "id": 25,
+        "name": "SimSun",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (simplified)"
+        ],
+        "type": "serif",
+        "major": "SimSun",
+        "minor": "SimSun",
+        "text_sample": "这是用宋体字体写的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/h5WCSy3iApuDpE20gkJ9Pf0DdvI/inDvrA../STORYD+SimSun.xml",
+            "name": "STORYD SimSun.xml",
+            "type": "",
+            "size": 395,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/h5WCSy3iApuDpE20gkJ9Pf0DdvI/inDvrA../STORYD+SimSun.xml"
+        }
+    },
+    {
+        "id": 26,
+        "name": "FangSong",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (simplified)"
+        ],
+        "type": "serif",
+        "major": "FangSong",
+        "minor": "FangSong",
+        "text_sample": "这是用仿宋字体写的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Dd3EBD_fUUXP_v3bRw9Lr5B0fN0/mqaMAw../STORYD+FangSong.xml",
+            "name": "STORYD FangSong.xml",
+            "type": "",
+            "size": 401,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Dd3EBD_fUUXP_v3bRw9Lr5B0fN0/mqaMAw../STORYD+FangSong.xml"
+        }
+    },
+    {
+        "id": 27,
+        "name": "Yu Gothic",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Japanese"
+        ],
+        "type": "sans-serif",
+        "major": "Yu Gothic",
+        "minor": "Yu Gothic",
+        "text_sample": "これは游ゴシックフォントで書かれています",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/FmkNd24PhRIhUNJnoAOv_dMtuDA/nLGKeQ../STORYD+Yu+Gothic.xml",
+            "name": "STORYD Yu Gothic.xml",
+            "type": "",
+            "size": 404,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/FmkNd24PhRIhUNJnoAOv_dMtuDA/nLGKeQ../STORYD+Yu+Gothic.xml"
+        }
+    },
+    {
+        "id": 28,
+        "name": "PMingLiU",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (traditional)"
+        ],
+        "type": "serif",
+        "major": "PMingLiU",
+        "minor": "PMingLiU",
+        "text_sample": "這是以新細明體字型撰寫的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/9wXiKbRcvkRBTJJDW_xq2JtyK14/O1g_fw../STORYD+PMingLiU.xml",
+            "name": "STORYD PMingLiU.xml",
+            "type": "",
+            "size": 401,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/9wXiKbRcvkRBTJJDW_xq2JtyK14/O1g_fw../STORYD+PMingLiU.xml"
+        }
+    },
+    {
+        "id": 29,
+        "name": "MingLiU",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (traditional)"
+        ],
+        "type": "serif",
+        "major": "MingLiU",
+        "minor": "MingLiU",
+        "text_sample": "這是以明體字型撰寫的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Pg_VcQPnlGSdPvIFHyI-jPqjtK4/jy5q_w../STORYD+MingLiU.xml",
+            "name": "STORYD MingLiU.xml",
+            "type": "",
+            "size": 398,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Pg_VcQPnlGSdPvIFHyI-jPqjtK4/jy5q_w../STORYD+MingLiU.xml"
+        }
+    },
+    {
+        "id": 30,
+        "name": "MS Mincho",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Japanese"
+        ],
+        "type": "serif",
+        "major": "MS Mincho",
+        "minor": "MS Mincho",
+        "text_sample": "これはMS明朝フォントで書かれています",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/4zenrdRL7ZYLo1IMzfpCFqk9raw/Lp9DVA../STORYD+MS+Mincho.xml",
+            "name": "STORYD MS Mincho.xml",
+            "type": "",
+            "size": 404,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/4zenrdRL7ZYLo1IMzfpCFqk9raw/Lp9DVA../STORYD+MS+Mincho.xml"
+        }
+    },
+    {
+        "id": 31,
+        "name": "Malgun Gothic",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Korean"
+        ],
+        "type": "sans-serif",
+        "major": "Malgun Gothic",
+        "minor": "Malgun Gothic",
+        "text_sample": "이것은 맑은 고딕 폰트로 쓰여졌습니다",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/h5uwQYy_F1SuHNYJqLOsYiLdnww/k-r62w../STORYD+Malgun+Gothic.xml",
+            "name": "STORYD Malgun Gothic.xml",
+            "type": "",
+            "size": 416,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/h5uwQYy_F1SuHNYJqLOsYiLdnww/k-r62w../STORYD+Malgun+Gothic.xml"
+        }
+    },
+    {
+        "id": 32,
+        "name": "Batang",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Korean"
+        ],
+        "type": "serif",
+        "major": "BatangChe",
+        "minor": "Batang",
+        "text_sample": "이것은 바탕 폰트로 쓰여졌습니다",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/QR3Yy1qAvcwQNbsiGdOt6iecQgE/Km7qxg../STORYD+Batang.xml",
+            "name": "STORYD Batang.xml",
+            "type": "",
+            "size": 398,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/QR3Yy1qAvcwQNbsiGdOt6iecQgE/Km7qxg../STORYD+Batang.xml"
+        }
+    },
+    {
+        "id": 33,
+        "name": "Gungsuh",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Korean"
+        ],
+        "type": "serif",
+        "major": "GungsuhChe",
+        "minor": "Gungsuh",
+        "text_sample": "이것은 궁서 폰트로 쓰여졌습니다",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/FYxUF0zOObgX6qMoho1t0WbwYSk/-u_cdw../STORYD+Gungsuh.xml",
+            "name": "STORYD Gungsuh.xml",
+            "type": "",
+            "size": 401,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/FYxUF0zOObgX6qMoho1t0WbwYSk/-u_cdw../STORYD+Gungsuh.xml"
+        }
+    },
+    {
+        "id": 34,
+        "name": "Mangal",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hindi",
+            "Sanskrit",
+            "Marathi",
+            "Nepali"
+        ],
+        "type": "sans-serif",
+        "major": "Mangal",
+        "minor": "Mangal",
+        "text_sample": "यह मंगल फ़ॉन्ट में लिखा गया है",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/amrw8JXGk90hyii897SMK4TLCC8/AOMq8g../STORYD+Mangal.xml",
+            "name": "STORYD Mangal.xml",
+            "type": "",
+            "size": 395,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/amrw8JXGk90hyii897SMK4TLCC8/AOMq8g../STORYD+Mangal.xml"
+        }
+    },
+    {
+        "id": 35,
+        "name": "Nirmala UI",
+        "default": "cs",
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hindi"
+        ],
+        "type": "sans-serif",
+        "major": "Nirmala UI",
+        "minor": "Nirmala UI",
+        "text_sample": "यह निर्मला यूआई फ़ॉन्ट में लिखा गया है",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ZlZFLmEZ1omIndyDuT21HdWPQ34/U6qfcA../STORYD+Nirmala+UI.xml",
+            "name": "STORYD Nirmala UI.xml",
+            "type": "",
+            "size": 417,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ZlZFLmEZ1omIndyDuT21HdWPQ34/U6qfcA../STORYD+Nirmala+UI.xml"
+        }
+    },
+    {
+        "id": 36,
+        "name": "Latha",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Tamil"
+        ],
+        "type": "sans-serif",
+        "major": "Latha",
+        "minor": "Latha",
+        "text_sample": "இது லதா எழுத்துருவில் எழுதப்பட்டுள்ளது",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/wnXh_tWFtyqyEOlfpgOeQdUQGiM/9_YU-w../STORYD+Latha.xml",
+            "name": "STORYD Latha.xml",
+            "type": "",
+            "size": 402,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/wnXh_tWFtyqyEOlfpgOeQdUQGiM/9_YU-w../STORYD+Latha.xml"
+        }
+    },
+    {
+        "id": 37,
+        "name": "David",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hebrew"
+        ],
+        "type": "serif",
+        "major": "David",
+        "minor": "David",
+        "text_sample": "זה כתוב בגופן דוד",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-obdV6Eu93K8P5cJKZkBNTuvxw8/jSlFkw../STORYD+David.xml",
+            "name": "STORYD David.xml",
+            "type": "",
+            "size": 402,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-obdV6Eu93K8P5cJKZkBNTuvxw8/jSlFkw../STORYD+David.xml"
+        }
+    },
+    {
+        "id": 38,
+        "name": "Miriam",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hebrew"
+        ],
+        "type": "sans-serif",
+        "major": "Miriam",
+        "minor": "Miriam",
+        "text_sample": "זה נכתב בגופן מרים",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/rdstdJHpN5Oz2X3BsKRNplq3Ruk/7yJQOQ../STORYD+Miriam.xml",
+            "name": "STORYD Miriam.xml",
+            "type": "",
+            "size": 405,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/rdstdJHpN5Oz2X3BsKRNplq3Ruk/7yJQOQ../STORYD+Miriam.xml"
+        }
+    },
+    {
+        "id": 39,
+        "name": "Gisha",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hebrew",
+            "Arabic"
+        ],
+        "type": "sans-serif",
+        "major": "Gisha",
+        "minor": "Gisha",
+        "text_sample": "זה נכתב בגופן גישה",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/c3s72aOiIXWSmoZJ1Mspy1mrMZs/zdi-kg../STORYD+Gisha.xml",
+            "name": "STORYD Gisha.xml",
+            "type": "",
+            "size": 402,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/c3s72aOiIXWSmoZJ1Mspy1mrMZs/zdi-kg../STORYD+Gisha.xml"
+        }
+    },
+    {
+        "id": 40,
+        "name": "Vrinda",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Bengali"
+        ],
+        "type": "sans-serif",
+        "major": "Vrinda",
+        "minor": "Vrinda",
+        "text_sample": "এটি ভ্রিন্দা ফন্টে লেখা হয়েছে।",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/vAJsYBfHpjOUzhWfbos0VtqXjwM/CMN9LQ../STORYD+Vrinda.xml",
+            "name": "STORYD Vrinda.xml",
+            "type": "",
+            "size": 405,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/vAJsYBfHpjOUzhWfbos0VtqXjwM/CMN9LQ../STORYD+Vrinda.xml"
+        }
+    },
+    {
+        "id": 41,
+        "name": "Shruti",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Gujarati"
+        ],
+        "type": "sans-serif",
+        "major": "Shruti",
+        "minor": "Shruti",
+        "text_sample": "આ શ્રુતિ ફોન્ટમાં લખાયું છે",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ZCS0ybPzjiRQyvt2O99omho2BjI/II87qQ../STORYD+Shruti.xml",
+            "name": "STORYD Shruti.xml",
+            "type": "",
+            "size": 405,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ZCS0ybPzjiRQyvt2O99omho2BjI/II87qQ../STORYD+Shruti.xml"
+        }
+    },
+    {
+        "id": 42,
+        "name": "Tunga",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Kannada"
+        ],
+        "type": "sans-serif",
+        "major": "Tunga",
+        "minor": "Tunga",
+        "text_sample": "ಇದು ತುಂಗ ಫಾಂಟ್‌ನಲ್ಲಿ ಬರೆಯಲಾಗಿದೆ",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/qevxikztSBBU69ntHF24PF5FvbQ/WqehFQ../STORYD+Tunga.xml",
+            "name": "STORYD Tunga.xml",
+            "type": "",
+            "size": 402,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/qevxikztSBBU69ntHF24PF5FvbQ/WqehFQ../STORYD+Tunga.xml"
+        }
+    },
+    {
+        "id": 43,
+        "name": "Kartika",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Malayalam"
+        ],
+        "type": "sans-serif",
+        "major": "Kartika",
+        "minor": "Kartika",
+        "text_sample": "ഇത് കാർത്തിക ഫോണ്ടിൽ എഴുതിയിരിക്കുന്നു",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ceP1ROfssLrVYNiiCyQ1QtcNlmA/VjFc4w../STORYD+Kartika.xml",
+            "name": "STORYD Kartika.xml",
+            "type": "",
+            "size": 408,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ceP1ROfssLrVYNiiCyQ1QtcNlmA/VjFc4w../STORYD+Kartika.xml"
+        }
+    },
+    {
+        "id": 44,
+        "name": "Kalinga",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Odia"
+        ],
+        "type": "sans-serif",
+        "major": "Kalinga",
+        "minor": "Kalinga",
+        "text_sample": "ଏହା କଳିଙ୍ଗ ଫଣ୍ଟରେ ଲେଖାଯାଇଛି",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/SX0z4MGFqOzrWIKe33ux5CzoHsw/NdvejA../STORYD+Kalinga.xml",
+            "name": "STORYD Kalinga.xml",
+            "type": "",
+            "size": 408,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/SX0z4MGFqOzrWIKe33ux5CzoHsw/NdvejA../STORYD+Kalinga.xml"
+        }
+    },
+    {
+        "id": 45,
+        "name": "Raavi",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Punjabi"
+        ],
+        "type": "sans-serif",
+        "major": "Raavi",
+        "minor": "Raavi",
+        "text_sample": "ਇਹ ਰਾਵੀ ਫੌਂਟ ਵਿੱਚ ਲਿਖਿਆ ਗਿਆ ਹੈ",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/KYKGolSrPURt-jenb2-Vca7FcO8/Y26Drw../STORYD+Raavi.xml",
+            "name": "STORYD Raavi.xml",
+            "type": "",
+            "size": 402,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/KYKGolSrPURt-jenb2-Vca7FcO8/Y26Drw../STORYD+Raavi.xml"
+        }
+    },
+    {
+        "id": 46,
+        "name": "Gautami",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Telugu"
+        ],
+        "type": "sans-serif",
+        "major": "Gautami",
+        "minor": "Gautami",
+        "text_sample": "ఇది గౌతమి ఫాంట్‌లో వ్రాయబడింది",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bGW6LIhW339iVyBH1f5OC_5oP4M/0lboxQ../STORYD+Gautami.xml",
+            "name": "STORYD Gautami.xml",
+            "type": "",
+            "size": 408,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bGW6LIhW339iVyBH1f5OC_5oP4M/0lboxQ../STORYD+Gautami.xml"
+        }
+    },
+    {
+        "id": 47,
+        "name": "Arabic Typesetting",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Arabic"
+        ],
+        "type": "serif",
+        "major": "Arabic Typesetting",
+        "minor": "Arabic Typesetting",
+        "text_sample": "هذا مكتوب بخط الأنواع العربية",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/M7lwuyG-eBmp5LUo9-r9Dosf7is/J_h0Dg../STORYD+Arabic+Typesetting.xml",
+            "name": "STORYD Arabic Typesetting.xml",
+            "type": "",
+            "size": 441,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/M7lwuyG-eBmp5LUo9-r9Dosf7is/J_h0Dg../STORYD+Arabic+Typesetting.xml"
+        }
+    },
+    {
+        "id": 48,
+        "name": "Microsoft JhengHei",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Chinese (traditional)"
+        ],
+        "type": "sans-serif",
+        "major": "Microsoft JhengHei",
+        "minor": "Microsoft JhengHei",
+        "text_sample": "這是用微軟正黑體寫的",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/t-PcH61Jzwf0Eovec6sinqAyTdo/8o4R8A../STORYD+Microsoft+JhengHei.xml",
+            "name": "STORYD Microsoft JhengHei.xml",
+            "type": "",
+            "size": 431,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/t-PcH61Jzwf0Eovec6sinqAyTdo/8o4R8A../STORYD+Microsoft+JhengHei.xml"
+        }
+    },
+    {
+        "id": 49,
+        "name": "Meiryo",
+        "default": null,
+        "language_family": "ea",
+        "app": "PowerPoint",
+        "languages": [
+            "Japanese"
+        ],
+        "type": "sans-serif",
+        "major": "Meiryo",
+        "minor": "Meiryo",
+        "text_sample": "これはメイリオフォントで書かれています",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/rRDHJAct_U7hJuT8ryzR2ZPfJMM/yiXx3w../STORYD+Meiryo.xml",
+            "name": "STORYD Meiryo.xml",
+            "type": "",
+            "size": 395,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/rRDHJAct_U7hJuT8ryzR2ZPfJMM/yiXx3w../STORYD+Meiryo.xml"
+        }
+    },
+    {
+        "id": 50,
+        "name": "Angsana New",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Thai"
+        ],
+        "type": "sans-serif",
+        "major": "Angsana New",
+        "minor": "Angsana New",
+        "text_sample": "ภาษาไทยสวยมาก",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Q4mEjEFyZJGMF02Vl5YDvvPxJW4/EC0NyA../STORYD+Angsana+New.xml",
+            "name": "STORYD Angsana New.xml",
+            "type": "",
+            "size": 420,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Q4mEjEFyZJGMF02Vl5YDvvPxJW4/EC0NyA../STORYD+Angsana+New.xml"
+        }
+    },
+    {
+        "id": 51,
+        "name": "Aparajita",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Hindi",
+            "Nepali"
+        ],
+        "type": "sans-serif",
+        "major": "Aparajita",
+        "minor": "Aparajita",
+        "text_sample": "यह सुंदर किताब",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-QM5MTmbHk1gIYiuDbFfpXcrxAc/9yybYg../STORYD+Aparajita.xml",
+            "name": "STORYD Aparajita.xml",
+            "type": "",
+            "size": 414,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-QM5MTmbHk1gIYiuDbFfpXcrxAc/9yybYg../STORYD+Aparajita.xml"
+        }
+    },
+    {
+        "id": 52,
+        "name": "DilleniaUPC",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Thai"
+        ],
+        "type": "sans-serif",
+        "major": "DilleniaUPC",
+        "minor": "DilleniaUPC",
+        "text_sample": "ราตรีสวัสดิ์นะ",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/0oCAvvFuwh9yUT3sgfl_z69LVac/JolFGg../STORYD+DilleniaUPC.xml",
+            "name": "STORYD DilleniaUPC.xml",
+            "type": "",
+            "size": 420,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/0oCAvvFuwh9yUT3sgfl_z69LVac/JolFGg../STORYD+DilleniaUPC.xml"
+        }
+    },
+    {
+        "id": 53,
+        "name": "Sakkal Majalla",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Arabic",
+            "Urdu",
+            "Persian"
+        ],
+        "type": "sans-serif",
+        "major": "Sakkal Majalla",
+        "minor": "Sakkal Majalla",
+        "text_sample": "هذا كتاب رائع",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/SjRKNMM42740YVe8yGTQLWaDGRk/nteAIQ../STORYD+Sakkal+Majalla.xml",
+            "name": "STORYD Sakkal Majalla.xml",
+            "type": "",
+            "size": 429,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/SjRKNMM42740YVe8yGTQLWaDGRk/nteAIQ../STORYD+Sakkal+Majalla.xml"
+        }
+    },
+    {
+        "id": 54,
+        "name": "Shonar Bangla",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Bengali",
+            "Chittagonian"
+        ],
+        "type": "sans-serif",
+        "major": "Shonar Bangla",
+        "minor": "Shonar Bangla",
+        "text_sample": "এটা খুব সুন্দর",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/d0kIhJeBhmEE3im755Yhrp4fnMg/D7nc3A../STORYD+Shonar+Bangla.xml",
+            "name": "STORYD Shonar Bangla.xml",
+            "type": "",
+            "size": 426,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/d0kIhJeBhmEE3im755Yhrp4fnMg/D7nc3A../STORYD+Shonar+Bangla.xml"
+        }
+    },
+    {
+        "id": 55,
+        "name": "Sylfaen",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Armenian",
+            "Georgian"
+        ],
+        "type": "sans-serif",
+        "major": "Sylfaen",
+        "minor": "Sylfaen",
+        "text_sample": "ეს ჩემი სახლი",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ThODQM1b69DzCYFbXjpTg97ahBo/CCq9uA../STORYD+Sylfaen.xml",
+            "name": "STORYD Sylfaen.xml",
+            "type": "",
+            "size": 408,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ThODQM1b69DzCYFbXjpTg97ahBo/CCq9uA../STORYD+Sylfaen.xml"
+        }
+    },
+    {
+        "id": 56,
+        "name": "Traditional Arabic",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Arabic",
+            "Urdu",
+            "Pashto"
+        ],
+        "type": "sans-serif",
+        "major": "Traditional Arabic",
+        "minor": "Traditional Arabic",
+        "text_sample": "هذه مدرسة جميلة",
+        "office_xml": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/V3MYmz4x8nmCRK1TymLiL5oAjPQ/qJXhlA../STORYD+Traditional+Arabic.xml",
+            "name": "STORYD Traditional Arabic.xml",
+            "type": "",
+            "size": 441,
+            "mime": "text/xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/V3MYmz4x8nmCRK1TymLiL5oAjPQ/qJXhlA../STORYD+Traditional+Arabic.xml"
+        }
+    },
+    {
+        "id": 57,
+        "name": "Montserrat",
+        "default": null,
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Montserrat",
+        "minor": "Montserrat",
+        "text_sample": "This is beautiful",
+        "office_xml": null
+    },
+    {
+        "id": 58,
+        "name": "Open Sans",
+        "default": null,
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Open Sans",
+        "minor": "Open Sans",
+        "text_sample": "Modern and sleek",
+        "office_xml": null
+    },
+    {
+        "id": 59,
+        "name": "Poppins",
+        "default": null,
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Poppins",
+        "minor": "Poppins",
+        "text_sample": "Clean and readable",
+        "office_xml": null
+    },
+    {
+        "id": 60,
+        "name": "PT Serif",
+        "default": null,
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "PT Serif",
+        "minor": "PT Serif",
+        "text_sample": "Elegant and timeless",
+        "office_xml": null
+    },
+    {
+        "id": 61,
+        "name": "Raleway",
+        "default": null,
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Raleway",
+        "minor": "Raleway",
+        "text_sample": "Stylish and modern",
+        "office_xml": null
+    },
+    {
+        "id": 62,
+        "name": "Roboto",
+        "default": "latin",
+        "language_family": "latin",
+        "app": "Google Slides",
+        "languages": [],
+        "type": "sans-serif",
+        "major": "Roboto",
+        "minor": "Roboto",
+        "text_sample": "Perfect for tech",
+        "office_xml": null
+    },
+    {
+        "id": 63,
+        "name": "Noto Sans Arabic",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Arabic",
+            "Pashto",
+            "Punjabi (Shahmukhi)"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Naskh Arabic",
+        "minor": "Noto Naskh Arabic",
+        "text_sample": "نص عربي أنيق",
+        "office_xml": null
+    },
+    {
+        "id": 64,
+        "name": "Noto Sans Armenian",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Armenian"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Armenian",
+        "minor": "Noto Sans Armenian",
+        "text_sample": "Սա հիանալի է",
+        "office_xml": null
+    },
+    {
+        "id": 65,
+        "name": "Noto Sans Bengali",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Bengali",
+            "Chittagonian"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Bengali",
+        "minor": "Noto Sans Bengali",
+        "text_sample": "এটা সুন্দর বই",
+        "office_xml": null
+    },
+    {
+        "id": 66,
+        "name": "Noto Sans Devanagari",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Hindi",
+            "Nepali"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Devanagari",
+        "minor": "Noto Sans Devanagari",
+        "text_sample": "यह बहुत अच्छा",
+        "office_xml": null
+    },
+    {
+        "id": 67,
+        "name": "Noto Sans Georgian",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Georgian"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Georgian",
+        "minor": "Noto Sans Georgian",
+        "text_sample": "ეს ულამაზესი სახლში",
+        "office_xml": null
+    },
+    {
+        "id": 68,
+        "name": "Noto Sans Gujarati",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Gujarati"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Gujarati",
+        "minor": "Noto Sans Gujarati",
+        "text_sample": "આ સારી સ્થિતિ છે",
+        "office_xml": null
+    },
+    {
+        "id": 69,
+        "name": "Noto Sans Gurmukhi",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Punjabi (Gurmukhi)"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Gurmukhi",
+        "minor": "Noto Sans Gurmukhi",
+        "text_sample": "ਇਹ ਬਹੁਤ ਸੋਹਣਾ ਹੈ",
+        "office_xml": null
+    },
+    {
+        "id": 70,
+        "name": "Noto Sans Hebrew",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Hebrew"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Hebrew",
+        "minor": "Noto Sans Hebrew",
+        "text_sample": "זה ספר יפהפה",
+        "office_xml": null
+    },
+    {
+        "id": 71,
+        "name": "Noto Sans JP",
+        "default": null,
+        "language_family": "ea",
+        "app": "Google Slides",
+        "languages": [
+            "Japanese"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans JP",
+        "minor": "Noto Sans JP",
+        "text_sample": "これは美しいです",
+        "office_xml": null
+    },
+    {
+        "id": 72,
+        "name": "Noto Sans Kannada",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Kannada"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Kannada",
+        "minor": "Noto Sans Kannada",
+        "text_sample": "ಇದು ಸುಂದರ ಪುಸ್ತಕ",
+        "office_xml": null
+    },
+    {
+        "id": 73,
+        "name": "Noto Sans KR",
+        "default": null,
+        "language_family": "ea",
+        "app": "Google Slides",
+        "languages": [
+            "Korean"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans KR",
+        "minor": "Noto Sans KR",
+        "text_sample": "이것은 아름답다",
+        "office_xml": null
+    },
+    {
+        "id": 74,
+        "name": "Noto Sans Malayalam",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Malayalam"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Malayalam",
+        "minor": "Noto Sans Malayalam",
+        "text_sample": "ഇത് മനോഹരമാണ്",
+        "office_xml": null
+    },
+    {
+        "id": 75,
+        "name": "Noto Sans Mongolian",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Mongolian"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Mongolian",
+        "minor": "Noto Sans Mongolian",
+        "text_sample": "Энэ маш сайхан",
+        "office_xml": null
+    },
+    {
+        "id": 76,
+        "name": "Noto Sans Oriya",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Odia"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Oriya",
+        "minor": "Noto Sans Oriya",
+        "text_sample": "ଏହା ବହୁତ ସୁନ୍ଦର",
+        "office_xml": null
+    },
+    {
+        "id": 77,
+        "name": "Noto Sans SC",
+        "default": "ea",
+        "language_family": "ea",
+        "app": "Google Slides",
+        "languages": [
+            "Chinese (simplified)",
+            "Chinese (traditional)",
+            "Japanese",
+            "Korean"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans SC",
+        "minor": "Noto Sans SC",
+        "text_sample": "这是美丽的",
+        "office_xml": null
+    },
+    {
+        "id": 78,
+        "name": "Noto Sans Tamil",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Tamil"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Tamil",
+        "minor": "Noto Sans Tamil",
+        "text_sample": "இது அழகாக இருக்கிறது",
+        "office_xml": null
+    },
+    {
+        "id": 79,
+        "name": "Noto Sans TC",
+        "default": null,
+        "language_family": "ea",
+        "app": "Google Slides",
+        "languages": [
+            "Chinese (traditional)"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans TC",
+        "minor": "Noto Sans TC",
+        "text_sample": "這很美麗",
+        "office_xml": null
+    },
+    {
+        "id": 80,
+        "name": "Noto Sans Telugu",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Telugu"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Telugu",
+        "minor": "Noto Sans Telugu",
+        "text_sample": "ఇది చక్కనిది",
+        "office_xml": null
+    },
+    {
+        "id": 81,
+        "name": "Noto Sans",
+        "default": "cs",
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Russian",
+            "Ukrainian",
+            "Serbian (Cyrillic)",
+            "Tajik"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans",
+        "minor": "Noto Sans",
+        "text_sample": "Universal and clear",
+        "office_xml": null
+    },
+    {
+        "id": 82,
+        "name": "Noto Sans Thai",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Thai"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Thai",
+        "minor": "Noto Sans Thai",
+        "text_sample": "นี่คือสวยงาม",
+        "office_xml": null
+    },
+    {
+        "id": 83,
+        "name": "Noto Nastaliq Urdu",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Urdu",
+            "Punjabi (Shahmukhi)"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Nastaliq Urdu",
+        "minor": "Noto Nastaliq Urdu",
+        "text_sample": "یہ خوبصورت ہے",
+        "office_xml": null
+    },
+    {
+        "id": 84,
+        "name": "Noto Naskh Arabic",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Persian"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Naskh Arabic",
+        "minor": "Noto Naskh Arabic",
+        "text_sample": "هذا نص جميل",
+        "office_xml": null
+    },
+    {
+        "id": 85,
+        "name": "Noto Sans Ethiopic",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Amharic"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Ethiopic",
+        "minor": "Noto Sans Ethiopic",
+        "text_sample": "አማርኛ ቋንቋ እጅግ ጥሩ ነው።",
+        "office_xml": null
+    },
+    {
+        "id": 86,
+        "name": "Noto Sans Khmer",
+        "default": null,
+        "language_family": "cs",
+        "app": "Google Slides",
+        "languages": [
+            "Khmer"
+        ],
+        "type": "sans-serif",
+        "major": "Noto Sans Khmer",
+        "minor": "Noto Sans Khmer",
+        "text_sample": "ភាសាខ្មែរពិតជាស្រស់ស្អាត",
+        "office_xml": null
+    },
+    {
+        "id": 87,
+        "name": "Nyala",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Amharic"
+        ],
+        "type": "sans-serif",
+        "major": "Nyala",
+        "minor": "Nyala",
+        "text_sample": "አማርኛ ቋንቋ እጅግ ጥሩ ነው።",
+        "office_xml": null
+    },
+    {
+        "id": 88,
+        "name": "DaunPenh",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Khmer"
+        ],
+        "type": "sans-serif",
+        "major": "DaunPenh",
+        "minor": "DaunPenh",
+        "text_sample": "ភាសាខ្មែរពិតជាស្រស់ស្អាត",
+        "office_xml": null
+    },
+    {
+        "id": 89,
+        "name": "Khmer UI",
+        "default": null,
+        "language_family": "cs",
+        "app": "PowerPoint",
+        "languages": [
+            "Khmer"
+        ],
+        "type": "sans-serif",
+        "major": "Khmer UI",
+        "minor": "Khmer UI",
+        "text_sample": "ភាសាខ្មែរពិតជាស្រស់ស្អាត",
+        "office_xml": null
+    }
+]

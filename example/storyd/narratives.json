@@ -1,0 +1,247 @@
+[
+    {
+        "id": 1,
+        "name": "Classic Story",
+        "description": "Share any topic with a movie-style narrative that captivates the audience.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 2,
+        "name": "Challenge-Resolution",
+        "description": "Identify current business challenges, trace their origins, and recommend actionable solutions.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 3,
+        "name": "Persuasive Sales",
+        "description": "Create awareness & alignment for your prospective customer",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 4,
+        "name": "Justice",
+        "description": "Promote justice and equality in a manner that reflects the ethos of Martin Luther King Jr.'s \"I Have a Dream\" speech.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 5,
+        "name": "Innovation",
+        "description": "Unveil a revolutionary product and highlight innovation, echoing Steve Jobs's \"iPhone Keynote\" in 2007.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 6,
+        "name": "Venture Pitch",
+        "description": "Secure Series A or Series B funding to accelerate startup growth.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 7,
+        "name": "Company Intro",
+        "description": "Present the company's mission, offerings, and unique value propositions in order to attract and engage potential customers.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 8,
+        "name": "Project Proposal",
+        "description": "Outline a proposed project's objectives, execution strategies, timeline, and expected results.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 9,
+        "name": "Rags to Riches",
+        "description": "Present a journey from initial failure to eventual success, demonstrating resilience, grit, and perseverance.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 10,
+        "name": "Strategic Advisory",
+        "description": "Provide expert management-consultant guidance, improve business performance and achieve organizational goals.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 11,
+        "name": "Focus",
+        "description": "Highlight a clear focus that will drive efficient, successful business outcomes. Inspired by Jeff Bezos's 1997 \"Letter to Shareholders\".",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 12,
+        "name": "Underdog Victory",
+        "description": "Share about somebody or something that despite being overlooked or underestimated, triumphs in the end.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 13,
+        "name": "Weekly Progress",
+        "description": "Communicate key activities, performance metrics, and focus areas to foster transparency and alignment.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 14,
+        "name": "Business Narrative",
+        "description": "Communicate a business strategy or solution through a relatable and engaging story.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 15,
+        "name": "Educate",
+        "description": "Sharing scientific information in an engaging way, inspired by the style of Mary Roach's eye-opening talk in 2009.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 16,
+        "name": "Business Review",
+        "description": "Review recent activities to identify achievements, challenges, and potential areas for improvement.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 17,
+        "name": "Failure Analysis",
+        "description": "Study an identified failure, explore its causes and impact, propose recovery strategies.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 18,
+        "name": "Status Update",
+        "description": "Update a stakeholder on progress, issues, and results for transparency and improvement.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 19,
+        "name": "Marketing Strategy",
+        "description": "Discuss focused plans and tactics for effectively reaching and engaging potential customers.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 20,
+        "name": "Performance Review",
+        "description": "Analytical review of individual, team, or company performance with relevant and data-driven metrics.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 21,
+        "name": "Survey Analysis",
+        "description": "Examine and interpret data gathered from a survey to uncover patterns, insights, or trends that will inform decision making.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 22,
+        "name": "Trend Analysis",
+        "description": "Identify and discuss patterns based on data to better understand performance and predict future scenarios.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 23,
+        "name": "Persuade",
+        "description": "Win the audience with artful argument, mirror the engaging style of Ken Robinson's 2006 speech, \"Do Schools Kill Creativity\".",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 24,
+        "name": "Reveal",
+        "description": "Uncover new insights to alter perceptions, in the style of Amy Cuddy's transformative 2012 talk on body language.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 25,
+        "name": "Board Meeting",
+        "description": "Keep board members informed and aligned, while facilitating valuable advice and discussion.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 26,
+        "name": "Quarterly Review",
+        "description": "Provide a comprehensive quarterly business update and facilitate discussion for continuous improvement.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 27,
+        "name": "Early Startup Pitch",
+        "description": "Secure seed or pre-seed funding from investors with a compelling vision.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 28,
+        "name": "Product Launch",
+        "description": "Introduce a new product and persuade the audience to adopt it.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 29,
+        "name": "Survival Story",
+        "description": "Showcase the determination necessary to overcome adversity, aimed to inspire and motivate the audience.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 30,
+        "name": "Capacity Planning",
+        "description": "Review plans and ensure that a business has sufficient resources to meet changing business demands.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 31,
+        "name": "Employee Review",
+        "description": "Assess an employee's work performance, provide constructive feedback and set future goals.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 32,
+        "name": "Performance Improvement Plan",
+        "description": "Aid a struggling employee by identifying performance issues and present solutions that will improve their work.",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 33,
+        "name": "TBD",
+        "description": "TBD2",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 34,
+        "name": "TBD2",
+        "description": "TBD2",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    },
+    {
+        "id": 35,
+        "name": "Operational Review",
+        "description": "Logical Flow, Situation > Complication > Resolution, Roadmap/Action Plan",
+        "publisher_id": 1,
+        "publisher": "STORYD"
+    }
+]

@@ -1,0 +1,618 @@
+[
+    {
+        "id": 1,
+        "name": "English",
+        "code": "ENG",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 2,
+        "name": "Spanish",
+        "code": "SPA",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 3,
+        "name": "French",
+        "code": "FRA",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 4,
+        "name": "Portuguese",
+        "code": "POR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 5,
+        "name": "German",
+        "code": "DEU",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 6,
+        "name": "Vietnamese (Quốc Ngữ)",
+        "code": "VIE",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 7,
+        "name": "Turkish",
+        "code": "TUR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 8,
+        "name": "Italian",
+        "code": "ITA",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 9,
+        "name": "Hausa",
+        "code": "HAU",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 10,
+        "name": "Polish",
+        "code": "POL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 11,
+        "name": "Igbo",
+        "code": "IBO",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 12,
+        "name": "Indonesian",
+        "code": "IND",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 13,
+        "name": "Fulfulde",
+        "code": "FUL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 14,
+        "name": "Uzbek (Latin)",
+        "code": "UZB",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 15,
+        "name": "Kurmanji",
+        "code": "KMR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 16,
+        "name": "Yoruba",
+        "code": "YOR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 17,
+        "name": "Tagalog",
+        "code": "TGL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 18,
+        "name": "Berber (Latin)",
+        "code": "BER",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 19,
+        "name": "Malagasy",
+        "code": "MLG",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 20,
+        "name": "Romanian",
+        "code": "RON",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 21,
+        "name": "Oromo",
+        "code": "ORM",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 22,
+        "name": "Dutch",
+        "code": "NLD",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 23,
+        "name": "Azerbaijani",
+        "code": "AZE",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 24,
+        "name": "Cebuano",
+        "code": "CEB",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 25,
+        "name": "Xhosa",
+        "code": "XHO",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 26,
+        "name": "Afrikaans",
+        "code": "AFR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 27,
+        "name": "Shona",
+        "code": "SNA",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 28,
+        "name": "Somali",
+        "code": "SOM",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 29,
+        "name": "Swahili",
+        "code": "SWA",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 30,
+        "name": "Hungarian",
+        "code": "HUN",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 31,
+        "name": "Serbian (Latin)",
+        "code": "SRP",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 32,
+        "name": "Zulu",
+        "code": "ZUL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 33,
+        "name": "Kinyarwanda",
+        "code": "KIN",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 34,
+        "name": "Czech",
+        "code": "CES",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 35,
+        "name": "Swedish",
+        "code": "SWE",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 36,
+        "name": "Catalan",
+        "code": "CAT",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 37,
+        "name": "Albanian",
+        "code": "SQI",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 38,
+        "name": "Finnish",
+        "code": "FIN",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 39,
+        "name": "Danish",
+        "code": "DAN",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 40,
+        "name": "Croatian",
+        "code": "HRV",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 41,
+        "name": "Norwegian",
+        "code": "NOR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 42,
+        "name": "Slovak",
+        "code": "SLK",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 43,
+        "name": "Bosnian (Latin)",
+        "code": "BOS",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 44,
+        "name": "Lithuanian",
+        "code": "LIT",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 45,
+        "name": "Slovenian",
+        "code": "SLV",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 46,
+        "name": "Galician",
+        "code": "GLG",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 47,
+        "name": "Aymara",
+        "code": "AYM",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 48,
+        "name": "Latvian",
+        "code": "LAV",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 49,
+        "name": "Estonian",
+        "code": "EST",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 50,
+        "name": "Māori",
+        "code": "MRI",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 51,
+        "name": "Chinese (Simplified)",
+        "code": "ZHO",
+        "font_scheme_id": 24,
+        "google_font_scheme_id": 77
+    },
+    {
+        "id": 52,
+        "name": "Japanese",
+        "code": "JPN",
+        "font_scheme_id": 49,
+        "google_font_scheme_id": 71
+    },
+    {
+        "id": 53,
+        "name": "Korean",
+        "code": "KOR",
+        "font_scheme_id": 31,
+        "google_font_scheme_id": 73
+    },
+    {
+        "id": 54,
+        "name": "Chinese (Traditional)",
+        "code": "ZHO",
+        "font_scheme_id": 48,
+        "google_font_scheme_id": 79
+    },
+    {
+        "id": 55,
+        "name": "Arabic",
+        "code": "ARA",
+        "font_scheme_id": 47,
+        "google_font_scheme_id": 63
+    },
+    {
+        "id": 56,
+        "name": "Hindi",
+        "code": "HIN",
+        "font_scheme_id": 34,
+        "google_font_scheme_id": 66
+    },
+    {
+        "id": 57,
+        "name": "Bengali",
+        "code": "BEN",
+        "font_scheme_id": 54,
+        "google_font_scheme_id": 65
+    },
+    {
+        "id": 58,
+        "name": "Urdu",
+        "code": "URD",
+        "font_scheme_id": 47,
+        "google_font_scheme_id": 83
+    },
+    {
+        "id": 59,
+        "name": "Russian",
+        "code": "RUS",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 60,
+        "name": "Persian",
+        "code": "FAS",
+        "font_scheme_id": 47,
+        "google_font_scheme_id": 84
+    },
+    {
+        "id": 61,
+        "name": "Tamil",
+        "code": "TAM",
+        "font_scheme_id": 36,
+        "google_font_scheme_id": 78
+    },
+    {
+        "id": 62,
+        "name": "Telugu",
+        "code": "TEL",
+        "font_scheme_id": 46,
+        "google_font_scheme_id": 80
+    },
+    {
+        "id": 63,
+        "name": "Punjabi (Gurmukhi)",
+        "code": "PAN",
+        "font_scheme_id": 45,
+        "google_font_scheme_id": 69
+    },
+    {
+        "id": 64,
+        "name": "Punjabi (Shahmukhi)",
+        "code": "PAN",
+        "font_scheme_id": 3,
+        "google_font_scheme_id": 83
+    },
+    {
+        "id": 65,
+        "name": "Thai",
+        "code": "THA",
+        "font_scheme_id": 50,
+        "google_font_scheme_id": 82
+    },
+    {
+        "id": 66,
+        "name": "Gujarati",
+        "code": "GUJ",
+        "font_scheme_id": 41,
+        "google_font_scheme_id": 68
+    },
+    {
+        "id": 67,
+        "name": "Pashto",
+        "code": "PUS",
+        "font_scheme_id": 3,
+        "google_font_scheme_id": 63
+    },
+    {
+        "id": 68,
+        "name": "Kannada",
+        "code": "KAN",
+        "font_scheme_id": 42,
+        "google_font_scheme_id": 72
+    },
+    {
+        "id": 69,
+        "name": "Ukrainian",
+        "code": "UKR",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 70,
+        "name": "Odia",
+        "code": "ORI",
+        "font_scheme_id": 44,
+        "google_font_scheme_id": 76
+    },
+    {
+        "id": 71,
+        "name": "Malayalam",
+        "code": "MAL",
+        "font_scheme_id": 43,
+        "google_font_scheme_id": 74
+    },
+    {
+        "id": 72,
+        "name": "Nepali",
+        "code": "NEP",
+        "font_scheme_id": 34,
+        "google_font_scheme_id": 66
+    },
+    {
+        "id": 73,
+        "name": "Chittagonian",
+        "code": "CTG",
+        "font_scheme_id": 40,
+        "google_font_scheme_id": 65
+    },
+    {
+        "id": 74,
+        "name": "Serbian (Cyrillic)",
+        "code": "SRP",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 75,
+        "name": "Hebrew",
+        "code": "HEB",
+        "font_scheme_id": 37,
+        "google_font_scheme_id": 70
+    },
+    {
+        "id": 76,
+        "name": "Tajik",
+        "code": "TGK",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 77,
+        "name": "Armenian",
+        "code": "HYE",
+        "font_scheme_id": 55,
+        "google_font_scheme_id": 64
+    },
+    {
+        "id": 78,
+        "name": "Mongolian",
+        "code": "MON",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 75
+    },
+    {
+        "id": 79,
+        "name": "Georgian",
+        "code": "KAT",
+        "font_scheme_id": 55,
+        "google_font_scheme_id": 67
+    },
+    {
+        "id": 81,
+        "name": "Greek",
+        "code": "ELL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 82,
+        "name": "Malay",
+        "code": "ZSM",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    },
+    {
+        "id": 83,
+        "name": "Marathi",
+        "code": "MAR",
+        "font_scheme_id": 34,
+        "google_font_scheme_id": 66
+    },
+    {
+        "id": 84,
+        "name": "Kazakh",
+        "code": "KAZ",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 85,
+        "name": "Amharic",
+        "code": "AMH",
+        "font_scheme_id": 87,
+        "google_font_scheme_id": 85
+    },
+    {
+        "id": 86,
+        "name": "Bulgarian",
+        "code": "BUL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 87,
+        "name": "Khmer",
+        "code": "KHM",
+        "font_scheme_id": 88,
+        "google_font_scheme_id": 86
+    },
+    {
+        "id": 88,
+        "name": "Macedonian",
+        "code": "MKD",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 81
+    },
+    {
+        "id": 89,
+        "name": "Filipino",
+        "code": "FIL",
+        "font_scheme_id": 18,
+        "google_font_scheme_id": 62
+    }
+]

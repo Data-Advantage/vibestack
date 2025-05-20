@@ -1,0 +1,3042 @@
+[
+    {
+        "id": 1,
+        "created_at": 1674164932668,
+        "slide_number": 1,
+        "name": "COLUMN",
+        "label": "Column",
+        "aspose_type": "CLUSTERED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/hLMSN_VxHD-VWwbmnPQ8YDI0Owo/-vdLUg../001_COLUMN.png",
+            "name": "001_COLUMN.png",
+            "type": "image",
+            "size": 960,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/hLMSN_VxHD-VWwbmnPQ8YDI0Owo/-vdLUg../001_COLUMN.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Ng_HMD2agoHyKmH_uq5Yzo36zeA/_SYKfg../001_COLUMN.svg",
+            "name": "001_COLUMN.svg",
+            "type": "",
+            "size": 3543,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Ng_HMD2agoHyKmH_uq5Yzo36zeA/_SYKfg../001_COLUMN.svg"
+        }
+    },
+    {
+        "id": 2,
+        "created_at": 1674164932671,
+        "slide_number": 2,
+        "name": "CLUSTERED_COLUMN",
+        "label": "Clustered Column",
+        "aspose_type": "CLUSTERED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/IZFd0tzwPM1ME_7PJHzEUdpdeBg/uWPvgA../002_CLUSTERED_COLUMN.png",
+            "name": "002_CLUSTERED_COLUMN.png",
+            "type": "image",
+            "size": 982,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/IZFd0tzwPM1ME_7PJHzEUdpdeBg/uWPvgA../002_CLUSTERED_COLUMN.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Z9-6zJJmRkZhvUd0KlJv_bVcEgI/xLTzKw../002_CLUSTERED_COLUMN.svg",
+            "name": "002_CLUSTERED_COLUMN.svg",
+            "type": "",
+            "size": 6204,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Z9-6zJJmRkZhvUd0KlJv_bVcEgI/xLTzKw../002_CLUSTERED_COLUMN.svg"
+        }
+    },
+    {
+        "id": 3,
+        "created_at": 1674164932674,
+        "slide_number": 3,
+        "name": "STACKED_COLUMN_2X",
+        "label": "Stacked Column 2x",
+        "aspose_type": "STACKED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/aiZM7bz8J4-t3KnVvRHzHhsm3wA/xEU6Yw../003_STACKED_COLUMN_2X.png",
+            "name": "003_STACKED_COLUMN_2X.png",
+            "type": "image",
+            "size": 1330,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/aiZM7bz8J4-t3KnVvRHzHhsm3wA/xEU6Yw../003_STACKED_COLUMN_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/5cu_JRrSspDVoni7adV2m9P0nJo/F0Xf2A../003_STACKED_COLUMN_2X.svg",
+            "name": "003_STACKED_COLUMN_2X.svg",
+            "type": "",
+            "size": 6307,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/5cu_JRrSspDVoni7adV2m9P0nJo/F0Xf2A../003_STACKED_COLUMN_2X.svg"
+        }
+    },
+    {
+        "id": 4,
+        "created_at": 1674164932677,
+        "slide_number": 4,
+        "name": "STACKED_COLUMN_3X",
+        "label": "Stacked Column 3x",
+        "aspose_type": "STACKED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 1,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/jfPslY3kdWJViinauG04I82sd8k/z2wyVw../004_STACKED_COLUMN_3X.png",
+            "name": "004_STACKED_COLUMN_3X.png",
+            "type": "image",
+            "size": 1454,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/jfPslY3kdWJViinauG04I82sd8k/z2wyVw../004_STACKED_COLUMN_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/KI82jiKgUb_LgHIQez2pZizeBc0/czi4iQ../004_STACKED_COLUMN_3X.svg",
+            "name": "004_STACKED_COLUMN_3X.svg",
+            "type": "",
+            "size": 9143,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/KI82jiKgUb_LgHIQez2pZizeBc0/czi4iQ../004_STACKED_COLUMN_3X.svg"
+        }
+    },
+    {
+        "id": 5,
+        "created_at": 1674164932680,
+        "slide_number": 5,
+        "name": "100PCT_STACKED_COLUMN_2X",
+        "label": "100% Stacked Column 2x",
+        "aspose_type": "PERCENTS_STACKED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bSiQA2eyVDy4U-1xxNuXLqFamCA/ugny8w../005_100PCT_STACKED_COLUMN_2X.png",
+            "name": "005_100PCT_STACKED_COLUMN_2X.png",
+            "type": "image",
+            "size": 1189,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bSiQA2eyVDy4U-1xxNuXLqFamCA/ugny8w../005_100PCT_STACKED_COLUMN_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/8FIL0hbONeb-zZfwcvBrdsDtz-g/-nXdCw../005_100PCT_STACKED_COLUMN_2X.svg",
+            "name": "005_100PCT_STACKED_COLUMN_2X.svg",
+            "type": "",
+            "size": 6283,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/8FIL0hbONeb-zZfwcvBrdsDtz-g/-nXdCw../005_100PCT_STACKED_COLUMN_2X.svg"
+        }
+    },
+    {
+        "id": 6,
+        "created_at": 1674164932722,
+        "slide_number": 6,
+        "name": "100PCT_STACKED_COLUMN_3X",
+        "label": "100% Stacked Column 3x",
+        "aspose_type": "PERCENTS_STACKED_COLUMN",
+        "group": "Column",
+        "type": "",
+        "group_sort": 1,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/AaegfcxZ-hQZZsV2zLXvTfuvTwU/qARVKA../006_100PCT_STACKED_COLUMN_3X.png",
+            "name": "006_100PCT_STACKED_COLUMN_3X.png",
+            "type": "image",
+            "size": 1501,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/AaegfcxZ-hQZZsV2zLXvTfuvTwU/qARVKA../006_100PCT_STACKED_COLUMN_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/8WbUb4vKRPnTXSq3ybay1ET8H_g/BZ77Hw../006_100PCT_STACKED_COLUMN_3X.svg",
+            "name": "006_100PCT_STACKED_COLUMN_3X.svg",
+            "type": "",
+            "size": 9063,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/8WbUb4vKRPnTXSq3ybay1ET8H_g/BZ77Hw../006_100PCT_STACKED_COLUMN_3X.svg"
+        }
+    },
+    {
+        "id": 7,
+        "created_at": 1674164932726,
+        "slide_number": 7,
+        "name": "LINE_WITH_HIGH_LOW",
+        "label": "Line with High/Low",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value', 'High', 'Low', 'Band']",
+        "series": 3,
+        "series_groups": 2,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-Y1oYp8rRv9ySYV355-MVUJ0rRg/g3q8CQ../007_LINE_WITH_HIGH_LOW.png",
+            "name": "007_LINE_WITH_HIGH_LOW.png",
+            "type": "image",
+            "size": 3475,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-Y1oYp8rRv9ySYV355-MVUJ0rRg/g3q8CQ../007_LINE_WITH_HIGH_LOW.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/sXpVhOP2lFd73O0otl4GRJn74Fg/NZm2sQ../007_LINE_WITH_HIGH_LOW.svg",
+            "name": "007_LINE_WITH_HIGH_LOW.svg",
+            "type": "",
+            "size": 2496,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/sXpVhOP2lFd73O0otl4GRJn74Fg/NZm2sQ../007_LINE_WITH_HIGH_LOW.svg"
+        }
+    },
+    {
+        "id": 8,
+        "created_at": 1674164932730,
+        "slide_number": 8,
+        "name": "LINE_WITH_HIGH_LOW_AND_MARKERS",
+        "label": "Line with High/Low and Markers",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value', 'High', 'Low', 'Band']",
+        "series": 3,
+        "series_groups": 2,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/5SpS_1T8Q-mE5wHE5GeDN-IXGt0/4qTtWQ../008_LINE_WITH_HIGH_LOW_AND_MARKERS.png",
+            "name": "008_LINE_WITH_HIGH_LOW_AND_MARKERS.png",
+            "type": "image",
+            "size": 3936,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/5SpS_1T8Q-mE5wHE5GeDN-IXGt0/4qTtWQ../008_LINE_WITH_HIGH_LOW_AND_MARKERS.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/T3Zq0krzSTtDMNYZ7KjQUuOxXaw/5iIjCA../008_LINE_WITH_HIGH_LOW_AND_MARKERS.svg",
+            "name": "008_LINE_WITH_HIGH_LOW_AND_MARKERS.svg",
+            "type": "",
+            "size": 5811,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/T3Zq0krzSTtDMNYZ7KjQUuOxXaw/5iIjCA../008_LINE_WITH_HIGH_LOW_AND_MARKERS.svg"
+        }
+    },
+    {
+        "id": 9,
+        "created_at": 1674164932735,
+        "slide_number": 9,
+        "name": "LINE",
+        "label": "Line",
+        "aspose_type": "LINE",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ZF98fodet2P9GHfbApayWb4u89w/wW6rnA../009_LINE.png",
+            "name": "009_LINE.png",
+            "type": "image",
+            "size": 2919,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ZF98fodet2P9GHfbApayWb4u89w/wW6rnA../009_LINE.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/qIAXhRIovuoK4o6juBrEptlN92M/Budamw../009_LINE.svg",
+            "name": "009_LINE.svg",
+            "type": "",
+            "size": 1778,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/qIAXhRIovuoK4o6juBrEptlN92M/Budamw../009_LINE.svg"
+        }
+    },
+    {
+        "id": 10,
+        "created_at": 1674164932738,
+        "slide_number": 10,
+        "name": "LINE_WITH_MARKERS",
+        "label": "Line with Markers",
+        "aspose_type": "LINE_WITH_MARKERS",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/r9w3bEjEdSEj-F_-VXjQofkrx08/CwvMFg../010_LINE_WITH_MARKERS.png",
+            "name": "010_LINE_WITH_MARKERS.png",
+            "type": "image",
+            "size": 3478,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/r9w3bEjEdSEj-F_-VXjQofkrx08/CwvMFg../010_LINE_WITH_MARKERS.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/NWp6qvmhDFgQhlbRwlqxCCNlULg/7HS3AA../010_LINE_WITH_MARKERS.svg",
+            "name": "010_LINE_WITH_MARKERS.svg",
+            "type": "",
+            "size": 5265,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/NWp6qvmhDFgQhlbRwlqxCCNlULg/7HS3AA../010_LINE_WITH_MARKERS.svg"
+        }
+    },
+    {
+        "id": 11,
+        "created_at": 1674164932741,
+        "slide_number": 11,
+        "name": "LINE_2X",
+        "label": "Line 2x",
+        "aspose_type": "LINE",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/UJqax5BPtOEHk_2Fv40TEDQzux4/RfaE4Q../011_LINE_2X.png",
+            "name": "011_LINE_2X.png",
+            "type": "image",
+            "size": 3367,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/UJqax5BPtOEHk_2Fv40TEDQzux4/RfaE4Q../011_LINE_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/n-Bmfrq_xuJ6qrZibNit3u5BgdQ/_2hZtg../011_LINE_2X.svg",
+            "name": "011_LINE_2X.svg",
+            "type": "",
+            "size": 1434,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/n-Bmfrq_xuJ6qrZibNit3u5BgdQ/_2hZtg../011_LINE_2X.svg"
+        }
+    },
+    {
+        "id": 12,
+        "created_at": 1674164932743,
+        "slide_number": 12,
+        "name": "LINE_WITH_MARKERS_2X",
+        "label": "Line with Markers 2x",
+        "aspose_type": "LINE_WITH_MARKERS",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/2Sve5A3E76z-xeJhpx41lQVZYTk/q9kczA../012_LINE_WITH_MARKERS_2X.png",
+            "name": "012_LINE_WITH_MARKERS_2X.png",
+            "type": "image",
+            "size": 4445,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/2Sve5A3E76z-xeJhpx41lQVZYTk/q9kczA../012_LINE_WITH_MARKERS_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/PMcotg2CyswrCfQw35aUJXUcgS8/jIYsTA../012_LINE_WITH_MARKERS_2X.svg",
+            "name": "012_LINE_WITH_MARKERS_2X.svg",
+            "type": "",
+            "size": 8253,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/PMcotg2CyswrCfQw35aUJXUcgS8/jIYsTA../012_LINE_WITH_MARKERS_2X.svg"
+        }
+    },
+    {
+        "id": 13,
+        "created_at": 1674164932746,
+        "slide_number": 13,
+        "name": "STACKED_LINE_2X",
+        "label": "Stacked Line 2x",
+        "aspose_type": "STACKED_LINE",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Q31Gh1hVOzc5XgPpwO7FCbRdoc4/To8qjw../013_STACKED_LINE_2X.png",
+            "name": "013_STACKED_LINE_2X.png",
+            "type": "image",
+            "size": 3594,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Q31Gh1hVOzc5XgPpwO7FCbRdoc4/To8qjw../013_STACKED_LINE_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/mel1IeXUNrt6zA4mWGrVPcBWYpU/jzsceA../013_STACKED_LINE_2X.svg",
+            "name": "013_STACKED_LINE_2X.svg",
+            "type": "",
+            "size": 1441,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/mel1IeXUNrt6zA4mWGrVPcBWYpU/jzsceA../013_STACKED_LINE_2X.svg"
+        }
+    },
+    {
+        "id": 14,
+        "created_at": 1674164932749,
+        "slide_number": 14,
+        "name": "STACKED_LINE_WITH_MARKERS_2X",
+        "label": "Stacked Line with Markers 2x",
+        "aspose_type": "STACKED_LINE_WITH_MARKERS",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/8N94mNLMNo_91CGmS-WnFodyNf4/ZJlnRg../014_STACKED_LINE_WITH_MARKERS_2X.png",
+            "name": "014_STACKED_LINE_WITH_MARKERS_2X.png",
+            "type": "image",
+            "size": 4769,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/8N94mNLMNo_91CGmS-WnFodyNf4/ZJlnRg../014_STACKED_LINE_WITH_MARKERS_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/lGNKDQha1V4THA4lWjE1kRXKWVk/5jThAQ../014_STACKED_LINE_WITH_MARKERS_2X.svg",
+            "name": "014_STACKED_LINE_WITH_MARKERS_2X.svg",
+            "type": "",
+            "size": 8333,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/lGNKDQha1V4THA4lWjE1kRXKWVk/5jThAQ../014_STACKED_LINE_WITH_MARKERS_2X.svg"
+        }
+    },
+    {
+        "id": 15,
+        "created_at": 1674164932759,
+        "slide_number": 15,
+        "name": "LINE_3X",
+        "label": "Line 3x",
+        "aspose_type": "LINE",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-J5TdyBmscA90Aw5IXOH3cooEtw/9gOfzA../015_LINE_3X.png",
+            "name": "015_LINE_3X.png",
+            "type": "image",
+            "size": 4225,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-J5TdyBmscA90Aw5IXOH3cooEtw/9gOfzA../015_LINE_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/OW3kmsbt6PYgCDGcienqu9Emua8/7ce9QA../015_LINE_3X.svg",
+            "name": "015_LINE_3X.svg",
+            "type": "",
+            "size": 1689,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/OW3kmsbt6PYgCDGcienqu9Emua8/7ce9QA../015_LINE_3X.svg"
+        }
+    },
+    {
+        "id": 16,
+        "created_at": 1674164932763,
+        "slide_number": 16,
+        "name": "LINE_WITH_MARKERS_3X",
+        "label": "Line with Markers 3x",
+        "aspose_type": "LINE_WITH_MARKERS",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 3,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/muQNLikaUjtL-3MKs6i47GJYeug/A-eBRQ../016_LINE_WITH_MARKERS_3X.png",
+            "name": "016_LINE_WITH_MARKERS_3X.png",
+            "type": "image",
+            "size": 5697,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/muQNLikaUjtL-3MKs6i47GJYeug/A-eBRQ../016_LINE_WITH_MARKERS_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/phUQlwRKJqhodrLRC3fgu6-ECpw/U-LOEQ../016_LINE_WITH_MARKERS_3X.svg",
+            "name": "016_LINE_WITH_MARKERS_3X.svg",
+            "type": "",
+            "size": 11944,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/phUQlwRKJqhodrLRC3fgu6-ECpw/U-LOEQ../016_LINE_WITH_MARKERS_3X.svg"
+        }
+    },
+    {
+        "id": 17,
+        "created_at": 1674164932766,
+        "slide_number": 17,
+        "name": "STACKED_LINE_3X",
+        "label": "Stacked Line 3x",
+        "aspose_type": "STACKED_LINE",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/JomEcV2RqL2YSF9Oed7BS4dZELw/5jk_4g../017_STACKED_LINE_3X.png",
+            "name": "017_STACKED_LINE_3X.png",
+            "type": "image",
+            "size": 3637,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/JomEcV2RqL2YSF9Oed7BS4dZELw/5jk_4g../017_STACKED_LINE_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/R6DP3shS8iyZDjGTthLsI1NZn5g/U6eSeA../017_STACKED_LINE_3X.svg",
+            "name": "017_STACKED_LINE_3X.svg",
+            "type": "",
+            "size": 1715,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/R6DP3shS8iyZDjGTthLsI1NZn5g/U6eSeA../017_STACKED_LINE_3X.svg"
+        }
+    },
+    {
+        "id": 18,
+        "created_at": 1674164932769,
+        "slide_number": 18,
+        "name": "STACKED_LINE_WITH_MARKERS_3X",
+        "label": "Stacked Line with Markers 3x",
+        "aspose_type": "STACKED_LINE_WITH_MARKERS",
+        "group": "Line",
+        "type": "",
+        "group_sort": 2,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/hEhrJzhYnaRCav2YjVogC7WwyDs/7qN6fQ../018_STACKED_LINE_WITH_MARKERS_3X.png",
+            "name": "018_STACKED_LINE_WITH_MARKERS_3X.png",
+            "type": "image",
+            "size": 5036,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/hEhrJzhYnaRCav2YjVogC7WwyDs/7qN6fQ../018_STACKED_LINE_WITH_MARKERS_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/_aII63SIpyx3FFiXe5LOdjDeY-g/nCgxqQ../018_STACKED_LINE_WITH_MARKERS_3X.svg",
+            "name": "018_STACKED_LINE_WITH_MARKERS_3X.svg",
+            "type": "",
+            "size": 12208,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/_aII63SIpyx3FFiXe5LOdjDeY-g/nCgxqQ../018_STACKED_LINE_WITH_MARKERS_3X.svg"
+        }
+    },
+    {
+        "id": 19,
+        "created_at": 1674164932771,
+        "slide_number": 19,
+        "name": "PIE",
+        "label": "Pie",
+        "aspose_type": "PIE",
+        "group": "Pie",
+        "type": "",
+        "group_sort": 3,
+        "columns": "['Series 1', 'Value 1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 2,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/V7sJAv3QLrEwYXpqjVjYLNUxdmU/OS2OzA../019_PIE.png",
+            "name": "019_PIE.png",
+            "type": "image",
+            "size": 3264,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/V7sJAv3QLrEwYXpqjVjYLNUxdmU/OS2OzA../019_PIE.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/5l2aQPn40BA2l0JVuOmjmKx9BXs/MrSRyQ../019_PIE.svg",
+            "name": "019_PIE.svg",
+            "type": "",
+            "size": 1685,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/5l2aQPn40BA2l0JVuOmjmKx9BXs/MrSRyQ../019_PIE.svg"
+        }
+    },
+    {
+        "id": 20,
+        "created_at": 1674164932773,
+        "slide_number": 20,
+        "name": "DOUGHNUT",
+        "label": "Doughnut",
+        "aspose_type": "DOUGHNUT",
+        "group": "Pie",
+        "type": "",
+        "group_sort": 3,
+        "columns": "['Segment', 'Value 1']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 3,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ISvcVGnrmAw4ldIiRvjOL5osfOM/us5UDQ../020_DOUGHNUT.png",
+            "name": "020_DOUGHNUT.png",
+            "type": "image",
+            "size": 4078,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ISvcVGnrmAw4ldIiRvjOL5osfOM/us5UDQ../020_DOUGHNUT.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/En1YTSeQ6GfXRp3INtaKtCwvXwU/oePh_g../020_DOUGHNUT.svg",
+            "name": "020_DOUGHNUT.svg",
+            "type": "",
+            "size": 2831,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/En1YTSeQ6GfXRp3INtaKtCwvXwU/oePh_g../020_DOUGHNUT.svg"
+        }
+    },
+    {
+        "id": 21,
+        "created_at": 1674164932776,
+        "slide_number": 21,
+        "name": "BAR",
+        "label": "Bar",
+        "aspose_type": "CLUSTERED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/K3rjs_JKvY49VmRLz5UV_r7cQIY/w-MKlA../021_BAR.png",
+            "name": "021_BAR.png",
+            "type": "image",
+            "size": 754,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/K3rjs_JKvY49VmRLz5UV_r7cQIY/w-MKlA../021_BAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/CqmJxk7EtUCVTGm3LfbcOSTcYDQ/camNTg../021_BAR.svg",
+            "name": "021_BAR.svg",
+            "type": "",
+            "size": 2797,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/CqmJxk7EtUCVTGm3LfbcOSTcYDQ/camNTg../021_BAR.svg"
+        }
+    },
+    {
+        "id": 22,
+        "created_at": 1674164932822,
+        "slide_number": 22,
+        "name": "CLUSTERED_BAR_2X",
+        "label": "Clustered Bar 2x",
+        "aspose_type": "CLUSTERED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/viG7BYoUT5gsQJhIm-bn9Y_i2qg/9XZXVQ../022_CLUSTERED_BAR_2X.png",
+            "name": "022_CLUSTERED_BAR_2X.png",
+            "type": "image",
+            "size": 908,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/viG7BYoUT5gsQJhIm-bn9Y_i2qg/9XZXVQ../022_CLUSTERED_BAR_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Ka9wY_seyJ0JOP73E39i9p4Og5w/TK9U7g../022_CLUSTERED_BAR_2X.svg",
+            "name": "022_CLUSTERED_BAR_2X.svg",
+            "type": "",
+            "size": 4767,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Ka9wY_seyJ0JOP73E39i9p4Og5w/TK9U7g../022_CLUSTERED_BAR_2X.svg"
+        }
+    },
+    {
+        "id": 23,
+        "created_at": 1674164932825,
+        "slide_number": 23,
+        "name": "STACKED_BAR_2X",
+        "label": "Stacked Bar 2x",
+        "aspose_type": "STACKED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Qnlsi-85nWuixp42XAtSg3iVe8o/Oj9Qyw../023_STACKED_BAR_2X.png",
+            "name": "023_STACKED_BAR_2X.png",
+            "type": "image",
+            "size": 1027,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Qnlsi-85nWuixp42XAtSg3iVe8o/Oj9Qyw../023_STACKED_BAR_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/krjGNkl1yogpm68JdNLgFD9I5SY/XWi72Q../023_STACKED_BAR_2X.svg",
+            "name": "023_STACKED_BAR_2X.svg",
+            "type": "",
+            "size": 4731,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/krjGNkl1yogpm68JdNLgFD9I5SY/XWi72Q../023_STACKED_BAR_2X.svg"
+        }
+    },
+    {
+        "id": 24,
+        "created_at": 1674164932828,
+        "slide_number": 24,
+        "name": "STACKED_BAR_3X",
+        "label": "Stacked Bar 3x",
+        "aspose_type": "STACKED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bhd1JfSNXf0ejYNaSB6ZV3TTQvg/CSEdKQ../024_STACKED_BAR_3X.png",
+            "name": "024_STACKED_BAR_3X.png",
+            "type": "image",
+            "size": 1133,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bhd1JfSNXf0ejYNaSB6ZV3TTQvg/CSEdKQ../024_STACKED_BAR_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/7avN1ctbp3jltDq6vomh5E5zYwo/YJkbGQ../024_STACKED_BAR_3X.svg",
+            "name": "024_STACKED_BAR_3X.svg",
+            "type": "",
+            "size": 6637,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/7avN1ctbp3jltDq6vomh5E5zYwo/YJkbGQ../024_STACKED_BAR_3X.svg"
+        }
+    },
+    {
+        "id": 25,
+        "created_at": 1674164932832,
+        "slide_number": 25,
+        "name": "100PCT_STACKED_BAR_2X",
+        "label": "100% Stacked Bar 2x",
+        "aspose_type": "PERCENTS_STACKED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/7kZ1lYfUPkdcvw_lN0SmmXYM0gI/1EwSUQ../025_100PCT_STACKED_BAR_2X.png",
+            "name": "025_100PCT_STACKED_BAR_2X.png",
+            "type": "image",
+            "size": 849,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/7kZ1lYfUPkdcvw_lN0SmmXYM0gI/1EwSUQ../025_100PCT_STACKED_BAR_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/1M3NxpKSjsRQt0KNKdjGLAkU868/_rFoSw../025_100PCT_STACKED_BAR_2X.svg",
+            "name": "025_100PCT_STACKED_BAR_2X.svg",
+            "type": "",
+            "size": 4743,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/1M3NxpKSjsRQt0KNKdjGLAkU868/_rFoSw../025_100PCT_STACKED_BAR_2X.svg"
+        }
+    },
+    {
+        "id": 26,
+        "created_at": 1674164932835,
+        "slide_number": 26,
+        "name": "100PCT_STACKED_BAR_3X",
+        "label": "100% Stacked Bar 3x",
+        "aspose_type": "PERCENTS_STACKED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/K81LmRY2F4kUYpQ27NAaS3LNKsg/1qEBaQ../026_100PCT_STACKED_BAR_3X.png",
+            "name": "026_100PCT_STACKED_BAR_3X.png",
+            "type": "image",
+            "size": 1127,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/K81LmRY2F4kUYpQ27NAaS3LNKsg/1qEBaQ../026_100PCT_STACKED_BAR_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/IA-CWOVuHujEQlF2yBp_DIhJeZI/L1IjVQ../026_100PCT_STACKED_BAR_3X.svg",
+            "name": "026_100PCT_STACKED_BAR_3X.svg",
+            "type": "",
+            "size": 6733,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/IA-CWOVuHujEQlF2yBp_DIhJeZI/L1IjVQ../026_100PCT_STACKED_BAR_3X.svg"
+        }
+    },
+    {
+        "id": 27,
+        "created_at": 1674164932838,
+        "slide_number": 27,
+        "name": "100PCT_PROGRESS_BAR",
+        "label": "100% Progress Bar",
+        "aspose_type": "PERCENTS_STACKED_BAR",
+        "group": "Bar",
+        "type": "",
+        "group_sort": 4,
+        "columns": "['Category', 'Target', 'Actual', 'Remainder', 'Progress']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/yKO-h3iZ8YvJfvVOQ5e6CVhwe6I/tSy0Bg../027_100PCT_PROGRESS_BAR.png",
+            "name": "027_100PCT_PROGRESS_BAR.png",
+            "type": "image",
+            "size": 1095,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/yKO-h3iZ8YvJfvVOQ5e6CVhwe6I/tSy0Bg../027_100PCT_PROGRESS_BAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/vliQFeHUA7FkCsfZy1iDOqh8jlI/PNLGdA../027_100PCT_PROGRESS_BAR.svg",
+            "name": "027_100PCT_PROGRESS_BAR.svg",
+            "type": "",
+            "size": 5099,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/vliQFeHUA7FkCsfZy1iDOqh8jlI/PNLGdA../027_100PCT_PROGRESS_BAR.svg"
+        }
+    },
+    {
+        "id": 28,
+        "created_at": 1674164932841,
+        "slide_number": 28,
+        "name": "AREA",
+        "label": "Area",
+        "aspose_type": "AREA",
+        "group": "Area",
+        "type": "",
+        "group_sort": 5,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/HRGJ-0Oi5XabaafT28GbxGx2oy4/NfImXQ../028_AREA.png",
+            "name": "028_AREA.png",
+            "type": "image",
+            "size": 2053,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/HRGJ-0Oi5XabaafT28GbxGx2oy4/NfImXQ../028_AREA.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/39h944yLwom1S-87kcnOBodXB70/u9DAMQ../028_AREA.svg",
+            "name": "028_AREA.svg",
+            "type": "",
+            "size": 2148,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/39h944yLwom1S-87kcnOBodXB70/u9DAMQ../028_AREA.svg"
+        }
+    },
+    {
+        "id": 29,
+        "created_at": 1674164932844,
+        "slide_number": 29,
+        "name": "STACKED_AREA_2X",
+        "label": "Stacked Area 2x",
+        "aspose_type": "STACKED_AREA",
+        "group": "Area",
+        "type": "",
+        "group_sort": 5,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ovVdan7TnXp4IwpArsLoFc7yolI/861z0A../029_STACKED_AREA_2X.png",
+            "name": "029_STACKED_AREA_2X.png",
+            "type": "image",
+            "size": 2771,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ovVdan7TnXp4IwpArsLoFc7yolI/861z0A../029_STACKED_AREA_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ZXV3MIMEx0CMNYthV4xTfc7NFtA/lauR8g../029_STACKED_AREA_2X.svg",
+            "name": "029_STACKED_AREA_2X.svg",
+            "type": "",
+            "size": 2559,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ZXV3MIMEx0CMNYthV4xTfc7NFtA/lauR8g../029_STACKED_AREA_2X.svg"
+        }
+    },
+    {
+        "id": 30,
+        "created_at": 1674164932846,
+        "slide_number": 30,
+        "name": "STACKED_AREA_3X",
+        "label": "Stacked Area 3x",
+        "aspose_type": "STACKED_AREA",
+        "group": "Area",
+        "type": "",
+        "group_sort": 5,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 2,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Bmg_Y96M5occmz1dgPGwQgpA20o/T-NYJA../030_STACKED_AREA_3X.png",
+            "name": "030_STACKED_AREA_3X.png",
+            "type": "image",
+            "size": 2855,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Bmg_Y96M5occmz1dgPGwQgpA20o/T-NYJA../030_STACKED_AREA_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/JUEnsSKLoX2edL6eCjXSk3MWBRY/X51ukA../030_STACKED_AREA_3X.svg",
+            "name": "030_STACKED_AREA_3X.svg",
+            "type": "",
+            "size": 3455,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/JUEnsSKLoX2edL6eCjXSk3MWBRY/X51ukA../030_STACKED_AREA_3X.svg"
+        }
+    },
+    {
+        "id": 31,
+        "created_at": 1674164932849,
+        "slide_number": 31,
+        "name": "100PCT_STACKED_AREA_2X",
+        "label": "100% Stacked Area 2x",
+        "aspose_type": "PERCENTS_STACKED_AREA",
+        "group": "Area",
+        "type": "",
+        "group_sort": 5,
+        "columns": "['Series 1', 'Value 1', 'Value 2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/LnOwfCIQqKdnwdm4h3MYdnPMmjE/YnYXcA../031_100PCT_STACKED_AREA_2X.png",
+            "name": "031_100PCT_STACKED_AREA_2X.png",
+            "type": "image",
+            "size": 1823,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/LnOwfCIQqKdnwdm4h3MYdnPMmjE/YnYXcA../031_100PCT_STACKED_AREA_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/4W8DjZ4k-kUFe26-yVZ6AV_ZfOU/vWDo2w../031_100PCT_STACKED_AREA_2X.svg",
+            "name": "031_100PCT_STACKED_AREA_2X.svg",
+            "type": "",
+            "size": 2547,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/4W8DjZ4k-kUFe26-yVZ6AV_ZfOU/vWDo2w../031_100PCT_STACKED_AREA_2X.svg"
+        }
+    },
+    {
+        "id": 32,
+        "created_at": 1674164932851,
+        "slide_number": 32,
+        "name": "100PCT_STACKED_AREA_3X",
+        "label": "100% Stacked Area 3x",
+        "aspose_type": "PERCENTS_STACKED_AREA",
+        "group": "Area",
+        "type": "",
+        "group_sort": 5,
+        "columns": "['Series 1', 'Value 1', 'Value 2', 'Value 3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 12,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/82Ftl9bdHqTPWG6sMspuEc7Gegw/viM3pg../032_100PCT_STACKED_AREA_3X.png",
+            "name": "032_100PCT_STACKED_AREA_3X.png",
+            "type": "image",
+            "size": 2602,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/82Ftl9bdHqTPWG6sMspuEc7Gegw/viM3pg../032_100PCT_STACKED_AREA_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/b3w-HS-a8gAqQLruZzsRvh8Xm-Y/gdCP6g../032_100PCT_STACKED_AREA_3X.svg",
+            "name": "032_100PCT_STACKED_AREA_3X.svg",
+            "type": "",
+            "size": 3413,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/b3w-HS-a8gAqQLruZzsRvh8Xm-Y/gdCP6g../032_100PCT_STACKED_AREA_3X.svg"
+        }
+    },
+    {
+        "id": 33,
+        "created_at": 1674164932854,
+        "slide_number": 33,
+        "name": "SCATTER",
+        "label": "Scatter",
+        "aspose_type": "SCATTER_WITH_MARKERS",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['Category', 'X-Values', 'Y-Values']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 0,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/YnYpYmggpuQ99HwMfRHwcG5k8I4/tQX-Gw../033_SCATTER.png",
+            "name": "033_SCATTER.png",
+            "type": "image",
+            "size": 3144,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/YnYpYmggpuQ99HwMfRHwcG5k8I4/tQX-Gw../033_SCATTER.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/31QbohOZf6bbyOsPt6kuRvKpWF0/xrnl5A../033_SCATTER.svg",
+            "name": "033_SCATTER.svg",
+            "type": "",
+            "size": 6406,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/31QbohOZf6bbyOsPt6kuRvKpWF0/xrnl5A../033_SCATTER.svg"
+        }
+    },
+    {
+        "id": 34,
+        "created_at": 1674164932857,
+        "slide_number": 34,
+        "name": "DOT_PLOT",
+        "label": "Dot Plot",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', 'Spacing 1']",
+        "series": 2,
+        "series_groups": 2,
+        "categories": 1,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/SSnr8AtZfFkMG2COAkf9bHO9dho/SqiRuQ../034_DOT_PLOT.png",
+            "name": "034_DOT_PLOT.png",
+            "type": "image",
+            "size": 2255,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/SSnr8AtZfFkMG2COAkf9bHO9dho/SqiRuQ../034_DOT_PLOT.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Hb5_aFCbYLZ7CXAI40W-zzSth8g/-VA7GQ../034_DOT_PLOT.svg",
+            "name": "034_DOT_PLOT.svg",
+            "type": "",
+            "size": 4954,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Hb5_aFCbYLZ7CXAI40W-zzSth8g/-VA7GQ../034_DOT_PLOT.svg"
+        }
+    },
+    {
+        "id": 35,
+        "created_at": 1674164932860,
+        "slide_number": 35,
+        "name": "DOT_PLOT_2X",
+        "label": "Dot Plot 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', '2024', 'Spacing 1', 'Spacing 2']",
+        "series": 3,
+        "series_groups": 2,
+        "categories": 2,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/KKn227RrXRojTGwJy7lphhKMqLQ/hXouiQ../035_DOT_PLOT_2X.png",
+            "name": "035_DOT_PLOT_2X.png",
+            "type": "image",
+            "size": 3429,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/KKn227RrXRojTGwJy7lphhKMqLQ/hXouiQ../035_DOT_PLOT_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/vFBg4GNl9VX1cYoVYpijsd9Tjws/_PK4eQ../035_DOT_PLOT_2X.svg",
+            "name": "035_DOT_PLOT_2X.svg",
+            "type": "",
+            "size": 7899,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/vFBg4GNl9VX1cYoVYpijsd9Tjws/_PK4eQ../035_DOT_PLOT_2X.svg"
+        }
+    },
+    {
+        "id": 36,
+        "created_at": 1674164932863,
+        "slide_number": 36,
+        "name": "DOT_PLOT_3X",
+        "label": "Dot Plot 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', '2024', '2025', 'Spacing 1', 'Spacing 2', 'Spacing 3']",
+        "series": 4,
+        "series_groups": 2,
+        "categories": 3,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/VIcI-lhN-8E7FQY5z--rX30fKSM/riLblQ../036_DOT_PLOT_3X.png",
+            "name": "036_DOT_PLOT_3X.png",
+            "type": "image",
+            "size": 4447,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/VIcI-lhN-8E7FQY5z--rX30fKSM/riLblQ../036_DOT_PLOT_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Na5V7FqmIyWvnMtEi733Rl_BCwI/EcRGeQ../036_DOT_PLOT_3X.svg",
+            "name": "036_DOT_PLOT_3X.svg",
+            "type": "",
+            "size": 10736,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Na5V7FqmIyWvnMtEi733Rl_BCwI/EcRGeQ../036_DOT_PLOT_3X.svg"
+        }
+    },
+    {
+        "id": 37,
+        "created_at": 1674164932866,
+        "slide_number": 37,
+        "name": "DOT_PLOT_4X",
+        "label": "Dot Plot 4x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', '2024', '2025', '2026', 'Spacing 1', 'Spacing 2', 'Spacing 3', 'Spacing 4']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 4,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/5XJfuUb1Ct1qRA6BOa-7AvU3RrE/mGKRLA../037_DOT_PLOT_4X.png",
+            "name": "037_DOT_PLOT_4X.png",
+            "type": "image",
+            "size": 5451,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/5XJfuUb1Ct1qRA6BOa-7AvU3RrE/mGKRLA../037_DOT_PLOT_4X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/JQ0w58p7qYK6w9qio9t5i7L6EsY/XrSN-w../037_DOT_PLOT_4X.svg",
+            "name": "037_DOT_PLOT_4X.svg",
+            "type": "",
+            "size": 13208,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/JQ0w58p7qYK6w9qio9t5i7L6EsY/XrSN-w../037_DOT_PLOT_4X.svg"
+        }
+    },
+    {
+        "id": 38,
+        "created_at": 1674164932869,
+        "slide_number": 38,
+        "name": "DOT_PLOT_5X",
+        "label": "Dot Plot 5x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', '2024', '2025', '2026', '2027', 'Spacing 1', 'Spacing 2', 'Spacing 3', 'Spacing 4', 'Spacing 5']",
+        "series": 6,
+        "series_groups": 2,
+        "categories": 5,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/0o-01qLNK6_zBEvruRSP6zkX33Y/b31eiw../038_DOT_PLOT_5X.png",
+            "name": "038_DOT_PLOT_5X.png",
+            "type": "image",
+            "size": 6270,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/0o-01qLNK6_zBEvruRSP6zkX33Y/b31eiw../038_DOT_PLOT_5X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/He8ezt21x1Y8KpSA6Mw1BO0xdR0/K1Ip9g../038_DOT_PLOT_5X.svg",
+            "name": "038_DOT_PLOT_5X.svg",
+            "type": "",
+            "size": 16070,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/He8ezt21x1Y8KpSA6Mw1BO0xdR0/K1Ip9g../038_DOT_PLOT_5X.svg"
+        }
+    },
+    {
+        "id": 39,
+        "created_at": 1674164932872,
+        "slide_number": 39,
+        "name": "DOT_PLOT_6X",
+        "label": "Dot Plot 6x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "XY (Scatter)",
+        "type": "",
+        "group_sort": 6,
+        "columns": "['2023', '2024', '2025', '2026', '2027', '2028', 'Spacing 1', 'Spacing 2', 'Spacing 3', 'Spacing 4', 'Spacing 5', 'Spacing 6']",
+        "series": 7,
+        "series_groups": 2,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Dax1FbernSyzy2ki-4RaXBoOwzE/R7hLzw../039_DOT_PLOT_6X.png",
+            "name": "039_DOT_PLOT_6X.png",
+            "type": "image",
+            "size": 7995,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Dax1FbernSyzy2ki-4RaXBoOwzE/R7hLzw../039_DOT_PLOT_6X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/EC6yTMjr835Qd2N7v5dZWZt3se0/QvpuHQ../039_DOT_PLOT_6X.svg",
+            "name": "039_DOT_PLOT_6X.svg",
+            "type": "",
+            "size": 19389,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/EC6yTMjr835Qd2N7v5dZWZt3se0/QvpuHQ../039_DOT_PLOT_6X.svg"
+        }
+    },
+    {
+        "id": 40,
+        "created_at": 1674164932874,
+        "slide_number": 40,
+        "name": "RADAR",
+        "label": "Radar",
+        "aspose_type": "RADAR",
+        "group": "Radar",
+        "type": "",
+        "group_sort": 7,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/VEn8WUJ9DMmF7FnenRl5w-EboMQ/dFd_HA../040_RADAR.png",
+            "name": "040_RADAR.png",
+            "type": "image",
+            "size": 3301,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/VEn8WUJ9DMmF7FnenRl5w-EboMQ/dFd_HA../040_RADAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/U5eg4wO5LcnP2Zl_TlKNZTRR8T4/3Z5VcA../040_RADAR.svg",
+            "name": "040_RADAR.svg",
+            "type": "",
+            "size": 3359,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/U5eg4wO5LcnP2Zl_TlKNZTRR8T4/3Z5VcA../040_RADAR.svg"
+        }
+    },
+    {
+        "id": 41,
+        "created_at": 1674164932877,
+        "slide_number": 41,
+        "name": "RADAR_WITH_MARKERS",
+        "label": "Radar with Markers",
+        "aspose_type": "RADAR_WITH_MARKERS",
+        "group": "Radar",
+        "type": "",
+        "group_sort": 7,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/6m9GUrL3v7wu3Uv2bNQFqtaHyMQ/8jujoA../041_RADAR_WITH_MARKERS.png",
+            "name": "041_RADAR_WITH_MARKERS.png",
+            "type": "image",
+            "size": 3858,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/6m9GUrL3v7wu3Uv2bNQFqtaHyMQ/8jujoA../041_RADAR_WITH_MARKERS.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/_vl7bX-MYOlI7yZog2OBO8wfa90/lfqgqQ../041_RADAR_WITH_MARKERS.svg",
+            "name": "041_RADAR_WITH_MARKERS.svg",
+            "type": "",
+            "size": 6041,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/_vl7bX-MYOlI7yZog2OBO8wfa90/lfqgqQ../041_RADAR_WITH_MARKERS.svg"
+        }
+    },
+    {
+        "id": 42,
+        "created_at": 1674164932880,
+        "slide_number": 42,
+        "name": "FILLED_RADAR",
+        "label": "Filled Radar",
+        "aspose_type": "FILLED_RADAR",
+        "group": "Radar",
+        "type": "",
+        "group_sort": 7,
+        "columns": "['Series 1', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/wzo23rIEgJeCgr62WQyoCqHWc1g/fY_ilw../042_FILLED_RADAR.png",
+            "name": "042_FILLED_RADAR.png",
+            "type": "image",
+            "size": 3038,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/wzo23rIEgJeCgr62WQyoCqHWc1g/fY_ilw../042_FILLED_RADAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/EOTtjzPmnEFd-e3aVVzPi8uH62U/z8TIvQ../042_FILLED_RADAR.svg",
+            "name": "042_FILLED_RADAR.svg",
+            "type": "",
+            "size": 3603,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/EOTtjzPmnEFd-e3aVVzPi8uH62U/z8TIvQ../042_FILLED_RADAR.svg"
+        }
+    },
+    {
+        "id": 43,
+        "created_at": 1674164932922,
+        "slide_number": 43,
+        "name": "TREEMAP",
+        "label": "Treemap",
+        "aspose_type": "TREEMAP",
+        "group": "Treemap",
+        "type": "",
+        "group_sort": 8,
+        "columns": "['Level1', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bencVPR_YJpHMb_SolntVbsdaBE/NkLEkQ../043_TREEMAP.png",
+            "name": "043_TREEMAP.png",
+            "type": "image",
+            "size": 1182,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bencVPR_YJpHMb_SolntVbsdaBE/NkLEkQ../043_TREEMAP.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/RJa3IJgbRLXrZN9jls5QjKQEUdI/QJU62Q../043_TREEMAP.svg",
+            "name": "043_TREEMAP.svg",
+            "type": "",
+            "size": 1665,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/RJa3IJgbRLXrZN9jls5QjKQEUdI/QJU62Q../043_TREEMAP.svg"
+        }
+    },
+    {
+        "id": 44,
+        "created_at": 1674164932926,
+        "slide_number": 44,
+        "name": "TREEMAP_2X",
+        "label": "Treemap 2x",
+        "aspose_type": "TREEMAP",
+        "group": "Treemap",
+        "type": "",
+        "group_sort": 8,
+        "columns": "['Level1', 'Level2', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 6,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/vkog-YauP5h2DZYqCQ46NuBy6p4/ltnNMQ../044_TREEMAP_2X.png",
+            "name": "044_TREEMAP_2X.png",
+            "type": "image",
+            "size": 1113,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/vkog-YauP5h2DZYqCQ46NuBy6p4/ltnNMQ../044_TREEMAP_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/qI8xJDjTtx7gWOwu5fReaxp0gs8/l6irEA../044_TREEMAP_2X.svg",
+            "name": "044_TREEMAP_2X.svg",
+            "type": "",
+            "size": 2109,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/qI8xJDjTtx7gWOwu5fReaxp0gs8/l6irEA../044_TREEMAP_2X.svg"
+        }
+    },
+    {
+        "id": 45,
+        "created_at": 1674164932931,
+        "slide_number": 45,
+        "name": "TREEMAP_3X",
+        "label": "Treemap 3x",
+        "aspose_type": "TREEMAP",
+        "group": "Treemap",
+        "type": "",
+        "group_sort": 8,
+        "columns": "['Level1', 'Level2', 'Level3', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 16,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Havuj92YnuUI-ns8woQm994uKEM/uLIixg../045_TREEMAP_3X.png",
+            "name": "045_TREEMAP_3X.png",
+            "type": "image",
+            "size": 1245,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Havuj92YnuUI-ns8woQm994uKEM/uLIixg../045_TREEMAP_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/7JascgtWR_ar2vDAbstdsvkmK40/5GFTTA../045_TREEMAP_3X.svg",
+            "name": "045_TREEMAP_3X.svg",
+            "type": "",
+            "size": 4393,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/7JascgtWR_ar2vDAbstdsvkmK40/5GFTTA../045_TREEMAP_3X.svg"
+        }
+    },
+    {
+        "id": 46,
+        "created_at": 1674164932934,
+        "slide_number": 46,
+        "name": "HISTOGRAM",
+        "label": "Histogram",
+        "aspose_type": "HISTOGRAM",
+        "group": "Histogram",
+        "type": "",
+        "group_sort": 9,
+        "columns": "['Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 0,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/DwB5qvpelS94Ro2o88luRo1ZF9U/Ux0CxA../046_HISTOGRAM.png",
+            "name": "046_HISTOGRAM.png",
+            "type": "image",
+            "size": 800,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/DwB5qvpelS94Ro2o88luRo1ZF9U/Ux0CxA../046_HISTOGRAM.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/l3sAGN5grhb5HvpvZ1Rs7gck0sE/R2UAaA../046_HISTOGRAM.svg",
+            "name": "046_HISTOGRAM.svg",
+            "type": "",
+            "size": 1805,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/l3sAGN5grhb5HvpvZ1Rs7gck0sE/R2UAaA../046_HISTOGRAM.svg"
+        }
+    },
+    {
+        "id": 47,
+        "created_at": 1674164932937,
+        "slide_number": 47,
+        "name": "PARETO",
+        "label": "Pareto",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Histogram",
+        "type": "",
+        "group_sort": 9,
+        "columns": "['Category', 'Series1']",
+        "series": 2,
+        "series_groups": 2,
+        "categories": 50,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/nhwUjT82_5xcjvwBIAIPJOWkNjc/Z1fI4g../047_PARETO.png",
+            "name": "047_PARETO.png",
+            "type": "image",
+            "size": 969,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/nhwUjT82_5xcjvwBIAIPJOWkNjc/Z1fI4g../047_PARETO.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/2eqVV3bAjyYi-icquvkHmpv0KJg/eRTrGw../047_PARETO.svg",
+            "name": "047_PARETO.svg",
+            "type": "",
+            "size": 1899,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/2eqVV3bAjyYi-icquvkHmpv0KJg/eRTrGw../047_PARETO.svg"
+        }
+    },
+    {
+        "id": 48,
+        "created_at": 1674164932939,
+        "slide_number": 48,
+        "name": "BULLET_COLUMN",
+        "label": "Bullet Column",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'This Year']",
+        "series": 6,
+        "series_groups": 3,
+        "categories": 1,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/2NinU487c_Q7qHZ0gqpVEwwbXyw/or7Sdg../048_BULLET_COLUMN.png",
+            "name": "048_BULLET_COLUMN.png",
+            "type": "image",
+            "size": 947,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/2NinU487c_Q7qHZ0gqpVEwwbXyw/or7Sdg../048_BULLET_COLUMN.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/jOtS9dRuMBLUUkC5mU2Iw_R7NPg/GStUGA../048_BULLET_COLUMN.svg",
+            "name": "048_BULLET_COLUMN.svg",
+            "type": "",
+            "size": 3162,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/jOtS9dRuMBLUUkC5mU2Iw_R7NPg/GStUGA../048_BULLET_COLUMN.svg"
+        }
+    },
+    {
+        "id": 49,
+        "created_at": 1674164932942,
+        "slide_number": 49,
+        "name": "BULLET_COLUMN_2X",
+        "label": "Bullet Column 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Last Year', 'This Year']",
+        "series": 6,
+        "series_groups": 3,
+        "categories": 2,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ciorjgADBkUUA3P2WZL5OGLvdQM/IXoS8w../049_BULLET_COLUMN_2X.png",
+            "name": "049_BULLET_COLUMN_2X.png",
+            "type": "image",
+            "size": 1047,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ciorjgADBkUUA3P2WZL5OGLvdQM/IXoS8w../049_BULLET_COLUMN_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/NlUgFETAmcAZjGZItY6T4-AqhMg/yUv8pg../049_BULLET_COLUMN_2X.svg",
+            "name": "049_BULLET_COLUMN_2X.svg",
+            "type": "",
+            "size": 5526,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/NlUgFETAmcAZjGZItY6T4-AqhMg/yUv8pg../049_BULLET_COLUMN_2X.svg"
+        }
+    },
+    {
+        "id": 50,
+        "created_at": 1674164932945,
+        "slide_number": 50,
+        "name": "BULLET_COLUMN_3X",
+        "label": "Bullet Column 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Two Years Ago', 'Last Year', 'This Year']",
+        "series": 6,
+        "series_groups": 3,
+        "categories": 3,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/UhZTYARKn78Jpzrv4J6LNbRuu0s/73BK8Q../050_BULLET_COLUMN_3X.png",
+            "name": "050_BULLET_COLUMN_3X.png",
+            "type": "image",
+            "size": 1320,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/UhZTYARKn78Jpzrv4J6LNbRuu0s/73BK8Q../050_BULLET_COLUMN_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/LocOIgKZN3ygzX0GzaSmsU-BehI/oQVO6w../050_BULLET_COLUMN_3X.svg",
+            "name": "050_BULLET_COLUMN_3X.svg",
+            "type": "",
+            "size": 7500,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/LocOIgKZN3ygzX0GzaSmsU-BehI/oQVO6w../050_BULLET_COLUMN_3X.svg"
+        }
+    },
+    {
+        "id": 51,
+        "created_at": 1674164932949,
+        "slide_number": 51,
+        "name": "100PCT_BULLET_COLUMN",
+        "label": "100% Bullet Column",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'This Year']",
+        "series": 6,
+        "series_groups": 2,
+        "categories": 1,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/BvXZnEz7Iyu6Cradzhb_jMozYMg/1W8wQA../051_100PCT_BULLET_COLUMN.png",
+            "name": "051_100PCT_BULLET_COLUMN.png",
+            "type": "image",
+            "size": 775,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/BvXZnEz7Iyu6Cradzhb_jMozYMg/1W8wQA../051_100PCT_BULLET_COLUMN.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/yk3jK8dZRXtuldJXGEIzv_KpH1k/DvGjxQ../051_100PCT_BULLET_COLUMN.svg",
+            "name": "051_100PCT_BULLET_COLUMN.svg",
+            "type": "",
+            "size": 3263,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/yk3jK8dZRXtuldJXGEIzv_KpH1k/DvGjxQ../051_100PCT_BULLET_COLUMN.svg"
+        }
+    },
+    {
+        "id": 52,
+        "created_at": 1674164932952,
+        "slide_number": 52,
+        "name": "100PCT_BULLET_COLUMN_2X",
+        "label": "100% Bullet Colum 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Last Year', 'This Year']",
+        "series": 6,
+        "series_groups": 2,
+        "categories": 2,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/RS8YGQxcj4lD-1zwL14Ik_Z6KDg/bZOK9A../052_100PCT_BULLET_COLUMN_2X.png",
+            "name": "052_100PCT_BULLET_COLUMN_2X.png",
+            "type": "image",
+            "size": 1111,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/RS8YGQxcj4lD-1zwL14Ik_Z6KDg/bZOK9A../052_100PCT_BULLET_COLUMN_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/WuyVlld1MNZBT_JA_kq0lztRo10/GzK00w../052_100PCT_BULLET_COLUMN_2X.svg",
+            "name": "052_100PCT_BULLET_COLUMN_2X.svg",
+            "type": "",
+            "size": 5724,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/WuyVlld1MNZBT_JA_kq0lztRo10/GzK00w../052_100PCT_BULLET_COLUMN_2X.svg"
+        }
+    },
+    {
+        "id": 53,
+        "created_at": 1674164932955,
+        "slide_number": 53,
+        "name": "100PCT_BULLET_COLUMN_3X",
+        "label": "100% Bullet Column 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Two Years Ago', 'Last Year', 'This Year']",
+        "series": 6,
+        "series_groups": 2,
+        "categories": 3,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Fs8RWM6vKW4qF5cY4hbtbI6dUU8/DdrNtg../053_100PCT_BULLET_COLUMN_3X.png",
+            "name": "053_100PCT_BULLET_COLUMN_3X.png",
+            "type": "image",
+            "size": 892,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Fs8RWM6vKW4qF5cY4hbtbI6dUU8/DdrNtg../053_100PCT_BULLET_COLUMN_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/w9n65BrwY-Xn0YBeyGdIuQ4k2tM/cYuJKw../053_100PCT_BULLET_COLUMN_3X.svg",
+            "name": "053_100PCT_BULLET_COLUMN_3X.svg",
+            "type": "",
+            "size": 7795,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/w9n65BrwY-Xn0YBeyGdIuQ4k2tM/cYuJKw../053_100PCT_BULLET_COLUMN_3X.svg"
+        }
+    },
+    {
+        "id": 54,
+        "created_at": 1674164932959,
+        "slide_number": 54,
+        "name": "BULLET_BAR",
+        "label": "Bullet Bar",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 1,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/GJSPKhA0MZfzQAvgLhRB7jxNbRA/od7CtA../054_BULLET_BAR.png",
+            "name": "054_BULLET_BAR.png",
+            "type": "image",
+            "size": 645,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/GJSPKhA0MZfzQAvgLhRB7jxNbRA/od7CtA../054_BULLET_BAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/OpNbpbNbhCiwY6wOOagVdxbW65Q/9qIRGA../054_BULLET_BAR.svg",
+            "name": "054_BULLET_BAR.svg",
+            "type": "",
+            "size": 2568,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/OpNbpbNbhCiwY6wOOagVdxbW65Q/9qIRGA../054_BULLET_BAR.svg"
+        }
+    },
+    {
+        "id": 55,
+        "created_at": 1674164932962,
+        "slide_number": 55,
+        "name": "BULLET_BAR_2X",
+        "label": "Bullet Bar 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha', 'Beta']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 2,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/9pxHNaHKIHaM6hxFLCI7CHLQWe8/8XWlMg../055_BULLET_BAR_2X.png",
+            "name": "055_BULLET_BAR_2X.png",
+            "type": "image",
+            "size": 859,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/9pxHNaHKIHaM6hxFLCI7CHLQWe8/8XWlMg../055_BULLET_BAR_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/-2DzNbKYKUmFfKTzeGbxW9gLz6U/GotnaQ../055_BULLET_BAR_2X.svg",
+            "name": "055_BULLET_BAR_2X.svg",
+            "type": "",
+            "size": 4539,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/-2DzNbKYKUmFfKTzeGbxW9gLz6U/GotnaQ../055_BULLET_BAR_2X.svg"
+        }
+    },
+    {
+        "id": 56,
+        "created_at": 1674164932964,
+        "slide_number": 56,
+        "name": "BULLET_BAR_3X",
+        "label": "Bullet Bar 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha', 'Beta', 'Gamma']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 3,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/CW9xGkMagZHDoZ33AUKWjWBuPsc/VabN-w../056_BULLET_BAR_3X.png",
+            "name": "056_BULLET_BAR_3X.png",
+            "type": "image",
+            "size": 1037,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/CW9xGkMagZHDoZ33AUKWjWBuPsc/VabN-w../056_BULLET_BAR_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Zs19msHkdGbhVbSOy9s24sCBkMY/gRvOkw../056_BULLET_BAR_3X.svg",
+            "name": "056_BULLET_BAR_3X.svg",
+            "type": "",
+            "size": 6273,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Zs19msHkdGbhVbSOy9s24sCBkMY/gRvOkw../056_BULLET_BAR_3X.svg"
+        }
+    },
+    {
+        "id": 57,
+        "created_at": 1674164932968,
+        "slide_number": 57,
+        "name": "100PCT_BULLET_BAR",
+        "label": "100% Bullet Bar",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 1,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/8dxo6zCEiD9WQQigc7WeK27qh-o/U4JZjQ../057_100PCT_BULLET_BAR.png",
+            "name": "057_100PCT_BULLET_BAR.png",
+            "type": "image",
+            "size": 728,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/8dxo6zCEiD9WQQigc7WeK27qh-o/U4JZjQ../057_100PCT_BULLET_BAR.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/pcGRY2bpKNxtsZVAz4DW3GRYlTg/EYylqg../057_100PCT_BULLET_BAR.svg",
+            "name": "057_100PCT_BULLET_BAR.svg",
+            "type": "",
+            "size": 2676,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/pcGRY2bpKNxtsZVAz4DW3GRYlTg/EYylqg../057_100PCT_BULLET_BAR.svg"
+        }
+    },
+    {
+        "id": 58,
+        "created_at": 1674164932970,
+        "slide_number": 58,
+        "name": "100PCT_BULLET_BAR_2X",
+        "label": "100% Bullet Bar 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha', 'Beta']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 2,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ohDd64qud0rajmvwuNmfgB5dP1Y/h_mmrw../058_100PCT_BULLET_BAR_2X.png",
+            "name": "058_100PCT_BULLET_BAR_2X.png",
+            "type": "image",
+            "size": 931,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ohDd64qud0rajmvwuNmfgB5dP1Y/h_mmrw../058_100PCT_BULLET_BAR_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/KkieF2RQ_TpluTtwmslGBWQHyL8/ydaybw../058_100PCT_BULLET_BAR_2X.svg",
+            "name": "058_100PCT_BULLET_BAR_2X.svg",
+            "type": "",
+            "size": 4629,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/KkieF2RQ_TpluTtwmslGBWQHyL8/ydaybw../058_100PCT_BULLET_BAR_2X.svg"
+        }
+    },
+    {
+        "id": 59,
+        "created_at": 1674164932973,
+        "slide_number": 59,
+        "name": "100PCT_BULLET_BAR_3X",
+        "label": "100% Bullet Bar 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Bullet",
+        "type": "",
+        "group_sort": 10,
+        "columns": "['ValueCategory', 'Alpha', 'Beta', 'Gamma']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 3,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/fVyKaNWJONueZSAG8UEBupriJPM/xmd5qw../059_100PCT_BULLET_BAR_3X.png",
+            "name": "059_100PCT_BULLET_BAR_3X.png",
+            "type": "image",
+            "size": 1164,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/fVyKaNWJONueZSAG8UEBupriJPM/xmd5qw../059_100PCT_BULLET_BAR_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/1BjkKRiWkbivF2IRSuVVPwaefh0/wVaQGg../059_100PCT_BULLET_BAR_3X.svg",
+            "name": "059_100PCT_BULLET_BAR_3X.svg",
+            "type": "",
+            "size": 6268,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/1BjkKRiWkbivF2IRSuVVPwaefh0/wVaQGg../059_100PCT_BULLET_BAR_3X.svg"
+        }
+    },
+    {
+        "id": 60,
+        "created_at": 1674164932976,
+        "slide_number": 60,
+        "name": "SPARKLINE",
+        "label": "Sparkline",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'y', 'Normalized 1', 'y-Normalized 1']",
+        "series": 2,
+        "series_groups": 2,
+        "categories": 1,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/KdPaPiP60cKVyFlVniCNkhjqhak/oOgnrg../060_SPARKLINE.png",
+            "name": "060_SPARKLINE.png",
+            "type": "image",
+            "size": 2283,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/KdPaPiP60cKVyFlVniCNkhjqhak/oOgnrg../060_SPARKLINE.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/cdt10Bg9cxlJphEkA-H5GAgqm20/ckD8Eg../060_SPARKLINE.svg",
+            "name": "060_SPARKLINE.svg",
+            "type": "",
+            "size": 5494,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/cdt10Bg9cxlJphEkA-H5GAgqm20/ckD8Eg../060_SPARKLINE.svg"
+        }
+    },
+    {
+        "id": 61,
+        "created_at": 1674164932978,
+        "slide_number": 61,
+        "name": "SPARKLINE_2X",
+        "label": "Sparkline 2x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'Category 2', 'y', 'Normalized 1', 'Normalized 2', 'y-Normalized 1', 'y-Normalized 2']",
+        "series": 3,
+        "series_groups": 2,
+        "categories": 2,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/kvz0PHZ3lzM8tYtVeC7ZyzhOlpc/Hgq5yA../061_SPARKLINE_2X.png",
+            "name": "061_SPARKLINE_2X.png",
+            "type": "image",
+            "size": 3722,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/kvz0PHZ3lzM8tYtVeC7ZyzhOlpc/Hgq5yA../061_SPARKLINE_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/qCSKqy0nVRzkPaD4P2kaIBm5V40/nvIrLg../061_SPARKLINE_2X.svg",
+            "name": "061_SPARKLINE_2X.svg",
+            "type": "",
+            "size": 9765,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/qCSKqy0nVRzkPaD4P2kaIBm5V40/nvIrLg../061_SPARKLINE_2X.svg"
+        }
+    },
+    {
+        "id": 62,
+        "created_at": 1674164932981,
+        "slide_number": 62,
+        "name": "SPARKLINE_3X",
+        "label": "Sparkline 3x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'Category 2', 'Category 3', 'y', 'Normalized 1', 'Normalized 2', 'Normalized 3', 'y-Normalized 1', 'y-Normalized 2', 'y-Normalized 3']",
+        "series": 4,
+        "series_groups": 2,
+        "categories": 3,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/z7gQ4mmL6KaZZjQa6TSaZBEuAJY/PBFvwg../062_SPARKLINE_3X.png",
+            "name": "062_SPARKLINE_3X.png",
+            "type": "image",
+            "size": 4320,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/z7gQ4mmL6KaZZjQa6TSaZBEuAJY/PBFvwg../062_SPARKLINE_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/rDfVAVezrpChpinbVsBfmFd34xY/aEiuyA../062_SPARKLINE_3X.svg",
+            "name": "062_SPARKLINE_3X.svg",
+            "type": "",
+            "size": 14077,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/rDfVAVezrpChpinbVsBfmFd34xY/aEiuyA../062_SPARKLINE_3X.svg"
+        }
+    },
+    {
+        "id": 63,
+        "created_at": 1674164932984,
+        "slide_number": 63,
+        "name": "SPARKLINE_4X",
+        "label": "Sparkline 4x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'Category 2', 'Category 3', 'Category 4', 'y', 'Normalized 1', 'Normalized 2', 'Normalized 3', 'Normalized 4', 'y-Normalized 1', 'y-Normalized 2', 'y-Normalized 3', 'y-Normalized 4']",
+        "series": 5,
+        "series_groups": 2,
+        "categories": 4,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/iIHyoZauXeroN75eSOZwYPInX1U/38iGZQ../063_SPARKLINE_4X.png",
+            "name": "063_SPARKLINE_4X.png",
+            "type": "image",
+            "size": 5433,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/iIHyoZauXeroN75eSOZwYPInX1U/38iGZQ../063_SPARKLINE_4X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/kQx_bhUtFi7eAB6QnZiOsf-YU_Q/NGqwUw../063_SPARKLINE_4X.svg",
+            "name": "063_SPARKLINE_4X.svg",
+            "type": "",
+            "size": 18285,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/kQx_bhUtFi7eAB6QnZiOsf-YU_Q/NGqwUw../063_SPARKLINE_4X.svg"
+        }
+    },
+    {
+        "id": 64,
+        "created_at": 1674164933022,
+        "slide_number": 64,
+        "name": "SPARKLINE_5X",
+        "label": "Sparkline 5x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'y', 'Normalized 1', 'Normalized 2', 'Normalized 3', 'Normalized 4', 'Normalized 5', 'y-Normalized 1', 'y-Normalized 2', 'y-Normalized 3', 'y-Normalized 4', 'y-Normalized 5']",
+        "series": 6,
+        "series_groups": 2,
+        "categories": 5,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/BXrLBf9aKtTHhMMWN4ZPoXC7NAY/SrsN2A../064_SPARKLINE_5X.png",
+            "name": "064_SPARKLINE_5X.png",
+            "type": "image",
+            "size": 6240,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/BXrLBf9aKtTHhMMWN4ZPoXC7NAY/SrsN2A../064_SPARKLINE_5X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/87cSrnt-ZiVapltg_0RUGBWczPw/JRxELA../064_SPARKLINE_5X.svg",
+            "name": "064_SPARKLINE_5X.svg",
+            "type": "",
+            "size": 22399,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/87cSrnt-ZiVapltg_0RUGBWczPw/JRxELA../064_SPARKLINE_5X.svg"
+        }
+    },
+    {
+        "id": 65,
+        "created_at": 1674164933025,
+        "slide_number": 65,
+        "name": "SPARKLINE_6X",
+        "label": "Sparkline 6x",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Sparkline",
+        "type": "",
+        "group_sort": 11,
+        "columns": "['Period', 'Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'y', 'Normalized 1', 'Normalized 2', 'Normalized 3', 'Normalized 4', 'Normalized 5', 'Normalized 6', 'y-Normalized 1', 'y-Normalized 2', 'y-Normalized 3', 'y-Normalized 4', 'y-Normalized 5', 'y-Normalized 6']",
+        "series": 7,
+        "series_groups": 2,
+        "categories": 6,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/L8nxzUf-aoE2E32zBvPOL_YiJW0/moeWgg../065_SPARKLINE_6X.png",
+            "name": "065_SPARKLINE_6X.png",
+            "type": "image",
+            "size": 6461,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/L8nxzUf-aoE2E32zBvPOL_YiJW0/moeWgg../065_SPARKLINE_6X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/lnxXs0NeLDOj9tB3ppTtrpupq-c/pTLXDg../065_SPARKLINE_6X.svg",
+            "name": "065_SPARKLINE_6X.svg",
+            "type": "",
+            "size": 26850,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/lnxXs0NeLDOj9tB3ppTtrpupq-c/pTLXDg../065_SPARKLINE_6X.svg"
+        }
+    },
+    {
+        "id": 66,
+        "created_at": 1674164933027,
+        "slide_number": 66,
+        "name": "WORLD",
+        "label": "World",
+        "aspose_type": "MAP",
+        "group": "Map",
+        "type": "",
+        "group_sort": 12,
+        "columns": "['Country', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 14,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/M15KK5hHMdFFtxQjFHCbn4m6tL8/YA5rqQ../066_WORLD.png",
+            "name": "066_WORLD.png",
+            "type": "image",
+            "size": 7213,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/M15KK5hHMdFFtxQjFHCbn4m6tL8/YA5rqQ../066_WORLD.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/YU7YYWjbTuIBTQDZTm2zTU9VYxw/fl191g../066_WORLD.svg",
+            "name": "066_WORLD.svg",
+            "type": "",
+            "size": 146453,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/YU7YYWjbTuIBTQDZTm2zTU9VYxw/fl191g../066_WORLD.svg"
+        }
+    },
+    {
+        "id": 67,
+        "created_at": 1674164933029,
+        "slide_number": 67,
+        "name": "UNITED_STATES",
+        "label": "United States",
+        "aspose_type": "MAP",
+        "group": "Map",
+        "type": "",
+        "group_sort": 12,
+        "columns": "['State', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 11,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/ciSF6nGZuQtomgVx1YTKFMKUFxw/hCPM6w../067_UNITED_STATES.png",
+            "name": "067_UNITED_STATES.png",
+            "type": "image",
+            "size": 8700,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/ciSF6nGZuQtomgVx1YTKFMKUFxw/hCPM6w../067_UNITED_STATES.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/bXexWD_6t6roz52u3ftRlma10f8/D5dA6A../067_UNITED_STATES.svg",
+            "name": "067_UNITED_STATES.svg",
+            "type": "",
+            "size": 112109,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/bXexWD_6t6roz52u3ftRlma10f8/D5dA6A../067_UNITED_STATES.svg"
+        }
+    },
+    {
+        "id": 68,
+        "created_at": 1674164933032,
+        "slide_number": 68,
+        "name": "CANADA",
+        "label": "Canada",
+        "aspose_type": "MAP",
+        "group": "Map",
+        "type": "",
+        "group_sort": 12,
+        "columns": "['Province/Territory', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 13,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/gA02jDc3sgDUWYdZL0uNT8-vZHY/Gc-U6w../068_CANADA.png",
+            "name": "068_CANADA.png",
+            "type": "image",
+            "size": 12761,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/gA02jDc3sgDUWYdZL0uNT8-vZHY/Gc-U6w../068_CANADA.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Ez4wHT5LmC-Rnyu67DJ6flrxAp4/_1oexg../068_CANADA.svg",
+            "name": "068_CANADA.svg",
+            "type": "",
+            "size": 104164,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Ez4wHT5LmC-Rnyu67DJ6flrxAp4/_1oexg../068_CANADA.svg"
+        }
+    },
+    {
+        "id": 69,
+        "created_at": 1674164933035,
+        "slide_number": 69,
+        "name": "UNITED_KINGDOM",
+        "label": "United Kingdom",
+        "aspose_type": "MAP",
+        "group": "Map",
+        "type": "",
+        "group_sort": 12,
+        "columns": "['State', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 4,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/K4SaoiLppKy1yqxPSbXILhlGNIY/yy0Wtw../069_UNITED_KINGDOM.png",
+            "name": "069_UNITED_KINGDOM.png",
+            "type": "image",
+            "size": 6096,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/K4SaoiLppKy1yqxPSbXILhlGNIY/yy0Wtw../069_UNITED_KINGDOM.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Zr-6ns_70vsaWJZV7CDwlDuoRp0/M0F31g../069_UNITED_KINGDOM.svg",
+            "name": "069_UNITED_KINGDOM.svg",
+            "type": "",
+            "size": 43870,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Zr-6ns_70vsaWJZV7CDwlDuoRp0/M0F31g../069_UNITED_KINGDOM.svg"
+        }
+    },
+    {
+        "id": 70,
+        "created_at": 1674164933037,
+        "slide_number": 70,
+        "name": "AUSTRALIA",
+        "label": "Australia",
+        "aspose_type": "MAP",
+        "group": "Map",
+        "type": "",
+        "group_sort": 12,
+        "columns": "['State/Territory', 'Value']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/fVNzL-An9e8lBwwyXrR0Rk1YItg/mn3fXw../070_AUSTRALIA.png",
+            "name": "070_AUSTRALIA.png",
+            "type": "image",
+            "size": 7479,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/fVNzL-An9e8lBwwyXrR0Rk1YItg/mn3fXw../070_AUSTRALIA.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/heTZpGmHD6vCkhmhS-UArixaIvI/iA7gew../070_AUSTRALIA.svg",
+            "name": "070_AUSTRALIA.svg",
+            "type": "",
+            "size": 52268,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/heTZpGmHD6vCkhmhS-UArixaIvI/iA7gew../070_AUSTRALIA.svg"
+        }
+    },
+    {
+        "id": 71,
+        "created_at": 1674164933048,
+        "slide_number": 71,
+        "name": "BOX_AND_WHISKER",
+        "label": "Box & Whisker",
+        "aspose_type": "BOX_AND_WHISKER",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 22,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/PfKGJ0oLda2MDrlj2QgbLj3oIXs/zuoMyA../071_BOX_AND_WHISKER.png",
+            "name": "071_BOX_AND_WHISKER.png",
+            "type": "image",
+            "size": 1345,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/PfKGJ0oLda2MDrlj2QgbLj3oIXs/zuoMyA../071_BOX_AND_WHISKER.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/Jm1WplCmZdrnOMU4cIeYjT3mfxw/nPdTaA../071_BOX_AND_WHISKER.svg",
+            "name": "071_BOX_AND_WHISKER.svg",
+            "type": "",
+            "size": 5653,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/Jm1WplCmZdrnOMU4cIeYjT3mfxw/nPdTaA../071_BOX_AND_WHISKER.svg"
+        }
+    },
+    {
+        "id": 72,
+        "created_at": 1674164933050,
+        "slide_number": 72,
+        "name": "BOX_AND_WHISKER_2X",
+        "label": "Box & Whisker 2x",
+        "aspose_type": "BOX_AND_WHISKER",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Series1', 'Series2']",
+        "series": 2,
+        "series_groups": 1,
+        "categories": 22,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/n050yBj8H4uQKKj82I-kXjs2VqM/6b9lDA../072_BOX_AND_WHISKER_2X.png",
+            "name": "072_BOX_AND_WHISKER_2X.png",
+            "type": "image",
+            "size": 1967,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/n050yBj8H4uQKKj82I-kXjs2VqM/6b9lDA../072_BOX_AND_WHISKER_2X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/uuZAAELXaZ1X0pbzOPHlsgeSKT0/SZcGmA../072_BOX_AND_WHISKER_2X.svg",
+            "name": "072_BOX_AND_WHISKER_2X.svg",
+            "type": "",
+            "size": 10308,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/uuZAAELXaZ1X0pbzOPHlsgeSKT0/SZcGmA../072_BOX_AND_WHISKER_2X.svg"
+        }
+    },
+    {
+        "id": 73,
+        "created_at": 1674164933053,
+        "slide_number": 73,
+        "name": "BOX_AND_WHISKER_3X",
+        "label": "Box & Whisker 3x",
+        "aspose_type": "BOX_AND_WHISKER",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Series1', 'Series2', 'Series3']",
+        "series": 3,
+        "series_groups": 1,
+        "categories": 22,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/H0DsGGU7jXqNoOLukTNL_8eHwRE/HnlkfQ../073_BOX_AND_WHISKER_3X.png",
+            "name": "073_BOX_AND_WHISKER_3X.png",
+            "type": "image",
+            "size": 2594,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/H0DsGGU7jXqNoOLukTNL_8eHwRE/HnlkfQ../073_BOX_AND_WHISKER_3X.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/D0jlxt_vPwAz_XT5zTas2doE-c4/CpIefg../073_BOX_AND_WHISKER_3X.svg",
+            "name": "073_BOX_AND_WHISKER_3X.svg",
+            "type": "",
+            "size": 14721,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/D0jlxt_vPwAz_XT5zTas2doE-c4/CpIefg../073_BOX_AND_WHISKER_3X.svg"
+        }
+    },
+    {
+        "id": 74,
+        "created_at": 1674164933055,
+        "slide_number": 74,
+        "name": "WATERFALL",
+        "label": "Waterfall",
+        "aspose_type": "WATERFALL",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 8,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/cSZeqxbY1TiTbaJbIzLRN2SPwg8/llp_2w../074_WATERFALL.png",
+            "name": "074_WATERFALL.png",
+            "type": "image",
+            "size": 1078,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/cSZeqxbY1TiTbaJbIzLRN2SPwg8/llp_2w../074_WATERFALL.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/EQ8oUeCzDgoueIWLp5JybV3wpmo/R6hRMQ../074_WATERFALL.svg",
+            "name": "074_WATERFALL.svg",
+            "type": "",
+            "size": 2880,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/EQ8oUeCzDgoueIWLp5JybV3wpmo/R6hRMQ../074_WATERFALL.svg"
+        }
+    },
+    {
+        "id": 75,
+        "created_at": 1674164933059,
+        "slide_number": 75,
+        "name": "FUNNEL",
+        "label": "Funnel",
+        "aspose_type": "FUNNEL",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Series1']",
+        "series": 1,
+        "series_groups": 1,
+        "categories": 5,
+        "use_secondary_categories": false,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/pDEW6DUpohr2_ZpcEc2DDe9iR2M/2NukJg../075_FUNNEL.png",
+            "name": "075_FUNNEL.png",
+            "type": "image",
+            "size": 773,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/pDEW6DUpohr2_ZpcEc2DDe9iR2M/2NukJg../075_FUNNEL.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/4XMhvZa4MgpdB57xZYi8DV6ByjA/p_NSZw../075_FUNNEL.svg",
+            "name": "075_FUNNEL.svg",
+            "type": "",
+            "size": 2799,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/4XMhvZa4MgpdB57xZYi8DV6ByjA/p_NSZw../075_FUNNEL.svg"
+        }
+    },
+    {
+        "id": 76,
+        "created_at": 1674164933061,
+        "slide_number": 76,
+        "name": "DUMBBELL",
+        "label": "Dumbbell",
+        "aspose_type": "SERIES_OF_MIXED_TYPES",
+        "group": "Other",
+        "type": "",
+        "group_sort": 13,
+        "columns": "['Category', 'Value 1', 'Value 2', 'Y-axis', 'Error bar length 1', 'Error bar length 2']",
+        "series": 3,
+        "series_groups": 2,
+        "categories": 6,
+        "use_secondary_categories": true,
+        "default_chart": 0,
+        "png": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/QWQBa9p_Amt6IMrl8q-1HGYRT0U/pRpNxA../076_DUMBBELL.png",
+            "name": "076_DUMBBELL.png",
+            "type": "image",
+            "size": 3077,
+            "mime": "image/png",
+            "meta": {
+                "width": 144,
+                "height": 144
+            },
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/QWQBa9p_Amt6IMrl8q-1HGYRT0U/pRpNxA../076_DUMBBELL.png"
+        },
+        "svg": {
+            "access": "public",
+            "path": "/vault/PMfrMmjB/2KjX2HlBhOpnTlzE_EHD6cufiVA/Rwph_w../076_DUMBBELL.svg",
+            "name": "076_DUMBBELL.svg",
+            "type": "",
+            "size": 8369,
+            "mime": "image/svg+xml",
+            "meta": {},
+            "url": "https://xano.storyd.ai/vault/PMfrMmjB/2KjX2HlBhOpnTlzE_EHD6cufiVA/Rwph_w../076_DUMBBELL.svg"
+        }
+    }
+]
