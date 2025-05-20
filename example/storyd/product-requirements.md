@@ -4,7 +4,7 @@
 
 STORYD.AI v2 is an API-first platform that automates the creation of professional PowerPoint presentations through AI-driven business storytelling. The platform enables developers, AI agents, and business workflows to programmatically generate high-quality presentations with native .PPTX output. 
 
-Built on a credit-based pricing model where 1 credit = $1 = 1 presentation, with 5 free credits for new users, STORYD.AI v2 transforms from an end-user tool to a developer platform that can be integrated into applications, automation workflows, and AI systems.
+Built on a transparent credit-based pricing model where 1 credit = $1 = 1 presentation, STORYD.AI v2 transforms from an end-user tool to a developer platform that can be integrated into applications, automation workflows, and AI systems. New users receive 5 free credits, and additional credits can be purchased as one-time packages with volume discounts (10, 50, 100, 500 credits).
 
 This document outlines the complete product requirements, implementation strategy, and technical approach for STORYD.AI v2.
 
@@ -1068,7 +1068,7 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Clear display of credit usage and remaining credits
   - Transparent limitations of free tier
   - Simple path to upgrade when ready
-  - Credits do not expire for active accounts
+  - Credits never expire
 - **Technical Considerations**:
   - Need credit tracking system
   - Must implement free tier limitations
@@ -1079,11 +1079,11 @@ Converting analytics and insights into narrative-driven visual presentations.
 > As a user, I want flexible credit purchase options so that I can buy credits according to my usage needs.
 
 - **Acceptance Criteria**:
-  - Various credit package sizes available (e.g., 10, 50, 100 credits)
-  - Volume discounts for larger credit packages
+  - Standard one-time purchase credit packages (10, 50, 100, 500 credits)
+  - Volume discounts for larger credit packages (5% for 50, 10% for 100, 15% for 500)
   - Clear presentation of credit pricing and value
   - One-click purchase process for additional credits
-  - Optional auto top-up when credits fall below threshold
+  - Optional auto-reload when credits fall below a configurable threshold
 - **Technical Considerations**:
   - Integrate with Stripe for payment processing
   - Implement credit balance tracking system
@@ -1145,7 +1145,7 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Integration with Stripe Customer Portal
   - Ability to update payment methods
   - Access to purchase history and receipts
-  - Auto top-up management capabilities
+  - Auto-reload management (enable/disable, threshold settings, package selection)
   - Seamless authentication between platforms
 - **Technical Considerations**:
   - Need secure portal authentication
@@ -1279,12 +1279,13 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Multiple brand profiles are supported per account
 
 **6.1.4 Credit-Based Processing System**
-- **Description**: Simple mechanism for tracking presentation generation credits (5 free, then $1 per presentation)
+- **Description**: Simple mechanism for tracking presentation generation credits (5 free, then $1 per presentation with one-time purchase packages)
 - **Direct Pain Point**: Developers need predictable, usage-based pricing for integration planning
 - **Success Criteria**:
   - 30%+ of users who exhaust free credits convert to paid usage
-  - Users understand pricing model without support intervention
-  - Credit system handles edge cases gracefully (refunds, errors, etc.)
+  - Users understand one-time credit purchase model without support intervention
+  - Credit system handles edge cases gracefully (refunds, errors, auto-reload)
+  - Credits never expire regardless of account status
 
 **6.1.5 Complete Four-Phase Process Implementation**
 - **Description**: Full implementation of all four phases: Plan, Think, Write, and Automate
@@ -1323,8 +1324,10 @@ Converting analytics and insights into narrative-driven visual presentations.
 - **Direct Pain Point**: Users need visibility into resource consumption
 - **Success Criteria**:
   - Dashboard clearly shows current credit balance
-  - Purchase flow is simple and intuitive
+  - One-time purchase flow with standard packages (10, 50, 100, 500) is simple and intuitive
+  - Auto-reload configuration is easy to set up and manage
   - Transaction history is complete and accurate
+  - Volume discounts are clearly displayed (5% for 50, 10% for 100, 15% for 500)
 
 ### 6.2 MVP-Secondary Features
 
@@ -1398,11 +1401,11 @@ Converting analytics and insights into narrative-driven visual presentations.
 - Create user onboarding flow
 
 #### Sprint 7: Monetization
-- Integrate Stripe for credit purchases
-- Implement credit tracking system
-- Build free tier with 5 presentation credits
+- Integrate Stripe for one-time credit package purchases
+- Implement credit tracking system with perpetual validity
+- Build free tier with 5 presentation credits that never expire
 - Create webhook handling for payment events
-- Develop auto top-up functionality
+- Develop auto-reload functionality with configurable thresholds
 
 #### Sprint 8: MVP Completion
 - Implement comprehensive testing across entire flow
@@ -1623,14 +1626,15 @@ This navigation should be available to logged out users, logged in users, and sc
     - `/solutions/sales` - Sales presentation automation
     - `/solutions/reporting` - Business intelligence and data reporting
     - `/solutions/training` - Educational and training materials
-    - `/solutions/enterprise` - Enterprise workflow integration
+    - `/solutions/fundraising` - Fundraising and investor presentation automation
 
 - **Pricing**: Credit packages and enterprise options
   - Route: `/pricing`
   - Features:
     - Clear explanation of credit model (1 credit = $1 = 1 presentation)
-    - Volume discount packages with transparent pricing
-    - Free tier promotion with 5 credits for new users
+    - Standard one-time purchase packages (10, 50, 100, 500 credits) with volume discounts
+    - Free tier promotion with 5 credits for new users that never expire
+    - Auto-reload options with configurable thresholds
     - Enterprise pricing options with additional support
     - ROI calculator based on current presentation creation costs
     - FAQ section addressing common pricing questions
