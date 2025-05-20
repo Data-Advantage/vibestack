@@ -46,27 +46,26 @@ STORYD.AI consists of four distinct application contexts, each serving different
 ### 2.1 Root Directory Structure
 
 ```
-/src
-  /app                     # Next.js App Router routes
-    /api                   # API routes
-    /(marketing)           # Marketing routes (public)
-    /(app)                 # Application routes (authenticated)
-    /(presentation)        # Presentation creation routes
-    /(admin)               # Admin routes
-  /components              # Shared React components
-    /ui                    # shadcn/ui components
-    /marketing             # Marketing-specific components
-    /app                   # Application-specific components
-    /presentation          # Presentation-specific components
-    /admin                 # Admin-specific components
-  /lib                     # Shared utilities and functions
-  /hooks                   # Custom React hooks
-  /context                 # React context providers
-  /styles                  # Global styles and Tailwind config
-  /types                   # TypeScript type definitions
-  /middleware.ts           # Next.js middleware for auth and routing
-/public                    # Static assets
-/supabase                  # Supabase configuration and types
+/app                     # Next.js App Router routes
+  /api                   # API routes
+  /(marketing)           # Marketing routes (public)
+  /(app)                 # Application routes (authenticated)
+  /(presentation)        # Presentation creation routes
+  /(admin)               # Admin routes
+/components              # Shared React components
+  /ui                    # shadcn/ui components
+  /marketing             # Marketing-specific components
+  /app                   # Application-specific components
+  /presentation          # Presentation-specific components
+  /admin                 # Admin-specific components
+/lib                     # Shared utilities and functions
+/hooks                   # Custom React hooks
+/context                 # React context providers
+/styles                  # Global styles and Tailwind config
+/types                   # TypeScript type definitions
+/middleware.ts           # Next.js middleware for auth and routing
+/public                  # Static assets
+/supabase                # Supabase configuration and types
 ```
 
 ### 2.2 Detailed Component Structure
