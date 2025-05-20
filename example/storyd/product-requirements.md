@@ -22,6 +22,7 @@ This document outlines the complete product requirements, implementation strateg
 8. [Design Guidelines](#8-design-guidelines)
 9. [Security & Compliance](#9-security--compliance)
 10. [Glossary of Terms](#10-glossary-of-terms)
+11. [External Resources](#11-external-resources)
 
 ---
 
@@ -154,16 +155,16 @@ Converting analytics and insights into narrative-driven visual presentations.
   - System must handle potentially large file uploads
 - **Dependencies**: None
 
-#### 3.2.2 Research Phase Implementation
+#### 3.2.2 Think Phase Implementation
 > As a developer, I want the system to analyze inputs and generate relevant insights so that presentations include data-driven content and storytelling.
 
 - **Priority**: MVP-Core
 - **Acceptance Criteria**:
   - System performs SWOT or similar analysis on provided topic
-  - Research process identifies key insights and recommendations
+  - Think process identifies key insights and recommendations
   - API provides access to research findings as structured data
-  - Research can be enhanced with supplementary information
-  - Option to skip or customize research phase available
+  - Analysis can be enhanced with supplementary information
+  - Option to skip or customize think phase available
 - **Technical Considerations**:
   - Integrate with Perplexity models for research tasks
   - Need to manage AI usage costs for research tasks
@@ -474,7 +475,7 @@ Converting analytics and insights into narrative-driven visual presentations.
 > As a developer, I want detailed progress tracking for presentation generation so that I can provide granular feedback to users about where their job is in the pipeline.
 
 - **Acceptance Criteria**:
-  - Progress tracked across all four phases (Plan, Research, Write, Automate)
+  - Progress tracked across all four phases (Plan, Think, Write, Automate)
   - Sub-task progress tracking within each phase
   - Percentage complete calculation for overall job
   - Accurate time estimates based on historical data
@@ -556,7 +557,7 @@ Converting analytics and insights into narrative-driven visual presentations.
 > As a platform operator, I want a clearly defined multi-stage workflow so that presentation generation follows a consistent, trackable process.
 
 - **Acceptance Criteria**:
-  - Defined transitions between Plan, Research, Write, and Automate phases
+  - Defined transitions between Plan, Think, Write, and Automate phases
   - Conditional workflow paths based on input parameters
   - Phase-specific timeout and resource allocation
   - Workflow visualization in monitoring interface
@@ -1286,11 +1287,11 @@ Converting analytics and insights into narrative-driven visual presentations.
   - Credit system handles edge cases gracefully (refunds, errors, etc.)
 
 **6.1.5 Complete Four-Phase Process Implementation**
-- **Description**: Full implementation of all four phases: Plan, Research, Write, and Automate
+- **Description**: Full implementation of all four phases: Plan, Think, Write, and Automate
 - **Direct Pain Point**: Partial automation solutions miss the critical research and planning steps
 - **Success Criteria**:
   - All four phases complete successfully for 95%+ of presentation requests
-  - Research phase provides valuable additional insights
+  - Think phase provides valuable additional insights
   - End-to-end process completes in reasonable time (<5 minutes for average presentation)
 
 **6.1.6 Multi-Format Output Support**
@@ -1370,7 +1371,7 @@ Converting analytics and insights into narrative-driven visual presentations.
 
 #### Sprint 3: Core Generation Pipeline
 - Implement Plan phase with JSON structure and processing
-- Build Research phase with Perplexity model integration
+- Build Think phase with Perplexity model integration
 - Develop Write phase content generation
 - Create basic template library API access
 - Develop brand configuration storage and API
@@ -1461,7 +1462,7 @@ The MVP is considered complete when:
 - **AI Integration**: 
   - Vercel AI SDK for model provider integration and AI UI components
   - LangChain for AI agent orchestration and structured outputs
-  - Perplexity models for research phase
+  - Perplexity models for think phase
   - Upstage models for document parsing
   - Anthropic models for image processing and analysis
   - OpenAI models (including gpt-image-1) for image generation
@@ -1578,6 +1579,568 @@ The MVP is considered complete when:
 - Context API for global application state (authentication, preferences)
 - URL-based state for shareable configurations
 
+### 8.6 Navigation Specification
+
+#### 8.6.1 Main App Sidebar Navigation
+
+The main application sidebar should be present across the application except when in a specific presentation context:
+
+- **Dashboard**: Homepage showing credits, recent presentations, and usage statistics
+  - Route: `/`
+  - Features:
+    - Overview of recent presentation activities
+    - Credit balance and usage statistics
+    - Quick access to create new presentations
+    - System notifications and status updates
+
+- **Presentations**: List of all presentations with filtering and sorting options
+  - Route: `/presentations`
+  - Features:
+    - Grid and list view options for presentations
+    - Sorting by date, name, and status
+    - Filtering by project, template, and status
+    - Batch operations for multiple presentations
+    - Preview thumbnails with key metadata
+
+- **Projects**: Organize and manage presentations by project groupings
+  - Route: `/projects`
+  - Features:
+    - Project creation and management with custom metadata
+    - Brand settings (colors, fonts, logos) per project
+    - Persistent AI context and knowledge base per project
+    - Access control and team collaboration settings
+    - Default templates and content libraries
+
+- **Narratives**: Browse and manage available storytelling structures and templates
+  - Route: `/narratives`
+  - Features:
+    - Library of pre-built storytelling templates
+    - Template preview and selection interface
+    - Custom template creation and editing
+    - Template categorization by industry and use case
+    - Template version history and management
+
+- **Design**: Manage visual styling elements for presentations
+  - Route: `/design`
+  - Features:
+    - Pre-designed visual themes with comprehensive styling
+    - Font schemes with typeface combinations and sizing
+    - Color schemes with primary, secondary, and accent colors
+    - Background choices including patterns, gradients, and images
+    - Icon sets and visual asset libraries
+    - Supported languages and supported font schemes
+  - Sub-routes:
+    - `/design/themes` - Complete theme packages
+    - `/design/colors` - Color scheme management
+    - `/design/fonts` - Typography and font settings
+    - `/design/backgrounds` - Background styles and options
+    - `/design/icons` - Preview of the icon sets built in
+    - `/design/languages` - Supported languages and font schemes
+
+- **Credentials**: Manage all authentication and access methods
+  - Route: `/credentials`
+  - Features:
+    - API keys for REST API access
+    - Webhook secrets for secure callbacks
+    - OAuth applications for third-party integration
+    - Service accounts for automated processes
+    - MCP tokens for AI agent access
+    - Security settings and permissions
+  - Sub-routes:
+    - `/credentials/api` - Traditional API key management
+    - `/credentials/webhooks` - Webhook endpoints and secrets
+    - `/credentials/mcp` - Model Context Protocol access tokens and settings
+
+- **Integrations**: Manage connections with external services and tools
+  - Route: `/integrations`
+  - Features:
+    - Third-party service connections
+    - Custom workflow automation
+    - External data source configuration
+    - Integration templates and recipes
+    - Integration status monitoring
+
+- **Documentation**: Access to API documentation and guides
+  - Route: `/docs`
+  - Features:
+    - API reference documentation
+    - Implementation guides and tutorials
+    - Code samples and SDKs
+    - Interactive API Playground for testing
+    - Troubleshooting and FAQ resources
+  - Sub-routes:
+    - `/docs/api` - API reference documentation
+    - `/docs/guides` - Implementation guides
+    - `/docs/playground` - Interactive API testing environment
+
+- **Account**: Manage user profile, billing, and account settings
+  - Route: `/account`
+  - Features:
+    - Profile management and preferences
+    - Credit purchases and payment history
+    - Usage statistics and billing reports
+    - Team management and permissions
+    - Notification settings
+  - Sub-routes:
+    - `/account/user` - User profile and preferences
+    - `/account/billing` - Credit purchases and payment history
+    - `/account/usage` - Detailed usage reports
+
+- **Settings**: Application settings and configurations
+  - Route: `/settings`
+  - Features:
+    - Application preferences and defaults
+    - Notification configurations
+    - Display and accessibility settings
+    - Default language and locale settings
+    - Security and privacy preferences
+
+**Bottom-Aligned Navigation Elements:**
+- **Account Button**: Quick access to account information and settings
+  - Route: `/account`
+  - Features:
+    - User profile picture and name display
+    - Dropdown menu with links to account sections
+    - Credit balance indicator
+    - Quick access to billing and user settings
+    - Sign out option
+
+#### 8.6.2 Presentation Sidebar Navigation
+
+The presentation sidebar should be visible when working on a specific presentation (URL pattern: `/presentations/:id/*`) and follow the four-phase process:
+
+- **Plan**
+  - **Main Phase Route**: `/presentations/:id/plan`
+    - Layout: Split view with AI chatbot assistant on the left and JSON configuration display on the right
+    - Features: 
+      - Displays progress and status of all Plan sub-components
+      - Shows quick-access cards for all sub-sections
+      - JSON editor shows current plan configuration in editable format
+      - AI assistant helps guide users through the planning process
+  - Sub-routes:
+    - **Topic**: Define presentation topic and purpose
+      - Route: `/presentations/:id/plan/topic`
+      - Features:
+        - Topic definition interface
+        - Purpose and goals specification
+        - Target audience configuration
+        - Presentation type selection
+        - AI-assisted topic refinement
+    - **Documents**: Upload and manage reference documents
+      - Route: `/presentations/:id/plan/documents`
+      - Features:
+        - Document upload and management
+        - Automatic content extraction
+        - Document organization and tagging
+        - Content relevance scoring
+        - Citation management
+    - **Images**: Upload and manage presentation images
+      - Route: `/presentations/:id/plan/images`
+      - Features:
+        - Image upload and organization
+        - AI image generation integration
+        - Image categorization and tagging
+        - Image editing and cropping tools
+        - Stock image search and integration
+    - **Links**: Add and process web references
+      - Route: `/presentations/:id/plan/links`
+      - Features:
+        - URL submission and processing
+        - Automatic content extraction
+        - Web page summarization
+        - Reference management and organization
+        - Link validation and monitoring
+    - **Outline**: View and edit presentation structure
+      - Route: `/presentations/:id/plan/outline`
+      - Features:
+        - Slide structure visualization
+        - Drag-and-drop slide reorganization
+        - Section and subsection management
+        - AI-suggested outline improvements
+        - Template application to outline
+    - **Settings**: Presentation-specific settings
+      - Route: `/presentations/:id/plan/settings`
+      - Features:
+        - Presentation-specific configurations
+        - Processing parameters adjustment
+        - Template overrides and customizations
+        - AI behavior configuration
+        - Phase-specific settings
+
+- **Think**
+  - **Main Phase Route**: `/presentations/:id/think`
+    - Layout: Split view with AI chatbot assistant on the left and JSON configuration display on the right
+    - Features: 
+      - Summarizes insights and findings from all Think sub-components
+      - JSON editor displays current research structure and findings in editable format
+      - AI assistant helps with research questions and content exploration
+      - Provides recommendations for additional research areas
+  - Sub-routes:
+    - **Analysis**: SWOT and other analytical frameworks
+      - Route: `/presentations/:id/think/analysis`
+      - Features:
+        - SWOT analysis interface
+        - Competitive analysis tools
+        - Market trend identification
+        - Risk assessment frameworks
+        - Strategic recommendations generation
+    - **Lookups**: Search for specific information
+      - Route: `/presentations/:id/think/lookups`
+      - Features:
+        - Targeted information search
+        - Fact verification interface
+        - Knowledge base integration
+        - Source credibility assessment
+        - Citation and reference management
+    - **Research**: In-depth research on selected topics
+      - Route: `/presentations/:id/think/research`
+      - Features:
+        - Automated research on key topics
+        - Literature review capabilities
+        - Source discovery and integration
+        - Research summarization
+        - Key findings extraction
+    - **Datasets**: Upload and analyze datasets
+      - Route: `/presentations/:id/think/datasets`
+      - Features:
+        - Data upload and processing
+        - Automatic insight generation
+        - Chart and visualization suggestions
+        - Data correlation identification
+        - Key metrics extraction
+    - **Story**: Define narrative arc and key messages
+      - Route: `/presentations/:id/think/story`
+      - Features:
+        - Narrative structure definition
+        - Key message formulation
+        - Storytelling framework application
+        - Message hierarchy organization
+        - Audience impact assessment
+
+- **Write**
+  - **Main Phase Route**: `/presentations/:id/write`
+    - Layout: Split view with AI chatbot assistant on the left and JSON configuration display on the right
+    - Features: 
+      - Displays current slide structure and content completion status
+      - JSON editor shows slide content structure in editable format
+      - AI assistant helps with content creation and refinement
+      - Shows statistics about content (slide count, word count, estimated duration)
+  - Sub-routes:
+    - **Slides**: View and edit slide structure
+      - Route: `/presentations/:id/write/slides`
+      - Features:
+        - Slide-by-slide content editing
+        - Slide layout selection and customization
+        - Slide transition configuration
+        - Speaker notes integration
+        - Slide organization and management
+    - **Content**: Edit text content for slides
+      - Route: `/presentations/:id/write/content`
+      - Features:
+        - Text content editing for all slides
+        - Headline and bullet point refinement
+        - Content style and tone adjustment
+        - Grammar and spelling checking
+        - AI-assisted content improvement
+    - **Design**: Customize visual design elements
+      - Route: `/presentations/:id/write/design`
+      - Features:
+        - Visual theme application
+        - Custom styling for specific slides
+        - Color scheme adjustment
+        - Typography customization
+        - Layout and template adjustments
+    - **Preview**: View low-fidelity preview of presentation
+      - Route: `/presentations/:id/write/preview`
+      - Features:
+        - Real-time presentation preview
+        - Slide-by-slide navigation
+        - Mobile and desktop view options
+        - Estimated presentation duration
+        - Content density assessment
+
+- **Automate**
+  - **Main Phase Route**: `/presentations/:id/automate`
+    - Layout: Split view with AI chatbot assistant on the left and JSON configuration display on the right
+    - Features: 
+      - Shows export history and available output formats
+      - JSON editor displays automation configuration in editable format
+      - AI assistant helps with integration setup and troubleshooting
+      - Provides preview of the final presentation with download options
+  - Sub-routes:
+    - **Export**: Generate final presentation in different formats
+      - Route: `/presentations/:id/automate/export`
+      - Features:
+        - PPTX generation with full editability
+        - PDF export for sharing
+        - Web viewer link generation
+        - Batch export in multiple formats
+        - Output quality settings
+    - **Parameters**: Configure generation parameters
+      - Route: `/presentations/:id/automate/parameters`
+      - Features:
+        - Output format specifications
+        - Quality and optimization settings
+        - Metadata configuration
+        - Generation timeout settings
+        - Advanced rendering options
+    - **Webhook**: Set up notification webhooks
+      - Route: `/presentations/:id/automate/webhook`
+      - Features:
+        - Webhook endpoint configuration
+        - Event type selection
+        - Security credential management
+        - Webhook testing interface
+        - Delivery status monitoring
+    - **API**: View API usage examples for this presentation
+      - Route: `/presentations/:id/automate/api`
+      - Features:
+        - API call examples for current presentation
+        - Code snippets in multiple languages
+        - Parameter documentation
+        - Authentication examples
+        - Integration patterns and recipes
+    - **MCP**: Configure Model Context Protocol settings
+      - Route: `/presentations/:id/automate/mcp`
+      - Features:
+        - MCP configuration interface
+        - Agent interaction settings
+        - Context window management
+        - Prompt engineering tools
+        - Agent behavior customization
+
+**Bottom-Aligned Navigation Elements:**
+- **Account Button**: Quick access to account information without leaving presentation context
+  - Features:
+    - User profile information
+    - Credit balance display
+    - Quick links to account settings
+    - Project context indicator
+    - Return to main app button
+
+#### 8.6.3 Additional Routes
+
+- **New Presentation**: Create a new presentation
+  - Route: `/presentations/new`
+  - Features:
+    - Template selection interface
+    - Project association options
+    - Initial topic configuration
+    - Brand profile selection
+    - Quick start with AI assistance
+
+- **Presentation Home**: Main landing page for a specific presentation
+  - Route: `/presentations/:id`
+  - Features:
+    - High-level view showing all phases
+    - Progress indicators for each phase
+    - Quick access to continue working
+    - Preview of current presentation state
+    - Activity history and collaboration info
+
+- **Presentation Settings**: Global settings for a specific presentation
+  - Route: `/presentations/:id/settings`
+  - Features:
+    - Basic information (title, description, purpose)
+    - Project association and inheritance of project settings
+    - Override options for project-level brand settings
+    - Access controls and visibility settings
+    - Default export format preferences
+    - AI context scope selection (use project context or presentation-specific)
+
+- **Presentation History**: Version history and changes
+  - Route: `/presentations/:id/history`
+  - Features:
+    - Timeline of all presentation versions
+    - Change logs between versions
+    - Version comparison tools
+    - Restore previous version capability
+    - Activity attribution by user
+
+- **Presentation Share**: Sharing options and permissions
+  - Route: `/presentations/:id/share`
+  - Features:
+    - Permission configuration for team members
+    - Public/private visibility settings
+    - Shareable link generation
+    - Email sharing capabilities
+    - Access expiration settings
+
+- **Project Details**: Main project management interface
+  - Route: `/projects/:project_id`
+  - Features:
+    - Overview of all presentations in the project
+    - Project metrics and activity dashboard
+    - Quick access to create new presentations in this project
+    - Team activity and collaboration statistics
+    - Project status and health indicators
+
+- **Project Settings**: Configure project-level settings
+  - Route: `/projects/:project_id/settings`
+  - Features:
+    - Project metadata (name, description, goals)
+    - Team member access and permissions
+    - Default presentation settings
+    - Project visibility and access controls
+    - Integration configurations
+
+- **Project Branding**: Manage project's brand identity
+  - Route: `/projects/:project_id/branding`
+  - Features:
+    - Color schemes and typography settings
+    - Logo management and placement rules
+    - Template defaults and styling guidelines
+    - Visual asset library management
+    - Brand consistency enforcement settings
+
+- **Project Knowledge**: Manage project's persistent AI context
+  - Route: `/projects/:project_id/knowledge`
+  - Features:
+    - Upload and manage reference documents
+    - Define key facts and context for the AI
+    - Train project-specific terminology and preferences
+    - View and manage AI memory and context history
+    - Knowledge base organization and categorization
+
+#### 8.6.4 Route Parameters
+
+- **URL Path Parameters**:
+  - `:id` - The unique identifier for a presentation
+  - `:project_id` - The unique identifier for a project
+
+- **Presentation Query Parameters**:
+  - `?template=<template_id>` - When creating a new presentation, specifies the template to use
+  - `?brand=<brand_id>` - Specifies which brand profile to apply
+  - `?version=<version_id>` - For viewing a specific version of a presentation
+  - `?project=<project_id>` - For associating a presentation with a specific project
+
+- **Project Query Parameters**:
+  - `?filter=<filter_type>` - For filtering project list (e.g., recent, shared, archived)
+  - `?sort=<sort_criteria>` - For sorting projects (e.g., name, date, activity)
+  - `?view=<view_type>` - For switching between different project view modes (e.g., grid, list, detailed)
+
+---
+
+### 8.7 Marketing Site Navigation
+
+#### 8.7.1 Marketing Site Navigation
+
+**Primary Navigation**
+
+- **Home**: Landing page showcasing the platform's value proposition
+  - Route: `/`
+  - Features:
+    - Hero section with clear value proposition
+    - Visual demonstration of presentation generation capabilities
+    - Key benefits and use cases for developers and businesses
+    - Social proof with customer testimonials and logos
+    - Quick-start guide with pathway to documentation
+    - Credit-based pricing overview
+
+- **Features/Narratives**: Comprehensive overview of platform capabilities
+  - Route: `/features`
+  - Features:
+    - Detailed breakdown of the four-phase process (Plan, Think, Write, Automate)
+    - Interactive examples of API capabilities with code snippets
+    - Narrative structure showcase with business storytelling frameworks
+    - Visual comparison of traditional presentation creation vs. API approach
+    - Feature comparison matrix for different use cases
+    - Integration examples with popular developer tools
+  - Sub-routes:
+    - `/features/api` - API capabilities and integration examples
+    - `/features/business-storytelling` - Narrative structures and templates
+    - `/features/customization` - Brand integration and design control
+    - `/features/output` - Demonstration of output quality and formats
+
+- **Solutions**: Industry-specific use cases and implementations
+  - Route: `/solutions`
+  - Features:
+    - Vertical-specific landing pages with tailored messaging
+    - Solution architecture diagrams for common integration patterns
+    - ROI calculators for different implementation scenarios
+    - Integration examples with industry-specific tools
+  - Sub-routes:
+    - `/solutions/sales` - Sales presentation automation
+    - `/solutions/reporting` - Business intelligence and data reporting
+    - `/solutions/training` - Educational and training materials
+    - `/solutions/enterprise` - Enterprise workflow integration
+
+- **Pricing**: Credit packages and enterprise options
+  - Route: `/pricing`
+  - Features:
+    - Clear explanation of credit model (1 credit = $1 = 1 presentation)
+    - Volume discount packages with transparent pricing
+    - Free tier promotion with 5 credits for new users
+    - Enterprise pricing options with additional support
+    - ROI calculator based on current presentation creation costs
+    - FAQ section addressing common pricing questions
+
+- **About**: Company information and mission
+  - Route: `/about`
+  - Features:
+    - Company mission and vision statement
+    - Team profiles and expertise
+    - Development roadmap and future plans
+    - Partnership information and integration ecosystem
+    - Press resources and media kit
+    - Career opportunities and company culture
+
+- **Contact**: Support and sales inquiries
+  - Route: `/contact`
+  - Features:
+    - Support ticket submission form
+    - Sales inquiry process for enterprise customers
+    - Live chat option for immediate assistance
+    - Regional contact information
+    - Response time expectations
+    - FAQ section for common inquiries
+
+**Secondary Navigation**
+
+- **Developers**: Resources for technical implementation
+  - Route: `/developers`
+  - Features:
+    - Getting started guide for developers
+    - API documentation with interactive examples
+    - SDKs and client libraries for popular languages
+    - Implementation tutorials with step-by-step instructions
+    - Playground environment for testing API capabilities
+    - Code examples for common integration patterns
+  - Sub-routes:
+    - `/developers/docs` - API documentation
+    - `/developers/guides` - Implementation guides
+    - `/developers/playground` - Interactive API testing
+    - `/developers/sdks` - Language-specific resources
+
+**Footer Navigation**
+
+- **Terms of Service**: Legal terms for platform usage
+  - Route: `/terms`
+  - Features:
+    - Comprehensive terms of service document
+    - Plain language summaries of key points
+    - Usage restrictions and limitations
+    - Intellectual property rights
+    - Termination and cancelation policies
+    - Updates and changes to terms process
+
+- **Privacy Policy**: Data handling practices
+  - Route: `/privacy`
+  - Features:
+    - Detailed privacy policy document
+    - Data collection and usage explanations
+    - Information on third-party data processing
+    - User rights and data access procedures
+    - Data retention and deletion policies
+    - Compliance with GDPR, CCPA, and other regulations
+
+**Social Media Links**
+- Direct links to platform social accounts with appropriate icons:
+  - X: https://x.com/storyd_ai
+  - LinkedIn: https://www.linkedin.com/company/storyd-ai/
+  - YouTube: https://www.youtube.com/@storyd_ai
+  - GitHub: https://github.com/StorydAI
+
 ---
 
 ## 9. Security & Compliance
@@ -1664,6 +2227,8 @@ The MVP is considered complete when:
 
 **Presentation Structure**: The organized framework of slides, including their sequence, content types, and relationships.
 
+**Project**: Organizational unit for grouping related presentations together, with shared brand settings, persistent AI context, and collaboration features. Projects maintain consistent styling and contextual knowledge across all contained presentations.
+
 **SaaS (Software as a Service)**: Software licensing and delivery model in which software is centrally hosted and licensed on a subscription basis.
 
 **shadcn/ui**: Component library built on Radix UI and Tailwind CSS for building web interfaces.
@@ -1685,3 +2250,14 @@ The MVP is considered complete when:
 **Webhook**: HTTP callback that occurs when something happens; a way for an app to provide other applications with real-time information.
 
 **Worker**: Background processing service that handles compute-intensive tasks asynchronously.
+
+---
+
+## 11. External Resources
+
+### 11.1 Social Media Accounts
+
+- **X/Twitter**: [https://x.com/storyd_ai](https://x.com/storyd_ai)
+- **YouTube**: [https://www.youtube.com/@storyd_ai](https://www.youtube.com/@storyd_ai)
+- **LinkedIn**: [https://www.linkedin.com/company/storyd-ai/](https://www.linkedin.com/company/storyd-ai/)
+- **GitHub**: [https://github.com/StorydAI](https://github.com/StorydAI)

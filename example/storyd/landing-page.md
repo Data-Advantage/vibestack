@@ -306,8 +306,10 @@ You've been added to our waitlist! We'll notify you when we launch and keep you 
 **Next Steps Section:**
 ## While You Wait
 
-- [Follow us on Twitter](#) for development updates
+- [Follow us on Twitter](https://x.com/storyd_ai) for development updates
 - [Join our Discord community](#) to connect with other developers
+- [Subscribe to our YouTube](https://www.youtube.com/@storyd_ai) for tutorials and demos
+- [Connect on LinkedIn](https://www.linkedin.com/company/storyd-ai/) for business updates
 - [Share with colleagues](#) who might be interested
 
 **Return Link Text:**
@@ -328,6 +330,12 @@ Back to Homepage
 - [Terms](#)
 - [Privacy](#)
 - [Contact](#)
+
+**Social Media:**
+- [Twitter](https://x.com/storyd_ai)
+- [YouTube](https://www.youtube.com/@storyd_ai)
+- [LinkedIn](https://www.linkedin.com/company/storyd-ai/)
+- [GitHub](https://github.com/StorydAI)
 
 ---
 
