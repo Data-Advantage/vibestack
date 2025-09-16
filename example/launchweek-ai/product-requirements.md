@@ -1896,7 +1896,7 @@ Given the current pricing model ($7/mo or $70/year) and estimated CAC, the follo
 - **Database & Backend**: Supabase - providing PostgreSQL, authentication, and real-time capabilities
 - **AI Integration**: Vercel AI SDK - for consistent interface with multiple AI providers
 - **UI Framework**: Tailwind CSS with shadcn/ui components - for rapid, consistent UI development
-- **Design Prototyping**: v0.dev - for AI-generated UI components
+- **Design Prototyping**: v0.app - for AI-generated UI components
 - **Payment Processing**: Stripe with Customer Portal integration
 
 #### 9.1.2 High-level Architecture Approach

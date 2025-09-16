@@ -185,7 +185,7 @@
 - Technical implementation guides for no-code deployment
 - 5-day structured framework from concept to launch
 - Deployment assistance for landing pages and prototypes
-- UI/UX recommendations via v0.dev integration
+- UI/UX recommendations via v0.app integration
 - Market positioning and competitive differentiation guidance
 - Product-market fit assessment tools
 

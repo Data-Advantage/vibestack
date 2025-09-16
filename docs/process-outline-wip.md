@@ -78,7 +78,7 @@ have auto-create Launch Announcements per channel... e.g. Email/Product Hunt/Lin
   - Step 2: Add Supabase Integration
   - Step 3: Add Your Documents to Project Settings
   - Step 4: Install Database Schema
-  - Step 5: Begin v0.dev Chat
+  - Step 5: Begin v0.app Chat
 - 1.5.2: App Implementation Planning
 - 1.5.3: Homepage Implementation
 - 1.5.4: Navigation Structure

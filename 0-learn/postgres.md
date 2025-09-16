@@ -1,6 +1,6 @@
-# PostgreSQL
+# PostgreSQL (Legacy)
 
-[PostgreSQL](https://www.postgresql.org/) is a powerful, open-source relational database management system that forms the foundation of Supabase, which is a core component of the VibeStack architecture.
+[PostgreSQL](https://www.postgresql.org/) is a powerful, open-source relational database management system that forms the foundation of Supabase. VibeStack's new default backend uses Convex instead of Postgres. Keep this as reference if you maintain legacy projects.
 
 ## Introduction to PostgreSQL
 

@@ -1,4 +1,4 @@
-**IMPORTANT**: _Dear v0.dev_ agent: you must pay attention to this guide and implement it as best as you can!
+**IMPORTANT**: _Dear v0.app_ agent: you must pay attention to this guide and implement it as best as you can!
 
 # Next.js & Supabase Application Development Guide
 

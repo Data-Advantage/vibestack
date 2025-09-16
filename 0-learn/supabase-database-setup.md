@@ -1,8 +1,10 @@
-# Day 1: Create
+# Legacy: Database Setup (Supabase/Postgres)
 
-[⬅️ Day 1 Overview](README.md)
+This guide preserves the previous Day 1 database setup workflow using Supabase and PostgreSQL. VibeStack now defaults to Convex + Clerk. Use this only for legacy projects.
 
-## 1.4 Database Setup Introduction
+---
+
+## 1.4 Database Setup Introduction (Supabase/Postgres)
 
 **Goal**: Define the data structure (schema) required for the web application, creating a set of migration files that will fully install a custom Postgres database into your Supabase instance. The migration files include:
 - `000-foundation.sql` - Establishes extensions, schemas, and basic types
@@ -11,22 +13,22 @@
 - `003-security.sql` - Implements security, automation, and API functions
 - `seed.sql` - Populates reference tables with initial dataset
 
-**Process**: Follow this chat pattern with an AI chat tool such as [Claude.ai](https://www.claude.ai). Pay attention to the notes in `[brackets]` and replace the brackets with your own thoughts and ideas.
+**Process**: Follow this chat pattern with an AI chat tool such as Claude.ai. Pay attention to the notes in `[brackets]` and replace the brackets with your own thoughts and ideas.
 
 **Timeframe**: 30-45 minutes
 
 ## Table of Contents
-- [1.4.1: Initial Schema Analysis](#141-initial-schema-analysis)
-- [1.4.2: Foundation Migration](#142-foundation-migration)
-- [1.4.3: Structure Migration](#143-structure-migration)
-- [1.4.4: Relationships Migration](#144-relationships-migration)
-- [1.4.5: Security Migration](#145-security-migration)
-- [1.4.6: Seed Data](#146-seed-data)
-- [1.4.7: Schema Validation](#147-schema-validation)
-- [1.4.8: Schema Refinement (Optional)](#148-schema-refinement-optional)
-- [1.4.9: Installation Instructions](#149-installation-instructions)
+- 1.4.1: Initial Schema Analysis
+- 1.4.2: Foundation Migration
+- 1.4.3: Structure Migration
+- 1.4.4: Relationships Migration
+- 1.4.5: Security Migration
+- 1.4.6: Seed Data
+- 1.4.7: Schema Validation
+- 1.4.8: Schema Refinement (Optional)
+- 1.4.9: Installation Instructions
 
-Have this link open and ready to copy/paste in: [supabase-database-patterns.md](../0-learn/supabase-database-patterns.md)
+Have this link open and ready to copy/paste in: `0-learn/supabase-database-patterns.md`
 
 ## 1.4 Database Setup Generation
 
@@ -47,7 +49,7 @@ Please paste your completed `product-requirements.md` document from step 1.1 and
 {{supabase-database-patterns.md}}
 </supabase-database-patterns>
 
-Supabase has reserved schemas with special purposes that can be made use of when it makes sense (see [supabase-database-patterns.md](../0-learn/supabase-database-patterns.md)). My custom schemas should be organized as:
+Supabase has reserved schemas with special purposes that can be made use of when it makes sense (see `0-learn/supabase-database-patterns.md`). My custom schemas should be organized as:
 
 #### Custom Schema Structure
 - `api` - User-generated content and application data, including user-specific instances of templates
@@ -132,21 +134,6 @@ In this migration, we'll include:
 Please generate the complete 000-foundation.sql file based on our application requirements.
 ```
 
-**Optional**: Additional considerations
-
-```
-I'd like your perspective on:
-
-1. Should we implement soft deletes (using deleted_at) for any tables?
-   [Provide answer]
-
-2. What timestamp fields should we include beyond created_at and updated_at?
-   [Provide answer]
-
-3. Should we use UUIDs for all primary keys or are there exceptions?
-   [Provide answer]
-```
-
 ### 1.4.3: Structure Migration
 
 ```
@@ -208,21 +195,6 @@ This migration will include:
      - stripe.charges - Records charge data
 
 Please generate the complete 001-structure.sql file.
-```
-
-**Optional**: Advanced feedback questions
-
-```
-Consider the following questions:
-
-1. How will we handle multi-tenant data isolation in our schema?
-   [Provide answer]
-
-2. Do we need any special tables for admin users or special roles?
-   [Provide answer]
-
-3. Should we implement any version tracking for key entities?
-   [Provide answer]
 ```
 
 ### 1.4.4: Relationships Migration
@@ -305,22 +277,6 @@ For foreign keys, follow this pattern:
 Please generate the complete 002-relationships.sql file.
 ```
 
-**Optional**: Advanced feedback questions
-
-```
-Consider the following questions:
-
-1. How should we handle cascading deletes for user-owned data?
-   [Provide answer]
-
-2. Are there any many-to-many relationships requiring junction tables?
-   [Provide answer]
-
-3. Which foreign keys will be frequently queried and need indexes?
-   [Provide answer]
-
-```
-
 ### 1.4.5: Security Migration
 
 ```
@@ -385,24 +341,6 @@ For RLS policies, always be aware that:
 - Policies should be created before or immediately after enabling RLS
 
 Please generate the complete `003-security.sql` file.
-```
-
-**Optional**: Advanced feedback questions
-
-```
-Consider the following questions:
-
-1. Do we need any service role bypass mechanisms for background processing?
-   [Provide answer]
-
-2. Should we implement triggers for maintaining audit history?
-   [Provide answer]
-
-3. Do we need any specialized billing or subscription functions?
-   [Provide answer]
-
-4. How should we handle multi-tenant data isolation in our security policies?
-   [Provide answer]
 ```
 
 ### 1.4.6: Seed Data

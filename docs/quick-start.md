@@ -6,7 +6,7 @@ Welcome to Vibestack! This guide will help you start building web applications u
 
 - An account on one or more of these platforms:
   - [Claude](https://claude.ai) for ideas & requirements
-  - [v0.dev](https://www.v0.dev) for UI generation
+  - [v0.app](https://v0.app) for UI generation
   - [Supabase](https://www.supabase.com) for backend functionality
   - [Cursor](https://www.cursor.com) for code generation and editing
 - A basic understanding of what you want to build (no technical knowledge required!)
@@ -21,13 +21,13 @@ Before using any prompts, take a moment to write down:
 
 This clarity will help you select the right prompts and get better results from AI tools.
 
-## Step 2: Start with a UI Prototype (v0.dev)
+## Step 2: Start with a UI Prototype (v0.app)
 
-v0.dev is perfect for quickly generating beautiful UI components:
+v0.app is perfect for quickly generating beautiful UI components:
 
-1. Visit [v0.dev](https://www.v0.dev) and sign in
+1. Visit [v0.app](https://v0.app) and sign in
 2. Copy one of our UI prompts below
-3. Paste it into v0.dev, adding your specific details
+3. Paste it into v0.app, adding your specific details
 4. Review and iterate on the generated UI
 
 ### Example Prompt for a Landing Page:

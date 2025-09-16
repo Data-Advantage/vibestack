@@ -79,11 +79,11 @@ LaunchWeek.ai is a guided, AI-powered platform that transforms the SaaS creation
 
 ### 2.4 Prototype Generation & Sharing System
 
-**Description:** Generates structured implementation plans and task-specific prompts for AI-powered development tools like v0.dev, enabling rapid prototype creation and validation.
+**Description:** Generates structured implementation plans and task-specific prompts for AI-powered development tools like v0.app, enabling rapid prototype creation and validation.
 
 **User Stories:**
 - As a founder, I want to generate a comprehensive implementation plan from my requirements so that I can build my application in a structured, incremental way.
-- As a non-technical builder, I want to receive specialized prompts for each development task so that I can effectively use AI tools like v0.dev without coding knowledge.
+- As a non-technical builder, I want to receive specialized prompts for each development task so that I can effectively use AI tools like v0.app without coding knowledge.
 - As a product builder, I want to share my prototype with potential users and collect feedback so that I can make improvements based on real user input.
 - As a SaaS creator, I want to transform my marketing content, database schema, and product requirements into a functional prototype using AI-powered development tools so that I can validate my idea with real users before investing in full development.
 - As a founder with a landing page, I want to expand it into a working prototype that implements my database schema so that I can demonstrate core functionality to potential users.

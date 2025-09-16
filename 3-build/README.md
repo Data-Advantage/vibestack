@@ -11,7 +11,7 @@ Welcome to Day 3 of the VibeStack workflow! Today focuses on transforming your r
 
 By the end of today, you'll have a fully functional application ready for positioning and launch preparation.
 
-This process typically takes 6-8 hours total. You'll continue using AI assistants like Claude.ai, v0.dev, and your Supabase integration from previous days. Today is when your application truly comes to life with all planned features working together.
+This process typically takes 6-8 hours total. You'll continue using AI assistants like Claude.ai, v0.app, and your Clerk + Convex backend from previous days. Today is when your application truly comes to life with all planned features working together.
 
 ## Morning: Authentication & API Integration (2-4 hours)
 
@@ -41,7 +41,7 @@ This process typically takes 6-8 hours total. You'll continue using AI assistant
 #### Process
 1. Copy paste each Step in [api-integration-chat](3.2-api-integration-chat.md) into your AI coding tool.
 2. Implement proper API connections for:
-   - Your Supabase backend
+   - Your Convex functions/queries
    - Third-party services mentioned in your PRD
    - Webhooks and event handling
 3. Implement proper error handling and fallback mechanisms
@@ -104,7 +104,7 @@ Before moving on to Day 4, ensure you have:
   - [ ] Proper security measures
 
 - [ ] Connected necessary API integrations:
-  - [ ] Supabase backend functionality
+  - [ ] Convex backend functionality
   - [ ] External API connections
   - [ ] Webhook handling
   - [ ] Error handling and fallbacks

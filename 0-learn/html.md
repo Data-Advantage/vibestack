@@ -15,4 +15,4 @@ HTML (HyperText Markup Language) is the standard markup language for documents d
 
 ## How It's Used in VibeStack
 
-HTML forms the structure of all web pages in your SaaS application. When using v0.dev or other AI tools, understanding basic HTML helps you better communicate your design intentions.
+HTML forms the structure of all web pages in your SaaS application. When using v0.app or other AI tools, understanding basic HTML helps you better communicate your design intentions.

@@ -144,7 +144,7 @@ A3: After completing Day 1, you'll have: 1) A comprehensive product requirements
 A4: New users receive 1 free project credit upon account creation. Additional credits are available for purchase in different packages - a 3-pack for $50 or a 10-pack for $125, giving you flexibility based on your needs.
 
 **Q5: What tools do I need to have before starting?**
-A5: You'll need accounts with: 1) Claude.ai (for AI assistance), 2) v0.dev (for UI generation), 3) Vercel (for deployment), 4) GitHub (for project storage), and 5) Supabase (for database). We provide detailed guidance on setting up these accounts as part of our onboarding.
+A5: You'll need accounts with: 1) Claude.ai (for AI assistance), 2) v0.app (for UI generation), 3) Vercel (for deployment), 4) GitHub (for project storage), and 5) Supabase (for database). We provide detailed guidance on setting up these accounts as part of our onboarding.
 
 **Q6: When will Days 2-5 be available?**
 A6: We're currently focused on perfecting the Day 1 (CREATE) experience. Days 2-5 are in active development, with releases planned throughout the coming months. Join our waitlist to be notified when new days are released.

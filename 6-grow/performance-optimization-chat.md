@@ -6,7 +6,7 @@
 
 **Goal**: Optimize your application for speed, responsiveness, and efficiency after launch to improve user retention and satisfaction.
 
-**Process**: Follow this chat pattern with your AI coding tool such as [Claude](https://claude.ai) or [v0.dev](https://www.v0.dev). Pay attention to the notes in `[brackets]` and replace the bracketed text with your own content.
+**Process**: Follow this chat pattern with your AI coding tool such as [Claude](https://claude.ai) or [v0.app](https://v0.app). Pay attention to the notes in `[brackets]` and replace the bracketed text with your own content.
 
 **Timeframe**: Implement over 1-2 weeks post-launch based on analytics data and user feedback
 

@@ -11,6 +11,17 @@ In today's AI-powered world, success is no longer defined by your coding skills,
 
 VibeStack empowers you with both, bridging the gap between your vision and functional software through carefully crafted prompts for AI-powered design and development tools. Created by [Data Advantage](https://www.buildadataadvantage.com), we've helped visionaries launch successful micro-SaaS businesses without writing a single line of code, proving that your entrepreneurial spirit combined with AI's capabilities is the new unfair advantage in business creation.
 
+## Default Stack
+
+- Authentication, billing, and user management: Clerk
+- Database, sync engine, cloud functions, and file storage: Convex.dev
+- Hosting and deployment: Vercel
+- AI runtime and UI: AI SDK 5 and AI Elements
+- AI model routing and provider abstraction: Vercel AI Gateway
+- Default AI model: gpt-5-mini (override per feature as needed)
+
+Resources: [AI SDK](https://ai-sdk.dev/) • [AI Elements](https://ai-sdk.dev/elements/overview)
+
 ## ⚡ 5-Day Journey to Launch
 
 Transform your idea into reality with our proven framework:
@@ -25,7 +36,7 @@ Transform your idea into reality with our proven framework:
 
 | Day | Theme | Session 1 | Session 2 |
 |-----|-------|-----------|-----------|
-| **Day 1** | **Create** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Database Setup<br>• Working Prototype |
+| **Day 1** | **Create** | • Product Requirements<br>• Marketing Story<br>• Landing Page | • Backend Setup (Clerk + Convex)<br>• Working Prototype |
 | **Day 2** | **Refine** | • Feedback Collection<br>• UX Improvement<br>• Visual Design | • App Refinement<br>• Domain Name |
 | **Day 3** | **Build** | • Authentication System<br>• API & Data Integration<br>• Payment Integration | • Advanced Features<br>• Dashboard Implementation |
 | **Day 4** | **Position** | • Marketing Website<br>• SEO Content | • Email Sequences<br>• Social Channels<br>• Technical Documentation |
@@ -36,7 +47,7 @@ Transform your idea into reality with our proven framework:
 Before diving into your 5-day journey, take some time to review our comprehensive learning resources. These materials cover essential technologies, concepts, and best practices that will help you build a successful SaaS business:
 
 - Web Development Fundamentals (HTML, CSS, TypeScript, React, Next.js)
-- Backend & Infrastructure (Supabase, PostgreSQL, Vercel)
+- Backend & Infrastructure (Clerk, Convex.dev, Vercel)
 - UI/UX Components & Libraries
 - Authentication & Security
 - Marketing & Growth
@@ -84,15 +95,18 @@ To make the most of VibeStack and ensure a smooth building process, prepare the 
 
 ### Required Accounts
 - [ ] [Claude.ai](https://claude.ai) account (Pro subscription recommended)
-- [ ] [v0.dev](https://www.v0.dev) account (Pro or Team subscription recommended)
-- [ ] [Vercel](https://vercel.com) account (free tier works, signup included with v0)
+- [ ] [v0.app](https://v0.app) account (Pro or Team subscription recommended)
+- [ ] [Vercel](https://vercel.com) account
 - [ ] [GitHub](https://github.com) account (for version control)
-- [ ] [OpenAI](https://platform.openai.com) Developer account (API access required)
+- [ ] [Clerk](https://clerk.com) account (auth + billing)
+- [ ] [Convex](https://convex.dev) account (database + functions + storage)
+- [ ] Vercel AI Gateway API key (configure providers as needed)
 
 ### Business Essentials
 - [ ] Business name and domain name ideas
 - [ ] Legal entity (LLC, corporation, etc.) or plan to establish one
 - [ ] Business bank account (separate from personal)
+- [ ] Payment settings configured in Clerk Billing
 - [ ] [Stripe](https://stripe.com) account for payment processing
 - [ ] Basic brand elements (logo, colors, font preferences)
 
@@ -106,7 +120,7 @@ To make the most of VibeStack and ensure a smooth building process, prepare the 
 ## 📋 How to Use Our Prompts
 
 1. Browse our collection of prompts for the component or feature you need
-2. Copy the prompt and paste it into Claude.ai, v0.dev or other AI coding tools
+2. Copy the prompt and paste it into Claude.ai, v0.app or other AI coding tools
 3. Use the generated code in your project
 4. Iterate and refine as needed
 
