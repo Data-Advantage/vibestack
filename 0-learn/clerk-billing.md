@@ -127,7 +127,6 @@ export default async function AIFeaturesPage() {
     {/* Pro features */}
   </div>
 </Protect>
-```
 
 ### 3. Add Features to Plans
 

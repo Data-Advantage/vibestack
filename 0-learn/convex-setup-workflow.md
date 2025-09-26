@@ -261,5 +261,3 @@ export function ConvexClientProvider({ children }: { children: ReactNode }) {
 This hybrid workflow enables you to leverage both v0's rapid development capabilities and Convex's powerful backend features. While it requires some manual file management, it provides a path to building production-ready applications with real database integration while maintaining the speed and convenience of v0's development environment.
 
 The key is understanding when to use each environment and maintaining consistency between your local and v0 codebases.
-
-

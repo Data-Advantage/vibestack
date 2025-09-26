@@ -289,5 +289,3 @@ The component provides comprehensive setup guidance including:
 3. Add new troubleshooting information
 
 This diagnostics system provides a comprehensive foundation for monitoring and maintaining the Convex integration in SarahsRecipes.ai, ensuring developers can quickly identify and resolve configuration issues.
-
-
